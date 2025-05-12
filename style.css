@@ -1,12 +1,13 @@
-
+/* Corpo da página */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #fffbea;
-    color: #333;
+    background-color: #000; /* Alterado para fundo preto */
+    color: #000; /* Cor do texto para preto */
     margin: 0;
     padding: 0;
 }
 
+/* Cabeçalho */
 header {
     background-color: #f2cd00;
     color: #111;
@@ -32,40 +33,50 @@ header h1 {
     font-weight: 500;
 }
 
+/* Área principal */
 main {
     max-width: 900px;
     margin: 40px auto;
     padding: 0 20px;
 }
 
+/* Seções */
 section {
     background: #fff;
-    border-left: 6px solid #f2cd00;
+    border-left: 6px solid #f2cd00; /* Amarelo para destacar */
     padding: 20px;
     margin-bottom: 30px;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
+/* Títulos das seções - manter amarelo */
 section h2 {
     margin-top: 0;
-    color: #f2cd00;
+    color: #f2cd00; /* Amarelo para os títulos das seções */
+    font-size: 1.8em;
+    text-transform: uppercase; /* Para dar um estilo mais forte aos títulos */
 }
 
+/* Listas */
 ul {
     padding-left: 20px;
 }
 
+/* Links */
 a {
-    color: #f2cd00;
-    text-decoration: none;
+    color: #f2cd00; /* Cor amarela para links */
+    text-decoration: none; /* Removido o sublinhado */
     font-weight: bold;
+    transition: color 0.3s ease;
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none; /* Removido sublinhado no hover */
+    color: #fff; /* Cor branca no hover */
 }
 
+/* Rodapé */
 footer {
     background-color: #111;
     color: #eee;
@@ -73,4 +84,29 @@ footer {
     padding: 15px;
     margin-top: 40px;
     font-size: 0.9em;
+    border-top: 3px solid #f2cd00; /* Linha para separar o rodapé */
+}
+
+/* Estilo para links de WhatsApp */
+.whatsapp-link {
+    text-decoration: none;
+    color: #fff;
+    background-color: #25d366; /* Cor verde do WhatsApp */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transição para o fundo e cor */
+}
+
+/* Efeito de hover para o link do WhatsApp */
+.whatsapp-link:hover {
+    background-color: #fff; /* Altera o fundo para branco */
+    color: #25d366; /* Mantém o texto com a cor verde do WhatsApp */
+}
+
+/* Estilo de foco para links */
+.whatsapp-link:focus {
+    outline: 3px solid #ffb82a; /* Destacar o foco com uma borda amarela */
+    background-color: #fff;
+    color: #25d366; /* Mantém o texto verde */
 }
