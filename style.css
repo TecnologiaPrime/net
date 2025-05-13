@@ -57,11 +57,19 @@ section h2 {
     color: #f2cd00;
     font-size: 1.8em;
     text-transform: uppercase;
+    text-align: left; /* <-- Alinhado à esquerda */
+}
+
+/* Justificar apenas os parágrafos e listas dentro das seções */
+section p,
+section ul {
+    text-align: justify;
 }
 
 /* Listas */
 ul {
-    padding-left: 20px;
+    list-style-position: inside;
+    padding-left: 0;
 }
 
 /* Links padrão */
@@ -98,4 +106,5 @@ footer {
     padding: 15px;
     margin-top: 40px;
     font-size: 0.9em;
-    border-top: 3
+    border-top: 3px solid #f2cd00;
+}
