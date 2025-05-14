@@ -27,15 +27,6 @@
       100% { background-position: 0% 50%; }
     }
 
-      .banner img {
-      width: 100%;
-      max-height: 400px;
-      object-fit: cover;
-      display: block;
-      margin: 0 auto 30px;
-      border-bottom: 3px solid #f2cd00;
-    }
-
     header {
       background-color: #f2cd00;
       color: #111;
@@ -52,6 +43,11 @@
     .slogan {
       font-size: 1.3em;
       font-weight: 500;
+    }
+
+    .banner {
+      width: 100%;
+      display: block;
     }
 
     nav {
@@ -78,7 +74,7 @@
       transition: color 0.3s;
     }
 
-    nav a:hover {
+    nav a.btn-voltar:hover {
       color: #fff;
     }
 
@@ -176,22 +172,20 @@
   </style>
 </head>
 <body>
-  <!-- Adicionei o ID "inicio" no topo para o link poder funcionar -->
+
+  <!-- Banner da empresa -->
+  <img class="banner" src="https://drive.google.com/uc?export=view&id=1Mnyobu-P_k5Z4ln6MUAv2TqdK7aYbQdY" alt="Banner da Prime">
+
   <header id="inicio">
     <h1>Prime Acessórios & Informática</h1>
     <p class="slogan">Tudo em Tecnologia</p>
   </header>
 
-  <!-- Banner -->
-<div class="banner">
-  <img src="https://drive.google.com/uc?export=view&id=1Mnyobu-P_k5Z4ln6MUAv2TqdK7aYbQdY" alt="Banner da Prime">
-</div>
-
   <!-- Menu -->
   <nav>
     <div class="menu">
-      <a href="#inicio" class="btn-voltar">Início</a> <!-- Link para o topo da página -->
-      <a href="quemsomos.html">Quem Somos?</a> <!-- Link simples sem borda -->
+      <a href="#inicio" class="btn-voltar">Início</a>
+      <a href="quemsomos.html">Quem Somos?</a>
     </div>
   </nav>
 
