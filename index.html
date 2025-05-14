@@ -1,56 +1,176 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Prime Acessórios & Informática</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Prime Acessórios & Informática</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #eee;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      background-color: #f2cd00;
+      color: #111;
+      text-align: center;
+      padding: 40px 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+    }
+
+    .slogan {
+      font-size: 1.3em;
+      font-weight: 500;
+    }
+
+    nav {
+      background: #111;
+      padding: 15px 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid #f2cd00;
+    }
+
+    nav a {
+      color: #f2cd00;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    .main-content {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 32px rgba(255, 215, 0, 0.4);
+    }
+
+    .card h2 {
+      color: #f2cd00;
+      margin-bottom: 15px;
+      font-size: 1.8em;
+    }
+
+    .card p {
+      text-align: justify;
+    }
+
+    .btn {
+      background: #f2cd00;
+      color: #000;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 15px;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: #fff;
+      color: #111;
+    }
+
+    footer {
+      background-color: #111;
+      color: #eee;
+      text-align: center;
+      padding: 20px;
+      border-top: 3px solid #f2cd00;
+      margin-top: 60px;
+    }
+
+    /* Estilo para os textos @primeacessorioseinformatica e (79) 99626-9748 */
+    .highlight {
+      color: #f2cd00;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Prime Acessórios & Informática</h1>
-        <p class="slogan">Tudo em Tecnologia</p>
-    </header>    
+  <header>
+    <h1>Prime Acessórios & Informática</h1>
+    <p class="slogan">Tudo em Tecnologia</p>
+  </header>
 
-    <main>
-        <section aria-labelledby="quem-somos">
-            <h2 id="quem-somos">Quem Somos</h2>
-            <p>
-                A <strong>Prime Acessórios & Informática</strong> é a sua parceira em tecnologia! Oferecemos assistência técnica especializada em computadores e uma ampla linha de acessórios e periféricos para atender todas as suas necessidades. Trabalhamos com qualidade, agilidade e confiança, sempre focados em proporcionar a melhor experiência para nossos clientes. Seja para consertar, atualizar ou equipar seu computador, conte com a nossa equipe técnica e produtos de alto desempenho.
-            </p>
-        </section>
+  <nav>
+    <a href="#">Início</a>
+    <a href="#produtos">Produtos</a>
+    <a href="#servicos">Assistência Técnica</a>
+    <a href="#contato">Fale Conosco</a>
+    <a href="quemsomos.html">Quem somos?</a>
+  </nav>
 
-        <section aria-labelledby="servicos">
-            <h2 id="servicos">Serviços</h2>
-            <ul>
-                <li><strong>Manutenção e Formatação de Computadores:</strong> Diagnóstico completo, remoção de vírus, otimização de desempenho, troca de peças e recuperação de sistemas lentos ou com falhas.</li>
-                <li><strong>Instalação de Sistemas Operacionais:</strong> Instalação e configuração de Windows com drivers atualizados e programas essenciais incluídos.</li>
-                <li><strong>Venda de Acessórios de Informática:</strong> Fones de ouvido, cabos, mouses, teclados, fontes, carregadores, suportes, adaptadores, hub usb, ssd entre outros.</li>
-                <li><strong>Venda de Acessórios Variados:</strong> Fonte de carregador celular, cabo de carregador celular, caixa de som, pen drive, micro sd, produtos stanley entre outros.</li>
-            </ul>
-        </section>
+  <div class="main-content">
+    <section class="card" id="produtos">
+      <h2>Produtos</h2>
+      <p>Confira os melhores acessórios: temos uma variedade incrível de produtos, desde itens de informática até os desejados produtos Stanley.</p>
+      <a href="#" class="btn">Ver produtos</a>
+    </section>
 
-        <section aria-labelledby="contato">
-            <h2 id="contato">Contato</h2>
-            <p>📞 WhatsApp
-                <a href="https://wa.me/5579996269748" target="_blank" rel="noopener" class="contato-link">
-                    <br>
-                    (79) 99626-9748
-                    </br>
-                </a>
-            </p>
-            <p>📷 Instagram
-                <a href="https://www.instagram.com/primeacessorioseinformatica/" target="_blank" rel="noopener" class="contato-link">
-                    <br>
-                    @primeacessorioseinformatica
-                    </br>
-                </a>
-            </p>
-        </section>
-    </main>
+   <section class="card" id="servicos">
+  <h2>Assistência Técnica</h2>
+  <p>Oferecemos manutenção completa em computadores e notebooks, além de uma ampla variedade de serviços especializados de informática.</p>
+  <a href="servicos.html" class="btn">Saiba mais</a>
+</section>
 
-    <footer>
-        <p>&copy; 2025 Prime Tecnologia. Todos os direitos reservados.</p>
-    </footer>
+    <section class="card" id="contato">
+      <h2>Fale Conosco</h2>
+      <p>Entre em contato pelo WhatsApp: <strong class="highlight">(79) 99626-9748</strong><br>
+        Siga nosso Instagram para novidades e promoções: <strong class="highlight">@primeacessorioseinformatica</strong></p>
+      <a href="https://wa.me/5579996269748" class="btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="https://instagram.com/primeacessorioseinformatica" class="btn" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+    </section>
+  </div>
+
+  <footer>
+    &copy; 2025 Prime Acessórios & Informática. Todos os direitos reservados.
+  </footer>
 </body>
 </html>

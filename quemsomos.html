@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quem Somos</title>
+
+  <!-- Fonte Orbitron -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    header {
+      background-color: #f2cd00;
+      color: #111;
+      text-align: center;
+      padding: 40px 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    header h1 {
+      font-size: 2.8em;
+      margin-bottom: 10px;
+    }
+
+    .slogan {
+      font-size: 1.3em;
+      font-weight: 500;
+    }
+
+    nav {
+      background: #111;
+      padding: 15px 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid #f2cd00;
+    }
+
+    nav a {
+      color: #f2cd00;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #fff;
+    }
+
+    .main-content {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border-radius: 15px;
+      padding: 30px;
+      margin-bottom: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 32px rgba(255, 215, 0, 0.4);
+    }
+
+    .card h2 {
+      color: #f2cd00;
+      margin-bottom: 15px;
+      font-size: 1.8em;
+    }
+
+    .card p {
+      text-align: justify;
+      font-size: 1.1em;
+    }
+
+    .btn-voltar {
+      position: fixed;
+      right: 20px;
+      top: 20px;
+      background: #f2cd00;
+      color: #000;
+      padding: 12px 20px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s, color 0.3s;
+      z-index: 100;
+    }
+
+    .btn-voltar:hover {
+      background: #fff;
+      color: #111;
+    }
+
+    footer {
+      background-color: #111;
+      color: #eee;
+      text-align: center;
+      padding: 20px;
+      border-top: 3px solid #f2cd00;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="index.html" class="btn-voltar">Voltar</a>
+
+  <header>
+    <h1>Quem somos?</h1>
+    <p class="slogan">Conheça um pouco do nosso trabalho!</p>
+  </header>
+
+  <div class="main-content">
+    <section class="card" id="quemsomos">
+      <p><strong>A Prime Acessórios & Informática nasceu com o propósito de conectar pessoas à tecnologia de forma simples, eficiente e confiável. Somos uma empresa especializada em assistência técnica para computadores e na comercialização de uma ampla variedade de acessórios e periféricos de alta qualidade, atendendo tanto usuários domésticos quanto empresas de pequeno e médio porte.
+      Contamos com uma equipe técnica altamente qualificada, pronta para diagnosticar e solucionar os mais diversos problemas relacionados ao seu equipamento, sempre com agilidade, responsabilidade e compromisso com a excelência. Nossa missão é garantir que seus dispositivos estejam sempre funcionando com o melhor desempenho possível, seja por meio de manutenções preventivas, upgrades de hardware ou formatações completas com instalação de softwares e antivírus.
+      Na Prime, não vendemos apenas produtos: entregamos soluções completas em tecnologia, com foco total na satisfação do cliente. Nosso atendimento é próximo, personalizado e transparente — você pode contar conosco para orientações claras, orçamentos justos e um suporte pós-venda que realmente se importa com você.
+      Acreditamos que a tecnologia é uma ferramenta poderosa para o crescimento pessoal e profissional, e por isso, estamos sempre em busca de inovação, oferecendo as melhores marcas e lançamentos do mercado, além de um atendimento técnico diferenciado.
+      Seja para consertar, atualizar ou equipar o seu computador, escolha a Prime Acessórios & Informática. Sua confiança é o nosso maior patrimônio.</strong></p>
+    </section>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Prime Acessórios & Informática. Todos os direitos reservados.</p>
+  </footer>
+
+</body>
+</html>
