@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Assistência Técnica</title>
 
-  <!-- Fonte Orbitron igual à página principal -->
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
 
   <style>
@@ -51,27 +50,20 @@
       font-weight: 500;
     }
 
-    nav {
-      background: #111;
-      padding: 15px 0;
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 2px solid #f2cd00;
-    }
-
-    nav a {
-      color: #f2cd00;
+    /* Botão X no canto superior direito */
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 2em;
+      color: #111;
       text-decoration: none;
       font-weight: bold;
-      transition: color 0.3s;
+      transition: color 0.3s ease;
     }
 
-    nav a:hover {
-      color: #fff;
+    .close-btn:hover {
+      color: #f2cd00;
     }
 
     .main-content {
@@ -105,24 +97,6 @@
 
     .card p {
       text-align: justify;
-      font-size: 1em;
-    }
-
-    .btn {
-      background: #f2cd00;
-      color: #000;
-      padding: 12px 25px;
-      border-radius: 30px;
-      font-weight: bold;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 15px;
-      transition: all 0.3s ease;
-    }
-
-    .btn:hover {
-      background: #fff;
-      color: #111;
     }
 
     .servico-lista {
@@ -147,28 +121,6 @@
       transform: translateX(5px);
     }
 
-    /* Botão Voltar - Normal */
-    .btn-voltar {
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      background: #f2cd00;
-      color: #000;
-      padding: 12px 20px;
-      text-align: center;
-      font-weight: bold;
-      text-decoration: none;
-      z-index: 100;
-      display: block;
-    }
-
-    /* Remover o fundo branco ao passar o mouse */
-      .btn-voltar:hover {
-      color: #fff; /* texto branco */
-      background: transparent; /* sem alteração no fundo */
-    }
-
-
     footer {
       background-color: #111;
       color: #eee;
@@ -176,18 +128,29 @@
       padding: 20px;
       border-top: 3px solid #f2cd00;
     }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2em;
+      }
+
+      .slogan {
+        font-size: 1em;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <!-- Botão Voltar, com posição absoluta dentro do header -->
-  <a href="index.html" class="btn-voltar">Voltar</a>
-
+  <!-- Cabeçalho -->
   <header>
     <h1>Assistência Técnica</h1>
     <p class="slogan">Consertos, upgrades e soluções em informática!</p>
+    <!-- Botão X -->
+    <a href="index.html" class="close-btn">&times;</a>
   </header>
 
+  <!-- Conteúdo principal -->
   <main class="main-content">
     <div class="card">
       <h2>Nossos Serviços</h2>
@@ -207,28 +170,10 @@
     </div>
   </main>
 
+  <!-- Rodapé -->
   <footer>
     <p>&copy; 2025 Prime Acessórios & Informática. Todos os direitos reservados.</p>
   </footer>
-
-  <script>
-    // Variáveis para controle do botão Voltar e rolagem
-    let lastScrollTop = 0;
-    const btnVoltar = document.querySelector('.btn-voltar');
-
-    // Função para detectar o scroll e esconder/mostrar o botão
-    window.addEventListener('scroll', function() {
-      let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-      // Verifica se rolou para baixo
-      if (currentScroll > lastScrollTop) {
-        btnVoltar.style.display = 'none';  // Esconde o botão
-      } else {
-        btnVoltar.style.display = 'block';  // Mostra o botão
-      }
-      lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Evita valores negativos
-    });
-  </script>
 
 </body>
 </html>

@@ -38,6 +38,7 @@
       text-align: center;
       padding: 40px 20px;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      position: relative;
     }
 
     header h1 {
@@ -107,23 +108,20 @@
       font-size: 1.1em;
     }
 
-    .btn-voltar {
-      position: fixed;
-      right: 20px;
+    /* Botão X no canto superior direito */
+    .close-btn {
+      position: absolute;
       top: 20px;
-      background: #f2cd00;
-      color: #000;
-      padding: 12px 20px;
-      border-radius: 30px;
-      font-weight: bold;
+      right: 20px;
+      font-size: 2em;
+      color: #111;
       text-decoration: none;
-      transition: background 0.3s, color 0.3s;
-      z-index: 100;
+      font-weight: bold;
+      transition: color 0.3s ease;
     }
 
-    .btn-voltar:hover {
-      background: #fff;
-      color: #111;
+    .close-btn:hover {
+      color: #f2cd00;
     }
 
     footer {
@@ -134,15 +132,69 @@
       border-top: 3px solid #f2cd00;
       margin-top: auto;
     }
+
+    /* Responsividade para telas menores */
+    @media screen and (max-width: 768px) {
+      header h1 {
+        font-size: 2.2em;
+      }
+
+      .slogan {
+        font-size: 1.1em;
+      }
+
+      .main-content {
+        margin: 20px;
+        padding: 0 10px;
+      }
+
+      .card {
+        padding: 20px;
+      }
+
+      .close-btn {
+        font-size: 1.8em;
+        top: 15px;
+        right: 15px;
+      }
+
+      footer {
+        font-size: 0.9em;
+      }
+    }
+
+    /* Responsividade para telas muito pequenas (exemplo: smartphones) */
+    @media screen and (max-width: 480px) {
+      header h1 {
+        font-size: 1.8em;
+      }
+
+      .slogan {
+        font-size: 1em;
+      }
+
+      .main-content {
+        margin: 10px;
+        padding: 0 5px;
+      }
+
+      .card {
+        padding: 15px;
+      }
+
+      footer {
+        font-size: 0.8em;
+      }
+    }
   </style>
 </head>
 <body>
 
-  <a href="index.html" class="btn-voltar">Voltar</a>
-
   <header>
     <h1>Quem somos?</h1>
     <p class="slogan">Conheça um pouco do nosso trabalho!</p>
+    <!-- Botão X -->
+    <a href="index.html" class="close-btn">&times;</a>
   </header>
 
   <div class="main-content">
