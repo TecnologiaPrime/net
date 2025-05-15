@@ -1,219 +1,357 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Prime Acessórios & Informática</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Prime Acessórios & Informática</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
 
-    body {
-      font-family: 'Orbitron', sans-serif;
-      background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
-      background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
-      color: #eee;
-    }
+  body {
+    font-family: 'Orbitron', sans-serif;
+    background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: #eee;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
 
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+  @keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
 
-    header {
-      background-color: #f2cd00;
-      color: #111;
-      text-align: center;
-      padding: 40px 20px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    }
+  header {
+    background-color: #f2cd00;
+    color: #111;
+    text-align: center;
+    padding: 40px 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    flex-shrink: 0;
+  }
 
-    header h1 {
-      font-size: 2.8em;
-      margin-bottom: 10px;
-    }
+  header h1 {
+    font-size: 2.8em;
+    margin-bottom: 10px;
+  }
 
-    .slogan {
-      font-size: 1.3em;
-      font-weight: 500;
-    }
+  .slogan {
+    font-size: 1.3em;
+    font-weight: 500;
+  }
 
-    .banner {
-      width: 100%;
-      display: block;
-    }
+  .banner-wrapper {
+    width: 100%;
+    max-height: 340px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
 
-    nav {
-      background: #111;
-      padding: 15px 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      border-bottom: 2px solid #f2cd00;
-    }
+  .banner-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    max-height: 340px;
+    filter: brightness(0.85);
+    transition: filter 0.3s ease;
+  }
 
+  .banner-wrapper img:hover {
+    filter: brightness(1);
+  }
+
+  nav {
+    background: #111;
+    padding: 15px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    border-bottom: 2px solid #f2cd00;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav .menu {
+    display: flex;
+    gap: 20px;
+  }
+
+  nav a {
+    color: #f2cd00;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+  }
+
+  nav a.btn-voltar:hover {
+    color: #fff;
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+  }
+
+  .menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #f2cd00;
+    border-radius: 2px;
+  }
+
+  @media (max-width: 768px) {
     nav .menu {
-      display: flex;
-      gap: 20px;
+      display: none;
     }
 
-    nav a {
+    .menu-toggle {
+      display: flex;
+      z-index: 210;
+    }
+
+    #side-menu {
+      position: fixed;
+      top: 0;
+      left: -260px;
+      width: 260px;
+      height: 100vh;
+      background-color: #111;
+      box-shadow: 2px 0 8px rgba(0,0,0,0.7);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      transition: left 0.3s ease;
+      z-index: 205;
+    }
+
+    #side-menu.active {
+      left: 0;
+    }
+
+    #close-btn {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      font-size: 1.8em;
       color: #f2cd00;
-      text-decoration: none;
+      cursor: pointer;
+    }
+
+    #side-menu a {
+      color: #f2cd00;
       font-weight: bold;
+      font-size: 1.2em;
+      text-decoration: none;
       transition: color 0.3s;
     }
 
-    nav a.btn-voltar:hover {
+    #side-menu a:hover {
       color: #fff;
     }
+  }
 
-    .main-content {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
+  .main-content {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+    flex-grow: 1;
+  }
 
-    .card {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(8px);
-      border-radius: 15px;
-      padding: 30px;
-      margin-bottom: 30px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-    }
+  .card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border-radius: 15px;
+    padding: 30px;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
 
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 32px rgba(255, 215, 0, 0.4);
-    }
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 32px rgba(255, 215, 0, 0.4);
+  }
 
-    .card h2 {
-      color: #f2cd00;
-      margin-bottom: 15px;
+  .card h2 {
+    color: #f2cd00;
+    margin-bottom: 15px;
+    font-size: 1.8em;
+  }
+
+  .card p {
+    text-align: justify;
+    font-size: 1.1em;
+  }
+
+  .btn {
+    background: #f2cd00;
+    color: #000;
+    padding: 12px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 15px;
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    background: #fff;
+    color: #111;
+  }
+
+  footer {
+    background-color: #111;
+    color: #eee;
+    text-align: center;
+    padding: 20px;
+    border-top: 3px solid #f2cd00;
+    margin-top: 60px;
+    flex-shrink: 0;
+  }
+
+  .highlight {
+    color: #f2cd00;
+    font-weight: bold;
+  }
+
+  @media (max-width: 480px) {
+    header h1 {
       font-size: 1.8em;
     }
 
+    .slogan {
+      font-size: 1em;
+    }
+
+    nav a {
+      font-size: 1.1em;
+    }
+
+    .card h2 {
+      font-size: 1.3em;
+    }
+
     .card p {
-      text-align: justify;
+      font-size: 1em;
     }
 
     .btn {
-      background: #f2cd00;
-      color: #000;
-      padding: 12px 25px;
-      border-radius: 30px;
-      font-weight: bold;
-      text-decoration: none;
-      display: inline-block;
-      margin-top: 15px;
-      transition: all 0.3s ease;
+      padding: 10px 20px;
+      font-size: 0.9em;
     }
 
-    .btn:hover {
-      background: #fff;
-      color: #111;
+    .main-content {
+      margin: 20px 10px;
+      padding: 0 10px;
     }
+  }
 
-    footer {
-      background-color: #111;
-      color: #eee;
-      text-align: center;
-      padding: 20px;
-      border-top: 3px solid #f2cd00;
-      margin-top: 60px;
+  /* ⛔ Corrige menu duplicado no desktop */
+  @media (min-width: 769px) {
+    #side-menu {
+      display: none !important;
     }
-
-    .highlight {
-      color: #f2cd00;
-      font-weight: bold;
-    }
-
-    @media (max-width: 768px) {
-      nav .menu a {
-        display: inline-block;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 1.8em;
-      }
-
-      .slogan {
-        font-size: 1em;
-      }
-
-      nav a {
-        font-size: 1.1em;
-      }
-
-      .card h2 {
-        font-size: 1.3em;
-      }
-
-      .btn {
-        padding: 12px;
-        font-size: 0.9em;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
+<header id="inicio">
+  <h1>Prime Acessórios & Informática</h1>
+  <p class="slogan">Tudo em Tecnologia</p>
+</header>
 
-  <header id="inicio">
-    <h1>Prime Acessórios & Informática</h1>
-    <p class="slogan">Tudo em Tecnologia</p>
-  </header>
+<div class="banner-wrapper" aria-label="Banner da empresa Prime Acessórios & Informática">
+  <img
+    src="https://lh3.googleusercontent.com/pw/AP1GczNA9sYeW_101I0LdkX8YJqEEM0oJuSob0i3Tb7b3okc9oklsGr3lXA9x5Brqbu0VQlkCnfd-BcGKDgbwBRBWx2ZCxcPRTgYRRpUABddqcqfWCK501_fDvy1KUNQSNdzV9-_cqs7-xpbdCqYhXCaZS8=w1920-h560-s-no-gm?authuser=0"
+    alt="Banner da Prime Acessórios & Informática"
+  />
+</div>
 
-   <!-- Banner da empresa -->
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczMorxLfLlcnk0xJcY_Fyp1O0T6emFwCx7zL_Izmvkq5u_1P8mRUsTRi5DVeaOH-7J5u68t4-8IoyBj12sXcweSf7iFzZ7dGbCaFGniuUfgrDNQWbvoimP3jDhCPTI1CYiFP_D8n0AmW68fmsuP0cVQ=w1920-h340-s-no-gm?authuser=0" alt="Banner da Teste" style="width: 100%; display: block;">
-
-  <!-- Menu -->
-  <nav>
-    <div class="menu">
-      <a href="#inicio" class="btn-voltar">Início</a>
-      <a href="quemsomos.html">Quem Somos?</a>
-    </div>
-  </nav>
-
-  <div class="main-content">
-    <section class="card" id="produtos">
-      <h2>Produtos</h2>
-      <p>Confira os melhores acessórios: temos uma variedade incrível de produtos, desde itens de informática até os desejados produtos Stanley.</p>
-      <a href="#" class="btn">Ver produtos</a>
-    </section>
-
-    <section class="card" id="servicos">
-      <h2>Assistência Técnica</h2>
-      <p>Oferecemos manutenção completa em computadores e notebooks, além de uma ampla variedade de serviços especializados de informática.</p>
-      <a href="servicos.html" class="btn">Saiba mais</a>
-    </section>
-
-    <section class="card" id="contato">
-      <h2>Fale Conosco</h2>
-      <p>Entre em contato pelo WhatsApp: <strong class="highlight">(79) 99626-9748</strong><br>
-        Siga nosso Instagram para novidades e promoções: <strong class="highlight">@primeacessorioseinformatica</strong></p>
-      <a href="https://wa.me/5579996269748" class="btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-      <a href="https://instagram.com/primeacessorioseinformatica" class="btn" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
-    </section>
+<nav>
+  <div class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" role="button" tabindex="0" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
   </div>
 
-  <footer>
-    &copy; 2025 Prime Acessórios & Informática. Todos os direitos reservados.
-  </footer>
+  <div class="menu">
+    <a href="quemsomos.html">Quem Somos?</a>
+  </div>
+</nav>
+
+<div id="side-menu" aria-hidden="true">
+  <button id="close-btn" aria-label="Fechar menu">&times;</button>
+  <a href="quemsomos.html">Quem Somos?</a>
+</div>
+
+<div class="main-content">
+  <section class="card" id="produtos">
+    <h2>Produtos</h2>
+    <p>Confira os melhores acessórios: temos uma variedade incrível de produtos, desde itens de informática até os desejados produtos Stanley.</p>
+    <a href="#" class="btn">Ver produtos</a>
+  </section>
+
+  <section class="card" id="servicos">
+    <h2>Assistência Técnica</h2>
+    <p>Oferecemos manutenção completa em computadores e notebooks, além de uma ampla variedade de serviços especializados de informática.</p>
+    <a href="servicos.html" class="btn">Saiba mais</a>
+  </section>
+
+  <section class="card" id="contato">
+    <h2>Fale Conosco</h2>
+    <p>Entre em contato pelo WhatsApp: <strong class="highlight">(79) 99626-9748</strong><br />
+      Siga nosso Instagram para novidades e promoções: <strong class="highlight">@primeacessorioseinformatica</strong></p>
+    <a href="https://wa.me/5579996269748" class="btn" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <a href="https://instagram.com/primeacessorioseinformatica" class="btn" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+  </section>
+</div>
+
+<footer>
+  &copy; 2025 Prime Acessórios & Informática. Todos os direitos reservados.
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const sideMenu = document.getElementById('side-menu');
+  const closeBtn = document.getElementById('close-btn');
+
+  menuToggle.addEventListener('click', () => {
+    const isActive = sideMenu.classList.toggle('active');
+    menuToggle.setAttribute('aria-expanded', isActive);
+    sideMenu.setAttribute('aria-hidden', !isActive);
+  });
+
+  closeBtn.addEventListener('click', () => {
+    sideMenu.classList.remove('active');
+    menuToggle.setAttribute('aria-expanded', false);
+    sideMenu.setAttribute('aria-hidden', true);
+  });
+
+  menuToggle.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      const isActive = sideMenu.classList.toggle('active');
+      menuToggle.setAttribute('aria-expanded', isActive);
+      sideMenu.setAttribute('aria-hidden', !isActive);
+    }
+  });
+</script>
 </body>
 </html>

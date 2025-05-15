@@ -113,12 +113,17 @@
       border-radius: 8px;
       color: #eee;
       font-size: 1em;
-      transition: background 0.3s, transform 0.2s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      transform-style: preserve-3d;
+      will-change: transform;
+      cursor: default;
     }
 
     .servico-lista li:hover {
-      background: rgba(255, 255, 255, 0.08);
-      transform: translateX(5px);
+      background: rgba(255, 255, 255, 0.1);
+      transform: scale(1.1) translateZ(10px);
+      box-shadow: 0 12px 25px rgba(255, 215, 0, 0.6);
+      cursor: pointer;
     }
 
     footer {
@@ -127,8 +132,10 @@
       text-align: center;
       padding: 20px;
       border-top: 3px solid #f2cd00;
+      margin-top: auto;
     }
 
+    /* Responsividade para telas menores */
     @media (max-width: 480px) {
       header h1 {
         font-size: 2em;
@@ -136,6 +143,10 @@
 
       .slogan {
         font-size: 1em;
+      }
+
+      footer {
+        font-size: 0.8em;
       }
     }
   </style>
