@@ -1,544 +1,521 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Prime Acessórios & Informática</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet" />
-<style>
-  /* Reset e base */
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Prime Acessórios & Informática</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  body {
-    font-family: 'Orbitron', sans-serif;
-    background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    color: #eee;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-
-  @keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-
-  /* Header */
-  header {
-    background-color: #f2cd00;
-    color: #111;
-    padding: 20px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-    flex-shrink: 0;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-
-  header h1 {
-    font-size: 2.4em;
-    font-weight: 700;
-  }
-
-  header .slogan {
-    font-size: 1.1em;
-    font-weight: 500;
-  }
-
-  .header-right {
-    display: flex;
-    gap: 25px;
-    font-weight: 600;
-    font-size: 1.1em;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .header-right > div {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .header-right i {
-    color: #111;
-    font-size: 1.4em;
-  }
-
-  /* Banner */
-  .banner-wrapper {
-    width: 95%;
-    max-width: 1800px;
-    margin: 15px auto;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-    transition: box-shadow 0.3s ease;
-    flex-shrink: 0;
-  }
-
-  .banner-wrapper img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: cover;
-    filter: brightness(0.85);
-    transition: filter 0.3s ease;
-  }
-
-  .banner-wrapper img:hover {
-    filter: brightness(1);
-  }
-
-  /* Navegação */
-  nav {
-    background: #111;
-    padding: 15px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 200;
-    border-bottom: 2px solid #f2cd00;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  nav .menu {
-    display: flex;
-    gap: 20px;
-  }
-
-  nav a {
-    color: #f2cd00;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s;
-  }
-
-  nav a.btn-voltar:hover {
-    color: #fff;
-  }
-
-  .menu-toggle {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
-  }
-
-  .menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background: #f2cd00;
-    border-radius: 2px;
-  }
-
-  /* Side menu mobile */
-  #side-menu {
-    position: fixed;
-    top: 0;
-    left: -260px;
-    width: 260px;
-    height: 100vh;
-    background-color: #111;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.7);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    transition: left 0.3s ease;
-    z-index: 205;
-  }
-
-  #side-menu.active {
-    left: 0;
-  }
-
-  #close-btn {
-    align-self: flex-end;
-    background: none;
-    border: none;
-    font-size: 1.8em;
-    color: #f2cd00;
-    cursor: pointer;
-  }
-
-  #side-menu a {
-    color: #f2cd00;
-    font-weight: bold;
-    font-size: 1.2em;
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-
-  #side-menu a:hover {
-    color: #fff;
-  }
-
-  /* Conteúdo principal */
-  .main-content {
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 0 20px;
-    flex-grow: 1;
-  }
-
-  /* Cards */
-  .card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(8px);
-    border-radius: 15px;
-    padding: 30px;
-    margin-bottom: 30px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-  }
-
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 32px rgba(255, 215, 0, 0.4);
-  }
-
-  .card h2 {
-    color: #f2cd00;
-    margin-bottom: 15px;
-    font-size: 1.8em;
-  }
-
-  .card p {
-    text-align: justify;
-    font-size: 1.1em;
-  }
-
-  /* Botões */
-  .btn {
-    background: #f2cd00;
-    color: #000;
-    padding: 12px 25px;
-    border-radius: 30px;
-    font-weight: bold;
-    text-decoration: none;
-    display: inline-block;
-    margin-top: 15px;
-    transition: all 0.3s ease;
-  }
-
-  .btn:hover {
-    background: #fff;
-    color: #111;
-  }
-
-  /* Footer imagem */
-  .footer-image-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: -55px auto; /* Espaço acima e abaixo */
-}
-
-  .footer-image-wrapper img {
-    max-width: 150px;
-    height: auto;
-    display: block;
-  }
-
-  /* Footer */
-  footer {
-    background-color: #111;
-    color: #eee;
-    text-align: center;
-    padding: 20px;
-    border-top: 3px solid #f2cd00;
-    margin-top: 60px;
-    flex-shrink: 0;
-  }
-
-  .highlight {
-    color: #f2cd00;
-    font-weight: bold;
-  }
-
-  /* RESPONSIVIDADE */
-
-@media (max-width: 480px) {
-  header h1 {
-    text-align: center;
-    width: 100%;
-  }
-
-  .header-right {
-    width: 100%;
-    display: flex;
-    justify-content: center; /* centraliza o grupo todo */
-    gap: 15px;
-    flex-wrap: wrap;
-    text-align: center;
-  }
-
-  .header-right > div {
-    display: flex;
-    align-items: center;
-    justify-content: center; /* centraliza ícone + texto */
-    gap: 5px;
-    flex: 1 1 auto;
-  }
-
-  .header-right i {
-    font-size: 1em; /* ícones menores */
-  }
-
-  .header-right span {
-    font-size: 0.85em;
-  }
-}
-
-  @media (max-width: 480px) {
-  header h1 {
-    text-align: center;
-    width: 100%;
-  }
-
-  .header-right span {
-    font-size: 0.85em; /* fonte menor só no mobile */
-  }
-}
-
-  /* Mobile phones - telas menores que 480px */
-  @media (max-width: 480px) {
-    header {
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: #111;
+      padding-top: 80px;
+      min-height: 100vh;
+      display: flex;
       flex-direction: column;
-      align-items: flex-start;
-      padding: 15px 20px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
-      footer {
-    font-size: 0.8em;
-  }
-
-    header h1 {
-      font-size: 1.8em;
-    }
-
-    .header-right {
-      gap: 15px;
-      margin-top: 10px;
-      font-size: 1em;
-      width: 100%;
-      justify-content: flex-start;
-    }
-
-    nav .menu {
-      display: none;
-    }
-
-    .menu-toggle {
-      display: flex;
-    }
-
-    #side-menu {
-      width: 100%;
-      max-width: 260px;
-      padding: 20px 15px;
-    }
-
-    .main-content {
-      margin: 20px 10px;
-      padding: 0 10px;
-    }
-
-    .card h2 {
-      font-size: 1.3em;
-    }
-
-    .card p {
-      font-size: 1em;
-    }
-
-    .btn {
-      padding: 10px 20px;
-      font-size: 0.9em;
-    }
-
-    .footer-image-wrapper {
-      margin-bottom: -60px;
-    }
-  }
-
-  /* Tablets e telas médias (481px a 768px) */
-  @media (min-width: 481px) and (max-width: 768px) {
     header {
-      flex-wrap: wrap;
-      padding: 15px 25px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #f2cd00;
+      color: #111;
+      padding: 20px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      z-index: 300;
+      user-select: none;
     }
 
     header h1 {
-      font-size: 2em;
-      flex: 1 1 100%;
-      margin-bottom: 10px;
+      font-size: 2.4em;
+      font-weight: 700;
+      line-height: 1.2;
+      max-width: 70%;
+      overflow-wrap: break-word;
     }
 
-    .header-right {
-      font-size: 1em;
-      gap: 20px;
-      justify-content: flex-start;
-      width: 100%;
-    }
-
-    nav .menu {
-      display: none;
-    }
-
-    .menu-toggle {
+    #menu-toggle {
       display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      width: 28px;
+      height: 22px;
+      user-select: none;
+      flex-shrink: 0;
     }
 
-    .main-content {
-      max-width: 700px;
-      margin: 30px auto;
+    #menu-toggle span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: #111;
+      border-radius: 2px;
+      transition: background 0.3s ease;
+    }
+
+    #menu-toggle:hover span {
+      background: #444;
+    }
+
+    .banner-wrapper {
+      width: 100%;
+      max-width: 1200px;
+      margin: 30px auto 10px auto;
+      border-radius: 20px;
+      overflow: hidden;
       padding: 0 15px;
     }
 
+    .banner-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      filter: brightness(0.95);
+      transition: filter 0.3s ease;
+      border-radius: 20px;
+    }
+
+    .banner-wrapper img:hover {
+      filter: brightness(1);
+    }
+
+    /* MENU LATERAL */
+    #side-menu {
+  position: fixed;
+  top: 0;
+  left: -260px;
+  width: 200px;
+  height: 100vh;
+  background: #fff; /* fundo branco */
+  /* pode remover ou ajustar o box-shadow se quiser */
+  box-shadow: 3px 0 15px rgba(0,0,0,0.2); /* sombra mais leve, opcional */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  transition: left 0.3s ease;
+  z-index: 305;
+  overflow-y: auto;
+  border-right: 4px solid #f2cd00;
+}
+
+    #side-menu.active {
+      left: 0;
+    }
+
+    #close-btn {
+      align-self: flex-end;
+      background: none;
+      border: none;
+      font-size: 2.5em;
+      color: #f2cd00;
+      cursor: pointer;
+      user-select: none;
+      padding: 0;
+      margin-bottom: 10px;
+      line-height: 1;
+      transition: color 0.3s ease;
+    }
+
+    #close-btn:hover,
+    #close-btn:focus {
+      color: #fff200;
+      outline: none;
+    }
+
+    #side-menu a {
+      color: #f2cd00;
+      font-weight: 700;
+      font-size: 1.1em;
+      text-decoration: none;
+      user-select: none;
+    }
+
+    #side-menu a:hover,
+    #side-menu a:focus {
+      color: #fff;
+      outline: none;
+    }
+
+    main {
+  max-width: 1200px; /* igual ao banner */
+  margin: 50px auto 60px auto; /* auto nas laterais centraliza */
+  padding: 0 10px; /* mesma padding do banner-wrapper */
+  flex-grow: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+    .card {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 15px;
+      padding: 30px 25px;
+      margin-bottom: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+
+    .card:hover,
+    .card:focus-within {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 32px rgba(255, 215, 0, 0.3);
+    }
+
     .card h2 {
-      font-size: 1.5em;
+      color: #f2cd00;
+      margin-bottom: 15px;
+      font-size: 2em;
     }
 
     .card p {
-      font-size: 1.05em;
+      font-size: 1.1em;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    .btn-wrapper {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-start;
+      flex-wrap: wrap;
     }
 
     .btn {
-      padding: 11px 22px;
-      font-size: 1em;
+      background: #f2cd00;
+      color: #000;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      margin: 5px 10px 5px 0;
+      transition: all 0.3s ease;
+      user-select: none;
+      cursor: pointer;
+      font-size: 1.1em;
+      box-shadow: 0 4px 8px rgba(242, 205, 0, 0.6);
     }
-  }
 
-  /* Desktop (acima de 768px) */
-  @media (min-width: 769px) {
-    nav .menu {
+    .btn:hover,
+    .btn:focus {
+      background: #111;
+      color: #fff;
+      outline: none;
+      box-shadow: 0 6px 14px rgba(255, 215, 0, 0.9);
+    }
+
+    .btn i {
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .footer-image-wrapper {
       display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: -55px auto -30px auto;
+      padding: 0 15px;
     }
 
-    .menu-toggle {
-      display: none;
+    .footer-image-wrapper img {
+      max-width: 150px;
+      height: auto;
+      display: block;
+      border-radius: 10px;
     }
 
-    #side-menu {
-      display: none !important;
+    footer {
+      background-color: #f1f1f1;
+      color: #111;
+      padding: 25px 15px;
+      border-top: 3px solid #f2cd00;
+      margin-top: 60px;
+      flex-shrink: 0;
+      text-align: justify;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 0 0 15px 15px;
+      box-shadow: inset 0 4px 8px rgba(242, 205, 0, 0.1);
     }
 
-    .main-content {
-      max-width: 1100px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .footer-infos {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      align-items: center;
+      flex-wrap: nowrap;
+      margin-bottom: 15px;
+      text-align: center;
+      flex-shrink: 0;
     }
+
+    .footer-infos div {
+      display: flex;
+      align-items: center;
+      font-size: 1em;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .footer-infos i {
+      color: #f2cd00;
+      font-size: 1.3em;
+    }
+
+    .highlight {
+      color: #f2cd00;
+      font-weight: bold;
+    }
+
+    footer p {
+      text-align: center;
+      font-size: 0.9em;
+      opacity: 0.7;
+      user-select: none;
+    }
+
+    @media (max-width: 768px) {
+  .footer-infos div {
+    font-size: 0.9em;
   }
 
-</style>
+  footer p {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Centralizar o texto dos títulos e parágrafos */
+  .card {
+    text-align: center;
+  }
+
+  /* Centralizar os botões dentro da .btn-wrapper */
+  .btn-wrapper {
+    justify-content: center !important; /* centraliza horizontalmente os botões */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-infos div {
+    font-size: 0.8em;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .footer-infos {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  footer p {
+    font-size: 0.75em;
+  }
+}
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8em;
+        max-width: 60%;
+      }
+
+      .card {
+        padding: 20px 15px;
+      }
+
+      .card h2 {
+        font-size: 1.6em;
+      }
+
+      .btn {
+        font-size: 1em;
+        padding: 10px 20px;
+        margin: 8px 6px 8px 0;
+      }
+
+      main {
+        margin: 30px 15px 60px 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 15px 20px;
+      }
+
+      header h1 {
+        font-size: 1.4em;
+        max-width: 70%;
+      }
+
+      #menu-toggle {
+        width: 24px;
+        height: 18px;
+        gap: 4px;
+      }
+
+      #menu-toggle span {
+        height: 2.5px;
+      }
+
+      main {
+        margin: 20px 10px 50px 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-
-<header id="inicio" role="banner">
-  <h1>Prime Acessórios & Informática</h1>
-  <div class="header-right" aria-label="Informações de segurança e pagamento">
-    <div class="security-info">
-      <i class="fas fa-lock" aria-hidden="true"></i>
-      <span>Site seguro</span>
+  <header>
+    <h1>Prime Acessórios & Informática</h1>
+    <div id="menu-toggle" role="button" tabindex="0" aria-label="Abrir menu">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-    <div class="payment-info">
-      <i class="fas fa-credit-card" aria-hidden="true"></i>
-      <span>Aceitamos cartões</span>
-    </div>
-  </div>
-</header> 
+  </header>
 
-<div class="banner-wrapper" aria-label="Banner da empresa Prime Acessórios & Informática">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczMKeG4D5v-zMxBLzUrJyRE3eBGe_xjgjmBHZ-9Dp8Y7OuDjqYhgOr7wwFdBe8YrvyPE5YiijA4j5jwbrovNWgb7zap1sxzUxjv0PPv7becX-toQ89G3NRvF53JbyXyQS-BwmanFUNJtv-wLUMlYfqc=w1920-h560-s-no-gm?authuser=0" alt="Banner da Prime Acessórios & Informática" />
-</div>
-
-<nav role="navigation" aria-label="Menu principal">
-  <div class="menu-toggle" id="menu-toggle" aria-label="Abrir menu" role="button" tabindex="0" aria-expanded="false">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-  <div class="menu">
+  <nav id="side-menu" aria-label="Menu lateral">
+    <button id="close-btn" aria-label="Fechar menu">&times;</button>
     <a href="quemsomos.html">Quem Somos?</a>
+    <a href="produtos.html">Produtos</a>
+    <a href="servicos.html">Serviços</a>
+  </nav>
+
+  <div class="banner-wrapper">
+    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1200&q=80" alt="Banner principal da Prime Acessórios & Informática" />
   </div>
-</nav>
 
-<div id="side-menu" aria-hidden="true">
-  <button id="close-btn" aria-label="Fechar menu">&times;</button>
-  <a href="quemsomos.html">Quem Somos?</a>
-</div>
+  <main>
+    <section class="card" id="produtos" tabindex="0">
+      <h2>E-Commerce</h2>
+      <p>Informática, acessórios e os queridinhos do momento com ofertas imperdíveis. Acesse, escolha o que precisa e compre online com praticidade e segurança.</p>
+      <div class="btn-wrapper">
+        <a href="#" class="btn">Ver produtos</a>
+      </div>
+    </section>
 
-<main class="main-content" role="main">
-  <section class="card" id="produtos">
-    <h2>E-Commerce</h2>
-    <p>Informática, acessórios e os queridinhos do momento com ofertas imperdíveis. Acesse, escolha o que precisa e compre online com praticidade e segurança.</p>
-    <a href="#" class="btn">Ver produtos</a>
-  </section>
+    <section class="card" id="servicos" tabindex="0">
+      <h2>Assistência Técnica</h2>
+      <p>Conte com uma equipe qualificada e pronta pra cuidar do seu PC ou notebook com atenção e experiência.</p>
+      <div class="btn-wrapper">
+        <a href="servicos.html" class="btn">Saiba mais</a>
+      </div>
+    </section>
 
-  <section class="card" id="servicos">
-    <h2>Assistência Técnica Especializada</h2>
-    <p>Conte com uma equipe qualificada e pronta pra cuidar do seu PC ou notebook com atenção e experiência.</p>
-    <a href="servicos.html" class="btn">Saiba mais</a>
-  </section>
+    <section class="card" id="contato" tabindex="0">
+      <h2>Fale Conosco</h2>
+      <p>Entre em contato pelo WhatsApp: <strong class="highlight">(79) 99626-9748</strong><br />
+        Siga nosso Instagram para novidades e promoções: <strong class="highlight">@primeacessorioseinformatica</strong>
+      </p>
+      <div class="btn-wrapper">
+        <a href="https://wa.me/5579996269748" class="btn" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://instagram.com/primeacessorioseinformatica" class="btn" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Instagram</a>
+      </div>
+    </section>
+  </main>
 
-  <section class="card" id="contato">
-    <h2>Fale Conosco</h2>
-    <p>Entre em contato pelo WhatsApp: <strong class="highlight">(79) 99626-9748</strong><br />
-      Siga nosso Instagram para novidades e promoções: <strong class="highlight">@primeacessorioseinformatica</strong></p>
-    <a href="https://wa.me/5579996269748" class="btn" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-    <a href="https://instagram.com/primeacessorioseinformatica" class="btn" target="_blank" rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
-  </section>
-</main>
+  <div class="footer-image-wrapper">
+    <img src="https://lh3.googleusercontent.com/pw/AP1GczMGCqHX2Qw4CGooxwoeXNMAx5VxVsHE1YrNzOWOKyPpSUPvkmJF1xEZX2a586nIPowLVU9A9VepJKrH4Q0wy0NOsX7fMNIv015kX6Wnpg1CP8v2VfM3wIVurR58DmWtq_tPeKJG53IqOIZIfN7BSQE=w1072-h356-s-no-gm?authuser=0" alt="Imagem ilustrativa para o rodapé" />
+  </div>
 
-<div class="footer-image-wrapper">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczP9Vot9Zti8lBGZTTbV5RIlAI9_LuIA7E_xKRK6CbKlFzwaKDE-CM-sL7LMZJjwzmXhD8MwNQ2-HtaYXkOnEXDsiL4agjy5zO40prf4IUQdQJ1vmgKCvWDX20NMrvlNYilqsO9m3Tw3oDDzMV8swpA=w730-h913-s-no-gm?authuser=0" alt="Imagem da empresa" />
-</div>
+ <footer>
+    <div class="footer-infos">
+      <div><i class="fas fa-phone"></i><span>(79) 99626-9748</span></div>
+      <div><i class="fas fa-envelope"></i><span>primeacessorioseinformatica@gmail.com</span></div>
+      <div><i class="fas fa-map-marker-alt"></i><span>Itabaiana, SE - Brasil</span></div>
+    </div>
+    <p>&copy; 2025 Prime Acessórios & Informática. Todos os direitos reservados.</p>
+  </footer>
 
-<footer role="contentinfo">
-  &copy; Todos os direitos reservados.
-</footer>
+  <style>
+    /* FOOTER ADICIONAL PARA MOBILE */
+    @media (max-width: 480px) {
+      .footer-infos {
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+        gap: 12px;
+        padding-left: 10px;
+      }
 
-<script>
-  const menuToggle = document.getElementById('menu-toggle');
-  const sideMenu = document.getElementById('side-menu');
-  const closeBtn = document.getElementById('close-btn');
+      .footer-infos div {
+        flex-direction: row;
+        align-items: center;
+        font-size: 0.85em;
+        gap: 8px;
+        width: 100%;
+      }
 
-  menuToggle.addEventListener('click', () => {
-    const isActive = sideMenu.classList.toggle('active');
-    menuToggle.setAttribute('aria-expanded', isActive);
-    sideMenu.setAttribute('aria-hidden', !isActive);
-  });
+      .footer-infos i {
+        font-size: 1.1em;
+      }
 
-  closeBtn.addEventListener('click', () => {
-    sideMenu.classList.remove('active');
-    menuToggle.setAttribute('aria-expanded', false);
-    sideMenu.setAttribute('aria-hidden', true);
-  });
-
-  menuToggle.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      const isActive = sideMenu.classList.toggle('active');
-      menuToggle.setAttribute('aria-expanded', isActive);
-      sideMenu.setAttribute('aria-hidden', !isActive);
+      footer p {
+        font-size: 0.75em;
+        text-align: center;
+        margin-top: 10px;
+      }
     }
-  });
-</script>
+  </style>
 
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const sideMenu = document.getElementById('side-menu');
+    const closeBtn = document.getElementById('close-btn');
+
+    function openMenu() {
+      sideMenu.classList.add('active');
+      closeBtn.focus();
+    }
+
+    function closeMenu() {
+      sideMenu.classList.remove('active');
+      menuToggle.focus();
+    }
+
+    menuToggle.addEventListener('click', openMenu);
+    menuToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openMenu();
+      }
+    });
+
+    closeBtn.addEventListener('click', closeMenu);
+    closeBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!sideMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+        closeMenu();
+      }
+    });
+  </script>
 </body>
 </html>
