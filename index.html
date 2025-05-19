@@ -106,6 +106,12 @@ img {
       padding: 0 15px;
     }
 
+    @media (min-width: 1024px) {
+  .banner-wrapper {
+    max-width: 1800px; /* ou outro valor maior que 1200px */
+  }
+}
+
     .banner-wrapper img {
       width: 100%;
       height: auto;
@@ -124,45 +130,44 @@ img {
     #side-menu {
   position: fixed;
   top: 0;
-  left: -260px;
+  right: -260px; /* ← muda de left: -260px para right */
   width: 200px;
   height: 100vh;
-  background: #fff; /* fundo branco */
-  /* pode remover ou ajustar o box-shadow se quiser */
-  box-shadow: 3px 0 15px rgba(0,0,0,0.2); /* sombra mais leve, opcional */
+  background: #ffffff;
+  box-shadow: -3px 0 15px rgba(0,0,0,0.2); /* ← sombra invertida */
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 25px;
-  transition: left 0.3s ease;
+  transition: right 0.3s ease; /* ← muda de left para right */
   z-index: 305;
   overflow-y: auto;
-  border-right: 4px solid #f2cd00;
+  border-left: 4px solid #f2cd00; /* ← muda de border-right para border-left */
 }
 
     #side-menu.active {
-      left: 0;
+      right: 0;
     }
 
-    #close-btn {
-      align-self: flex-end;
-      background: none;
-      border: none;
-      font-size: 2.5em;
-      color: #f2cd00;
-      cursor: pointer;
-      user-select: none;
-      padding: 0;
-      margin-bottom: 10px;
-      line-height: 1;
-      transition: color 0.3s ease;
-    }
+   #close-btn {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 2.5em;
+  color: #f2cd00;
+  cursor: pointer;
+  user-select: none;
+  padding: 0;
+  margin-bottom: 10px;
+  line-height: 1;
+  transition: color 0.3s ease;
+}
 
-    #close-btn:hover,
-    #close-btn:focus {
-      color: #fff200;
-      outline: none;
-    }
+#close-btn:hover,
+#close-btn:focus {
+  color: #000000 !important;
+  outline: none;
+}
 
     #side-menu a {
       color: #f2cd00;
@@ -174,7 +179,7 @@ img {
 
     #side-menu a:hover,
     #side-menu a:focus {
-      color: #fff;
+      color: #050505;
       outline: none;
     }
 
@@ -318,6 +323,13 @@ img {
       font-size: 0.9em;
       opacity: 0.7;
       user-select: none;
+    }
+
+    /* Centralizar os botões no desktop e mobile */
+    @media (min-width: 769px) {
+      .btn-wrapper {
+        justify-content: center !important;
+      }
     }
 
     @media (max-width: 480px) {
@@ -464,8 +476,14 @@ img {
 
     <section class="card" id="contato" tabindex="0">
       <h2>Fale Conosco</h2>
-      <p>Entre em contato pelo WhatsApp: <strong class="highlight">(79) 99626-9748</strong><br />
-        Siga nosso Instagram para novidades e promoções: <strong class="highlight">@primeacessorioseinformatica</strong>
+      <p>Entre em contato pelo WhatsApp
+        <br>
+        <strong class="highlight">(79) 99626-9748</strong><br />
+        </br>
+        Siga nosso Instagram para novidades e promoções 
+        <br>
+        <strong class="highlight">@primeacessorioseinformatica</strong>
+        </br>
       </p>
       <div class="btn-wrapper">
         <a href="https://wa.me/5579996269748" class="btn" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
