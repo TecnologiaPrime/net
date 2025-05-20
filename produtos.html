@@ -48,7 +48,7 @@
     .header-right {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 14px;
     }
 
     .cart-icon {
@@ -170,7 +170,7 @@
       height: 100vh;
       background: #fff;
       box-shadow: -2px 0 8px rgba(0,0,0,0.3);
-      padding: 20px;
+      padding: 200px;
       z-index: 1000;
       transition: right 0.3s ease;
     }
@@ -259,6 +259,20 @@
         font-size: 0.75em;
       }
     }
+  
+
+    #search-input {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 0.9em;
+  width: 130px;
+  max-width: 200%;
+  box-sizing: border-box;
+  transition: width 0.3s ease;
+  margin-left: 1px; /* Reduz o espaço entre o título e o input */
+}
 
   </style>
 </head>
@@ -267,7 +281,7 @@
   <header>
   <h1>Produtos</h1>
   <div class="header-right">
-    <input type="text" id="search-input" placeholder="Buscar produto..." oninput="filtrarProdutos()" style="padding: 5px 5px; border-radius: 10px; border: none; outline: none; font-size: 0,9em;" />
+    <input type="text" id="search-input" placeholder="Buscar produto..." oninput="filtrarProdutos()" />
     <div class="cart-icon" onclick="toggleCarrinho()">
       <i class="fas fa-shopping-cart"></i>
       <span class="cart-count" id="cart-count">0</span>
@@ -319,107 +333,251 @@
     <img id="zoomed" src="" />
   </div>
 
-  <!-- Overlay e Carrinho -->
-  <div id="cart-overlay" onclick="fecharCarrinho()"></div>
-  <div id="cart-sidebar">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-      <h2>Seu Carrinho</h2>
-      <span style="font-size: 1.5em; cursor: pointer;" onclick="fecharCarrinho()">&times;</span>
-    </div>
-    <div id="cart-items"></div>
+ <!-- Overlay -->
+<div id="cart-overlay" onclick="fecharCarrinho()"></div>
+
+<!-- Carrinho lateral -->
+<div id="cart-sidebar">
+  <div class="cart-header">
+    <h3>Resumo do Pedido</h3>
+    <button onclick="fecharCarrinho()">✖</button>
+  </div>
+  <div id="cart-items"></div>
+  <div class="cart-footer">
     <button id="finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
   </div>
+</div>
 
-  <script>
-    const carrinho = [];
-    const carrinhoSidebar = document.getElementById("cart-sidebar");
-    const carrinhoOverlay = document.getElementById("cart-overlay");
-
-    function adicionarAoCarrinho(botao, nome) {
-  const input = botao.previousElementSibling;
-  const quantidade = parseInt(input.value) || 1;
-  const card = botao.closest('.product-card');
-  const precoText = card.querySelector('.price').textContent;
-  const preco = parseFloat(precoText.replace('R$', '').replace(',', '.'));
-
-  const item = carrinho.find(p => p.nome === nome);
-  if (item) {
-    item.qtd += quantidade;
-  } else {
-    carrinho.push({ nome, qtd: quantidade, preco });
+<!-- Estilos do carrinho -->
+<style>
+  /* Overlay escurecido ao fundo */
+  #cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: none;
+    z-index: 999;
   }
+
+  /* Sidebar do carrinho */
+  #cart-sidebar {
+  position: fixed;
+  top: 0;
+  right: -350px;
+  width: 320px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -3px 0 8px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  z-index: 1000;
+  transition: right 0.3s ease-in-out;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+#cart-sidebar.active {
+  right: 0;
+}
+
+#cart-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 999;
+}
+
+#cart-overlay.active {
+  display: block;
+}
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.cart-header h3 {
+  font-size: 1.3em;
+  color: #111;
+}
+
+.cart-header button {
+  background: transparent;
+  border: none;
+  font-size: 1.4em;
+  cursor: pointer;
+  color: #111;
+}
+
+#cart-items {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+#cart-sidebar button#finalizar {
+  margin-top: 5px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  font-size: 0.95em;
+}
+
+.cart-item i {
+  color: red;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.cart-item i:hover {
+  color: darkred;
+}
+
+#cart-sidebar button#finalizar {
+  background-color: #f2cd00;
+  color: #111;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#cart-sidebar button#finalizar:hover {
+  background-color: #e0bc00;
+}
+</style>
+
+<!-- JavaScript do carrinho -->
+<script>
+  const carrinhoSidebar = document.getElementById("cart-sidebar");
+  const carrinhoOverlay = document.getElementById("cart-overlay");
+
+  // Recupera carrinho salvo no localStorage
+  let carrinhoSalvo = localStorage.getItem('carrinho');
+  const carrinho = carrinhoSalvo ? JSON.parse(carrinhoSalvo) : [];
+
   atualizarContador();
   renderizarCarrinho();
-}
 
-    function atualizarContador() {
-      const total = carrinho.reduce((acc, item) => acc + item.qtd, 0);
-      document.getElementById("cart-count").textContent = total;
+  function adicionarAoCarrinho(botao, nome) {
+    const input = botao.previousElementSibling;
+    const quantidade = parseInt(input.value) || 1;
+    const card = botao.closest('.product-card');
+    const precoText = card.querySelector('.price').textContent;
+    const preco = parseFloat(precoText.replace('R$', '').replace(',', '.'));
+
+    const item = carrinho.find(p => p.nome === nome);
+    if (item) {
+      item.qtd += quantidade;
+    } else {
+      carrinho.push({ nome, qtd: quantidade, preco });
+    }
+    atualizarContador();
+    renderizarCarrinho();
+  }
+
+  function atualizarContador() {
+    const total = carrinho.reduce((acc, item) => acc + item.qtd, 0);
+    document.getElementById("cart-count").textContent = total;
+  }
+
+  function renderizarCarrinho() {
+    const container = document.getElementById("cart-items");
+    container.innerHTML = "";
+    carrinho.forEach((item, index) => {
+      const totalItem = (item.preco * item.qtd).toFixed(2).replace('.', ',');
+      const div = document.createElement("div");
+      div.className = "cart-item";
+      div.innerHTML = `<span>${item.nome} x${item.qtd} - R$ ${totalItem}</span><i class="fas fa-trash" onclick="removerItem(${index})"></i>`;
+      container.appendChild(div);
+    });
+
+    localStorage.setItem('carrinho', JSON.stringify(carrinho));
+  }
+
+  function removerItem(index) {
+    carrinho.splice(index, 1);
+    atualizarContador();
+    renderizarCarrinho();
+  }
+
+  function finalizarPedido() {
+    if (carrinho.length === 0) {
+      alert("Seu carrinho está vazio.");
+      return;
     }
 
-    function renderizarCarrinho() {
-  const container = document.getElementById("cart-items");
-  container.innerHTML = "";
-  carrinho.forEach((item, index) => {
-    const totalItem = (item.preco * item.qtd).toFixed(2).replace('.', ',');
-    const div = document.createElement("div");
-    div.className = "cart-item";
-    div.innerHTML = `<span>${item.nome} x${item.qtd} - R$ ${totalItem}</span><i class="fas fa-trash" onclick="removerItem(${index})"></i>`;
-    container.appendChild(div);
-  });
+    let mensagem = "Olá! Gostaria de fazer o seguinte pedido:%0A";
+    let total = 0;
 
-  // Salvar carrinho no localStorage
-  localStorage.setItem('carrinho', JSON.stringify(carrinho));
-}
+    carrinho.forEach(item => {
+      const subtotal = (item.preco * item.qtd).toFixed(2).replace('.', ',');
+      mensagem += `- ${item.nome} (Qtd: ${item.qtd}) - R$ ${subtotal}%0A`;
+      total += item.preco * item.qtd;
+    });
 
-    function removerItem(index) {
-      carrinho.splice(index, 1);
-      atualizarContador();
-      renderizarCarrinho();
-    }
+    mensagem += `%0ATotal: R$ ${total.toFixed(2).replace('.', ',')}`;
 
-    function finalizarPedido() {
-  if (carrinho.length === 0) return alert("Seu carrinho está vazio.");
-  let mensagem = "Olá, gostaria de fazer um pedido:%0A";
-  let total = 0;
-  carrinho.forEach(item => {
-    const subtotal = (item.preco * item.qtd).toFixed(2).replace('.', ',');
-    mensagem += `• ${item.nome} x${item.qtd} - R$ ${subtotal}%0A`;
-    total += item.preco * item.qtd;
-  });
-  mensagem += `%0ATotal: R$ ${total.toFixed(2).replace('.', ',')}`;
-  window.open(`https://wa.me/5579996269748?text=${mensagem}`, "_blank");
-}
+    // Enviar para WhatsApp
+    const numero = "5579996269748"; // Número com DDI e DDD
+    const url = `https://wa.me/${numero}?text=${mensagem}`;
+    window.open(url, "_blank");
 
-    function toggleCarrinho() {
-      carrinhoSidebar.classList.add("active");
-      carrinhoOverlay.classList.add("active");
-      renderizarCarrinho();
-    }
+    // Limpar carrinho
+    carrinho.length = 0;
+    atualizarContador();
+    renderizarCarrinho();
+    fecharCarrinho();
+  }
 
-    function fecharCarrinho() {
-      carrinhoSidebar.classList.remove("active");
-      carrinhoOverlay.classList.remove("active");
-    }
+  function toggleCarrinho() {
+    carrinhoSidebar.classList.add("active");
+    carrinhoOverlay.classList.add("active");
+    renderizarCarrinho();
+  }
 
-    function zoomImagem(src) {
-      document.getElementById("zoomed").src = src;
-      document.getElementById("zoom-img").style.display = "flex";
-    }
+  function fecharCarrinho() {
+    carrinhoSidebar.classList.remove("active");
+    carrinhoOverlay.classList.remove("active");
+  }
 
-    function fecharZoom() {
-      document.getElementById("zoom-img").style.display = "none";
-    }
+  function zoomImagem(src) {
+    document.getElementById("zoomed").src = src;
+    document.getElementById("zoom-img").style.display = "flex";
+  }
 
-    function filtrarProdutos() {
-  const termo = document.getElementById("search-input").value.toLowerCase();
-  const cards = document.querySelectorAll(".product-card");
+  function fecharZoom() {
+    document.getElementById("zoom-img").style.display = "none";
+  }
 
-  cards.forEach(card => {
-    const titulo = card.querySelector("h3").textContent.toLowerCase();
-    card.style.display = titulo.includes(termo) ? "block" : "none";
-  });
-}
-  </script>
+  function filtrarProdutos() {
+    const termo = document.getElementById("search-input").value.toLowerCase();
+    const cards = document.querySelectorAll(".product-card");
+
+    cards.forEach(card => {
+      const titulo = card.querySelector("h3").textContent.toLowerCase();
+      card.style.display = titulo.includes(termo) ? "block" : "none";
+    });
+  }
+</script>
 </body>
 </html>
