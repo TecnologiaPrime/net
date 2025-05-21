@@ -22,7 +22,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      padding-top: 80px;
+      padding-top: 50px;
     }
 
     header {
@@ -81,12 +81,12 @@
     }
 
     main {
-      flex: 1;
-      width: 100%;
-      max-width: 1200px;
-      margin: 20px auto;
-      padding: 0 20px;
-    }
+  flex: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto; /* Aqui está a margem que causa espaço vertical */
+  padding: 0 20px;
+}
 
     .product-grid {
       display: grid;
@@ -259,7 +259,21 @@
         font-size: 0.75em;
       }
     }
-  
+    @media (max-width: 480px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr); /* duas colunas */
+    gap: 10px;
+  }
+
+  .product-card {
+    padding: 10px;
+  }
+
+  .product-card img {
+    max-height: 150px; /* para imagens não ficarem exageradas */
+    object-fit: cover;
+  }
+    }
 
     #search-input {
   padding: 8px 12px;
@@ -273,7 +287,6 @@
   transition: width 0.3s ease;
   margin-left: 1px; /* Reduz o espaço entre o título e o input */
 }
-
   </style>
 </head>
 <body>
@@ -290,11 +303,19 @@
   </div>
 </header>
 
+<div id="filtros" style="text-align: center; margin-top: -500;">
+  <button onclick="filtrarPorCategoria(1, 50)">Stanley</button>
+  <button onclick="filtrarPorCategoria(51, 100)">Celular</button>
+  <button onclick="filtrarPorCategoria(101, 150)">Informática</button>
+  <button onclick="filtrarPorCategoria(151, 200)">Gamer</button>
+  <button onclick="mostrarTodos()">Todos</button>
+</div>
+
   <main>
     <div class="product-grid">
       <div class="product-card">
         <img src="https://lh3.googleusercontent.com/pw/AP1GczOTeHKnf2J-V-2ppPOk6DvSvOyt5R02xHdbMulf1y8aklnIyst0BILtwkUp7bnKZJOF9cp46Y8lCUNkF4HMfpnlj7Jl4Dp0ZXMrnn-qrAZqTeQK6hH24YwksnlxBNTVZKJ3vPBqaDzTw_MEgvRa4ns=w685-h913-s-no-gm?authuser=0" alt="STANLEY ROSA 950ML" onclick="zoomImagem(this.src)" />
-        <h3>STANLEY ROSA 950ML</h3>
+        <h3>1 - STANLEY ROSA 950ML</h3>
         <p class="price">R$ 79,90</p>
         <div class="controls">
           <input type="number" min="1" value="1" />
@@ -304,7 +325,7 @@
 
       <div class="product-card">
         <img src="https://lh3.googleusercontent.com/pw/AP1GczPgrSqhuacKzmESve6-qMdWfSk7r2uTbx0rdXUauZ4riDN9vnp3UpS18G_GH5JhGM77bJSu_INkAlsDaYNUuvshGkBC1oFK4Tk0hfXChgxuxBMHWY8BB0w4UeEGzus9A7f2DkpffLMVWb1_TNBqiok=w685-h913-s-no-gm?authuser=0" alt="STANLEY ROXO 950ML" onclick="zoomImagem(this.src)" />
-        <h3>STANLEY ROXO 950ML</h3>
+        <h3>2 - STANLEY ROXO 950ML</h3>
         <p class="price">R$ 79,90</p>
         <div class="controls">
           <input type="number" min="1" value="1" />
@@ -314,7 +335,7 @@
 
       <div class="product-card">
         <img src="https://lh3.googleusercontent.com/pw/AP1GczNgwGnuV7zTEu6ZnoVOTcyoe6gBXsJ2ADTh_NeTX8XUHATXZf5X5ONN1QqldkZAFeh9e8vb3jO8-ldgS6Xpal-HdOXQfGASzfIWdr1djfnCW4_BQtbtAzDMYc-FnWKe_8lNAScakfQjeAVS_0E2TaY=w685-h913-s-no-gm?authuser=0" alt="STANLEY AZUL 950ML" onclick="zoomImagem(this.src)" />
-        <h3>STANLEY AZUL 950ML</h3>
+        <h3>3 - STANLEY AZUL 950ML</h3>
         <p class="price">R$ 79,90</p>
         <div class="controls">
           <input type="number" min="1" value="1" />
@@ -325,7 +346,7 @@
   </main>
 
   <footer>
-    <p>&copy; 2025 Prime Acessórios & Informática. Todos os direitos reservados.</p>
+    <p>&copy; 2025 Prime Tecnologia. Todos os direitos reservados.</p>
   </footer>
 
   <!-- Zoom da imagem -->
@@ -462,8 +483,24 @@
 }
 
 #cart-sidebar button#finalizar:hover {
-  background-color: #e0bc00;
+  background-color: #f2cd00;
 }
+
+#filtros button {
+  margin: 5px;
+  padding: 8px 16px;
+  border: none;
+  background-color: #f2cd00;
+  color: #000;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#filtros button:hover {
+  background-color: #f2cd00;
+}
+
 </style>
 
 <!-- JavaScript do carrinho -->
@@ -493,6 +530,36 @@
     }
     atualizarContador();
     renderizarCarrinho();
+  }
+
+  const categorias = [
+  { nome: 'Stanley', inicio: 1, fim: 50 },
+  { nome: 'Celular', inicio: 51, fim: 100 },
+  { nome: 'Informática', inicio: 101, fim: 150 },
+  { nome: 'Gamer', inicio: 151, fim: 200 },
+  // Adicione mais conforme necessário
+];
+
+function filtrarPorCategoria(min, max) {
+    const produtos = document.querySelectorAll('.product-card');
+
+    produtos.forEach(produto => {
+      const titulo = produto.querySelector('h3').innerText;
+      const numeroInicial = parseInt(titulo.split('-')[0].trim());
+
+      if (!isNaN(numeroInicial) && numeroInicial >= min && numeroInicial <= max) {
+        produto.style.display = 'block';
+      } else {
+        produto.style.display = 'none';
+      }
+    });
+  }
+
+  function mostrarTodos() {
+    const produtos = document.querySelectorAll('.product-card');
+    produtos.forEach(produto => {
+      produto.style.display = 'block';
+    });
   }
 
   function atualizarContador() {
