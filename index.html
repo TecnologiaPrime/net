@@ -297,7 +297,7 @@ img {
       gap: 40px;
       align-items: center;
       flex-wrap: nowrap;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
       text-align: center;
       flex-shrink: 0;
     }
@@ -508,36 +508,44 @@ img {
     <p>&copy; 2025 Prime Tecnologia. Todos os direitos reservados.</p>
   </footer>
 
-  <style>
-    /* FOOTER ADICIONAL PARA MOBILE */
-    @media (max-width: 480px) {
-      .footer-infos {
-        flex-direction: column;
-        align-items: flex-start;
-        text-align: left;
-        gap: 12px;
-        padding-left: 10px;
-      }
-
-      .footer-infos div {
-        flex-direction: row;
-        align-items: center;
-        font-size: 0.85em;
-        gap: 8px;
-        width: 100%;
-      }
-
-      .footer-infos i {
-        font-size: 1.1em;
-      }
-
-      footer p {
-        font-size: 0.75em;
-        text-align: center;
-        margin-top: 10px;
-      }
+ <style>
+  /* FOOTER ADICIONAL PARA MOBILE */
+  @media (max-width: 480px) {
+    .footer-infos {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      gap: 12px;
+      padding-left: 10px;
     }
-  </style>
+
+    .footer-infos div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 0.85em;
+      width: 100%;
+    }
+
+    .footer-infos i {
+      width: 20px; /* largura fixa para alinhar os textos */
+      font-size: 1.1em;
+      text-align: center; /* centraliza o ícone na área dele */
+    }
+
+    .footer-infos span {
+      display: inline-block;
+      flex: 1; /* ocupa o restante da linha */
+    }
+
+    footer p {
+      font-size: 0.75em;
+      text-align: center;
+      margin-top: 10px;
+    }
+  }
+</style>
 
   <script>
     const menuToggle = document.getElementById('menu-toggle');
