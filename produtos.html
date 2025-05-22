@@ -190,10 +190,11 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 10px;
+      gap: 15px; /* Adiciona espaçamento horizontal entre os elementos */
     }
 
     .cart-item span {
-      font-size: 0.9em;
+      font-size: 0.75em;
     }
 
     .cart-item i {
@@ -307,7 +308,7 @@
   <button onclick="filtrarPorCategoria(1, 50)">Stanley</button>
   <button onclick="filtrarPorCategoria(51, 100)">Celular</button>
   <button onclick="filtrarPorCategoria(101, 150)">Informática</button>
-  <button onclick="filtrarPorCategoria(151, 200)">Gamer</button>
+  <button onclick="filtrarPorCategoria(151, 200)">Som</button>
   <button onclick="mostrarTodos()">Todos</button>
 </div>
 
@@ -316,7 +317,7 @@
       <div class="product-card">
         <img src="https://lh3.googleusercontent.com/pw/AP1GczOTeHKnf2J-V-2ppPOk6DvSvOyt5R02xHdbMulf1y8aklnIyst0BILtwkUp7bnKZJOF9cp46Y8lCUNkF4HMfpnlj7Jl4Dp0ZXMrnn-qrAZqTeQK6hH24YwksnlxBNTVZKJ3vPBqaDzTw_MEgvRa4ns=w685-h913-s-no-gm?authuser=0" alt="STANLEY ROSA 950ML" onclick="zoomImagem(this.src)" />
         <h3>1 - STANLEY ROSA 950ML</h3>
-        <p class="price">R$ 79,90</p>
+        <p class="price">R$ 89,90</p>
         <div class="controls">
           <input type="number" min="1" value="1" />
           <button onclick="adicionarAoCarrinho(this, 'STANLEY ROSA 950ML')">Adicionar</button>
@@ -326,7 +327,7 @@
       <div class="product-card">
         <img src="https://lh3.googleusercontent.com/pw/AP1GczPgrSqhuacKzmESve6-qMdWfSk7r2uTbx0rdXUauZ4riDN9vnp3UpS18G_GH5JhGM77bJSu_INkAlsDaYNUuvshGkBC1oFK4Tk0hfXChgxuxBMHWY8BB0w4UeEGzus9A7f2DkpffLMVWb1_TNBqiok=w685-h913-s-no-gm?authuser=0" alt="STANLEY ROXO 950ML" onclick="zoomImagem(this.src)" />
         <h3>2 - STANLEY ROXO 950ML</h3>
-        <p class="price">R$ 79,90</p>
+        <p class="price">R$ 89,90</p>
         <div class="controls">
           <input type="number" min="1" value="1" />
           <button onclick="adicionarAoCarrinho(this, 'STANLEY ROXO 950ML')">Adicionar</button>
@@ -335,14 +336,63 @@
 
       <div class="product-card">
         <img src="https://lh3.googleusercontent.com/pw/AP1GczNgwGnuV7zTEu6ZnoVOTcyoe6gBXsJ2ADTh_NeTX8XUHATXZf5X5ONN1QqldkZAFeh9e8vb3jO8-ldgS6Xpal-HdOXQfGASzfIWdr1djfnCW4_BQtbtAzDMYc-FnWKe_8lNAScakfQjeAVS_0E2TaY=w685-h913-s-no-gm?authuser=0" alt="STANLEY AZUL 950ML" onclick="zoomImagem(this.src)" />
-        <h3>3 - STANLEY AZUL 950ML</h3>
+        <h3>3 - STANLEY AZUL 800ML</h3>
         <p class="price">R$ 79,90</p>
         <div class="controls">
           <input type="number" min="1" value="1" />
           <button onclick="adicionarAoCarrinho(this, 'STANLEY AZUL 950ML')">Adicionar</button>
         </div>
       </div>
-    </div>
+
+      <div class="product-card">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczN91r8m1ueCCtDW_5x0k-SW8XeB30-yiNcCOpKU0kgWi4hWkqqdqBNApm-Yl9Nt49yjnobkyzKslaxuuW2qKcWnk7UkmmrSY2aUzi9ZYcgFeEtx_exHXNXCsMTkQy4ngRxF3bR7_TIn42GOjVzyauQr=w685-h913-s-no-gm?authuser=0" alt="STANLEY VERDE 950ML" onclick="zoomImagem(this.src)" />
+        <h3>4 - STANLEY VERDE 950ML</h3>
+        <p class="price">R$ 89,90</p>
+        <div class="controls">
+          <input type="number" min="1" value="1" />
+          <button onclick="adicionarAoCarrinho(this, 'STANLEY VERDE 950ML')">Adicionar</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOIcDZgNqqxlw7hd6dkuY_UAmj50JXQfNJiJrAGNz60xAnTKi2zz_pq7LX3XyU5NrSr4OrLsV0IpI6Pz8JUBX9pC230h1rLaxgm-m74UbFk5aNmDLFac6tM7rN7OzRxcqqzDf6891V_4gLUVtGFET-I=w685-h913-s-no-gm?authuser=0" alt="STANLEY OFF WHITE 1200ML" onclick="zoomImagem(this.src)" />
+        <h3>5 - STANLEY OFF WHITE 1200ML</h3>
+        <p class="price">R$ 99,90</p>
+        <div class="controls">
+          <input type="number" min="1" value="1" />
+          <button onclick="adicionarAoCarrinho(this, 'STANLEY OFF WHITE 1200ML')">Adicionar</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczN834iAYwnG9XBRHc3wRLwZi-L3wwaBaIQXi2zieZJnF90wwc1fx0EMOmPiDb8fn9eprk_5wBELZOMH4cBiX3QwZCscyZRBmqstfe0HEomO58-KByUd9_DNGcRkyytCI2gGTvr-6368cFgKcFsExtvI=w685-h913-s-no-gm?authuser=0" alt="SUPORTE CELULAR CARRO" onclick="zoomImagem(this.src)" />
+        <h3>51 - SUPORTE CELULAR CARRO</h3>
+        <p class="price">R$ 39,90</p>
+        <div class="controls">
+          <input type="number" min="1" value="1" />
+          <button onclick="adicionarAoCarrinho(this, 'SUPORTE CELULAR CARRO')">Adicionar</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczO3zlmzppYMraAz2StzqRhaBMoYOOPFbavt_eWLrEYIB-hP2Nxy9qTiC001rLPXVSjZYXMlEpM6cMMJcF619Y-lfJ0Y74i6y_SqslNzpB4wwenEfFyOpV5sRTQnbs3JNNZMkKyekc313roekN5s8xu0=w685-h913-s-no-gm?authuser=0" alt="CARREGADOR AUTOMOTIVO TURBO" onclick="zoomImagem(this.src)" />
+        <h3>52 - CARREGADOR AUTOMOTIVO TURBO</h3>
+        <p class="price">R$ 44,90</p>
+        <div class="controls">
+          <input type="number" min="1" value="1" />
+          <button onclick="adicionarAoCarrinho(this, 'CARREGADOR AUTOMOTIVO TURBO')">Adicionar</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOY5CnqmrsETTUdpAWpLgGd5XX2NO4UvNSXVvjGcA15YGCS6h8VEU3wpee-lz0Rra9XpB8u4G0RO3HkCMcsbKVPHaFRAdLJGDzxM7FPHmnGzsSDwPZNBz4BGtSudhhtUY-ykZCi_FsZHKF8Jr-3D16j=w685-h913-s-no-gm?authuser=0" alt="FONTE CARREGADOR DUAS PORTAS USB" onclick="zoomImagem(this.src)" />
+        <h3>53 - FONTE CARREGADOR DUAS PORTAS USB</h3>
+        <p class="price">R$ 29,90</p>
+        <div class="controls">
+          <input type="number" min="1" value="1" />
+          <button onclick="adicionarAoCarrinho(this, 'FONTE CARREGADOR DUAS PORTAS USB')">Adicionar</button>
+        </div>
+      </div>
   </main>
 
   <footer>
@@ -532,6 +582,8 @@
     renderizarCarrinho();
   }
 
+  let produtosFiltrados = [];
+
   const categorias = [
   { nome: 'Stanley', inicio: 1, fim: 50 },
   { nome: 'Celular', inicio: 51, fim: 100 },
@@ -541,26 +593,27 @@
 ];
 
 function filtrarPorCategoria(min, max) {
-    const produtos = document.querySelectorAll('.product-card');
-
-    produtos.forEach(produto => {
-      const titulo = produto.querySelector('h3').innerText;
-      const numeroInicial = parseInt(titulo.split('-')[0].trim());
-
-      if (!isNaN(numeroInicial) && numeroInicial >= min && numeroInicial <= max) {
-        produto.style.display = 'block';
-      } else {
-        produto.style.display = 'none';
-      }
-    });
-  }
+  const cards = document.querySelectorAll('.product-card');
+  produtosFiltrados = []; // limpa antes de preencher novamente
+  cards.forEach(card => {
+    const titulo = card.querySelector('h3').innerText;
+    const numero = parseInt(titulo);
+    if (numero >= min && numero <= max) {
+      card.style.display = 'block';
+      produtosFiltrados.push(card); // adiciona ao array filtrado
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
 
   function mostrarTodos() {
-    const produtos = document.querySelectorAll('.product-card');
-    produtos.forEach(produto => {
-      produto.style.display = 'block';
-    });
-  }
+  const cards = document.querySelectorAll('.product-card');
+  produtosFiltrados = [...cards]; // todos visíveis
+  cards.forEach(card => {
+    card.style.display = 'block';
+  });
+}
 
   function atualizarContador() {
     const total = carrinho.reduce((acc, item) => acc + item.qtd, 0);
@@ -637,8 +690,15 @@ function filtrarPorCategoria(min, max) {
   }
 
   function filtrarProdutos() {
-    const termo = document.getElementById("search-input").value.toLowerCase();
-    const cards = document.querySelectorAll(".product-card");
+  const busca = document.getElementById('search-input').value.toLowerCase();
+  produtosFiltrados.forEach(card => {
+    const titulo = card.querySelector('h3').innerText.toLowerCase();
+    if (titulo.includes(busca)) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
 
     cards.forEach(card => {
       const titulo = card.querySelector("h3").textContent.toLowerCase();
