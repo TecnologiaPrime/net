@@ -305,6 +305,7 @@
 </header>
 
 <div id="filtros" style="text-align: center; margin-top: -500;">
+  <button onclick="filtrarPromocoes()">Promoções</button>
   <button onclick="filtrarPorCategoria(1, 50)">Stanley</button>
   <button onclick="filtrarPorCategoria(51, 100)">Celular</button>
   <button onclick="filtrarPorCategoria(101, 150)">Informática</button>
@@ -315,17 +316,17 @@
   <main>
     <div class="product-grid">
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczOTeHKnf2J-V-2ppPOk6DvSvOyt5R02xHdbMulf1y8aklnIyst0BILtwkUp7bnKZJOF9cp46Y8lCUNkF4HMfpnlj7Jl4Dp0ZXMrnn-qrAZqTeQK6hH24YwksnlxBNTVZKJ3vPBqaDzTw_MEgvRa4ns=w685-h913-s-no-gm?authuser=0" alt="STANLEY ROSA 950ML" onclick="zoomImagem(this.src)" />
-        <h3>1 - STANLEY ROSA 950ML</h3>
-        <p class="price">R$ 89,90</p>
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczO6EkC8Q7g1vo2ssyPFCayf5up0f36p2VbJb5aWWjjuNbn1m0dXgz2WjyJ1W_Nbgdcch7d2QwXIiE_ASU-AcTeMkQdxxYX5WDxIvvw5bi2gjVI1xL81GFfbdcnTKNpx71_6jpLTHGz2c8O99MZvLOTd=w685-h913-s-no-gm?authuser=0" alt="STANLEY ROSA BEBÊ 950ML" onclick="zoomImagem(this.src)" />
+        <h3>1 - STANLEY ROSA BEBÊ 950ML</h3>
+        <p class="price">R$ 79,90</p>
         <div class="controls">
           <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'STANLEY ROSA 950ML')">Adicionar</button>
+          <button onclick="adicionarAoCarrinho(this, 'SSTANLEY ROSA BEBÊ 950ML')">Adicionar</button>
         </div>
       </div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczPgrSqhuacKzmESve6-qMdWfSk7r2uTbx0rdXUauZ4riDN9vnp3UpS18G_GH5JhGM77bJSu_INkAlsDaYNUuvshGkBC1oFK4Tk0hfXChgxuxBMHWY8BB0w4UeEGzus9A7f2DkpffLMVWb1_TNBqiok=w685-h913-s-no-gm?authuser=0" alt="STANLEY ROXO 950ML" onclick="zoomImagem(this.src)" />
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczN81p-TPufTfQgxFbREAcDZRghvXO-NbCDlq6x1pFdyWlusNKC4obfaImW1O0hYKCHH40M0GAe5jKmzWc7spLcmFEC3kEIYg7lvMGogB1lP2occpj0IFFYaSzwvBTaJSvP25Yjz2clUFowPSvAGaPYE=w685-h913-s-no-gm?authuser=0" alt="STANLEY ROXO 950ML" onclick="zoomImagem(this.src)" />
         <h3>2 - STANLEY ROXO 950ML</h3>
         <p class="price">R$ 89,90</p>
         <div class="controls">
@@ -335,28 +336,40 @@
       </div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczNgwGnuV7zTEu6ZnoVOTcyoe6gBXsJ2ADTh_NeTX8XUHATXZf5X5ONN1QqldkZAFeh9e8vb3jO8-ldgS6Xpal-HdOXQfGASzfIWdr1djfnCW4_BQtbtAzDMYc-FnWKe_8lNAScakfQjeAVS_0E2TaY=w685-h913-s-no-gm?authuser=0" alt="STANLEY AZUL 950ML" onclick="zoomImagem(this.src)" />
-        <h3>3 - STANLEY AZUL 800ML</h3>
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPdzboFsdWNUiZBt-ulK2QpIkgsnTC_kqj7B6k2SevYBf6hWdn24ToQXHgf2Mmut6tADwtYwZoqnFXBxGvpXza-t-iGuQap0L8wS3r7n3k8ULmb8UPV5qJByGcP33XqYSnpbnb-x0M2TKxLPI45DhOc=w685-h913-s-no-gm?authuser=0" alt="STANLEY AZUL BEBÊ 800ML" onclick="zoomImagem(this.src)" />
+        <h3>3 - STANLEY AZUL BEBÊ 800ML</h3>
         <p class="price">R$ 79,90</p>
         <div class="controls">
           <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'STANLEY AZUL 950ML')">Adicionar</button>
+          <button onclick="adicionarAoCarrinho(this, 'STANLEY AZUL BEBÊ 800ML')">Adicionar</button>
         </div>
       </div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczN91r8m1ueCCtDW_5x0k-SW8XeB30-yiNcCOpKU0kgWi4hWkqqdqBNApm-Yl9Nt49yjnobkyzKslaxuuW2qKcWnk7UkmmrSY2aUzi9ZYcgFeEtx_exHXNXCsMTkQy4ngRxF3bR7_TIn42GOjVzyauQr=w685-h913-s-no-gm?authuser=0" alt="STANLEY VERDE 950ML" onclick="zoomImagem(this.src)" />
-        <h3>4 - STANLEY VERDE 950ML</h3>
-        <p class="price">R$ 89,90</p>
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczN91r8m1ueCCtDW_5x0k-SW8XeB30-yiNcCOpKU0kgWi4hWkqqdqBNApm-Yl9Nt49yjnobkyzKslaxuuW2qKcWnk7UkmmrSY2aUzi9ZYcgFeEtx_exHXNXCsMTkQy4ngRxF3bR7_TIn42GOjVzyauQr=w685-h913-s-no-gm?authuser=0" alt="STANLEY VERDE BEBÊ 950ML" onclick="zoomImagem(this.src)" />
+        <h3>4 - STANLEY VERDE BEBÊ 950ML</h3>
+        <p class="price1">de R$ 89,90 por</p>
+        <p class="price"><strong>R$ 79,90</strong></p>
         <div class="controls">
           <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'STANLEY VERDE 950ML')">Adicionar</button>
+          <button onclick="adicionarAoCarrinho(this, 'STANLEY VERDE BEBÊ 950ML')">Adicionar</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOhIZs6gHr33ajh_OHe4E6wQybOXx0l6HocGFkBMTzcrFSu3cFfMX7KKzl0_qOjtczLvcAb-9zFp-TqBM9Aoj9npIc9-GDosy-8qholJirD1qpJ09xiXrYUMEyBO6HKjFAO0qniCRF2l_ITHWsofBsE=w685-h913-s-no-gm?authuser=0" alt="STANLEY ROSA 950ML" onclick="zoomImagem(this.src)" />
+        <h3>5 - STANLEY ROSA 950ML</h3>
+        <p class="price1">de R$ 89,90 por</p>
+        <p class="price"><strong>R$ 79,90</strong></p>
+        <div class="controls">
+          <input type="number" min="1" value="1" />
+          <button onclick="adicionarAoCarrinho(this, 'STANLEY ROSA 950ML')">Adicionar</button>
         </div>
       </div>
 
       <div class="product-card">
         <img src="https://lh3.googleusercontent.com/pw/AP1GczOIcDZgNqqxlw7hd6dkuY_UAmj50JXQfNJiJrAGNz60xAnTKi2zz_pq7LX3XyU5NrSr4OrLsV0IpI6Pz8JUBX9pC230h1rLaxgm-m74UbFk5aNmDLFac6tM7rN7OzRxcqqzDf6891V_4gLUVtGFET-I=w685-h913-s-no-gm?authuser=0" alt="STANLEY OFF WHITE 1200ML" onclick="zoomImagem(this.src)" />
-        <h3>5 - STANLEY OFF WHITE 1200ML</h3>
+        <h3>6 - STANLEY OFF WHITE 1200ML</h3>
         <p class="price">R$ 99,90</p>
         <div class="controls">
           <input type="number" min="1" value="1" />
@@ -387,7 +400,8 @@
       <div class="product-card">
         <img src="https://lh3.googleusercontent.com/pw/AP1GczOY5CnqmrsETTUdpAWpLgGd5XX2NO4UvNSXVvjGcA15YGCS6h8VEU3wpee-lz0Rra9XpB8u4G0RO3HkCMcsbKVPHaFRAdLJGDzxM7FPHmnGzsSDwPZNBz4BGtSudhhtUY-ykZCi_FsZHKF8Jr-3D16j=w685-h913-s-no-gm?authuser=0" alt="FONTE CARREGADOR DUAS PORTAS USB" onclick="zoomImagem(this.src)" />
         <h3>53 - FONTE CARREGADOR DUAS PORTAS USB</h3>
-        <p class="price">R$ 29,90</p>
+        <p class="price1">R$ 29,90</p>
+        <p class="price"><strong>R$ 24,90</strong></p>
         <div class="controls">
           <input type="number" min="1" value="1" />
           <button onclick="adicionarAoCarrinho(this, 'FONTE CARREGADOR DUAS PORTAS USB')">Adicionar</button>
@@ -592,28 +606,32 @@
   // Adicione mais conforme necessário
 ];
 
-function filtrarPorCategoria(min, max) {
-  const cards = document.querySelectorAll('.product-card');
-  produtosFiltrados = []; // limpa antes de preencher novamente
-  cards.forEach(card => {
-    const titulo = card.querySelector('h3').innerText;
-    const numero = parseInt(titulo);
-    if (numero >= min && numero <= max) {
-      card.style.display = 'block';
-      produtosFiltrados.push(card); // adiciona ao array filtrado
-    } else {
-      card.style.display = 'none';
-    }
-  });
-}
+function filtrarPorCategoria(inicio, fim) {
+    filtroAtual = `${inicio}-${fim}`;
+    document.querySelectorAll('.product-card').forEach(card => {
+      const titulo = card.querySelector('h3').innerText;
+      const numero = parseInt(titulo.split(' ')[0]);
+      card.style.display = (numero >= inicio && numero <= fim) ? 'block' : 'none';
+    });
+  }
 
   function mostrarTodos() {
-  const cards = document.querySelectorAll('.product-card');
-  produtosFiltrados = [...cards]; // todos visíveis
-  cards.forEach(card => {
-    card.style.display = 'block';
-  });
-}
+    filtroAtual = 'todos';
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.style.display = 'block';
+    });
+  }
+
+let filtroAtual = 'todos'; // pode ser: 'todos', 'promocoes', ou um intervalo de categoria
+
+  function filtrarPromocoes() {
+    filtroAtual = 'promocoes';
+    const cards = document.querySelectorAll('.product-card');
+    cards.forEach(card => {
+      const priceOriginal = card.querySelector('.price1');
+      card.style.display = priceOriginal ? 'block' : 'none';
+    });
+  }
 
   function atualizarContador() {
     const total = carrinho.reduce((acc, item) => acc + item.qtd, 0);
@@ -690,19 +708,26 @@ function filtrarPorCategoria(min, max) {
   }
 
   function filtrarProdutos() {
-  const busca = document.getElementById('search-input').value.toLowerCase();
-  produtosFiltrados.forEach(card => {
-    const titulo = card.querySelector('h3').innerText.toLowerCase();
-    if (titulo.includes(busca)) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
+    const termo = document.getElementById('search-input').value.toLowerCase();
+    const cards = document.querySelectorAll('.product-card');
 
     cards.forEach(card => {
-      const titulo = card.querySelector("h3").textContent.toLowerCase();
-      card.style.display = titulo.includes(termo) ? "block" : "none";
+      const titulo = card.querySelector('h3').innerText.toLowerCase();
+      const contemTermo = titulo.includes(termo);
+      let mostrar = false;
+
+      if (filtroAtual === 'todos') {
+        mostrar = contemTermo;
+      } else if (filtroAtual === 'promocoes') {
+        const temPromocao = card.querySelector('.price1') !== null;
+        mostrar = temPromocao && contemTermo;
+      } else if (filtroAtual.includes('-')) {
+        const numero = parseInt(titulo.split(' ')[0]);
+        const [inicio, fim] = filtroAtual.split('-').map(Number);
+        mostrar = numero >= inicio && numero <= fim && contemTermo;
+      }
+
+      card.style.display = mostrar ? 'block' : 'none';
     });
   }
 </script>
