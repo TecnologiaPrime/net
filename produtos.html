@@ -288,6 +288,12 @@
   transition: width 0.3s ease;
   margin-left: 1px; /* Reduz o espaço entre o título e o input */
 }
+
+.price.esgotado {
+  color: red;
+  font-weight: bold;
+}
+
   </style>
 </head>
 <body>
@@ -309,7 +315,7 @@
   <button onclick="filtrarPorCategoria(1, 50)">Stanley</button>
   <button onclick="filtrarPorCategoria(51, 100)">Celular</button>
   <button onclick="filtrarPorCategoria(101, 150)">Informática</button>
-  <button onclick="filtrarPorCategoria(151, 200)">Som</button>
+  <button onclick="filtrarPorCategoria(151, 200)">Diversos</button>
   <button onclick="mostrarTodos()">Todos</button>
 </div>
 
@@ -318,7 +324,7 @@
       <div class="product-card">
         <img src="https://lh3.googleusercontent.com/pw/AP1GczO6EkC8Q7g1vo2ssyPFCayf5up0f36p2VbJb5aWWjjuNbn1m0dXgz2WjyJ1W_Nbgdcch7d2QwXIiE_ASU-AcTeMkQdxxYX5WDxIvvw5bi2gjVI1xL81GFfbdcnTKNpx71_6jpLTHGz2c8O99MZvLOTd=w685-h913-s-no-gm?authuser=0" alt="STANLEY ROSA BEBÊ 950ML" onclick="zoomImagem(this.src)" />
         <h3>1 - STANLEY ROSA BEBÊ 950ML</h3>
-        <p class="price">R$ 89,90</p>
+        <p class="price esgotado">ESGOTADO</p>
         <div class="controls">
           <input type="number" min="1" value="1" />
           <button onclick="adicionarAoCarrinho(this, 'STANLEY ROSA BEBÊ 950ML')">Adicionar</button>
@@ -345,11 +351,12 @@
         </div>
       </div>
 
+        <!--<p class="price">de R$ 89,90 por</p>-->
+        <!--<p class="price"><strong>R$ 79,90</strong></p>-->
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczN91r8m1ueCCtDW_5x0k-SW8XeB30-yiNcCOpKU0kgWi4hWkqqdqBNApm-Yl9Nt49yjnobkyzKslaxuuW2qKcWnk7UkmmrSY2aUzi9ZYcgFeEtx_exHXNXCsMTkQy4ngRxF3bR7_TIn42GOjVzyauQr=w685-h913-s-no-gm?authuser=0" alt="STANLEY VERDE BEBÊ 950ML" onclick="zoomImagem(this.src)" />
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczPrReb_QvYdACkGWgHYV26n7pMiXxtbqGQp_NsQV10GBAaGX_6zVy1ZxNYwTMDKZrveY4BNrtV8biVvb9YvPRv3KxA84MNCq4Jqgc-yCi03AH4r0GPk1uhVEDny8ocHtgJfXxjI-DSZ2As68qSLWDmV=w685-h913-s-no-gm?authuser=0" alt="STANLEY VERDE BEBÊ 950ML" onclick="zoomImagem(this.src)" />
         <h3>4 - STANLEY VERDE BEBÊ 950ML</h3>
-        <p class="price1">de R$ 89,90 por</p>
-        <p class="price"><strong>R$ 79,90</strong></p>
+        <p class="price">R$ 89,90</p>
         <div class="controls">
           <input type="number" min="1" value="1" />
           <button onclick="adicionarAoCarrinho(this, 'STANLEY VERDE BEBÊ 950ML')">Adicionar</button>
@@ -378,7 +385,7 @@
       </div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczN834iAYwnG9XBRHc3wRLwZi-L3wwaBaIQXi2zieZJnF90wwc1fx0EMOmPiDb8fn9eprk_5wBELZOMH4cBiX3QwZCscyZRBmqstfe0HEomO58-KByUd9_DNGcRkyytCI2gGTvr-6368cFgKcFsExtvI=w685-h913-s-no-gm?authuser=0" alt="SUPORTE CELULAR CARRO" onclick="zoomImagem(this.src)" />
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMljQI-gFdiPYwJM_sXc-sftPve0i8utvWr3rZz_9nI5dF6Rmg0URBZ2Y75_5oTkrtdsI9yfdda4A-Ve_xqaeRwkIzowIl6EtMm9DDGWMz6dcdzGAWIlaBbnJjkLQzHkWt9c3cDZvPsNTfSfUiN9Kj7=w685-h913-s-no-gm?authuser=0" alt="SUPORTE CELULAR CARRO" onclick="zoomImagem(this.src)" />
         <h3>51 - SUPORTE CELULAR CARRO</h3>
         <p class="price">R$ 39,90</p>
         <div class="controls">
@@ -388,7 +395,7 @@
       </div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczO3zlmzppYMraAz2StzqRhaBMoYOOPFbavt_eWLrEYIB-hP2Nxy9qTiC001rLPXVSjZYXMlEpM6cMMJcF619Y-lfJ0Y74i6y_SqslNzpB4wwenEfFyOpV5sRTQnbs3JNNZMkKyekc313roekN5s8xu0=w685-h913-s-no-gm?authuser=0" alt="CARREGADOR AUTOMOTIVO TURBO" onclick="zoomImagem(this.src)" />
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczN0M83z1f5AVFckzvvmQiFxPA4IKmzO2JkeizbctAGLfa_l-ImNF3-Nl_m-122R1C8riVKSo0BFEC7OBMs434LvH12dkfyyWUIBQ10ryH7voy_PEw12EpObjZSlfgeo34ok1Lqh4egpHadQ61LmIoVl=w685-h913-s-no-gm?authuser=0" alt="CARREGADOR AUTOMOTIVO TURBO" onclick="zoomImagem(this.src)" />
         <h3>52 - CARREGADOR AUTOMOTIVO TURBO</h3>
         <p class="price">R$ 44,90</p>
         <div class="controls">
@@ -398,13 +405,52 @@
       </div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczOY5CnqmrsETTUdpAWpLgGd5XX2NO4UvNSXVvjGcA15YGCS6h8VEU3wpee-lz0Rra9XpB8u4G0RO3HkCMcsbKVPHaFRAdLJGDzxM7FPHmnGzsSDwPZNBz4BGtSudhhtUY-ykZCi_FsZHKF8Jr-3D16j=w685-h913-s-no-gm?authuser=0" alt="FONTE CARREGADOR DUAS PORTAS USB" onclick="zoomImagem(this.src)" />
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMmK0IH_1ha_d0sYqwIkX8am2O50S0ZRfmLOws3J0i29Ler7mMPPFIMfqO0ot1mvh3eJK52M_hTYsOwwArk7dFcZnxiSxlfcjARO2vi_ysSEaZKm4CsCiEvr_1Kzgn8a7X7_zjlCucgVLeAs7RaIvV0=w685-h913-s-no-gm?authuser=0" alt="FONTE CARREGADOR DUAS PORTAS USB" onclick="zoomImagem(this.src)" />
         <h3>53 - FONTE DUAS PORTAS USB + CABO APPLE</h3>
-        <p class="price1"> de R$ 29,90 por</p>
-        <p class="price"><strong>R$ 24,90</strong></p>
+        <p class="price">R$ 29,90</p>
         <div class="controls">
           <input type="number" min="1" value="1" />
           <button onclick="adicionarAoCarrinho(this, 'FONTE CARREGADOR DUAS PORTAS USB')">Adicionar</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMb4OgM0ix130GFXE5Vz1T9uD1z9ocejpMLE2rtceky7KbUHvj6fFlI-equ_Gmps4AnaDOCGOBB6SZpWauub6NJ8qWCpal5g8WK8kM_NKfoq3y2WDULRF6OeOc_aK1rc5XAksnpgbyuRyr3L4shdH4T=w685-h913-s-no-gm?authuser=0" alt="HUB USB 4 PORTAS USB" onclick="zoomImagem(this.src)" />
+        <h3>101 - HUB USB 4 PORTAS USB </h3>
+        <p class="price">R$ 24,90</p>
+        <div class="controls">
+          <input type="number" min="1" value="1" />
+          <button onclick="adicionarAoCarrinho(this, 'HUB USB 4 PORTAS USB')">Adicionar</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOy35XM_yXhz9c3r2KEq8bL6ieldWfXovLnRJQ1ziDrF8XabPersodXcia3_TRHgSZEDTl36qcHK7ydDjSPKcMlttUPEkVgAeSWyDmOVTb4vasQN6EKEJFswXzHnlH7tRfGivS_NHAaGCeTdZmulSY7=w685-h913-s-no-gm?authuser=0" alt="MINI MASSAGEADOR" onclick="zoomImagem(this.src)" />
+        <h3>151 - MINI MASSAGEADOR</h3>
+        <p class="price esgotado">ESGOTADO</p>
+        <div class="controls">
+          <input type="number" min="1" value="1" />
+          <button onclick="adicionarAoCarrinho(this, 'MINI MASSAGEADOR')">Adicionar</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczMUkpBFo_wy4yPcuwJMA8NP0NKKEs5IUXVx8p1ITWRxoL0XSf46GGbwiQQbI4Ae4teQl9o3HRYTx_RR82hkzZ007niKFOOoetQD_yAILNMu_96afxqGRrDZVZQScU6ZdkJ4Bz-mRWHH7h-UOs79TsoG=w685-h913-s-no-gm?authuser=0" alt="AROMATIZADOR AUTOMOTIVO" onclick="zoomImagem(this.src)" />
+        <h3>152 - AROMATIZADOR AUTOMOTIVO</h3>
+        <p class="price">R$ 9,90</p>
+        <div class="controls">
+          <input type="number" min="1" value="1" />
+          <button onclick="adicionarAoCarrinho(this, 'AROMATIZADOR AUTOMOTIVO')">Adicionar</button>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczOybrHLndULJ7orwFPPfd0upmmohNoH7WSQhVLP0vm4p00OJ2r4jW1o3Z9Eu5QkXrho7PgwZetwLzJ7tGEV9eY6weFHiTLGakX_Poi7s3EWudyjRIHYzR7XPdCjWUgQ45XH8FPR14-bYON_5G7MOjSl=w685-h913-s-no-gm?authuser=0" alt="MICRO SD 16GB" onclick="zoomImagem(this.src)" />
+        <h3>153 - MICRO SD 16GB</h3>
+        <p class="price">R$ 39,90</p>
+        <div class="controls">
+          <input type="number" min="1" value="1" />
+          <button onclick="adicionarAoCarrinho(this, 'MICRO SD 16GB')">Adicionar</button>
         </div>
       </div>
   </main>
@@ -570,166 +616,197 @@
 <!-- JavaScript do carrinho -->
 <script>
   const carrinhoSidebar = document.getElementById("cart-sidebar");
-  const carrinhoOverlay = document.getElementById("cart-overlay");
+const carrinhoOverlay = document.getElementById("cart-overlay");
 
-  // Recupera carrinho salvo no localStorage
-  let carrinhoSalvo = localStorage.getItem('carrinho');
-  const carrinho = carrinhoSalvo ? JSON.parse(carrinhoSalvo) : [];
+// Recupera carrinho salvo no localStorage
+let carrinhoSalvo = localStorage.getItem('carrinho');
+const carrinho = carrinhoSalvo ? JSON.parse(carrinhoSalvo) : [];
 
-  atualizarContador();
-  renderizarCarrinho();
+let filtroAtual = 'todos';
 
-  function adicionarAoCarrinho(botao, nome) {
-    const input = botao.previousElementSibling;
-    const quantidade = parseInt(input.value) || 1;
-    const card = botao.closest('.product-card');
-    const precoText = card.querySelector('.price').textContent;
-    const preco = parseFloat(precoText.replace('R$', '').replace(',', '.'));
+atualizarContador();
+renderizarCarrinho();
 
-    const item = carrinho.find(p => p.nome === nome);
-    if (item) {
-      item.qtd += quantidade;
-    } else {
-      carrinho.push({ nome, qtd: quantidade, preco });
-    }
-    atualizarContador();
-    renderizarCarrinho();
+function adicionarAoCarrinho(botao, nome) {
+  const input = botao.previousElementSibling;
+  const quantidade = parseInt(input.value) || 1;
+  const card = botao.closest('.product-card');
+  const precoText = card.querySelector('.price').textContent.trim();
+
+  // Verifica se o preço está com o texto "ESGOTADO"
+  if (precoText.toUpperCase() === 'ESGOTADO') {
+    alert('Este produto está esgotado e não pode ser adicionado ao carrinho.');
+    return; // Sai da função, não adiciona ao carrinho
   }
 
-  let produtosFiltrados = [];
+  const preco = parseFloat(precoText.replace('R$', '').replace(',', '.'));
 
-  const categorias = [
+  const item = carrinho.find(p => p.nome === nome);
+  if (item) {
+    item.qtd += quantidade;
+  } else {
+    carrinho.push({ nome, qtd: quantidade, preco });
+  }
+  salvarEAtualizar();
+}
+
+function removerItem(index) {
+  carrinho.splice(index, 1);
+  salvarEAtualizar();
+}
+
+function alterarQuantidade(index, novaQtd) {
+  if (novaQtd < 1) return; // evita quantidade menor que 1
+  carrinho[index].qtd = novaQtd;
+  salvarEAtualizar();
+}
+
+function salvarEAtualizar() {
+  localStorage.setItem('carrinho', JSON.stringify(carrinho));
+  atualizarContador();
+  renderizarCarrinho();
+}
+
+function atualizarContador() {
+  const total = carrinho.reduce((acc, item) => acc + item.qtd, 0);
+  document.getElementById("cart-count").textContent = total;
+}
+function renderizarCarrinho() {
+  const container = document.getElementById("cart-items");
+  container.innerHTML = "";
+
+  carrinho.forEach((item, index) => {
+    const totalItem = (item.preco * item.qtd).toFixed(2).replace('.', ',');
+    const div = document.createElement("div");
+    div.className = "cart-item";
+    div.innerHTML = `
+      <span>${item.nome} x${item.qtd} - R$ ${totalItem}</span>
+      <button onclick="alterarQuantidade(${index}, ${item.qtd - 1})">-</button>
+      <button onclick="alterarQuantidade(${index}, ${item.qtd + 1})">+</button>
+      <i class="fas fa-trash" onclick="removerItem(${index})" style="cursor:pointer; color:red; margin-left: 8px;"></i>
+    `;
+    container.appendChild(div);
+  });
+
+  // Soma total da quantidade de itens
+  const totalQtd = carrinho.reduce((acc, item) => acc + item.qtd, 0);
+  // Soma total do valor dos itens
+  const totalValor = carrinho.reduce((acc, item) => acc + (item.preco * item.qtd), 0);
+
+  const totalDiv = document.createElement("div");
+  totalDiv.className = "cart-total-items";
+  totalDiv.style.marginTop = "10px";
+  totalDiv.style.fontWeight = "bold";
+  totalDiv.innerHTML = `
+    Total de itens: ${totalQtd} <br>
+    Valor total: R$ ${totalValor.toFixed(2).replace('.', ',')}
+  `;
+  container.appendChild(totalDiv);
+}
+
+// Funções para filtro de produtos, busca e categorias
+
+const categorias = [
   { nome: 'Stanley', inicio: 1, fim: 50 },
   { nome: 'Celular', inicio: 51, fim: 100 },
   { nome: 'Informática', inicio: 101, fim: 150 },
   { nome: 'Gamer', inicio: 151, fim: 200 },
-  // Adicione mais conforme necessário
 ];
 
 function filtrarPorCategoria(inicio, fim) {
-    filtroAtual = `${inicio}-${fim}`;
-    document.querySelectorAll('.product-card').forEach(card => {
-      const titulo = card.querySelector('h3').innerText;
+  filtroAtual = `${inicio}-${fim}`;
+  document.querySelectorAll('.product-card').forEach(card => {
+    const titulo = card.querySelector('h3').innerText;
+    const numero = parseInt(titulo.split(' ')[0]);
+    card.style.display = (numero >= inicio && numero <= fim) ? 'block' : 'none';
+  });
+}
+
+function mostrarTodos() {
+  filtroAtual = 'todos';
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.style.display = 'block';
+  });
+}
+
+function filtrarPromocoes() {
+  filtroAtual = 'promocoes';
+  const cards = document.querySelectorAll('.product-card');
+  cards.forEach(card => {
+    const priceOriginal = card.querySelector('.price1');
+    card.style.display = priceOriginal ? 'block' : 'none';
+  });
+}
+
+function filtrarProdutos() {
+  const termo = document.getElementById('search-input').value.toLowerCase();
+  const cards = document.querySelectorAll('.product-card');
+
+  cards.forEach(card => {
+    const titulo = card.querySelector('h3').innerText.toLowerCase();
+    const contemTermo = titulo.includes(termo);
+    let mostrar = false;
+
+    if (filtroAtual === 'todos') {
+      mostrar = contemTermo;
+    } else if (filtroAtual === 'promocoes') {
+      const temPromocao = card.querySelector('.price1') !== null;
+      mostrar = temPromocao && contemTermo;
+    } else if (filtroAtual.includes('-')) {
       const numero = parseInt(titulo.split(' ')[0]);
-      card.style.display = (numero >= inicio && numero <= fim) ? 'block' : 'none';
-    });
-  }
-
-  function mostrarTodos() {
-    filtroAtual = 'todos';
-    document.querySelectorAll('.product-card').forEach(card => {
-      card.style.display = 'block';
-    });
-  }
-
-let filtroAtual = 'todos'; // pode ser: 'todos', 'promocoes', ou um intervalo de categoria
-
-  function filtrarPromocoes() {
-    filtroAtual = 'promocoes';
-    const cards = document.querySelectorAll('.product-card');
-    cards.forEach(card => {
-      const priceOriginal = card.querySelector('.price1');
-      card.style.display = priceOriginal ? 'block' : 'none';
-    });
-  }
-
-  function atualizarContador() {
-    const total = carrinho.reduce((acc, item) => acc + item.qtd, 0);
-    document.getElementById("cart-count").textContent = total;
-  }
-
-  function renderizarCarrinho() {
-    const container = document.getElementById("cart-items");
-    container.innerHTML = "";
-    carrinho.forEach((item, index) => {
-      const totalItem = (item.preco * item.qtd).toFixed(2).replace('.', ',');
-      const div = document.createElement("div");
-      div.className = "cart-item";
-      div.innerHTML = `<span>${item.nome} x${item.qtd} - R$ ${totalItem}</span><i class="fas fa-trash" onclick="removerItem(${index})"></i>`;
-      container.appendChild(div);
-    });
-
-    localStorage.setItem('carrinho', JSON.stringify(carrinho));
-  }
-
-  function removerItem(index) {
-    carrinho.splice(index, 1);
-    atualizarContador();
-    renderizarCarrinho();
-  }
-
-  function finalizarPedido() {
-    if (carrinho.length === 0) {
-      alert("Seu carrinho está vazio.");
-      return;
+      const [inicio, fim] = filtroAtual.split('-').map(Number);
+      mostrar = numero >= inicio && numero <= fim && contemTermo;
     }
 
-    let mensagem = "Olá! Gostaria de fazer o seguinte pedido:%0A";
-    let total = 0;
+    card.style.display = mostrar ? 'block' : 'none';
+  });
+}
 
-    carrinho.forEach(item => {
-      const subtotal = (item.preco * item.qtd).toFixed(2).replace('.', ',');
-      mensagem += `- ${item.nome} (Qtd: ${item.qtd}) - R$ ${subtotal}%0A`;
-      total += item.preco * item.qtd;
-    });
-
-    mensagem += `%0ATotal: R$ ${total.toFixed(2).replace('.', ',')}`;
-
-    // Enviar para WhatsApp
-    const numero = "5579996269748"; // Número com DDI e DDD
-    const url = `https://wa.me/${numero}?text=${mensagem}`;
-    window.open(url, "_blank");
-
-    // Limpar carrinho
-    carrinho.length = 0;
-    atualizarContador();
-    renderizarCarrinho();
-    fecharCarrinho();
+function finalizarPedido() {
+  if (carrinho.length === 0) {
+    alert("Seu carrinho está vazio.");
+    return;
   }
 
-  function toggleCarrinho() {
-    carrinhoSidebar.classList.add("active");
-    carrinhoOverlay.classList.add("active");
-    renderizarCarrinho();
-  }
+  let mensagem = "Olá! Gostaria de fazer o seguinte pedido:%0A";
+  let total = 0;
 
-  function fecharCarrinho() {
-    carrinhoSidebar.classList.remove("active");
-    carrinhoOverlay.classList.remove("active");
-  }
+  carrinho.forEach(item => {
+    const subtotal = (item.preco * item.qtd).toFixed(2).replace('.', ',');
+    mensagem += `- ${item.nome} (Qtd: ${item.qtd}) - R$ ${subtotal}%0A`;
+    total += item.preco * item.qtd;
+  });
 
-  function zoomImagem(src) {
-    document.getElementById("zoomed").src = src;
-    document.getElementById("zoom-img").style.display = "flex";
-  }
+  mensagem += `%0ATotal: R$ ${total.toFixed(2).replace('.', ',')}`;
 
-  function fecharZoom() {
-    document.getElementById("zoom-img").style.display = "none";
-  }
+  const numero = "5579996269748";
+  const url = `https://wa.me/${numero}?text=${mensagem}`;
+  window.open(url, "_blank");
 
-  function filtrarProdutos() {
-    const termo = document.getElementById('search-input').value.toLowerCase();
-    const cards = document.querySelectorAll('.product-card');
+  carrinho.length = 0;
+  salvarEAtualizar();
+  fecharCarrinho();
+}
 
-    cards.forEach(card => {
-      const titulo = card.querySelector('h3').innerText.toLowerCase();
-      const contemTermo = titulo.includes(termo);
-      let mostrar = false;
+function toggleCarrinho() {
+  carrinhoSidebar.classList.add("active");
+  carrinhoOverlay.classList.add("active");
+  renderizarCarrinho();
+}
 
-      if (filtroAtual === 'todos') {
-        mostrar = contemTermo;
-      } else if (filtroAtual === 'promocoes') {
-        const temPromocao = card.querySelector('.price1') !== null;
-        mostrar = temPromocao && contemTermo;
-      } else if (filtroAtual.includes('-')) {
-        const numero = parseInt(titulo.split(' ')[0]);
-        const [inicio, fim] = filtroAtual.split('-').map(Number);
-        mostrar = numero >= inicio && numero <= fim && contemTermo;
-      }
+function fecharCarrinho() {
+  carrinhoSidebar.classList.remove("active");
+  carrinhoOverlay.classList.remove("active");
+}
 
-      card.style.display = mostrar ? 'block' : 'none';
-    });
-  }
+function zoomImagem(src) {
+  document.getElementById("zoomed").src = src;
+  document.getElementById("zoom-img").style.display = "flex";
+}
+
+function fecharZoom() {
+  document.getElementById("zoom-img").style.display = "none";
+}
 </script>
 </body>
 </html>
