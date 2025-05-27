@@ -26,6 +26,8 @@
     }
 
     header {
+      margin-bottom: 0;
+      padding-bottom: 0;
       position: fixed;
       top: 0;
       left: 0;
@@ -36,8 +38,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-      z-index: 300;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      z-index: 100;
     }
 
     header h1 {
@@ -310,13 +312,13 @@
   </div>
 </header>
 
-<div id="filtros" style="text-align: center; margin-top: -500;">
+<div id="filtros">
+  <button onclick="mostrarTodos()">Todos</button>
   <button onclick="filtrarPromocoes()">Promoções</button>
   <button onclick="filtrarPorCategoria(1, 50)">Stanley</button>
   <button onclick="filtrarPorCategoria(51, 100)">Celular</button>
   <button onclick="filtrarPorCategoria(101, 150)">Informática</button>
   <button onclick="filtrarPorCategoria(151, 200)">Diversos</button>
-  <button onclick="mostrarTodos()">Todos</button>
 </div>
 
   <main>
@@ -596,19 +598,47 @@
   background-color: #f2cd00;
 }
 
+#filtros {
+  margin-top: 0;
+  padding-top: 0;
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  gap: 10px;
+  padding: 10px 15px;
+  margin: 1px auto 0 auto; /* margem topo menor, margem inferior 0 */
+  max-width: 100vw;
+  scrollbar-width: thin;
+  scrollbar-color: #f2cd00 transparent;
+}
+
+#filtros::-webkit-scrollbar {
+  height: 6px;
+}
+
+#filtros::-webkit-scrollbar-thumb {
+  background: #f2cd00;
+  border-radius: 8px;
+}
+
 #filtros button {
-  margin: 5px;
-  padding: 8px 16px;
+  flex: 0 0 80px; /* largura menor */
+  padding: 6px 8px; /* menos espaçamento interno */
+  text-align: center;
   border: none;
   background-color: #f2cd00;
-  color: #000;
+  color: rgb(0, 0, 0);
   font-weight: bold;
   border-radius: 8px;
   cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.3s ease;
 }
+
 
 #filtros button:hover {
   background-color: #f2cd00;
+  color: #ffffff;
 }
 
 </style>
@@ -767,8 +797,8 @@ function finalizarPedido() {
     alert("Seu carrinho está vazio.");
     return;
   }
-
-  let mensagem = "Olá! Gostaria de fazer o seguinte pedido:%0A";
+  
+  let mensagem = "Olá, Prime Tecnologia! Gostaria de fazer o seguinte pedido:%0A";
   let total = 0;
 
   carrinho.forEach(item => {
