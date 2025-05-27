@@ -613,7 +613,7 @@
 }
 
 #filtros::-webkit-scrollbar {
-  height: 6px;
+  height: 6px; /* mais fina */
 }
 
 #filtros::-webkit-scrollbar-thumb {
@@ -622,8 +622,9 @@
 }
 
 #filtros button {
-  flex: 0 0 80px; /* largura menor */
-  padding: 6px 8px; /* menos espaçamento interno */
+  flex: 0 0 100px; /* aumenta a largura dos botões */
+  padding: 10px 14px; /* aumenta altura/largura interna */
+  font-size: 13px; /* aumenta o tamanho da fonte */
   text-align: center;
   border: none;
   background-color: #f2cd00;
@@ -635,7 +636,6 @@
   transition: background-color 0.3s ease;
 }
 
-
 #filtros button:hover {
   background-color: #f2cd00;
   color: #000000;
@@ -645,7 +645,6 @@
   background-color: black;
   color: white;
 }
-
 </style>
 
 <script>
@@ -655,20 +654,35 @@
 
   // Mostra todos os produtos
   function mostrarTodos() {
-    produtos.forEach(p => p.style.display = 'block');
-  }
+  filtroAtual = 'todos';
+
+  // Também limpa o campo de busca
+  document.getElementById('search-input').value = '';
+
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.style.display = 'block';
+  });
+}
 
   // Filtra por intervalo de ID
-  function filtrarPorCategoria(min, max) {
-    produtos.forEach(produto => {
-      const id = parseInt(produto.dataset.id);
-      if (id >= min && id <= max) {
-        produto.style.display = 'block';
-      } else {
-        produto.style.display = 'none';
-      }
-    });
-  }
+function filtrarPorCategoria(inicio, fim) {
+  filtroAtual = `${inicio}-${fim}`;
+
+  // Limpa o campo de busca ao trocar de categoria
+  const searchInput = document.getElementById('search-input');
+  searchInput.value = '';
+
+  const cards = document.querySelectorAll('.product-card');
+
+  cards.forEach(card => {
+    const titulo = card.querySelector('h3').innerText;
+    const numero = parseInt(titulo.split(' ')[0]);
+
+    const dentroDaCategoria = numero >= inicio && numero <= fim;
+
+    card.style.display = dentroDaCategoria ? 'block' : 'none';
+  });
+}
 
   // Filtra promoções (supondo data-promocao="true")
   function filtrarPromocoes() {
@@ -680,32 +694,30 @@
 
   // Lógica ao clicar nos botões
   botoes.forEach(botao => {
-    botao.addEventListener('click', (e) => {
-      e.stopPropagation();
-      botoes.forEach(b => b.classList.remove('ativo'));
-      botao.classList.add('ativo');
+  botao.addEventListener('click', (e) => {
+    e.stopPropagation();
+    botoes.forEach(b => b.classList.remove('ativo'));
+    botao.classList.add('ativo');
 
-      const acao = botao.dataset.acao;
-      const intervalo = botao.dataset.intervalo;
+    const acao = botao.dataset.acao;
+    const intervalo = botao.dataset.intervalo;
 
-      if (acao === "todos") {
-        mostrarTodos();
-      } else if (acao === "promocoes") {
-        filtrarPromocoes();
-      } else if (intervalo) {
-        const [min, max] = intervalo.split('-').map(Number);
-        filtrarPorCategoria(min, max);
-      }
-    });
-  });
-
-  // Clique fora dos botões → limpa filtro e classe ativa
-  document.addEventListener('click', (e) => {
-    if (!container.contains(e.target)) {
-      botoes.forEach(b => b.classList.remove('ativo'));
-      mostrarTodos();
+    if (acao === "todos") {
+      categoriaAtiva = null;
+    } else if (acao === "promocoes") {
+      categoriaAtiva = null;
+      produtos.forEach(produto => {
+        const emPromocao = produto.dataset.promocao === "true";
+        produto.style.display = emPromocao ? 'block' : 'none';
+      });
+      return;
+    } else if (intervalo) {
+      categoriaAtiva = intervalo.split('-').map(Number);
     }
+
+    aplicarFiltros();
   });
+});
   
   // Ao clicar em um botão, ativa apenas ele
   botoes.forEach(botao => {
@@ -824,7 +836,12 @@ const categorias = [
 
 function filtrarPorCategoria(inicio, fim) {
   filtroAtual = `${inicio}-${fim}`;
-  document.querySelectorAll('.product-card').forEach(card => {
+
+  // Limpa o campo de busca
+  document.getElementById('search-input').value = '';
+
+  const cards = document.querySelectorAll('.product-card');
+  cards.forEach(card => {
     const titulo = card.querySelector('h3').innerText;
     const numero = parseInt(titulo.split(' ')[0]);
     card.style.display = (numero >= inicio && numero <= fim) ? 'block' : 'none';
