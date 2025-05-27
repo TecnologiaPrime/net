@@ -638,15 +638,94 @@
 
 #filtros button:hover {
   background-color: #f2cd00;
-  color: #ffffff;
+  color: #000000;
+}
+
+#filtros button.ativo {
+  background-color: black;
+  color: white;
 }
 
 </style>
 
-<!-- JavaScript do carrinho -->
 <script>
+  const botoes = document.querySelectorAll('#filtros button');
+  const container = document.getElementById('filtros');
+  const produtos = document.querySelectorAll('.produto');
+
+  // Mostra todos os produtos
+  function mostrarTodos() {
+    produtos.forEach(p => p.style.display = 'block');
+  }
+
+  // Filtra por intervalo de ID
+  function filtrarPorCategoria(min, max) {
+    produtos.forEach(produto => {
+      const id = parseInt(produto.dataset.id);
+      if (id >= min && id <= max) {
+        produto.style.display = 'block';
+      } else {
+        produto.style.display = 'none';
+      }
+    });
+  }
+
+  // Filtra promoções (supondo data-promocao="true")
+  function filtrarPromocoes() {
+    produtos.forEach(produto => {
+      const emPromocao = produto.dataset.promocao === "true";
+      produto.style.display = emPromocao ? 'block' : 'none';
+    });
+  }
+
+  // Lógica ao clicar nos botões
+  botoes.forEach(botao => {
+    botao.addEventListener('click', (e) => {
+      e.stopPropagation();
+      botoes.forEach(b => b.classList.remove('ativo'));
+      botao.classList.add('ativo');
+
+      const acao = botao.dataset.acao;
+      const intervalo = botao.dataset.intervalo;
+
+      if (acao === "todos") {
+        mostrarTodos();
+      } else if (acao === "promocoes") {
+        filtrarPromocoes();
+      } else if (intervalo) {
+        const [min, max] = intervalo.split('-').map(Number);
+        filtrarPorCategoria(min, max);
+      }
+    });
+  });
+
+  // Clique fora dos botões → limpa filtro e classe ativa
+  document.addEventListener('click', (e) => {
+    if (!container.contains(e.target)) {
+      botoes.forEach(b => b.classList.remove('ativo'));
+      mostrarTodos();
+    }
+  });
+  
+  // Ao clicar em um botão, ativa apenas ele
+  botoes.forEach(botao => {
+    botao.addEventListener('click', (e) => {
+      e.stopPropagation(); // evita que o clique suba pro document
+      botoes.forEach(b => b.classList.remove('ativo'));
+      botao.classList.add('ativo');
+    });
+  });
+
+  // Ao clicar fora do container, remove classe "ativo" de todos
+  document.addEventListener('click', (e) => {
+    if (!container.contains(e.target)) {
+      botoes.forEach(b => b.classList.remove('ativo'));
+    }
+  });
+
+  //JavaScript do carrinho
   const carrinhoSidebar = document.getElementById("cart-sidebar");
-const carrinhoOverlay = document.getElementById("cart-overlay");
+  const carrinhoOverlay = document.getElementById("cart-overlay");
 
 // Recupera carrinho salvo no localStorage
 let carrinhoSalvo = localStorage.getItem('carrinho');
