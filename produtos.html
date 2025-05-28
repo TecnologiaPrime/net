@@ -894,6 +894,10 @@ function filtrarPorCategoria(inicio, fim) {
 
 function mostrarTodos() {
   filtroAtual = 'todos';
+
+  // Limpa o campo de busca
+  document.getElementById('search-input').value = '';
+
   document.querySelectorAll('.product-card').forEach(card => {
     card.style.display = 'block';
   });
@@ -901,6 +905,10 @@ function mostrarTodos() {
 
 function filtrarPromocoes() {
   filtroAtual = 'promocoes';
+
+  // Limpa o campo de busca
+  document.getElementById('search-input').value = '';
+
   const cards = document.querySelectorAll('.product-card');
   cards.forEach(card => {
     const priceOriginal = card.querySelector('.price1');
@@ -908,27 +916,16 @@ function filtrarPromocoes() {
   });
 }
 
-function filtrarProdutos() {
-  const termo = document.getElementById('search-input').value.toLowerCase();
+function filtrarPromocoes() {
+  filtroAtual = 'promocoes';
+
+  // Limpa o campo de busca
+  document.getElementById('search-input').value = '';
+
   const cards = document.querySelectorAll('.product-card');
-
   cards.forEach(card => {
-    const titulo = card.querySelector('h3').innerText.toLowerCase();
-    const contemTermo = titulo.includes(termo);
-    let mostrar = false;
-
-    if (filtroAtual === 'todos') {
-      mostrar = contemTermo;
-    } else if (filtroAtual === 'promocoes') {
-      const temPromocao = card.querySelector('.price1') !== null;
-      mostrar = temPromocao && contemTermo;
-    } else if (filtroAtual.includes('-')) {
-      const numero = parseInt(titulo.split(' ')[0]);
-      const [inicio, fim] = filtroAtual.split('-').map(Number);
-      mostrar = numero >= inicio && numero <= fim && contemTermo;
-    }
-
-    card.style.display = mostrar ? 'block' : 'none';
+    const priceOriginal = card.querySelector('.price1');
+    card.style.display = priceOriginal ? 'block' : 'none';
   });
 }
 
