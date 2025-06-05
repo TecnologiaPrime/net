@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Prime Acessórios & Informática</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Bloquear scroll horizontal no body e html */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Garantir que todos os elementos não ultrapassem a largura da viewport */
+* {
+  max-width: 100vw;
+  box-sizing: border-box;
+}
+
+/* Corrigir possíveis margens ou larguras exageradas no main */
+main {
+  overflow-x: hidden;
+}
+
+/* Ajuste em imagens para não ultrapassar */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: #111;
+      padding-top: 80px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #f2cd00;
+      color: #111;
+      padding: 20px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      z-index: 300;
+      user-select: none;
+    }
+
+    header h1 {
+      font-size: 2.4em;
+      font-weight: 700;
+      line-height: 1.2;
+      max-width: 70%;
+      overflow-wrap: break-word;
+    }
+
+    #menu-toggle {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 5px;
+      width: 28px;
+      height: 22px;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    #menu-toggle span {
+      display: block;
+      width: 100%;
+      height: 3px;
+      background: #111;
+      border-radius: 2px;
+      transition: background 0.3s ease;
+    }
+
+    #menu-toggle:hover span {
+      background: #444;
+    }
+
+    .banner-wrapper {
+      width: 100%;
+      max-height: 800px; /* ajuste a altura conforme necessário */
+      max-width: 1200px;
+      margin: 30px auto 10px auto;
+      border-radius: 10px;
+      overflow: hidden;
+      padding: 0 15px;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media (min-width: 1024px) {
+  .banner-wrapper {
+    max-width: 1800px; /* ou outro valor maior que 1200px */
+  }
+}
+
+    .banner-wrapper img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      filter: brightness(0.95);
+      transition: filter 0.3s ease;
+      border-radius: 10px;
+    }
+
+    .banner-wrapper img:hover {
+      filter: brightness(1);
+    }
+
+
+    /* MENU LATERAL */
+    #side-menu {
+  position: fixed;
+  top: 0;
+  right: -260px; /* ← muda de left: -260px para right */
+  width: 200px;
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: -3px 0 15px rgba(0,0,0,0.2); /* ← sombra invertida */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  transition: right 0.3s ease; /* ← muda de left para right */
+  z-index: 305;
+  overflow-y: auto;
+  border-left: 4px solid #f2cd00; /* ← muda de border-right para border-left */
+}
+
+    #side-menu.active {
+      right: 0;
+    }
+
+   #close-btn {
+  align-self: flex-end;
+  background: none;
+  border: none;
+  font-size: 2.5em;
+  color: #f2cd00;
+  cursor: pointer;
+  user-select: none;
+  padding: 0;
+  margin-bottom: 10px;
+  line-height: 1;
+  transition: color 0.3s ease;
+}
+
+#close-btn:hover,
+#close-btn:focus {
+  color: #000000 !important;
+  outline: none;
+}
+
+    #side-menu a {
+      color: #f2cd00;
+      font-weight: 700;
+      font-size: 1.1em;
+      text-decoration: none;
+      user-select: none;
+    }
+
+    #side-menu a:hover,
+    #side-menu a:focus {
+      color: #050505;
+      outline: none;
+    }
+
+    main {
+  max-width: 2500px; /* igual ao banner */
+  margin: 50px auto 60px auto; /* auto nas laterais centraliza */
+  padding: 0 10px; /* mesma padding do banner-wrapper */
+  flex-grow: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+    .card {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 15px;
+      padding: 30px 25px;
+      margin-bottom: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+
+    .card:hover,
+    .card:focus-within {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 32px rgba(255, 215, 0, 0.3);
+    }
+
+    .card h2 {
+      color: #f2cd00;
+      margin-bottom: 15px;
+      font-size: 2em;
+    }
+
+    .card p {
+      font-size: 1.1em;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      text-align: justify;
+    }
+
+    .btn-wrapper {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      background: #f2cd00;
+      color: #000;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      margin: 5px 10px 5px 0;
+      transition: all 0.3s ease;
+      user-select: none;
+      cursor: pointer;
+      font-size: 1.1em;
+      box-shadow: 0 4px 8px rgba(242, 205, 0, 0.6);
+    }
+
+    .btn:hover,
+    .btn:focus {
+      background: #111;
+      color: #fff;
+      outline: none;
+      box-shadow: 0 6px 14px rgba(255, 215, 0, 0.9);
+    }
+
+    .btn i {
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .footer-image-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: -55px auto -30px auto;
+      padding: 0 15px;
+    }
+
+    .footer-image-wrapper img {
+      max-width: 150px;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+    }
+
+    footer {
+      background-color: #f1f1f1;
+      color: #111;
+      padding: 25px 15px;
+      border-top: 3px solid #f2cd00;
+      margin-top: 60px;
+      flex-shrink: 0;
+      text-align: justify;
+      width: 100vw;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 0 0 15px 15px;
+      box-shadow: inset 0 4px 8px rgba(242, 205, 0, 0.1);
+    }
+
+    .footer-infos {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      align-items: center;
+      flex-wrap: nowrap;
+      margin-bottom: 10px;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .footer-infos div {
+      display: flex;
+      align-items: center;
+      font-size: 1em;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .footer-infos i {
+      color: #f2cd00;
+      font-size: 1.3em;
+    }
+
+    .highlight {
+      color: #f2cd00;
+      font-weight: bold;
+    }
+
+    footer p {
+      text-align: center;
+      font-size: 0.9em;
+      opacity: 0.7;
+      user-select: none;
+    }
+
+    /* Centralizar os botões no desktop e mobile */
+    @media (min-width: 769px) {
+      .btn-wrapper {
+        justify-content: center !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+  /* Centralizar os botões na .btn-wrapper */
+  .btn-wrapper {
+    display: flex !important;
+    justify-content: center !important; /* centraliza horizontalmente */
+    width: 100%; /* garante ocupar toda largura disponível */
+  }
+
+  /* Se quiser, centralizar texto da seção para melhorar a harmonia */
+  .card {
+    text-align: center;
+  }
+}
+
+    @media (max-width: 768px) {
+  .footer-infos div {
+    font-size: 0.9em;
+  }
+
+  footer p {
+    font-size: 0.8em;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Centralizar o texto dos títulos e parágrafos */
+  .card {
+    text-align: left;
+  }
+
+  /* Centralizar os botões dentro da .btn-wrapper */
+  .btn-wrapper {
+    justify-content: center !important; /* centraliza horizontalmente os botões */
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-infos div {
+    font-size: 0.8em;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .footer-infos {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  footer p {
+    font-size: 0.75em;
+  }
+}
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 1.8em;
+        max-width: 60%;
+      }
+
+      .card {
+        padding: 20px 15px;
+      }
+
+      .card h2 {
+        font-size: 1.6em;
+      }
+
+      .btn {
+        font-size: 1em;
+        padding: 10px 20px;
+        margin: 8px 6px 8px 0;
+      }
+
+      main {
+        margin: 30px 15px 60px 15px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header {
+        padding: 15px 20px;
+      }
+
+      header h1 {
+        font-size: 1.4em;
+        max-width: 70%;
+      }
+
+      #menu-toggle {
+        width: 24px;
+        height: 18px;
+        gap: 4px;
+      }
+
+      #menu-toggle span {
+        height: 2.5px;
+      }
+
+      main {
+        margin: 20px 10px 50px -1px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Prime Acessórios & Informática</h1>
+    <div id="menu-toggle" role="button" tabindex="0" aria-label="Abrir menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+
+  <nav id="side-menu" aria-label="Menu lateral">
+    <button id="close-btn" aria-label="Fechar menu">&times;</button>
+    <a href="quemsomos.html">Quem Somos?</a>
+    <a href="produtos.html">Produtos</a>
+    <a href="servicos.html">Serviços</a>
+  </nav>
+
+  <div class="banner-wrapper">
+    <img src="https://lh3.googleusercontent.com/pw/AP1GczOj9HJUz47YrYsqDrXjQQyHhzyoYin144neq9ES0RDTepAFKaqkOJqsQwfgqIUACnIhMRT6FmZhlsHscpGJQVhUlO3C9exXrP7ioppHAiCCivX710yjSMXUKOk3nuOmzfi7d1pBuvMUMgsJRfhpNTY=w1825-h913-s-no-gm?authuser=0" alt="Banner principal da Prime Acessórios & Informática" />
+  </div>
+
+  <main>
+    <section class="card" id="produtos" tabindex="0">
+      <h2>E-Commerce</h2>
+      <p>Informática, acessórios e os queridinhos do momento com ofertas imperdíveis. Acesse, escolha o que precisa e compre online com praticidade e segurança.</p>
+      <div class="btn-wrapper">
+        <a href="produtos.html" class="btn">Ver produtos</a>
+      </div>
+    </section>
+
+    <section class="card" id="servicos" tabindex="0">
+      <h2>Assistência Técnica</h2>
+      <p>Conte com uma equipe qualificada e pronta pra cuidar do seu PC ou notebook com atenção e experiência.</p>
+      <div class="btn-wrapper">
+        <a href="servicos.html" class="btn">Saiba mais</a>
+      </div>
+    </section>
+
+    <section class="card" id="contato" tabindex="0">
+      <h2>Fale Conosco</h2>
+      <p>Entre em contato pelo WhatsApp
+        <br>
+        <strong class="highlight">(79) 99626-9748</strong><br />
+        </br>
+        Siga nosso Instagram para novidades e promoções 
+        <br>
+        <strong class="highlight">@primeacessorioseinformatica</strong>
+        </br>
+      </p>
+      <div class="btn-wrapper">
+        <a href="https://wa.me/5579996269748" class="btn" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="https://instagram.com/primeacessorioseinformatica" class="btn" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i> Instagram</a>
+      </div>
+    </section>
+  </main>
+
+  <div class="footer-image-wrapper">
+    <img src="https://lh3.googleusercontent.com/pw/AP1GczMGCqHX2Qw4CGooxwoeXNMAx5VxVsHE1YrNzOWOKyPpSUPvkmJF1xEZX2a586nIPowLVU9A9VepJKrH4Q0wy0NOsX7fMNIv015kX6Wnpg1CP8v2VfM3wIVurR58DmWtq_tPeKJG53IqOIZIfN7BSQE=w1072-h356-s-no-gm?authuser=0" alt="Imagem ilustrativa para o rodapé" />
+  </div>
+
+ <footer>
+    <div class="footer-infos">
+      <div><i class="fas fa-envelope"></i><span>primeacessorioseinformatica@gmail.com</span></div>
+      <div><i class="fas fa-map-marker-alt"></i><span>Itabaiana, SE - Brasil</span></div>
+      <div><i class="fas fa-credit-card"></i><span>Aceitamos Cartões</span></div>
+      <div><i class="fas fa-lock"></i><span>Site Seguro</span></div>
+    </div>
+    <p>&copy; 2025 Prime Sistemas. Todos os direitos reservados.</p>
+  </footer>
+
+ <style>
+  /* FOOTER ADICIONAL PARA MOBILE */
+  @media (max-width: 480px) {
+    .footer-infos {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      gap: 12px;
+      padding-left: 1px;
+    }
+
+    .footer-infos div {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      font-size: 0.85em;
+      width: 100%;
+    }
+
+    .footer-infos i {
+      width: 20px; /* largura fixa para alinhar os textos */
+      font-size: 1.1em;
+      text-align: center; /* centraliza o ícone na área dele */
+    }
+
+    .footer-infos span {
+      display: inline-block;
+      flex: 1; /* ocupa o restante da linha */
+    }
+
+    footer p {
+      font-size: 0.75em;
+      text-align: center;
+      margin-top: 10px;
+    }
+  }
+</style>
+
+  <script>
+    const menuToggle = document.getElementById('menu-toggle');
+    const sideMenu = document.getElementById('side-menu');
+    const closeBtn = document.getElementById('close-btn');
+
+    function openMenu() {
+      sideMenu.classList.add('active');
+      closeBtn.focus();
+    }
+
+    function closeMenu() {
+      sideMenu.classList.remove('active');
+      menuToggle.focus();
+    }
+
+    menuToggle.addEventListener('click', openMenu);
+    menuToggle.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openMenu();
+      }
+    });
+
+    closeBtn.addEventListener('click', closeMenu);
+    closeBtn.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        closeMenu();
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!sideMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+        closeMenu();
+      }
+    });
+  </script>
+</body>
+</html>

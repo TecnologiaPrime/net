@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Quem Somos - Prime Acessórios & Informática</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      max-width: 100vw;
+    }
+
+    html, body {
+      overflow-x: hidden;
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: #111;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-top: 80px;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #f2cd00;
+      color: #111;
+      padding: 20px 30px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      z-index: 300;
+    }
+
+    header h1 {
+      font-size: 2em;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .close-btn {
+      font-size: 2em;
+      text-decoration: none;
+      color: #111;
+      font-weight: bold;
+    }
+
+    .close-btn:hover {
+      color: #000;
+    }
+
+    main {
+      flex: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 15px;
+      padding: 30px 25px;
+      margin-bottom: 30px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 32px rgba(255, 215, 0, 0.3);
+    }
+
+    .card h2 {
+      color: #f2cd00;
+      margin-bottom: 15px;
+      font-size: 1.8em;
+    }
+
+    .card p {
+      text-align: justify;
+      font-size: 1.1em;
+      line-height: 1.6;
+    }
+
+    footer {
+      background-color: #f1f1f1;
+      color: #111;
+      text-align: center;
+      padding: 20px 15px;
+      border-top: 3px solid #f2cd00;
+      margin-top: 40px;
+      font-size: 0.9em;
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 1.5em;
+      }
+
+      .card h2 {
+        font-size: 1.4em;
+      }
+
+      .card p {
+        font-size: 0.95em;
+      }
+
+      footer {
+        font-size: 0.75em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Quem Somos</h1>
+    <a href="index.html" class="close-btn" title="Voltar">&times;</a>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2>Sobre a Prime</h2>
+      <p><strong>A Prime Acessórios & Informática conecta pessoas à tecnologia com eficiência, confiança e qualidade.</strong> Atuamos com assistência técnica especializada em computadores e venda de acessórios e periféricos para uso pessoal e empresarial.</p>
+      <p><strong>Contamos com uma equipe técnica qualificada</strong>, preparada para realizar diagnósticos precisos, manutenções, upgrades e formatações completas. Nosso compromisso é garantir o melhor desempenho dos seus equipamentos, com agilidade e responsabilidade.</p>
+      <p><strong>Mais do que produtos, oferecemos soluções completas em tecnologia</strong>, com atendimento transparente, suporte pós-venda eficiente e foco total na satisfação do cliente.</p>
+      <p><strong>Seja para consertar, atualizar ou equipar o seu computador, escolha a Prime Acessórios & Informática.</strong></p>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Prime Sistemas. Todos os direitos reservados.</p>
+  </footer>
+</body>
+</html>
