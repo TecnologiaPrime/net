@@ -685,6 +685,111 @@
   0%, 100% { transform: rotate(0deg); }
   50% { transform: rotate(6deg); }
 }
+
+.modal-caracteristicas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6); /* fundo escurecido */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-conteudo {
+  background: white;
+  width: 90%;
+  max-width: 350px;
+  padding: 20px;
+  border-radius: 12px;
+  position: relative;
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.fechar-modal {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 24px;
+  background: none;
+  border: none;
+  color: #000;
+  cursor: pointer;
+}
+
+.modal-texto {
+  margin-top: 20px;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #333;
+  text-align: left;
+}
+
+@media (max-width: 767px) {
+  .modal-texto {
+    font-size: 14px;
+  }
+}
+
+/* Modal overlay */
+#modal-caracteristicas {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  justify-content: center;
+  align-items: center;
+}
+
+/* Conteúdo do modal */
+#modal-caracteristicas .modal-conteudo {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  max-height: 90vh;
+  overflow-y: auto;
+  width: 90%;
+  max-width: 500px; /* Tamanho para mobile */
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  position: relative;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Para telas maiores: aumenta o tamanho */
+@media (min-width: 768px) {
+  #modal-caracteristicas .modal-conteudo {
+    max-width: 700px; /* Aumenta para desktop */
+    padding: 30px;
+  }
+}
+
+/* Botão fechar */
+#modal-caracteristicas .fechar-modal {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Animação opcional */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
   </style>
 </head>
 <body>
@@ -776,6 +881,15 @@
     </div>
   </header>
 
+<!-- Modal de Características -->
+<div id="modal-caracteristicas" class="modal-caracteristicas" style="display: none;">
+  <div class="modal-conteudo">
+    <button class="fechar-modal" onclick="fecharModal()">×</button>
+    <div class="modal-texto"></div>
+  </div>
+</div>
+
+
 <div id="filtros">
   <button onclick="mostrarTodos()">Todos</button>
   <button onclick="filtrarPromocoes()">Promoções</button>
@@ -802,10 +916,11 @@
           <input type="number" min="1" value="1" />
           <button onclick="adicionarAoCarrinho(this, 'STANLEY ROSA BEBÊ 950ML')">Adicionar</button>
         </div>
-        <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+        <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
       </div>
       <div class="caracteristicas" style="display: none;">
         <p>
+          <strong>STANLEY ROSA BEBÊ 950ML</strong><br>
           - Térmica até 24h<br>
           - Capacidade: 950ml<br>
           - Cor: Rosa bebê<br>
@@ -825,10 +940,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'STANLEY ROXO 950ML')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>STANLEY ROXO 950ML</strong><br>
       - Térmica até 24h<br>
       - Capacidade: 950ml<br>
       - Cor: Roxo<br>
@@ -848,10 +964,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'STANLEY AZUL BEBÊ 800ML')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>STANLEY AZUL BEBÊ 800ML</strong><br>
       - Térmica até 24h<br>
       - Capacidade: 800ml<br>
       - Cor: Azul bebê<br>
@@ -879,10 +996,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'STANLEY VERDE BEBÊ 950ML')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>STANLEY VERDE BEBÊ 950ML</strong><br>
       - Térmica até 24h<br>
       - Capacidade: 950ml<br>
       - Cor: Verde Bebê<br>
@@ -902,10 +1020,12 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'STANLEY ROSA 950ML')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
-    <p>- Térmica até 24h<br>
+    <p>
+      <strong>STANLEY ROSA 950ML</strong><br>
+       - Térmica até 24h<br>
        - Capacidade: 950ml<br>
        - Cor: Rosa metálico<br>
        - Material: Inox<br>
@@ -927,10 +1047,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'STANLEY OFF WHITE 1200ML')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>STANLEY OFF WHITE 1200ML</strong><br>
       - Térmica até 24h<br>
       - Capacidade: 1200ml<br>
       - Cor: Off White<br>
@@ -953,10 +1074,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'STANLEY LILÁS 1200ML')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>STANLEY LILÁS 1200ML</strong><br>
       - Térmica até 24h<br>
       - Capacidade: 1200ml<br>
       - Cor: Lilás<br>
@@ -976,13 +1098,14 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'STANLEY COPO 1200ML')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>STANLEY COPO 1200ML</strong><br>
       - Térmica até 24h<br>
       - Capacidade: 1200ml<br>
-      - Cor: Inox escovado<br>
+      - Cor: Lilás <br>
       - Material: Inox<br>
       - Ideal para bebidas geladas e quentes
     </p>
@@ -999,10 +1122,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'STANLEY COPO 473ML')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>STANLEY COPO 473ML</strong><br>
       - Térmico até 17h gelado<br>
       - Capacidade: 473ml<br>
       - Cor: Inox escovado<br>
@@ -1022,14 +1146,16 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'SUPORTE VEICULAR PEINING')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>SUPORTE VEICULAR PEINING</strong><br>
       - Suporte universal para smartphones<br>
       - Fixação no painel ou para-brisa<br>
       - Ajustável em ângulo e largura<br>
       - Compatível com aparelhos de até 6,5"
+      - Estável e Antichoque
     </p>
   </div>
 </div>
@@ -1045,14 +1171,16 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'SUPORTE VEICULAR HMASTON')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>SUPORTE VEICULAR HMASTON</strong><br>
       - Suporte com ventosa de alta fixação<br>
       - Compatível com celulares de até 7"<br>
       - Rotação de 360°<br>
       - Base reforçada com apoio antiderrapante
+      - Estável e Antichoque
     </p>
   </div>
 </div>
@@ -1067,10 +1195,12 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'CARREGADOR AUTOMOTIVO TURBO')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>CARREGADOR AUTOMOTIVO TURBO</strong><br>
+      - Carregamento Turbo 60W
       - Saída USB duplo com carregamento rápido<br>
       - Compatível com todos os veículos<br>
       - Proteção contra sobrecarga e curto-circuito<br>
@@ -1089,10 +1219,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'FONTE DUAS USB + CABO APPLE')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>FONTE DUAS USB + CABO APPLE</strong><br>
       - Fonte bivolt com 2 portas USB<br>
       - Acompanha cabo tipo Lightning (Apple)<br>
       - Saída 5V/2.4A<br>
@@ -1113,10 +1244,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'CARREGADOR PORTÁTIL 10000MAH')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>CARREGADOR PORTÁTIL 10000MAH</strong><br>
       - 3 entradas para carregamento da bateria: Tipo C, Lightning e V8<br>
       - 1 saída USB para carregar dispositivos<br>
       - Acompanha cabo USB para recarga do power bank<br>
@@ -1137,10 +1269,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'CABO 2 METROS LIGHTNING')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>CABO 2 METROS LIGHTNING</strong><br>
       - Cabo com 2 metros de comprimento<br>
       - Compatível com dispositivos Apple (conector Lightning)<br>
       - Revestimento reforçado para maior durabilidade<br>
@@ -1160,10 +1293,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'HUB USB 4 PORTAS USB')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>HUB USB 4 PORTAS USB</strong><br>
       - Suporta até 4 dispositivos USB simultaneamente<br>
       - Compatível com USB 2.0 e 3.0 para alta velocidade de transferência<br>
       - Plug and Play, sem necessidade de drivers<br>
@@ -1183,10 +1317,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'CASE SSD/HD 3.0 2.5')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>CASE SSD/HD 3.0 2.5</strong><br>
       - Compatível com SSD e HD 2.5”<br>
       - Interface USB 3.0 para transferência rápida de dados<br>
       - Design resistente para proteção dos seus dispositivos<br>
@@ -1206,10 +1341,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'CARREGADOR UNIVERSAL')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>CARREGADOR UNIVERSAL</strong><br>
       - Compatível com notebooks de diversas marcas<br>
       - Voltagem de saída ajustável: 12V, 15V, 16V, 18V, 19V, 20V e 24V<br>
       - Corrente de saída de até 5 amperes para carregamento eficiente<br>
@@ -1229,10 +1365,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'MOUSE SEM FIO TARGUS')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>MOUSE SEM FIO TARGUS</strong><br>
       - Conexão sem fio para maior liberdade de movimentos<br>
       - Design ergonômico para uso confortável por horas<br>
       - Compatível com Windows e Mac OS<br>
@@ -1252,10 +1389,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'FONTE ATX 230W BLUECASE')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>FONTE ATX 230W BLUECASE</strong><br>
       - Potência nominal de 230 Watts para sistemas compactos<br>
       - Compatível com placas-mãe ATX padrão<br>
       - Proteções contra sobrecarga, curto-circuito e superaquecimento<br>
@@ -1275,10 +1413,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'CONTROLE JOYPAD USB PC')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none; text-align: left;">
     <p>
+      <strong>CONTROLE JOYPAD USB PC</strong><br>
       - Compatível com PCs via conexão USB<br>
       - Layout ergonômico para conforto durante jogos longos<br>
       - Botões responsivos e direcionais precisos<br>
@@ -1298,10 +1437,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'MOUSE PAD MAXPRINT')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none; text-align: left;">
       <p>
+        <strong>MOUSE PAD MAXPRINT</strong><br>
       - Superfície antiderrapante para maior estabilidade<br>
       - Material resistente à água e fácil de limpar<br>
       - Tamanho compacto ideal para qualquer mesa<br>
@@ -1321,10 +1461,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'SUPORTE NOTEBOOK MAXPRINT')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>SUPORTE NOTEBOOK MAXPRINT</strong><br>
       - Ajustável para diferentes ângulos de visão<br>
       - Suporta notebooks até 15,6 polegadas<br>
       - Estrutura metálica resistente<br>
@@ -1344,10 +1485,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'CABO HDMI 3 METROS')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>CABO HDMI 3 METROS</strong><br>
       - Suporta resolução até 4K UHD<br>
       - Conectores banhados a ouro para melhor sinal<br>
       - Compatível com 3D e Full HD 1080p<br>
@@ -1367,10 +1509,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'FONE SEM FIO REDMI AIRDOTSPRO')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>FONE SEM FIO REDMI AIRDOTSPRO</strong><br>
       - Conexão Bluetooth estável e rápida<br>
       - Design ergonômico para conforto prolongado<br>
       - Som com graves profundos e agudos claros<br>
@@ -1390,10 +1533,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'HEADSET FORTREK BLACK HAWK')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>HEADSET FORTREK BLACK HAWK</strong><br>
       - Som estéreo de alta definição<br>
       - Microfone com cancelamento de ruído<br>
       - Almofadas macias para conforto prolongado<br>
@@ -1413,10 +1557,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'MINI CAIXA DE SOM PORTÁTIL')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>MINI CAIXA DE SOM PORTÁTIL</strong><br>
       - Compacta e leve para transporte<br>
       - Conexão via cabo P2 ou Bluetooth<br>
       - Bateria recarregável via USB<br>
@@ -1439,10 +1584,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'MINI MASSAGEADOR')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>MINI MASSAGEADOR</strong><br>
       - Estimula a circulação sanguínea<br>
       - Design ergonômico em forma de tripé<br>
       - Funciona com 3 pilhas AAA<br>
@@ -1462,10 +1608,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'AROMATIZADOR AUTOMOTIVO')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>AROMATIZADOR AUTOMOTIVO</strong><br>
       - Perfuma o interior do carro<br>
       - Aromas diversos (lavanda, baunilha etc.)<br>
       - Fácil de pendurar no retrovisor<br>
@@ -1485,10 +1632,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'CARTÃO DE MEMÓRIA 16GB')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>CARTÃO DE MEMÓRIA 16GB</strong><br>
       - Capacidade de 16GB<br>
       - Classe 10 para alta velocidade<br>
       - Ideal para câmeras, celulares e tablets<br>
@@ -1508,10 +1656,11 @@
       <input type="number" min="1" value="1" />
       <button onclick="adicionarAoCarrinho(this, 'PEN DRIVE MASTERDRIVE 16GB')">Adicionar</button>
     </div>
-    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
   </div>
   <div class="caracteristicas" style="display: none;">
     <p>
+      <strong>PEN DRIVE MASTERDRIVE 16GB</strong><br>
       - Armazenamento portátil de 16GB<br>
       - Conexão USB 2.0 compatível com 3.0<br>
       - Compatível com Windows, Mac e Linux<br>
@@ -1563,16 +1712,17 @@
   });
 }
 
-function toggleCaracteristicas(botao) {
-  const card = botao.closest('.product-card');
-  const box = card.querySelector('.caracteristicas');
-  if (box.style.display === 'none') {
-    box.style.display = 'block';
-    botao.textContent = 'Ocultar';
-  } else {
-    box.style.display = 'none';
-    botao.textContent = 'Características';
-  }
+function abrirModal(el) {
+  const card = el.closest('.product-card');
+  const texto = card.querySelector('.caracteristicas').innerHTML;
+
+  const modal = document.getElementById('modal-caracteristicas');
+  modal.querySelector('.modal-texto').innerHTML = texto;
+  modal.style.display = 'flex';
+}
+
+function fecharModal() {
+  document.getElementById('modal-caracteristicas').style.display = 'none';
 }
 
   // Filtra por intervalo de ID
