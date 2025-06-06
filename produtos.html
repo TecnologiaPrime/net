@@ -126,33 +126,88 @@
     }
 
     .controls {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      margin-top: 10px;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
 
-    .controls input[type="number"] {
-      width: 60px;
-      padding: 5px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      text-align: center;
-    }
+.controls .top-row {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
 
-    .controls button {
-      background-color: #f2cd00;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 5px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.controls input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  box-sizing: border-box;
+  appearance: auto;
+}
 
-    .controls button:hover {
-      background-color: #e0bc00;
-    }
+.controls input[type="number"]::-webkit-inner-spin-button,
+.controls input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: auto;
+  margin: 0;
+}
+
+.controls button {
+  background-color: #f2cd00;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  white-space: nowrap;
+}
+
+.controls button:hover {
+  background-color: #e0bc00;
+}
+
+/* Link Características abaixo e centralizado */
+.caracteristicas {
+  display: none; /* Inicia escondido */
+  text-align: left;
+  background-color: #f9f9f9;
+  padding: 15px;
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  max-width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.controls .caracteristica-link:hover {
+  color: #e0bc00;
+}
+
+.caracteristica-link {
+  color: black;
+  text-decoration: none; /* Opcional para tirar sublinhado */
+}
+
+.controls .caracteristica-link:hover {
+  color: #e0bc00;
+}
+
+/* Responsivo para telas menores */
+@media (max-width: 600px) {
+  .caracteristicas {
+    text-align: left;
+    font-size: 13px;
+    padding: 10px;
+  }
+}
 
     footer {
       background-color: #f1f1f1;
@@ -539,6 +594,26 @@
     transform: scale(1.1);
   }
 
+  @media (min-width: 768px) {
+  #search-input {
+    width: 1220px; /* ou qualquer valor maior que 130px */
+  }
+}
+
+.toggle-btn {
+  margin-top: 5px;
+  background-color: #f1c40f;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  border-radius: 5px;
+}
+
+.toggle-btn:hover {
+  background-color: #d4ac0d;
+}
+
 #bandeirinhas,
 .cordao-bandeirinhas {
   top: 0;
@@ -712,40 +787,79 @@
   <button onclick="filtrarPorCategoria(251, 300)">Diversos</button>
 </div>
 
-  <main>
-      <div class="product-grid">
-      <div class="product-card">
+<main>
+  <div class="product-grid">
+    <div class="product-card">
       <div class="image-container esgotado">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczO6EkC8Q7g1vo2ssyPFCayf5up0f36p2VbJb5aWWjjuNbn1m0dXgz2WjyJ1W_Nbgdcch7d2QwXIiE_ASU-AcTeMkQdxxYX5WDxIvvw5bi2gjVI1xL81GFfbdcnTKNpx71_6jpLTHGz2c8O99MZvLOTd=w685-h913-s-no-gm?authuser=0" alt="STANLEY ROSA BEBÊ 950ML" onclick="zoomImagem(this.src)" />
+        <img src="https://lh3.googleusercontent.com/pw/AP1GczO6EkC8Q7g1vo2ssyPFCayf5up0f36p2VbJb5aWWjjuNbn1m0dXgz2WjyJ1W_Nbgdcch7d2QwXIiE_ASU-AcTeMkQdxxYX5WDxIvvw5bi2gjVI1xL81GFfbdcnTKNpx71_6jpLTHGz2c8O99MZvLOTd=w685-h913-s-no-gm?authuser=0" 
+             alt="STANLEY ROSA BEBÊ 950ML" onclick="zoomImagem(this.src)" />
         <div class="sold-out-overlay">ESGOTADO</div>
       </div>
       <h3>1 - STANLEY ROSA BEBÊ 950ML</h3>
       <p class="price">R$ 89,90</p>
       <div class="controls">
-    <input type="number" min="1" value="1" />
-    <button onclick="adicionarAoCarrinho(this, 'STANLEY ROSA BEBÊ 950ML')">Adicionar</button>
-    </div>
+        <div class="top-row">
+          <input type="number" min="1" value="1" />
+          <button onclick="adicionarAoCarrinho(this, 'STANLEY ROSA BEBÊ 950ML')">Adicionar</button>
+        </div>
+        <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+      </div>
+      <div class="caracteristicas" style="display: none;">
+        <p>
+          - Térmica até 24h<br>
+          - Capacidade: 950ml<br>
+          - Cor: Rosa bebê<br>
+          - Material: Inox<br>
+          - Tampa com vedação
+        </p>
+      </div>
     </div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczN81p-TPufTfQgxFbREAcDZRghvXO-NbCDlq6x1pFdyWlusNKC4obfaImW1O0hYKCHH40M0GAe5jKmzWc7spLcmFEC3kEIYg7lvMGogB1lP2occpj0IFFYaSzwvBTaJSvP25Yjz2clUFowPSvAGaPYE=w685-h913-s-no-gm?authuser=0" alt="STANLEY ROXO 950ML" onclick="zoomImagem(this.src)" />
-        <h3>2 - STANLEY ROXO 950ML</h3>
-        <p class="price">R$ 89,90</p>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'STANLEY ROXO 950ML')">Adicionar</button>
-        </div>
-      </div>
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczN81p-TPufTfQgxFbREAcDZRghvXO-NbCDlq6x1pFdyWlusNKC4obfaImW1O0hYKCHH40M0GAe5jKmzWc7spLcmFEC3kEIYg7lvMGogB1lP2occpj0IFFYaSzwvBTaJSvP25Yjz2clUFowPSvAGaPYE=w685-h913-s-no-gm?authuser=0" 
+       alt="STANLEY ROXO 950ML" onclick="zoomImagem(this.src)" />
+  <h3>2 - STANLEY ROXO 950ML</h3>
+  <p class="price">R$ 89,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'STANLEY ROXO 950ML')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Térmica até 24h<br>
+      - Capacidade: 950ml<br>
+      - Cor: Roxo<br>
+      - Material: Inox<br>
+      - Tampa com vedação
+    </p>
+  </div>
+</div>
 
-      <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczPdzboFsdWNUiZBt-ulK2QpIkgsnTC_kqj7B6k2SevYBf6hWdn24ToQXHgf2Mmut6tADwtYwZoqnFXBxGvpXza-t-iGuQap0L8wS3r7n3k8ULmb8UPV5qJByGcP33XqYSnpbnb-x0M2TKxLPI45DhOc=w685-h913-s-no-gm?authuser=0" alt="STANLEY AZUL BEBÊ 800ML" onclick="zoomImagem(this.src)" />
-        <h3>3 - STANLEY AZUL BEBÊ 800ML</h3>
-        <p class="price">R$ 79,90</p>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'STANLEY AZUL BEBÊ 800ML')">Adicionar</button>
-        </div>
-      </div>
+<div class="product-card">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPdzboFsdWNUiZBt-ulK2QpIkgsnTC_kqj7B6k2SevYBf6hWdn24ToQXHgf2Mmut6tADwtYwZoqnFXBxGvpXza-t-iGuQap0L8wS3r7n3k8ULmb8UPV5qJByGcP33XqYSnpbnb-x0M2TKxLPI45DhOc=w685-h913-s-no-gm?authuser=0" 
+       alt="STANLEY AZUL BEBÊ 800ML" onclick="zoomImagem(this.src)" />
+  <h3>3 - STANLEY AZUL BEBÊ 800ML</h3>
+  <p class="price">R$ 79,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'STANLEY AZUL BEBÊ 800ML')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Térmica até 24h<br>
+      - Capacidade: 800ml<br>
+      - Cor: Azul bebê<br>
+      - Material: Inox<br>
+      - Tampa com vedação
+    </p>
+  </div>
+</div>
 
         <!--ANTIGO-->
         <!--<p class="price">de R$ 89,90 por</p>-->
@@ -755,238 +869,657 @@
         <!--<p class="price1"></p>-->
         <!--<span class="price3">R$ 89,90</span> <span class="price"><strong>R$ 79,90</strong></span>-->
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczPrReb_QvYdACkGWgHYV26n7pMiXxtbqGQp_NsQV10GBAaGX_6zVy1ZxNYwTMDKZrveY4BNrtV8biVvb9YvPRv3KxA84MNCq4Jqgc-yCi03AH4r0GPk1uhVEDny8ocHtgJfXxjI-DSZ2As68qSLWDmV=w685-h913-s-no-gm?authuser=0" alt="STANLEY VERDE BEBÊ 950ML" onclick="zoomImagem(this.src)" />
-        <h3>4 - STANLEY VERDE BEBÊ 950ML</h3>
-        <p class="price1"></p>
-        <span class="price3"><s>R$ 89,90</s></span> <span class="price"><strong>R$ 79,90</strong></span>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'STANLEY VERDE BEBÊ 950ML')">Adicionar</button>
-        </div>
-      </div>
+  <img 
+    src="https://lh3.googleusercontent.com/pw/AP1GczPrReb_QvYdACkGWgHYV26n7pMiXxtbqGQp_NsQV10GBAaGX_6zVy1ZxNYwTMDKZrveY4BNrtV8biVvb9YvPRv3KxA84MNCq4Jqgc-yCi03AH4r0GPk1uhVEDny8ocHtgJfXxjI-DSZ2As68qSLWDmV=w685-h913-s-no-gm?authuser=0" 
+    alt="STANLEY VERDE BEBÊ 950ML" onclick="zoomImagem(this.src)"/>
+  <h3>4 - STANLEY VERDE BEBÊ 950ML</h3>
+  <p class="price">R$ 89,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'STANLEY VERDE BEBÊ 950ML')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Térmica até 24h<br>
+      - Capacidade: 950ml<br>
+      - Cor: Verde Bebê<br>
+      - Material: Inox<br>
+      - Tampa com vedação
+    </p>
+  </div>
+</div>
+
+   <div class="product-card">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOhIZs6gHr33ajh_OHe4E6wQybOXx0l6HocGFkBMTzcrFSu3cFfMX7KKzl0_qOjtczLvcAb-9zFp-TqBM9Aoj9npIc9-GDosy-8qholJirD1qpJ09xiXrYUMEyBO6HKjFAO0qniCRF2l_ITHWsofBsE=w685-h913-s-no-gm?authuser=0" alt="STANLEY ROSA 950ML" onclick="zoomImagem(this.src)" />
+  <h3>5 - STANLEY ROSA 950ML</h3>
+  <p class="price1"></p>
+  <span class="price3"><s>R$ 89,90</s></span> <span class="price"><strong>R$ 79,90</strong></span>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'STANLEY ROSA 950ML')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>- Térmica até 24h<br>
+       - Capacidade: 950ml<br>
+       - Cor: Rosa metálico<br>
+       - Material: Inox<br>
+       - Tampa com vedação</p>
+  </div>
+</div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczOhIZs6gHr33ajh_OHe4E6wQybOXx0l6HocGFkBMTzcrFSu3cFfMX7KKzl0_qOjtczLvcAb-9zFp-TqBM9Aoj9npIc9-GDosy-8qholJirD1qpJ09xiXrYUMEyBO6HKjFAO0qniCRF2l_ITHWsofBsE=w685-h913-s-no-gm?authuser=0" alt="STANLEY ROSA 950ML" onclick="zoomImagem(this.src)" />
-        <h3>5 - STANLEY ROSA 950ML</h3>
-        <p class="price1"></p>
-        <span class="price3"><s>R$ 89,90</s></span> <span class="price"><strong>R$ 79,90</strong></span>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'STANLEY ROSA 950ML')">Adicionar</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-      <div class="image-container esgotado">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczOIcDZgNqqxlw7hd6dkuY_UAmj50JXQfNJiJrAGNz60xAnTKi2zz_pq7LX3XyU5NrSr4OrLsV0IpI6Pz8JUBX9pC230h1rLaxgm-m74UbFk5aNmDLFac6tM7rN7OzRxcqqzDf6891V_4gLUVtGFET-I=w685-h913-s-no-gm?authuser=0" alt="STANLEY OFF WHITE 1200ML" onclick="zoomImagem(this.src)" />
-      <div class="sold-out-overlay">ESGOTADO</div>
-      </div>
-      <h3>6 - STANLEY OFF WHITE 1200ML</h3>
-      <p class="price">R$ 99,90</p>
-      <div class="controls">
-    <input type="number" min="1" value="1" />
-    <button onclick="adicionarAoCarrinho(this, 'STANLEY OFF WHITE 1200ML')">Adicionar</button>
+  <div class="image-container esgotado">
+    <img 
+      src="https://lh3.googleusercontent.com/pw/AP1GczOIcDZgNqqxlw7hd6dkuY_UAmj50JXQfNJiJrAGNz60xAnTKi2zz_pq7LX3XyU5NrSr4OrLsV0IpI6Pz8JUBX9pC230h1rLaxgm-m74UbFk5aNmDLFac6tM7rN7OzRxcqqzDf6891V_4gLUVtGFET-I=w685-h913-s-no-gm?authuser=0" 
+      alt="STANLEY OFF WHITE 1200ML" onclick="zoomImagem(this.src)"/>
+    <div class="sold-out-overlay">ESGOTADO</div>
+  </div>
+  <h3>6 - STANLEY OFF WHITE 1200ML</h3>
+  <p class="price">R$ 99,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'STANLEY OFF WHITE 1200ML')">Adicionar</button>
     </div>
-    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Térmica até 24h<br>
+      - Capacidade: 1200ml<br>
+      - Cor: Off White<br>
+      - Material: Inox<br>
+      - Tampa com vedação
+    </p>
+  </div>
+</div>
 
        <div class="product-card">
-      <div class="image-container esgotado">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczMZxJCD_ahw1A7pm4OWsSg9N9WqC9YSCpy7Ezik-mNqT6bv_d4i3zAywKH5uOUJhf6qnwn0fmkxXgXOMjL6e8uEyX3yXCPL9Sjil0RpmaPOEyNFX_j5a_O3y4QWuSC9w08XjEqXvSCgvS3VYF5WfnhG=w685-h913-s-no-gm?authuser=0" alt="STANLEY LILÁS 1200ML" onclick="zoomImagem(this.src)" />
-      <div class="sold-out-overlay">ESGOTADO</div>
-      </div>
-      <h3>7 - STANLEY LILÁS 1200ML</h3>
-      <p class="price">R$ 99,90</p>
-      <div class="controls">
-    <input type="number" min="1" value="1" />
-    <button onclick="adicionarAoCarrinho(this, 'STANLEY LILÁS 1200ML')">Adicionar</button>
+  <div class="image-container esgotado">
+    <img src="https://lh3.googleusercontent.com/pw/AP1GczMZxJCD_ahw1A7pm4OWsSg9N9WqC9YSCpy7Ezik-mNqT6bv_d4i3zAywKH5uOUJhf6qnwn0fmkxXgXOMjL6e8uEyX3yXCPL9Sjil0RpmaPOEyNFX_j5a_O3y4QWuSC9w08XjEqXvSCgvS3VYF5WfnhG=w685-h913-s-no-gm?authuser=0" 
+         alt="STANLEY LILÁS 1200ML" onclick="zoomImagem(this.src)"/>
+    <div class="sold-out-overlay">ESGOTADO</div>
+  </div>
+  <h3>7 - STANLEY LILÁS 1200ML</h3>
+  <p class="price">R$ 99,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'STANLEY LILÁS 1200ML')">Adicionar</button>
     </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Térmica até 24h<br>
+      - Capacidade: 1200ml<br>
+      - Cor: Lilás<br>
+      - Material: Inox<br>
+      - Tampa com vedação
+    </p>
+  </div>
+</div>
+
+      <div class="product-card">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczN0A3nUi3iYd4BcfdMYR25TKZmnmpblaGnS32xvxwEE59Nu2IXX64xKpFFWV1BsZXui50hf-9RbQz-6jnO1zKoM9PsUQH4JvftHgzaxRFKZHBHlqDbpL-V5NxPYz0mpSWcnZ83SSfB5k2eykVYSrHJq=w685-h913-s-no-gm?authuser=0" 
+       alt="STANLEY COPO 1200ML" onclick="zoomImagem(this.src)" />
+  <h3>8 - STANLEY COPO 1200ML</h3>
+  <p class="price">R$ 99,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'STANLEY COPO 1200ML')">Adicionar</button>
     </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Térmica até 24h<br>
+      - Capacidade: 1200ml<br>
+      - Cor: Inox escovado<br>
+      - Material: Inox<br>
+      - Ideal para bebidas geladas e quentes
+    </p>
+  </div>
+</div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczN0A3nUi3iYd4BcfdMYR25TKZmnmpblaGnS32xvxwEE59Nu2IXX64xKpFFWV1BsZXui50hf-9RbQz-6jnO1zKoM9PsUQH4JvftHgzaxRFKZHBHlqDbpL-V5NxPYz0mpSWcnZ83SSfB5k2eykVYSrHJq=w685-h913-s-no-gm?authuser=0" alt="STANLEY COPO 1200ML" onclick="zoomImagem(this.src)" />
-        <h3>8 - STANLEY COPO 1200ML</h3>
-        <p class="price">R$ 99,90</p>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'STANLEY COPO 1200ML')">Adicionar</button>
-        </div>
-      </div>
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczO_kNGGUux_zgIRcPJrTLto_4HsZKTp7GxPCXUPsuBK-CGdqR4I72wP8REl1JkPxOf6MU6t8gic6JwwZO1qc_IMHN_8FGwO-sfN6uVO2EKdp4hqnCUAcKtoOMhnQHAT1VrlAb65VSIctw-nlj9aJIkF=w685-h913-s-no-gm?authuser=0" 
+       alt="STANLEY COPO 473ML" onclick="zoomImagem(this.src)" />
+  <h3>9 - STANLEY COPO 473ML</h3>
+  <p class="price">R$ 34,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'STANLEY COPO 473ML')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Térmico até 17h gelado<br>
+      - Capacidade: 473ml<br>
+      - Cor: Inox escovado<br>
+      - Material: Aço inox<br>
+      - Com tampa plástica
+    </p>
+  </div>
+</div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczO_kNGGUux_zgIRcPJrTLto_4HsZKTp7GxPCXUPsuBK-CGdqR4I72wP8REl1JkPxOf6MU6t8gic6JwwZO1qc_IMHN_8FGwO-sfN6uVO2EKdp4hqnCUAcKtoOMhnQHAT1VrlAb65VSIctw-nlj9aJIkF=w685-h913-s-no-gm?authuser=0" alt="STANLEY COPO 473ML" onclick="zoomImagem(this.src)" />
-        <h3>9 - STANLEY COPO 473ML</h3>
-        <p class="price">R$ 34,90</p>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'STANLEY COPO 473ML')">Adicionar</button>
-        </div>
-      </div>
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMljQI-gFdiPYwJM_sXc-sftPve0i8utvWr3rZz_9nI5dF6Rmg0URBZ2Y75_5oTkrtdsI9yfdda4A-Ve_xqaeRwkIzowIl6EtMm9DDGWMz6dcdzGAWIlaBbnJjkLQzHkWt9c3cDZvPsNTfSfUiN9Kj7=w685-h913-s-no-gm?authuser=0" 
+       alt="SUPORTE VEICULAR PEINING" onclick="zoomImagem(this.src)" />
+  <h3>51 - SUPORTE VEICULAR PEINING</h3>
+  <p class="price">R$ 39,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'SUPORTE VEICULAR PEINING')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Suporte universal para smartphones<br>
+      - Fixação no painel ou para-brisa<br>
+      - Ajustável em ângulo e largura<br>
+      - Compatível com aparelhos de até 6,5"
+    </p>
+  </div>
+</div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczMljQI-gFdiPYwJM_sXc-sftPve0i8utvWr3rZz_9nI5dF6Rmg0URBZ2Y75_5oTkrtdsI9yfdda4A-Ve_xqaeRwkIzowIl6EtMm9DDGWMz6dcdzGAWIlaBbnJjkLQzHkWt9c3cDZvPsNTfSfUiN9Kj7=w685-h913-s-no-gm?authuser=0" alt="SUPORTE VEICULAR PEINING" onclick="zoomImagem(this.src)" />
-        <h3>51 - SUPORTE VEICULAR PEINING</h3>
-        <p class="price">R$ 39,90</p>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'SUPORTE VEICULAR PEINING')">Adicionar</button>
-        </div>
-      </div>
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNyeNkMlZLe6a-YE0GPdq4pv8AuO0QSNyWLwONTGmIG6bWEmyWUt-HKwIa9LJL9Yd5nz3kDmI-4TNLiyOVnHRD_b3TQy16vohxcWzY5HRn2EDh4fuEIuCiQTp8_5Y529pjMzuKe-tft_D9_1fpbLDE2=w685-h913-s-no-gm?authuser=0" 
+       alt="SUPORTE VEICULAR HMASTON" onclick="zoomImagem(this.src)" />
+  <h3>52 - SUPORTE VEICULAR HMASTON</h3>
+  <p class="price1"></p>
+  <span class="price3"><s>R$ 44,90</s></span> <span class="price"><strong>R$ 39,90</strong></span>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'SUPORTE VEICULAR HMASTON')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Suporte com ventosa de alta fixação<br>
+      - Compatível com celulares de até 7"<br>
+      - Rotação de 360°<br>
+      - Base reforçada com apoio antiderrapante
+    </p>
+  </div>
+</div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczNyeNkMlZLe6a-YE0GPdq4pv8AuO0QSNyWLwONTGmIG6bWEmyWUt-HKwIa9LJL9Yd5nz3kDmI-4TNLiyOVnHRD_b3TQy16vohxcWzY5HRn2EDh4fuEIuCiQTp8_5Y529pjMzuKe-tft_D9_1fpbLDE2=w685-h913-s-no-gm?authuser=0" alt="SUPORTE VEICULAR HMASTON" onclick="zoomImagem(this.src)" />
-        <h3>52 - SUPORTE VEICULAR HMASTON</h3>
-        <p class="price">R$ 44,90</p>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'SUPORTE VEICULAR HMASTON')">Adicionar</button>
-        </div>
-      </div>
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczN0M83z1f5AVFckzvvmQiFxPA4IKmzO2JkeizbctAGLfa_l-ImNF3-Nl_m-122R1C8riVKSo0BFEC7OBMs434LvH12dkfyyWUIBQ10ryH7voy_PEw12EpObjZSlfgeo34ok1Lqh4egpHadQ61LmIoVl=w685-h913-s-no-gm?authuser=0" 
+       alt="CARREGADOR AUTOMOTIVO TURBO" onclick="zoomImagem(this.src)" />
+  <h3>53 - CARREGADOR AUTOMOTIVO TURBO</h3>
+  <p class="price">R$ 44,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'CARREGADOR AUTOMOTIVO TURBO')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Saída USB duplo com carregamento rápido<br>
+      - Compatível com todos os veículos<br>
+      - Proteção contra sobrecarga e curto-circuito<br>
+      - Entrada: 12-24V | Saída: 5V/3.1A total
+    </p>
+  </div>
+</div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczN0M83z1f5AVFckzvvmQiFxPA4IKmzO2JkeizbctAGLfa_l-ImNF3-Nl_m-122R1C8riVKSo0BFEC7OBMs434LvH12dkfyyWUIBQ10ryH7voy_PEw12EpObjZSlfgeo34ok1Lqh4egpHadQ61LmIoVl=w685-h913-s-no-gm?authuser=0" alt="CARREGADOR AUTOMOTIVO TURBO" onclick="zoomImagem(this.src)" />
-        <h3>53 - CARREGADOR AUTOMOTIVO TURBO</h3>
-        <p class="price">R$ 44,90</p>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'CARREGADOR AUTOMOTIVO TURBO')">Adicionar</button>
-        </div>
-      </div>
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMmK0IH_1ha_d0sYqwIkX8am2O50S0ZRfmLOws3J0i29Ler7mMPPFIMfqO0ot1mvh3eJK52M_hTYsOwwArk7dFcZnxiSxlfcjARO2vi_ysSEaZKm4CsCiEvr_1Kzgn8a7X7_zjlCucgVLeAs7RaIvV0=w685-h913-s-no-gm?authuser=0" 
+       alt="FONTE DUAS USB + CABO APPLE" onclick="zoomImagem(this.src)" />
+  <h3>53 - FONTE DUAS USB + CABO APPLE</h3>
+  <p class="price">R$ 29,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'FONTE DUAS USB + CABO APPLE')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Fonte bivolt com 2 portas USB<br>
+      - Acompanha cabo tipo Lightning (Apple)<br>
+      - Saída 5V/2.4A<br>
+      - Ideal para iPhones e iPads
+    </p>
+  </div>
+</div>
+
+<div class="product-card">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOIYLQvx-cSDujoDDMiqsL0fqAtpVlavH3D2HGc4VDkHA4VzgeEdMefTJYFRHXxatXPhZK3PKCP9YAKKz3aGqukxzfzFlSReUfcAg_TQuK0ITDlGlYz5z80UlAHBnN6b9TdFl00SvykCWvRhAHr8MBI=w685-h913-s-no-gm?authuser=0" 
+       alt="CARREGADOR PORTÁTIL 10000MAH" 
+       onclick="zoomImagem(this.src)" />
+  <h3>54 - CARREGADOR PORTÁTIL 10000MAH</h3>
+  <p class="price1"></p>
+  <span class="price3"><s>R$ 79,90</s></span> <span class="price"><strong>R$ 69,90</strong></span>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'CARREGADOR PORTÁTIL 10000MAH')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - 3 entradas para carregamento da bateria: Tipo C, Lightning e V8<br>
+      - 1 saída USB para carregar dispositivos<br>
+      - Acompanha cabo USB para recarga do power bank<br>
+      - Indicador de carga por LED<br>
+      - Compatível com Android, iPhone e outros dispositivos via USB
+    </p>
+  </div>
+</div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczMmK0IH_1ha_d0sYqwIkX8am2O50S0ZRfmLOws3J0i29Ler7mMPPFIMfqO0ot1mvh3eJK52M_hTYsOwwArk7dFcZnxiSxlfcjARO2vi_ysSEaZKm4CsCiEvr_1Kzgn8a7X7_zjlCucgVLeAs7RaIvV0=w685-h913-s-no-gm?authuser=0" alt="FONTE DUAS USB + CABO APPLE" onclick="zoomImagem(this.src)" />
-        <h3>53 - FONTE DUAS USB + CABO APPLE</h3>
-        <p class="price">R$ 29,90</p>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'FONTE DUAS USB + CABO APPLE')">Adicionar</button>
-        </div>
-      </div>
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczP1-Tmv7w47Guxwekj5DsZDqDtfgXKXgDXBCciRjcFyY7dWCNowO8xGITByVsPUAm4mFTyqk3Xd8_h2GtHXonhuL6K8_0-IFUsXrpOonIoB9OauXg0jARN4uD3UP24YmCgvuigJX_wgvkP-5rD82DGJ=w685-h913-s-no-gm?authuser=0" 
+       alt="CABO 2 METROS LIGHTNING" onclick="zoomImagem(this.src)" />
+  <h3>55 - CABO 2 METROS LIGHTNING</h3>
+  <p class="price1"></p>
+  <span class="price3"><s>R$ 34,90</s></span> <span class="price"><strong>R$ 29,90</strong></span>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'CABO 2 METROS LIGHTNING')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Cabo com 2 metros de comprimento<br>
+      - Compatível com dispositivos Apple (conector Lightning)<br>
+      - Revestimento reforçado para maior durabilidade<br>
+      - Ideal para uso doméstico, carro ou escritório<br>
+      - Carregamento rápido e eficiente para seus dispositivos
+    </p>
+  </div>
+</div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczOIYLQvx-cSDujoDDMiqsL0fqAtpVlavH3D2HGc4VDkHA4VzgeEdMefTJYFRHXxatXPhZK3PKCP9YAKKz3aGqukxzfzFlSReUfcAg_TQuK0ITDlGlYz5z80UlAHBnN6b9TdFl00SvykCWvRhAHr8MBI=w685-h913-s-no-gm?authuser=0" alt="CARREGADOR PORTÁTIL 10000MAH" onclick="zoomImagem(this.src)" />
-        <h3>54 - CARREGADOR PORTÁTIL 10000MAH</h3>
-        <p class="price1"></p>
-        <span class="price3"><s>R$ 79,90</s></span> <span class="price"><strong>R$ 69,90</strong></span>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'CARREGADOR PORTÁTIL 10000MAH')">Adicionar</button>
-        </div>
-      </div>
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMb4OgM0ix130GFXE5Vz1T9uD1z9ocejpMLE2rtceky7KbUHvj6fFlI-equ_Gmps4AnaDOCGOBB6SZpWauub6NJ8qWCpal5g8WK8kM_NKfoq3y2WDULRF6OeOc_aK1rc5XAksnpgbyuRyr3L4shdH4T=w685-h913-s-no-gm?authuser=0" 
+       alt="HUB USB 4 PORTAS USB" onclick="zoomImagem(this.src)" />
+  <h3>101 - HUB USB 4 PORTAS USB</h3>
+  <p class="price">R$ 24,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'HUB USB 4 PORTAS USB')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Suporta até 4 dispositivos USB simultaneamente<br>
+      - Compatível com USB 2.0 e 3.0 para alta velocidade de transferência<br>
+      - Plug and Play, sem necessidade de drivers<br>
+      - Design compacto e portátil para uso em casa ou escritório<br>
+      - Proteção contra sobrecarga e curto-circuito para maior segurança
+    </p>
+  </div>
+</div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczP1-Tmv7w47Guxwekj5DsZDqDtfgXKXgDXBCciRjcFyY7dWCNowO8xGITByVsPUAm4mFTyqk3Xd8_h2GtHXonhuL6K8_0-IFUsXrpOonIoB9OauXg0jARN4uD3UP24YmCgvuigJX_wgvkP-5rD82DGJ=w685-h913-s-no-gm?authuser=0" alt="CABO 2 METROS LIGHTNING" onclick="zoomImagem(this.src)" />
-        <h3>55 - CABO 2 METROS LIGHTNING</h3>
-        <p class="price1"></p>
-        <span class="price3"><s>R$ 34,90</s></span> <span class="price"><strong>R$ 29,90</strong></span>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'CABO 2 METROS LIGHTNING')">Adicionar</button>
-        </div>
-      </div>
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNBgWQ65RkFq_AOXUdUGPNHU-uz2n5jl5gY3Gh_600ezjhlBP2kyic4oQ-HR5e4nCHyTahpa8nHlkoCpXcXsTpcZX7XIUVyjF-q4Xu6DRVAW3p56VKnicY_IYuwqmP5p5N4kFkcQzufDjfd8Kb5Z15X=w685-h913-s-no-gm?authuser=0" 
+       alt="CASE SSD/HD 3.0 2.5" onclick="zoomImagem(this.src)" />
+  <h3>102 - CASE SSD/HD 3.0 2.5</h3>
+  <p class="price">R$ 44,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'CASE SSD/HD 3.0 2.5')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Compatível com SSD e HD 2.5”<br>
+      - Interface USB 3.0 para transferência rápida de dados<br>
+      - Design resistente para proteção dos seus dispositivos<br>
+      - Fácil instalação “Plug and Play”<br>
+      - Compatível com Windows, MacOS e Linux
+    </p>
+  </div>
+</div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczMb4OgM0ix130GFXE5Vz1T9uD1z9ocejpMLE2rtceky7KbUHvj6fFlI-equ_Gmps4AnaDOCGOBB6SZpWauub6NJ8qWCpal5g8WK8kM_NKfoq3y2WDULRF6OeOc_aK1rc5XAksnpgbyuRyr3L4shdH4T=w685-h913-s-no-gm?authuser=0" alt="HUB USB 4 PORTAS USB" onclick="zoomImagem(this.src)" />
-        <h3>101 - HUB USB 4 PORTAS USB</h3>
-        <p class="price">R$ 24,90</p>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'HUB USB 4 PORTAS USB')">Adicionar</button>
-        </div>
-      </div>
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPRM9VYW4LSH4mEv05jq7p5tJ4BY4uRjmPoCAY1Tr1j_rYfN-v8wTptfLSLUyQMamrJv3X_fVkV_MVm6FPnaVoYgQgJLRZGxIWJeNG8pnPJpZarDKlxXr8U2ZErQcMCX6JsnAECMzR72g6G9gxtzvOf=w685-h913-s-no-gm?authuser=0" 
+       alt="CARREGADOR UNIVERSAL" onclick="zoomImagem(this.src)" />
+  <h3>103 - CARREGADOR UNIVERSAL</h3>
+  <p class="price">R$ 59,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'CARREGADOR UNIVERSAL')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Compatível com notebooks de diversas marcas<br>
+      - Voltagem de saída ajustável: 12V, 15V, 16V, 18V, 19V, 20V e 24V<br>
+      - Corrente de saída de até 5 amperes para carregamento eficiente<br>
+      - Conector do tipo plug universal para maior compatibilidade<br>
+      - Design projetado para facilitar a ventilação
+    </p>
+  </div>
+</div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczNBgWQ65RkFq_AOXUdUGPNHU-uz2n5jl5gY3Gh_600ezjhlBP2kyic4oQ-HR5e4nCHyTahpa8nHlkoCpXcXsTpcZX7XIUVyjF-q4Xu6DRVAW3p56VKnicY_IYuwqmP5p5N4kFkcQzufDjfd8Kb5Z15X=w685-h913-s-no-gm?authuser=0" alt="CASE SSD/HD 3.0 2.5" onclick="zoomImagem(this.src)" />
-        <h3>102 - CASE SSD/HD 3.0 2.5</h3>
-        <p class="price">R$ 44,90</p>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'CASE SSD/HD 3.0 2.5')">Adicionar</button>
-        </div>
-      </div>
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczN0Jtt3nhfsDBjLNgyDkCKMLCaGeiuh193HVvaBPkw3w_63Bh6FUcSMB0uLziNdbJ2mCTPPqKjKkFNTxpYjMsrTmL2nbngTtALjGbWXaAoqqP0dnX5Gl3Gol4q58Kv1mwubEh516Muusk-f_5lVhqw_=w685-h913-s-no-gm?authuser=0" 
+       alt="MOUSE SEM FIO TARGUS" onclick="zoomImagem(this.src)" />
+  <h3>104 - MOUSE SEM FIO TARGUS</h3>
+  <p class="price">R$ 29,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'MOUSE SEM FIO TARGUS')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Conexão sem fio para maior liberdade de movimentos<br>
+      - Design ergonômico para uso confortável por horas<br>
+      - Compatível com Windows e Mac OS<br>
+      - Botões responsivos e roda de scroll suave<br>
+      - Alimentado por bateria com longa duração
+    </p>
+  </div>
+</div>
+
+<div class="product-card">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOMW5_UKVIRPQaLyu5NLwcaVXgTcM3JaMiQx_DRQAKKbdQyYkN41s4O6BuqTKbFHI8Tdage25GB7BcD-GboJYkUBRquusjgKZToEcMYK5jeLqFSimTRmX3wXu8Du7p_AOnEsgU8cEVuWsQPCEcBYCtd=w685-h913-s-no-gm?authuser=0" 
+       alt="FONTE ATX 230W BLUECASE" onclick="zoomImagem(this.src)" />
+  <h3>105 - FONTE ATX 230W BLUECASE</h3>
+  <p class="price">R$ 99,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'FONTE ATX 230W BLUECASE')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Potência nominal de 230 Watts para sistemas compactos<br>
+      - Compatível com placas-mãe ATX padrão<br>
+      - Proteções contra sobrecarga, curto-circuito e superaquecimento<br>
+      - Ventilador silencioso para melhor dissipação de calor<br>
+      - Cabo de alimentação incluso para fácil instalação
+    </p>
+  </div>
+</div>
+
+<div class="product-card">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczNmdm5Kob8uRTv3L06H6UdQysEWW_V1lXgB0EF4qQMyDyo7hS_1Th-hSo9fYOQw870cqwB_c0sqiNaZn99dioilNzJ7Zvop5iMcQRFOAnNvDR8IclhGqG23yMWoYQi5wG_EjY8e6gpLBmQwXJF1JyNW=w685-h913-s-no-gm?authuser=0" 
+       alt="CONTROLE JOYPAD USB PC" onclick="zoomImagem(this.src)" />
+  <h3>106 - CONTROLE JOYPAD USB PC</h3>
+  <p class="price">R$ 59,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'CONTROLE JOYPAD USB PC')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none; text-align: left;">
+    <p>
+      - Compatível com PCs via conexão USB<br>
+      - Layout ergonômico para conforto durante jogos longos<br>
+      - Botões responsivos e direcionais precisos<br>
+      - Compatível com a maioria dos jogos para PC<br>
+      - Plug and play, sem necessidade de drivers adicionais
+    </p>
+  </div>
+</div>
+
+       <div class="product-card">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPJdyWiuw_pOB-7OKPyu4mCgRpZFkazzIwIuSJ3x6VrsGKqDcQyYUmw9nrb8IsXN0nblsXtRxpUS0B_-hiiC1WtrttHVQprMYUzDYj7L2ecfrYIHxTEkr7MQUYJBvYGTvIXAw6kfeTrs-msIlXs7VO0=w685-h913-s-no-gm?authuser=0" 
+       alt="MOUSE PAD MAXPRINT" onclick="zoomImagem(this.src)" />
+  <h3>107 - MOUSE PAD MAXPRINT</h3>
+  <p class="price">R$ 14,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'MOUSE PAD MAXPRINT')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none; text-align: left;">
+      <p>
+      - Superfície antiderrapante para maior estabilidade<br>
+      - Material resistente à água e fácil de limpar<br>
+      - Tamanho compacto ideal para qualquer mesa<br>
+      - Design moderno com bordas costuradas<br>
+      - Compatível com todos os tipos de mouse
+    </p>
+  </div>
+</div>
+
+<div class="product-card">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczPO2wlPPT9ZM7zofz3Pg8AUGQOC6_TMNIeMrECT3pLmFC8FtQX9_07w-BdddQN2_yn22_eJCZjzY7o6HrH9v3PY2Pxexy141BLlEz46AALF7x8rKlWvcmypPUPyIGyzMi50b22lhcskJiP6zUwUK9C2=w685-h913-s-no-gm?authuser=0" 
+       alt="SUPORTE NOTEBOOK MAXPRINT" onclick="zoomImagem(this.src)" />
+  <h3>108 - SUPORTE NOTEBOOK MAXPRINT</h3>
+  <p class="price">R$ 124,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'SUPORTE NOTEBOOK MAXPRINT')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Ajustável para diferentes ângulos de visão<br>
+      - Suporta notebooks até 15,6 polegadas<br>
+      - Estrutura metálica resistente<br>
+      - Design ventilado para evitar superaquecimento<br>
+      - Fácil de montar e desmontar
+    </p>
+  </div>
+</div>
+
+<div class="product-card">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMafDZ_CpWZM9Oh23z_VNaBJRBZOHODEvoOTdFYzjwzv75cmcFH1VCwoqdJCEukjOFWHLzuIuGJpi1JE-9vZKJEGDmPMnwiGxiVb1I119UU3oZGPodnpVQQG3A5u5YMGlegsvur7eESFKvE8ScvbqSi=w685-h913-s-no-gm?authuser=0" 
+       alt="CABO HDMI 3 METROS" onclick="zoomImagem(this.src)" />
+  <h3>109 - CABO HDMI 3 METROS</h3>
+  <p class="price">R$ 34,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'CABO HDMI 3 METROS')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Suporta resolução até 4K UHD<br>
+      - Conectores banhados a ouro para melhor sinal<br>
+      - Compatível com 3D e Full HD 1080p<br>
+      - Revestimento resistente e flexível<br>
+      - Comprimento ideal para conexões flexíveis
+    </p>
+  </div>
+</div>
+
+<div class="product-card">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczN_rVeH0uJcIW5GIc2x5eEBkXjVmjK-b0H7vAN3RsQr0M9u_KR8nBqNKMbAMdPpSLAmIPIUq5vCBSXA3uHB_hqmzSkJhghPtnkZaarZqe0uXGQ5wuwnFji7rQWYWBfOn5SmF_QtK57b7Fdb5fmMhu4S=w685-h913-s-no-gm?authuser=0" 
+       alt="FONE SEM FIO REDMI AIRDOTSPRO" onclick="zoomImagem(this.src)" />
+  <h3>151 - FONE SEM FIO REDMI AIRDOTSPRO</h3>
+  <p class="price">R$ 44,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'FONE SEM FIO REDMI AIRDOTSPRO')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Conexão Bluetooth estável e rápida<br>
+      - Design ergonômico para conforto prolongado<br>
+      - Som com graves profundos e agudos claros<br>
+      - Estojo portátil com carregamento rápido<br>
+      - Ideal para quem busca praticidade e qualidade
+    </p>
+  </div>
+</div>
+
+<div class="product-card">
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczN4yLeewLpP_X6Hj-e1ni9F8VqE1ura6C0RlZ5gKjABd_vboNDde7P5dj3xLvPUisMIH6RL9zOYtY1a_phOz3vaM7wIMI-MDqHV1QTDgjxo1WhdiAeCzuIfElRxyW4XkpMRtxMl2EcTpwmQETo50o_M=w685-h913-s-no-gm?authuser=0" 
+       alt="HEADSET FORTREK BLACK HAWK" onclick="zoomImagem(this.src)" />
+  <h3>152 - HEADSET FORTREK BLACK HAWK</h3>
+  <p class="price">R$ 269,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'HEADSET FORTREK BLACK HAWK')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Som estéreo de alta definição<br>
+      - Microfone com cancelamento de ruído<br>
+      - Almofadas macias para conforto prolongado<br>
+      - Controle de volume e mute integrados<br>
+      - Compatível com PC e consoles via USB
+    </p>
+  </div>
+</div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczPRM9VYW4LSH4mEv05jq7p5tJ4BY4uRjmPoCAY1Tr1j_rYfN-v8wTptfLSLUyQMamrJv3X_fVkV_MVm6FPnaVoYgQgJLRZGxIWJeNG8pnPJpZarDKlxXr8U2ZErQcMCX6JsnAECMzR72g6G9gxtzvOf=w685-h913-s-no-gm?authuser=0" alt="CARREGADOR UNIVERSAL" onclick="zoomImagem(this.src)" />
-        <h3>103 - CARREGADOR UNIVERSAL</h3>
-        <p class="price">R$ 59,90</p>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'CARREGADOR UNIVERSAL')">Adicionar</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczN0Jtt3nhfsDBjLNgyDkCKMLCaGeiuh193HVvaBPkw3w_63Bh6FUcSMB0uLziNdbJ2mCTPPqKjKkFNTxpYjMsrTmL2nbngTtALjGbWXaAoqqP0dnX5Gl3Gol4q58Kv1mwubEh516Muusk-f_5lVhqw_=w685-h913-s-no-gm?authuser=0" alt="MOUSE SEM FIO TARGUS" onclick="zoomImagem(this.src)" />
-        <h3>104 - MOUSE SEM FIO TARGUS</h3>
-        <p class="price">R$ 29,90</p>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'MOUSE SEM FIO TARGUS')">Adicionar</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczN_rVeH0uJcIW5GIc2x5eEBkXjVmjK-b0H7vAN3RsQr0M9u_KR8nBqNKMbAMdPpSLAmIPIUq5vCBSXA3uHB_hqmzSkJhghPtnkZaarZqe0uXGQ5wuwnFji7rQWYWBfOn5SmF_QtK57b7Fdb5fmMhu4S=w685-h913-s-no-gm?authuser=0" alt="FONE SEM FIO REDMI AIRDOTSPRO" onclick="zoomImagem(this.src)" />
-        <h3>151 - FONE SEM FIO REDMI AIRDOTSPRO</h3>
-        <p class="price">R$ 44,90</p>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'FONE SEM FIO REDMI AIRDOTSPRO')">Adicionar</button>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczOoSJdn7KmmD93SZzYOiMLCwGwKrA6Vb40DjJJRpXjmkqwp8qyNOD35At-eTlAOPytzxDOcMOY0HdcjlC8XwkRA7DJGW_8SwXm6krphfwqtnvzUSIzAJlNKO-I9i1abXmdy-6izDDpjnnJcESO0wmIT=w685-h913-s-no-gm?authuser=0" alt="MINI CAIXA DE SOM PORTÁTIL" onclick="zoomImagem(this.src)" />
-        <h3>201 - MINI CAIXA DE SOM PORTÁTIL</h3>
-        <p class="price1"></p>
-        <span class="price3"><s>R$ 24,90</s></span> <span class="price"><strong>R$ 19,90</strong></span>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'MINI CAIXA DE SOM PORTÁTIL')">Adicionar</button>
-        </div>
-      </div>
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOoSJdn7KmmD93SZzYOiMLCwGwKrA6Vb40DjJJRpXjmkqwp8qyNOD35At-eTlAOPytzxDOcMOY0HdcjlC8XwkRA7DJGW_8SwXm6krphfwqtnvzUSIzAJlNKO-I9i1abXmdy-6izDDpjnnJcESO0wmIT=w685-h913-s-no-gm?authuser=0" 
+       alt="MINI CAIXA DE SOM PORTÁTIL" onclick="zoomImagem(this.src)" />
+  <h3>201 - MINI CAIXA DE SOM PORTÁTIL</h3>
+  <p class="price"><s>R$ 24,90</s> <strong>R$ 19,90</strong></p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'MINI CAIXA DE SOM PORTÁTIL')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Compacta e leve para transporte<br>
+      - Conexão via cabo P2 ou Bluetooth<br>
+      - Bateria recarregável via USB<br>
+      - Tempo de uso de até 4 horas<br>
+      - Ideal para celular, notebook ou PC
+    </p>
+  </div>
+</div>
 
      <div class="product-card">
   <div class="image-container esgotado">
-    <img src="https://lh3.googleusercontent.com/pw/AP1GczOy35XM_yXhz9c3r2KEq8bL6ieldWfXovLnRJQ1ziDrF8XabPersodXcia3_TRHgSZEDTl36qcHK7ydDjSPKcMlttUPEkVgAeSWyDmOVTb4vasQN6EKEJFswXzHnlH7tRfGivS_NHAaGCeTdZmulSY7=w685-h913-s-no-gm?authuser=0" alt="MINI MASSAGEADOR" onclick="zoomImagem(this.src)" />
+    <img src="https://lh3.googleusercontent.com/pw/AP1GczOy35XM_yXhz9c3r2KEq8bL6ieldWfXovLnRJQ1ziDrF8XabPersodXcia3_TRHgSZEDTl36qcHK7ydDjSPKcMlttUPEkVgAeSWyDmOVTb4vasQN6EKEJFswXzHnlH7tRfGivS_NHAaGCeTdZmulSY7=w685-h913-s-no-gm?authuser=0" 
+         alt="MINI MASSAGEADOR" onclick="zoomImagem(this.src)" />
     <div class="sold-out-overlay">ESGOTADO</div>
   </div>
   <h3>251 - MINI MASSAGEADOR</h3>
   <p class="price">R$ 14,90</p>
   <div class="controls">
-    <input type="number" min="1" value="1" />
-    <button onclick="adicionarAoCarrinho(this, 'MINI MASSAGEADOR')">Adicionar</button>
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'MINI MASSAGEADOR')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Estimula a circulação sanguínea<br>
+      - Design ergonômico em forma de tripé<br>
+      - Funciona com 3 pilhas AAA<br>
+      - Leve e portátil para uso diário<br>
+      - Ideal para costas, ombros e pernas
+    </p>
   </div>
 </div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczMUkpBFo_wy4yPcuwJMA8NP0NKKEs5IUXVx8p1ITWRxoL0XSf46GGbwiQQbI4Ae4teQl9o3HRYTx_RR82hkzZ007niKFOOoetQD_yAILNMu_96afxqGRrDZVZQScU6ZdkJ4Bz-mRWHH7h-UOs79TsoG=w685-h913-s-no-gm?authuser=0" alt="AROMATIZADOR AUTOMOTIVO" onclick="zoomImagem(this.src)" />
-        <h3>252 - AROMATIZADOR AUTOMOTIVO</h3>
-        <p class="price">R$ 9,90</p>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'AROMATIZADOR AUTOMOTIVO')">Adicionar</button>
-        </div>
-      </div>
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMUkpBFo_wy4yPcuwJMA8NP0NKKEs5IUXVx8p1ITWRxoL0XSf46GGbwiQQbI4Ae4teQl9o3HRYTx_RR82hkzZ007niKFOOoetQD_yAILNMu_96afxqGRrDZVZQScU6ZdkJ4Bz-mRWHH7h-UOs79TsoG=w685-h913-s-no-gm?authuser=0" 
+       alt="AROMATIZADOR AUTOMOTIVO" onclick="zoomImagem(this.src)" />
+  <h3>252 - AROMATIZADOR AUTOMOTIVO</h3>
+  <p class="price">R$ 9,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'AROMATIZADOR AUTOMOTIVO')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Perfuma o interior do carro<br>
+      - Aromas diversos (lavanda, baunilha etc.)<br>
+      - Fácil de pendurar no retrovisor<br>
+      - Duração média de 30 dias<br>
+      - Frasco em vidro com tampa de madeira
+    </p>
+  </div>
+</div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczOybrHLndULJ7orwFPPfd0upmmohNoH7WSQhVLP0vm4p00OJ2r4jW1o3Z9Eu5QkXrho7PgwZetwLzJ7tGEV9eY6weFHiTLGakX_Poi7s3EWudyjRIHYzR7XPdCjWUgQ45XH8FPR14-bYON_5G7MOjSl=w685-h913-s-no-gm?authuser=0" alt="CARTÃO DE MEMÓRIA 16GB" onclick="zoomImagem(this.src)" />
-        <h3>253 - CARTÃO DE MEMÓRIA 16GB</h3>
-        <p class="price">R$ 39,90</p>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'CARTÃO DE MEMÓRIA 16GB')">Adicionar</button>
-        </div>
-      </div>
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczOybrHLndULJ7orwFPPfd0upmmohNoH7WSQhVLP0vm4p00OJ2r4jW1o3Z9Eu5QkXrho7PgwZetwLzJ7tGEV9eY6weFHiTLGakX_Poi7s3EWudyjRIHYzR7XPdCjWUgQ45XH8FPR14-bYON_5G7MOjSl=w685-h913-s-no-gm?authuser=0" 
+       alt="CARTÃO DE MEMÓRIA 16GB" onclick="zoomImagem(this.src)" />
+  <h3>253 - CARTÃO DE MEMÓRIA 16GB</h3>
+  <p class="price">R$ 39,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'CARTÃO DE MEMÓRIA 16GB')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Capacidade de 16GB<br>
+      - Classe 10 para alta velocidade<br>
+      - Ideal para câmeras, celulares e tablets<br>
+      - Alta durabilidade e resistência<br>
+      - Compatível com adaptadores SD
+    </p>
+  </div>
+</div>
 
       <div class="product-card">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczMX2Pkx_Y50vnUJFxZUiRvSxgD_M1qHQTvunhb6TkesDb0lRLIXTqgjdA02Xehu9RsX_AKM_7ajkCZWp-kt7ofVuh6OskGIoL8NDRhwXkwv86IJZp1z7upUMudbAF98tqlJuXIkUczOpRjbs0Q3HH5A=w685-h913-s-no-gm?authuser=0" alt="PEN DRIVE MASTERDRIVE 16GB" onclick="zoomImagem(this.src)" />
-        <h3>254 - PEN DRIVE MASTERDRIVE 16GB</h3>
-        <p class="price">R$ 39,90</p>
-        <div class="controls">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'PEN DRIVE MASTERDRIVE 16GB')">Adicionar</button>
-        </div>
-      </div>
+  <img src="https://lh3.googleusercontent.com/pw/AP1GczMX2Pkx_Y50vnUJFxZUiRvSxgD_M1qHQTvunhb6TkesDb0lRLIXTqgjdA02Xehu9RsX_AKM_7ajkCZWp-kt7ofVuh6OskGIoL8NDRhwXkwv86IJZp1z7upUMudbAF98tqlJuXIkUczOpRjbs0Q3HH5A=w685-h913-s-no-gm?authuser=0" 
+       alt="PEN DRIVE MASTERDRIVE 16GB" onclick="zoomImagem(this.src)" />
+  <h3>254 - PEN DRIVE MASTERDRIVE 16GB</h3>
+  <p class="price">R$ 39,90</p>
+  <div class="controls">
+    <div class="top-row">
+      <input type="number" min="1" value="1" />
+      <button onclick="adicionarAoCarrinho(this, 'PEN DRIVE MASTERDRIVE 16GB')">Adicionar</button>
+    </div>
+    <a href="#" class="caracteristica-link" onclick="toggleCaracteristicas(this); return false;">Características</a>
+  </div>
+  <div class="caracteristicas" style="display: none;">
+    <p>
+      - Armazenamento portátil de 16GB<br>
+      - Conexão USB 2.0 compatível com 3.0<br>
+      - Compatível com Windows, Mac e Linux<br>
+      - Estrutura resistente e compacta<br>
+      - Plug & Play (sem instalação de drivers)
+    </p>
+  </div>
+</div>
   </main>
 
   <footer>
@@ -1028,6 +1561,18 @@
   document.querySelectorAll('.product-card').forEach(card => {
     card.style.display = 'block';
   });
+}
+
+function toggleCaracteristicas(botao) {
+  const card = botao.closest('.product-card');
+  const box = card.querySelector('.caracteristicas');
+  if (box.style.display === 'none') {
+    box.style.display = 'block';
+    botao.textContent = 'Ocultar';
+  } else {
+    box.style.display = 'none';
+    botao.textContent = 'Características';
+  }
 }
 
   // Filtra por intervalo de ID
