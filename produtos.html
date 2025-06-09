@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
@@ -14,7 +15,8 @@
       max-width: 100vw;
     }
 
-    html, body {
+    html,
+    body {
       overflow-x: hidden;
       font-family: 'Poppins', sans-serif;
       background: #fff;
@@ -38,7 +40,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
       z-index: 100;
     }
 
@@ -83,12 +85,13 @@
     }
 
     main {
-  flex: 1;
-  width: 100%;
-  max-width: 1200px;
-  margin: 20px auto; /* Aqui está a margem que causa espaço vertical */
-  padding: 0 20px;
-}
+      flex: 1;
+      width: 100%;
+      max-width: 1200px;
+      margin: 20px auto;
+      /* Aqui está a margem que causa espaço vertical */
+      padding: 0 20px;
+    }
 
     .product-grid {
       display: grid;
@@ -126,88 +129,107 @@
     }
 
     .controls {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-}
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
 
-.controls .top-row {
-  display: flex;
-  gap: 10px;
-  justify-content: center;
-  align-items: center;
-}
+    .controls .top-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+    }
 
-.controls input[type="number"] {
-  width: 60px;
-  padding: 5px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  text-align: center;
-  font-weight: bold;
-  cursor: pointer;
-  box-sizing: border-box;
-  appearance: auto;
-}
+    .controls input[type="number"] {
+      width: 60px;
+      padding: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      text-align: center;
+      font-weight: bold;
+      cursor: pointer;
+      box-sizing: border-box;
+      appearance: auto;
+    }
 
-.controls input[type="number"]::-webkit-inner-spin-button,
-.controls input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: auto;
-  margin: 0;
-}
+    .controls input[type="number"]::-webkit-inner-spin-button,
+    .controls input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: auto;
+      margin: 0;
+    }
 
-.controls button {
-  background-color: #f2cd00;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
-  white-space: nowrap;
-}
+    .controls button {
+      background-color: #f2cd00;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+      white-space: nowrap;
+    }
 
-.controls button:hover {
-  background-color: #e0bc00;
-}
+    .controls button:hover {
+      background-color: #e0bc00;
+    }
 
-/* Link Características abaixo e centralizado */
-.caracteristicas {
-  display: none; /* Inicia escondido */
-  text-align: left;
-  background-color: #f9f9f9;
-  padding: 15px;
-  margin-top: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 14px;
-  max-width: 100%;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+    /* Estilo do botão "Características" */
+    .caracteristica-link {
+      display: block;
+      background-color: #858484;
+      color: #fff;
+      padding: 5px 14px;
+      /* padding vertical menor para botão mais fino */
+      border: none;
+      border-radius: 0px;
+      text-decoration: none;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      text-align: center;
+      margin: 10px auto;
+      max-width: 140px;
+      /* largura um pouco menor */
+      line-height: 1.2;
+      /* altura da linha menor para compactar */
+    }
 
-.controls .caracteristica-link:hover {
-  color: #e0bc00;
-}
+    .caracteristica-link:hover {
+      background-color: #666;
+      color: #fff;
+    }
 
-.caracteristica-link {
-  color: black;
-  text-decoration: none; /* Opcional para tirar sublinhado */
-}
+    /* Container das características exibidas */
+    .caracteristicas {
+      display: none;
+      /* Inicia escondido */
+      text-align: left;
+      background-color: #f9f9f9;
+      padding: 15px;
+      margin-top: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 14px;
+      max-width: 100%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
-.controls .caracteristica-link:hover {
-  color: #e0bc00;
-}
+    /* Responsivo para telas menores */
+    @media (max-width: 600px) {
+      .caracteristicas {
+        text-align: left;
+        font-size: 13px;
+        padding: 10px;
+      }
 
-/* Responsivo para telas menores */
-@media (max-width: 600px) {
-  .caracteristicas {
-    text-align: left;
-    font-size: 13px;
-    padding: 10px;
-  }
-}
+      .caracteristica-link {
+        font-size: 13px;
+        padding: 5px 12px;
+      }
+    }
 
     footer {
       background-color: #f1f1f1;
@@ -226,7 +248,7 @@
       width: 300px;
       height: 100vh;
       background: #fff;
-      box-shadow: -2px 0 8px rgba(0,0,0,0.3);
+      box-shadow: -2px 0 8px rgba(0, 0, 0, 0.3);
       padding: 200px;
       z-index: 1000;
       transition: right 0.3s ease;
@@ -247,7 +269,8 @@
       justify-content: space-between;
       align-items: center;
       margin-bottom: 10px;
-      gap: 15px; /* Adiciona espaçamento horizontal entre os elementos */
+      gap: 15px;
+      /* Adiciona espaçamento horizontal entre os elementos */
     }
 
     .cart-item span {
@@ -276,7 +299,7 @@
       left: 0;
       width: 100vw;
       height: 100vh;
-      background: rgba(0,0,0,0.5);
+      background: rgba(0, 0, 0, 0.5);
       z-index: 999;
       display: none;
     }
@@ -317,557 +340,615 @@
         font-size: 0.75em;
       }
     }
+
     @media (max-width: 480px) {
-  .product-grid {
-    grid-template-columns: repeat(2, 1fr); /* duas colunas */
-    gap: 10px;
-  }
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* duas colunas */
+        gap: 10px;
+      }
 
-  .product-card {
-    padding: 10px;
-  }
+      .product-card {
+        padding: 10px;
+      }
 
-  .product-card img {
-    max-height: 180px; /* para imagens não ficarem exageradas */
-    object-fit: cover;
-  }
+      .product-card img {
+        max-height: 180px;
+        /* para imagens não ficarem exageradas */
+        object-fit: cover;
+      }
     }
 
     #search-input {
-  padding: 8px 12px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  font-size: 0.9em;
-  width: 130px;
-  max-width: 200%;
-  box-sizing: border-box;
-  transition: width 0.3s ease;
-  margin-left: 1px; /* Reduz o espaço entre o título e o input */
-}
+      padding: 8px 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 0.9em;
+      width: 130px;
+      max-width: 200%;
+      box-sizing: border-box;
+      transition: width 0.3s ease;
+      margin-left: 1px;
+      /* Reduz o espaço entre o título e o input */
+    }
 
-  #cart-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: none;
-    z-index: 999;
-  }
+    #cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      display: none;
+      z-index: 999;
+    }
 
-  /* Sidebar do carrinho */
-  #cart-sidebar {
-    position: fixed;
-    top: 0;
-    right: -350px;
-    width: 320px;
-    height: 100%;
-    background-color: #fff;
-    box-shadow: -3px 0 8px rgba(0, 0, 0, 0.2);
-    padding: 20px;
-    z-index: 1000;
-    transition: right 0.3s ease-in-out;
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-  }
+    /* Sidebar do carrinho */
+    #cart-sidebar {
+      position: fixed;
+      top: 0;
+      right: -350px;
+      width: 320px;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: -3px 0 8px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      z-index: 1000;
+      transition: right 0.3s ease-in-out;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
 
-  #cart-sidebar.active {
-    right: 0;
-  }
+    #cart-sidebar.active {
+      right: 0;
+    }
 
-  #cart-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: none;
-    z-index: 999;
-  }
+    #cart-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 999;
+    }
 
-  #cart-overlay.active {
-    display: block;
-  }
+    #cart-overlay.active {
+      display: block;
+    }
 
-  .cart-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
+    .cart-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
 
-  .cart-header h3 {
-    font-size: 1.3em;
-    color: #111;
-  }
+    .cart-header h3 {
+      font-size: 1.3em;
+      color: #111;
+    }
 
-  .cart-header button {
-    background: transparent;
-    border: none;
-    font-size: 1.4em;
-    cursor: pointer;
-    color: #111;
-  }
+    .cart-header button {
+      background: transparent;
+      border: none;
+      font-size: 1.4em;
+      cursor: pointer;
+      color: #111;
+    }
 
-  #cart-items {
-    flex: 1;
-    overflow-y: auto;
-    margin-bottom: 10px;
-  }
+    #cart-items {
+      flex: 1;
+      overflow-y: auto;
+      margin-bottom: 10px;
+    }
 
-  #cart-sidebar button#finalizar {
-    margin-top: 5px;
-  }
+    #cart-sidebar button#finalizar {
+      margin-top: 5px;
+    }
 
-  .cart-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: #f9f9f9;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    font-size: 0.95em;
-  }
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f9f9f9;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      font-size: 0.95em;
+    }
 
-  .cart-item i {
-    color: red;
-    cursor: pointer;
-    transition: color 0.2s ease;
-  }
+    .cart-item i {
+      color: red;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
 
-  .cart-item i:hover {
-    color: darkred;
-  }
+    .cart-item i:hover {
+      color: darkred;
+    }
 
-  #cart-sidebar button#finalizar {
-    background-color: #f2cd00;
-    color: #111;
-    border: none;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
+    #cart-sidebar button#finalizar {
+      background-color: #f2cd00;
+      color: #111;
+      border: none;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-  #cart-sidebar button#finalizar:hover {
-    background-color: #f2cd00;
-  }
+    #cart-sidebar button#finalizar:hover {
+      background-color: #f2cd00;
+    }
 
-  #filtros {
-    margin-top: 0;
-    padding-top: 0;
-    display: flex;
-    overflow-x: auto;
-    white-space: nowrap;
-    gap: 10px;
-    padding: 10px 15px;
-    margin: 1px auto 0 auto; /* margem topo menor, margem inferior 0 */
-    max-width: 100vw;
-    scrollbar-width: thin;
-    scrollbar-color: #f2cd00 transparent;
-  }
+    #filtros {
+      margin-top: 0;
+      padding-top: 0;
+      display: flex;
+      overflow-x: auto;
+      white-space: nowrap;
+      gap: 10px;
+      padding: 10px 15px;
+      margin: 1px auto 0 auto;
+      /* margem topo menor, margem inferior 0 */
+      max-width: 100vw;
+      scrollbar-width: thin;
+      scrollbar-color: #f2cd00 transparent;
+    }
 
-  #filtros::-webkit-scrollbar {
-    height: 6px; /* mais fina */
-  }
+    #filtros::-webkit-scrollbar {
+      height: 6px;
+      /* mais fina */
+    }
 
-  #filtros::-webkit-scrollbar-thumb {
-    background: #f2cd00;
-    border-radius: 8px;
-  }
+    #filtros::-webkit-scrollbar-thumb {
+      background: #f2cd00;
+      border-radius: 8px;
+    }
 
-  #filtros button {
-    flex: 0 0 100px; /* aumenta a largura dos botões */
-    padding: 10px 14px; /* aumenta altura/largura interna */
-    font-size: 13px; /* aumenta o tamanho da fonte */
-    text-align: center;
-    border: none;
-    background-color: #f2cd00;
-    color: rgb(0, 0, 0);
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    white-space: nowrap;
-    transition: background-color 0.3s ease;
-  }
+    #filtros button {
+      flex: 0 0 100px;
+      /* aumenta a largura dos botões */
+      padding: 10px 14px;
+      /* aumenta altura/largura interna */
+      font-size: 13px;
+      /* aumenta o tamanho da fonte */
+      text-align: center;
+      border: none;
+      background-color: #f2cd00;
+      color: rgb(0, 0, 0);
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background-color 0.3s ease;
+    }
 
-  #filtros button:hover {
-    background-color: #f2cd00;
-    color: #000000;
-  }
+    #filtros button:hover {
+      background-color: #f2cd00;
+      color: #000000;
+    }
 
-  #filtros button.ativo {
-    background-color: black;
-    color: white;
-  }
+    #filtros button.ativo {
+      background-color: black;
+      color: white;
+    }
 
-  .image-container {
-    position: relative;
-    width: 100%;
-  }
+    .image-container {
+      position: relative;
+      width: 100%;
+    }
 
-  .image-container img {
-    width: 100%;
-    display: block;
-    border-radius: 8px;
-    transition: 0.3s ease;
-  }
+    .image-container img {
+      width: 100%;
+      display: block;
+      border-radius: 8px;
+      transition: 0.3s ease;
+    }
 
-  .image-container.esgotado {
-    margin-bottom: 20px;
-  }
+    .image-container.esgotado {
+      margin-bottom: 20px;
+    }
 
-  /* Texto atravessado (diagonal) sobre a imagem */
-  .sold-out-overlay {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-30deg);
-    background-color: rgba(0, 0, 0, 0.7);
-    color: white;
-    padding: 10px 40px;
-    font-size: 24px;
-    font-weight: bold;
-    border: 2px solid white;
-    border-radius: 8px;
-    z-index: 2;
-    pointer-events: none;
-    text-transform: uppercase;
-    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
-  }
+    /* Texto atravessado (diagonal) sobre a imagem */
+    .sold-out-overlay {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-30deg);
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px 40px;
+      font-size: 24px;
+      font-weight: bold;
+      border: 2px solid white;
+      border-radius: 8px;
+      z-index: 2;
+      pointer-events: none;
+      text-transform: uppercase;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    }
 
-/* Ajustes para mobile */
-@media (max-width: 480px) {
-  .image-container.esgotado img {
-    width: 100%;
-    height: auto; /* mantém proporção */
-    object-fit: contain; /* evita zoom/corte */
-    border-radius: 10px !important; /* ✅ adiciona o arredondamento */
-  }
+    /* Ajustes para mobile */
+    @media (max-width: 480px) {
+      .image-container.esgotado img {
+        width: 100%;
+        height: auto;
+        /* mantém proporção */
+        object-fit: contain;
+        /* evita zoom/corte */
+        border-radius: 10px !important;
+        /* ✅ adiciona o arredondamento */
+      }
 
-  .sold-out-overlay {
-    font-size: 14px;
-    padding: 6px 20px;
-    border-width: 1px;
-    border-radius: 6px;
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
-    max-width: 80%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
+      .sold-out-overlay {
+        font-size: 14px;
+        padding: 6px 20px;
+        border-width: 1px;
+        border-radius: 6px;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+        max-width: 80%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
 
-  .quantidade-controle {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2px;
-    margin-left: 8px;
-    background: #f9f9f9;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    padding: 2px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
-  }
+    .quantidade-controle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+      margin-left: 8px;
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 2px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    }
 
-  .quantidade-controle i {
-    font-size: 12px;
-    cursor: pointer;
-    color: #111;
-    background: #f2cd00;
-    padding: 3px;
-    border-radius: 3px;
-    transition: background 0.2s ease, transform 0.1s ease;
-  }
+    .quantidade-controle i {
+      font-size: 12px;
+      cursor: pointer;
+      color: #111;
+      background: #f2cd00;
+      padding: 3px;
+      border-radius: 3px;
+      transition: background 0.2s ease, transform 0.1s ease;
+    }
 
-  .quantidade-controle i:hover {
-    background: #fff;  /* fundo branco no hover */
-    color: #111;       /* mantém o ícone escuro */
-    transform: scale(1.1);
-  }
+    .quantidade-controle i:hover {
+      background: #fff;
+      /* fundo branco no hover */
+      color: #111;
+      /* mantém o ícone escuro */
+      transform: scale(1.1);
+    }
 
-  @media (min-width: 768px) {
-  #search-input {
-    width: 1220px; /* ou qualquer valor maior que 130px */
-  }
-}
+    @media (min-width: 768px) {
+      #search-input {
+        width: 1220px;
+        /* ou qualquer valor maior que 130px */
+      }
+    }
 
-.toggle-btn {
-  margin-top: 5px;
-  background-color: #f1c40f;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  border-radius: 5px;
-}
+    .toggle-btn {
+      margin-top: 5px;
+      background-color: #f1c40f;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      border-radius: 5px;
+    }
 
-.toggle-btn:hover {
-  background-color: #d4ac0d;
-}
+    .toggle-btn:hover {
+      background-color: #d4ac0d;
+    }
 
-#bandeirinhas,
-.cordao-bandeirinhas {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 24px;       /* container mais baixo */
-  padding: 1px 0;
-  gap: 4px;           /* espaço menor */
-  justify-content: center;
-  position: fixed;
-  display: flex;
-  z-index: 1000;
-  background: transparent;
-}
+    #bandeirinhas,
+    .cordao-bandeirinhas {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 24px;
+      /* container mais baixo */
+      padding: 1px 0;
+      gap: 4px;
+      /* espaço menor */
+      justify-content: center;
+      position: fixed;
+      display: flex;
+      z-index: 1000;
+      background: transparent;
+    }
 
-.bandeirinha {
-  border-left: 9px solid transparent;    /* base menor */
-  border-right: 9px solid transparent;   /* base menor */
-  border-top: 14px solid red;             /* altura menor */
-  width: 0;
-  height: 0;
-  box-shadow: 0 -1px 1px rgba(0,0,0,0.15);
-  border-radius: 5px 5px 0 0;
-  animation: balancar 3s ease-in-out infinite;
-  cursor: default;
-}
+    .bandeirinha {
+      border-left: 9px solid transparent;
+      /* base menor */
+      border-right: 9px solid transparent;
+      /* base menor */
+      border-top: 14px solid red;
+      /* altura menor */
+      width: 0;
+      height: 0;
+      box-shadow: 0 -1px 1px rgba(0, 0, 0, 0.15);
+      border-radius: 5px 5px 0 0;
+      animation: balancar 3s ease-in-out infinite;
+      cursor: default;
+    }
 
-.bandeirinha.vermelho {
-  border-top-color: #e53935;
-}
+    .bandeirinha.vermelho {
+      border-top-color: #e53935;
+    }
 
-.bandeirinha.verde {
-  border-top-color: #43a047;
-}
+    .bandeirinha.verde {
+      border-top-color: #43a047;
+    }
 
-.bandeirinha.roxo {
-  border-top-color: #7726e8;
-}
+    .bandeirinha.roxo {
+      border-top-color: #7726e8;
+    }
 
-.bandeirinha.azul {
-  border-top-color: #1e88e5;
-}
+    .bandeirinha.azul {
+      border-top-color: #1e88e5;
+    }
 
-/* Especial com M menor e no topo */
-.bandeirinha.especial {
-  border-left: 9px solid transparent;
-  border-right: 9px solid transparent;
-  border-top: 14px solid #f2cd00;
-  width: 0;
-  height: 0;
-  box-shadow: 0 -1px 2px rgba(0,0,0,0.2);
-  border-radius: 5px 5px 0 0;
-  position: relative;
-  animation: balancar 3s ease-in-out infinite;
-}
+    /* Especial com M menor e no topo */
+    .bandeirinha.especial {
+      border-left: 9px solid transparent;
+      border-right: 9px solid transparent;
+      border-top: 14px solid #f2cd00;
+      width: 0;
+      height: 0;
+      box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
+      border-radius: 5px 5px 0 0;
+      position: relative;
+      animation: balancar 3s ease-in-out infinite;
+    }
 
-.bandeirinha.especial span {
-  position: absolute;
-  top: 1px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-weight: 900;
-  font-size: 12px;    /* letra menor */
-  color: #111;
-}
+    .bandeirinha.especial span {
+      position: absolute;
+      top: 1px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-weight: 900;
+      font-size: 12px;
+      /* letra menor */
+      color: #111;
+    }
 
-/* Animação de balanço */
-@keyframes balancar {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(6deg); }
-}
+    /* Animação de balanço */
+    @keyframes balancar {
 
-.modal-caracteristicas {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6); /* fundo escurecido */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-}
+      0%,
+      100% {
+        transform: rotate(0deg);
+      }
 
-.modal-conteudo {
-  background: white;
-  width: 90%;
-  max-width: 350px;
-  padding: 20px;
-  border-radius: 12px;
-  position: relative;
-  box-shadow: 0 0 20px rgba(0,0,0,0.2);
-  max-height: 80vh;
-  overflow-y: auto;
-}
+      50% {
+        transform: rotate(6deg);
+      }
+    }
 
-.fechar-modal {
-  position: absolute;
-  top: 10px;
-  right: 12px;
-  font-size: 24px;
-  background: none;
-  border: none;
-  color: #000;
-  cursor: pointer;
-}
+    /* Animações */
+    @keyframes balancar {
 
-.modal-texto {
-  margin-top: 20px;
-  font-size: 18px;
-  line-height: 1.5;
-  color: #333;
-  text-align: left;
-}
+      0%,
+      100% {
+        transform: rotate(0deg);
+      }
 
-@media (max-width: 767px) {
-  .modal-texto {
-    font-size: 14px;
-  }
-}
+      50% {
+        transform: rotate(6deg);
+      }
+    }
 
-/* Modal overlay */
-#modal-caracteristicas {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
-  justify-content: center;
-  align-items: center;
-}
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
 
-/* Conteúdo do modal */
-#modal-caracteristicas .modal-conteudo {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  max-height: 90vh;
-  overflow-y: auto;
-  width: 90%;
-  max-width: 500px; /* Tamanho para mobile */
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
-  position: relative;
-  animation: fadeIn 0.3s ease;
-}
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
-/* Para telas maiores: aumenta o tamanho */
-@media (min-width: 768px) {
-  #modal-caracteristicas .modal-conteudo {
-    max-width: 700px; /* Aumenta para desktop */
-    padding: 30px;
-  }
-}
+    /* Overlay do modal */
+    .modal-caracteristicas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      animation: fadeIn 0.3s ease;
+    }
 
-/* Botão fechar */
-#modal-caracteristicas .fechar-modal {
-  position: absolute;
-  top: 12px;
-  right: 16px;
-  background: none;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
-}
+    /* Conteúdo do modal – tamanho médio a grande */
+    .modal-conteudo {
+      background: white;
+      width: 80%;
+      max-width: 800px;
+      height: 70vh;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+      overflow-y: auto;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
 
-/* Animação opcional */
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
+    /* Botão de fechar */
+    .fechar-modal {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 28px;
+      background: none;
+      border: none;
+      color: #333;
+      cursor: pointer;
+    }
 
+    /* Título do modal */
+    .modal-titulo {
+      font-size: 50px;
+      font-weight: bold;
+      color: #222;
+      text-align: center;
+    }
 
+    /* Texto de características */
+    .modal-texto {
+      font-size: 20px;
+      line-height: 1.6;
+      color: #444;
+      text-align: left;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Responsivo para mobile */
+    @media (max-width: 767px) {
+      .modal-conteudo {
+        width: 95%;
+        height: 80vh;
+        padding: 20px;
+        border-radius: 12px;
+      }
+
+      .modal-titulo {
+        font-size: 22px;
+      }
+
+      .modal-texto {
+        font-size: 15px;
+      }
+
+      .fechar-modal {
+        font-size: 26px;
+        top: 16px;
+        right: 16px;
+      }
+    }
+
+    body.modal-aberto,
+    html.modal-aberto {
+      overflow: hidden !important;
+      height: 100%;
+      touch-action: none;
+      /* para impedir rolagem no celular */
+    }
+
+    .mensagem-erro {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #888;
+      font-size: 20px;
+      text-align: center;
+      z-index: 9999;
+      background: none;
+      padding: 0;
+      border: none;
+      box-shadow: none;
+    }
   </style>
 </head>
+
 <body>
 
-<div class="cordao-bandeirinhas" id="bandeirinhas">
-  <div class="bandeirinha vermelho"></div>
-  <div class="bandeirinha verde"></div>
-  <div class="bandeirinha roxo"></div>
-  <div class="bandeirinha azul"></div>
+  <div class="cordao-bandeirinhas" id="bandeirinhas">
     <div class="bandeirinha vermelho"></div>
-  <div class="bandeirinha verde"></div>
-  <div class="bandeirinha roxo"></div>
-  <div class="bandeirinha azul"></div>
+    <div class="bandeirinha verde"></div>
+    <div class="bandeirinha roxo"></div>
+    <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-  <div class="bandeirinha verde"></div>
-  <div class="bandeirinha roxo"></div>
-  <div class="bandeirinha azul"></div>
+    <div class="bandeirinha verde"></div>
+    <div class="bandeirinha roxo"></div>
+    <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-  <div class="bandeirinha verde"></div>
-  <div class="bandeirinha roxo"></div>
-  <div class="bandeirinha azul"></div>
+    <div class="bandeirinha verde"></div>
+    <div class="bandeirinha roxo"></div>
+    <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-  <div class="bandeirinha verde"></div>
-  <div class="bandeirinha roxo"></div>
-  <div class="bandeirinha azul"></div>
+    <div class="bandeirinha verde"></div>
+    <div class="bandeirinha roxo"></div>
+    <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-  <div class="bandeirinha verde"></div>
-  <div class="bandeirinha roxo"></div>
-  <div class="bandeirinha azul"></div>
+    <div class="bandeirinha verde"></div>
+    <div class="bandeirinha roxo"></div>
+    <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-  <div class="bandeirinha verde"></div>
-  <div class="bandeirinha roxo"></div>
-  <div class="bandeirinha azul"></div>
+    <div class="bandeirinha verde"></div>
+    <div class="bandeirinha roxo"></div>
+    <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-  <div class="bandeirinha verde"></div>
-  <div class="bandeirinha roxo"></div>
-  <div class="bandeirinha azul"></div>
+    <div class="bandeirinha verde"></div>
+    <div class="bandeirinha roxo"></div>
+    <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-  <div class="bandeirinha verde"></div>
-  <div class="bandeirinha roxo"></div>
-  <div class="bandeirinha azul"></div>
+    <div class="bandeirinha verde"></div>
+    <div class="bandeirinha roxo"></div>
+    <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-  <div class="bandeirinha verde"></div>
-  <div class="bandeirinha roxo"></div>
-  <div class="bandeirinha azul"></div>
+    <div class="bandeirinha verde"></div>
+    <div class="bandeirinha roxo"></div>
+    <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-  <div class="bandeirinha verde"></div>
-  <div class="bandeirinha roxo"></div>
-  <div class="bandeirinha azul"></div>
+    <div class="bandeirinha verde"></div>
+    <div class="bandeirinha roxo"></div>
+    <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-  <div class="bandeirinha verde"></div>
-  <div class="bandeirinha roxo"></div>
-  <div class="bandeirinha azul"></div>
-  <div class="bandeirinha vermelho"></div>
-  <div class="bandeirinha verde"></div>
-  <div class="bandeirinha roxo"></div>
-  <div class="bandeirinha azul"></div>
+    <div class="bandeirinha verde"></div>
+    <div class="bandeirinha roxo"></div>
+    <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-  <div class="bandeirinha verde"></div>
-  <div class="bandeirinha roxo"></div>
-  <div class="bandeirinha azul"></div>
-      <div class="bandeirinha vermelho"></div>
-  <div class="bandeirinha verde"></div>
-  <div class="bandeirinha roxo"></div>
-  <div class="bandeirinha azul"></div>
-      <div class="bandeirinha vermelho"></div>
-  <div class="bandeirinha verde"></div>
-  <div class="bandeirinha roxo"></div>
-  <div class="bandeirinha azul"></div>
-      <div class="bandeirinha vermelho"></div>
-  <div class="bandeirinha verde"></div>
-  <div class="bandeirinha roxo"></div>
-  <div class="bandeirinha azul"></div>
-      <div class="bandeirinha vermelho"></div>
-  <div class="bandeirinha verde"></div>
-  <div class="bandeirinha roxo"></div>
-  <div class="bandeirinha azul"></div>
-</div>
+    <div class="bandeirinha verde"></div>
+    <div class="bandeirinha roxo"></div>
+    <div class="bandeirinha azul"></div>
+    <div class="bandeirinha vermelho"></div>
+    <div class="bandeirinha verde"></div>
+    <div class="bandeirinha roxo"></div>
+    <div class="bandeirinha azul"></div>
+    <div class="bandeirinha vermelho"></div>
+    <div class="bandeirinha verde"></div>
+    <div class="bandeirinha roxo"></div>
+    <div class="bandeirinha azul"></div>
+    <div class="bandeirinha vermelho"></div>
+    <div class="bandeirinha verde"></div>
+    <div class="bandeirinha roxo"></div>
+    <div class="bandeirinha azul"></div>
+    <div class="bandeirinha vermelho"></div>
+    <div class="bandeirinha verde"></div>
+    <div class="bandeirinha roxo"></div>
+    <div class="bandeirinha azul"></div>
+    <div class="bandeirinha vermelho"></div>
+    <div class="bandeirinha verde"></div>
+    <div class="bandeirinha roxo"></div>
+    <div class="bandeirinha azul"></div>
+    <div class="bandeirinha vermelho"></div>
+    <div class="bandeirinha verde"></div>
+    <div class="bandeirinha roxo"></div>
+    <div class="bandeirinha azul"></div>
+  </div>
 
   <header>
     <h1>Arraiá</h1>
@@ -881,794 +962,931 @@
     </div>
   </header>
 
-<!-- Modal de Características -->
-<div id="modal-caracteristicas" class="modal-caracteristicas" style="display: none;">
-  <div class="modal-conteudo">
-    <button class="fechar-modal" onclick="fecharModal()">×</button>
-    <div class="modal-texto"></div>
+  <div id="mensagem-erro" class="mensagem-erro">Nenhum produto encontrado.</div>
+
+  <!-- Modal de Características -->
+  <div id="modal-caracteristicas" class="modal-caracteristicas" style="display: none;">
+    <div class="modal-conteudo">
+      <button class="fechar-modal" onclick="fecharModal()">×</button>
+      <div class="modal-texto"></div>
+    </div>
   </div>
-</div>
 
 
-<div id="filtros">
-  <button onclick="mostrarTodos()">Todos</button>
-  <button onclick="filtrarPromocoes()">Promoções</button>
-  <button onclick="filtrarPorCategoria(1, 50)">Stanley</button>
-  <button onclick="filtrarPorCategoria(51, 100)">Celular</button>
-  <button onclick="filtrarPorCategoria(101, 150)">Informática</button>
-  <button onclick="filtrarPorCategoria(151, 200)">Fones</button>
-  <button onclick="filtrarPorCategoria(201, 250)">Som</button>
-  <button onclick="filtrarPorCategoria(251, 300)">Diversos</button>
-</div>
+  <div id="filtros">
+    <button onclick="mostrarTodos()">Todos</button>
+    <button onclick="filtrarPromocoes()">Promoções</button>
+    <button onclick="filtrarPorCategoria(1, 50)">Stanley</button>
+    <button onclick="filtrarPorCategoria(51, 100)">Celular</button>
+    <button onclick="filtrarPorCategoria(101, 150)">Informática</button>
+    <button onclick="filtrarPorCategoria(151, 200)">Fones</button>
+    <button onclick="filtrarPorCategoria(201, 250)">Som</button>
+    <button onclick="filtrarPorCategoria(251, 300)">Diversos</button>
+  </div>
 
-<main>
-  <div class="product-grid">
-    <div class="product-card">
-      <div class="image-container esgotado">
-        <img src="https://lh3.googleusercontent.com/pw/AP1GczO6EkC8Q7g1vo2ssyPFCayf5up0f36p2VbJb5aWWjjuNbn1m0dXgz2WjyJ1W_Nbgdcch7d2QwXIiE_ASU-AcTeMkQdxxYX5WDxIvvw5bi2gjVI1xL81GFfbdcnTKNpx71_6jpLTHGz2c8O99MZvLOTd=w685-h913-s-no-gm?authuser=0" 
-             alt="STANLEY ROSA BEBÊ 950ML" onclick="zoomImagem(this.src)" />
-        <div class="sold-out-overlay">ESGOTADO</div>
-      </div>
-      <h3>1 - STANLEY ROSA BEBÊ 950ML</h3>
-      <p class="price">R$ 89,90</p>
-      <div class="controls">
-        <div class="top-row">
-          <input type="number" min="1" value="1" />
-          <button onclick="adicionarAoCarrinho(this, 'STANLEY ROSA BEBÊ 950ML')">Adicionar</button>
+  <main>
+    <div class="product-grid">
+      <div class="product-card">
+        <div class="image-container esgotado">
+          <img
+            src="https://lh3.googleusercontent.com/pw/AP1GczO6EkC8Q7g1vo2ssyPFCayf5up0f36p2VbJb5aWWjjuNbn1m0dXgz2WjyJ1W_Nbgdcch7d2QwXIiE_ASU-AcTeMkQdxxYX5WDxIvvw5bi2gjVI1xL81GFfbdcnTKNpx71_6jpLTHGz2c8O99MZvLOTd=w685-h913-s-no-gm?authuser=0"
+            alt="STANLEY ROSA BEBÊ 950ML" onclick="zoomImagem(this.src)" />
+          <div class="sold-out-overlay">ESGOTADO</div>
         </div>
-        <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        <h3>1 - STANLEY ROSA BEBÊ 950ML</h3>
+        <p class="price">R$ 89,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'STANLEY ROSA BEBÊ 950ML')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>STANLEY ROSA BEBÊ 950ML</strong><br>
+            - Térmica até 24h<br>
+            - Capacidade: 950ml<br>
+            - Cor: Rosa bebê<br>
+            - Material: Inox<br>
+            - Tampa com vedação
+          </p>
+        </div>
       </div>
-      <div class="caracteristicas" style="display: none;">
-        <p>
-          <strong>STANLEY ROSA BEBÊ 950ML</strong><br>
-          - Térmica até 24h<br>
-          - Capacidade: 950ml<br>
-          - Cor: Rosa bebê<br>
-          - Material: Inox<br>
-          - Tampa com vedação
-        </p>
+
+      <div class="product-card">
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczN81p-TPufTfQgxFbREAcDZRghvXO-NbCDlq6x1pFdyWlusNKC4obfaImW1O0hYKCHH40M0GAe5jKmzWc7spLcmFEC3kEIYg7lvMGogB1lP2occpj0IFFYaSzwvBTaJSvP25Yjz2clUFowPSvAGaPYE=w685-h913-s-no-gm?authuser=0"
+          alt="STANLEY ROXO 950ML" onclick="zoomImagem(this.src)" />
+        <h3>2 - STANLEY ROXO 950ML</h3>
+        <p class="price">R$ 89,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'STANLEY ROXO 950ML')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>STANLEY ROXO 950ML</strong><br>
+            - Térmica até 24h<br>
+            - Capacidade: 950ml<br>
+            - Cor: Roxo<br>
+            - Material: Inox<br>
+            - Tampa com vedação
+          </p>
+        </div>
       </div>
-    </div>
 
       <div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczN81p-TPufTfQgxFbREAcDZRghvXO-NbCDlq6x1pFdyWlusNKC4obfaImW1O0hYKCHH40M0GAe5jKmzWc7spLcmFEC3kEIYg7lvMGogB1lP2occpj0IFFYaSzwvBTaJSvP25Yjz2clUFowPSvAGaPYE=w685-h913-s-no-gm?authuser=0" 
-       alt="STANLEY ROXO 950ML" onclick="zoomImagem(this.src)" />
-  <h3>2 - STANLEY ROXO 950ML</h3>
-  <p class="price">R$ 89,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'STANLEY ROXO 950ML')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>STANLEY ROXO 950ML</strong><br>
-      - Térmica até 24h<br>
-      - Capacidade: 950ml<br>
-      - Cor: Roxo<br>
-      - Material: Inox<br>
-      - Tampa com vedação
-    </p>
-  </div>
-</div>
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczPdzboFsdWNUiZBt-ulK2QpIkgsnTC_kqj7B6k2SevYBf6hWdn24ToQXHgf2Mmut6tADwtYwZoqnFXBxGvpXza-t-iGuQap0L8wS3r7n3k8ULmb8UPV5qJByGcP33XqYSnpbnb-x0M2TKxLPI45DhOc=w685-h913-s-no-gm?authuser=0"
+          alt="STANLEY AZUL BEBÊ 800ML" onclick="zoomImagem(this.src)" />
+        <h3>3 - STANLEY AZUL BEBÊ 800ML</h3>
+        <p class="price">R$ 79,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'STANLEY AZUL BEBÊ 800ML')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>STANLEY AZUL BEBÊ 800ML</strong><br>
+            - Térmica até 24h<br>
+            - Capacidade: 800ml<br>
+            - Cor: Azul bebê<br>
+            - Material: Inox<br>
+            - Tampa com vedação
+          </p>
+        </div>
+      </div>
 
-<div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczPdzboFsdWNUiZBt-ulK2QpIkgsnTC_kqj7B6k2SevYBf6hWdn24ToQXHgf2Mmut6tADwtYwZoqnFXBxGvpXza-t-iGuQap0L8wS3r7n3k8ULmb8UPV5qJByGcP33XqYSnpbnb-x0M2TKxLPI45DhOc=w685-h913-s-no-gm?authuser=0" 
-       alt="STANLEY AZUL BEBÊ 800ML" onclick="zoomImagem(this.src)" />
-  <h3>3 - STANLEY AZUL BEBÊ 800ML</h3>
-  <p class="price">R$ 79,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'STANLEY AZUL BEBÊ 800ML')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>STANLEY AZUL BEBÊ 800ML</strong><br>
-      - Térmica até 24h<br>
-      - Capacidade: 800ml<br>
-      - Cor: Azul bebê<br>
-      - Material: Inox<br>
-      - Tampa com vedação
-    </p>
-  </div>
-</div>
+      <!--ANTIGO-->
+      <!--<p class="price">de R$ 89,90 por</p>-->
+      <!--<p class="price"><strong>R$ 79,90</strong></p>-->
 
-        <!--ANTIGO-->
-        <!--<p class="price">de R$ 89,90 por</p>-->
-        <!--<p class="price"><strong>R$ 79,90</strong></p>-->
-
-        <!--NOVO-->
-        <!--<p class="price1"></p>-->
-        <!--<span class="price3">R$ 89,90</span> <span class="price"><strong>R$ 79,90</strong></span>-->
+      <!--NOVO-->
+      <!--<p class="price1"></p>-->
+      <!--<span class="price3">R$ 89,90</span> <span class="price"><strong>R$ 79,90</strong></span>-->
       <div class="product-card">
-  <img 
-    src="https://lh3.googleusercontent.com/pw/AP1GczPrReb_QvYdACkGWgHYV26n7pMiXxtbqGQp_NsQV10GBAaGX_6zVy1ZxNYwTMDKZrveY4BNrtV8biVvb9YvPRv3KxA84MNCq4Jqgc-yCi03AH4r0GPk1uhVEDny8ocHtgJfXxjI-DSZ2As68qSLWDmV=w685-h913-s-no-gm?authuser=0" 
-    alt="STANLEY VERDE BEBÊ 950ML" onclick="zoomImagem(this.src)"/>
-  <h3>4 - STANLEY VERDE BEBÊ 950ML</h3>
-  <p class="price">R$ 89,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'STANLEY VERDE BEBÊ 950ML')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>STANLEY VERDE BEBÊ 950ML</strong><br>
-      - Térmica até 24h<br>
-      - Capacidade: 950ml<br>
-      - Cor: Verde Bebê<br>
-      - Material: Inox<br>
-      - Tampa com vedação
-    </p>
-  </div>
-</div>
-
-   <div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczOhIZs6gHr33ajh_OHe4E6wQybOXx0l6HocGFkBMTzcrFSu3cFfMX7KKzl0_qOjtczLvcAb-9zFp-TqBM9Aoj9npIc9-GDosy-8qholJirD1qpJ09xiXrYUMEyBO6HKjFAO0qniCRF2l_ITHWsofBsE=w685-h913-s-no-gm?authuser=0" alt="STANLEY ROSA 950ML" onclick="zoomImagem(this.src)" />
-  <h3>5 - STANLEY ROSA 950ML</h3>
-  <p class="price1"></p>
-  <span class="price3"><s>R$ 89,90</s></span> <span class="price"><strong>R$ 79,90</strong></span>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'STANLEY ROSA 950ML')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>STANLEY ROSA 950ML</strong><br>
-       - Térmica até 24h<br>
-       - Capacidade: 950ml<br>
-       - Cor: Rosa metálico<br>
-       - Material: Inox<br>
-       - Tampa com vedação</p>
-  </div>
-</div>
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczPrReb_QvYdACkGWgHYV26n7pMiXxtbqGQp_NsQV10GBAaGX_6zVy1ZxNYwTMDKZrveY4BNrtV8biVvb9YvPRv3KxA84MNCq4Jqgc-yCi03AH4r0GPk1uhVEDny8ocHtgJfXxjI-DSZ2As68qSLWDmV=w685-h913-s-no-gm?authuser=0"
+          alt="STANLEY VERDE BEBÊ 950ML" onclick="zoomImagem(this.src)" />
+        <h3>4 - STANLEY VERDE BEBÊ 950ML</h3>
+        <p class="price">R$ 89,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'STANLEY VERDE BEBÊ 950ML')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>STANLEY VERDE BEBÊ 950ML</strong><br>
+            - Térmica até 24h<br>
+            - Capacidade: 950ml<br>
+            - Cor: Verde Bebê<br>
+            - Material: Inox<br>
+            - Tampa com vedação
+          </p>
+        </div>
+      </div>
 
       <div class="product-card">
-  <div class="image-container esgotado">
-    <img 
-      src="https://lh3.googleusercontent.com/pw/AP1GczOIcDZgNqqxlw7hd6dkuY_UAmj50JXQfNJiJrAGNz60xAnTKi2zz_pq7LX3XyU5NrSr4OrLsV0IpI6Pz8JUBX9pC230h1rLaxgm-m74UbFk5aNmDLFac6tM7rN7OzRxcqqzDf6891V_4gLUVtGFET-I=w685-h913-s-no-gm?authuser=0" 
-      alt="STANLEY OFF WHITE 1200ML" onclick="zoomImagem(this.src)"/>
-    <div class="sold-out-overlay">ESGOTADO</div>
-  </div>
-  <h3>6 - STANLEY OFF WHITE 1200ML</h3>
-  <p class="price">R$ 99,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'STANLEY OFF WHITE 1200ML')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>STANLEY OFF WHITE 1200ML</strong><br>
-      - Térmica até 24h<br>
-      - Capacidade: 1200ml<br>
-      - Cor: Off White<br>
-      - Material: Inox<br>
-      - Tampa com vedação
-    </p>
-  </div>
-</div>
-
-       <div class="product-card">
-  <div class="image-container esgotado">
-    <img src="https://lh3.googleusercontent.com/pw/AP1GczMZxJCD_ahw1A7pm4OWsSg9N9WqC9YSCpy7Ezik-mNqT6bv_d4i3zAywKH5uOUJhf6qnwn0fmkxXgXOMjL6e8uEyX3yXCPL9Sjil0RpmaPOEyNFX_j5a_O3y4QWuSC9w08XjEqXvSCgvS3VYF5WfnhG=w685-h913-s-no-gm?authuser=0" 
-         alt="STANLEY LILÁS 1200ML" onclick="zoomImagem(this.src)"/>
-    <div class="sold-out-overlay">ESGOTADO</div>
-  </div>
-  <h3>7 - STANLEY LILÁS 1200ML</h3>
-  <p class="price">R$ 99,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'STANLEY LILÁS 1200ML')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>STANLEY LILÁS 1200ML</strong><br>
-      - Térmica até 24h<br>
-      - Capacidade: 1200ml<br>
-      - Cor: Lilás<br>
-      - Material: Inox<br>
-      - Tampa com vedação
-    </p>
-  </div>
-</div>
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczOhIZs6gHr33ajh_OHe4E6wQybOXx0l6HocGFkBMTzcrFSu3cFfMX7KKzl0_qOjtczLvcAb-9zFp-TqBM9Aoj9npIc9-GDosy-8qholJirD1qpJ09xiXrYUMEyBO6HKjFAO0qniCRF2l_ITHWsofBsE=w685-h913-s-no-gm?authuser=0"
+          alt="STANLEY ROSA 950ML" onclick="zoomImagem(this.src)" />
+        <h3>5 - STANLEY ROSA 950ML</h3>
+        <p class="price1"></p>
+        <span class="price3"><s>R$ 89,90</s></span> <span class="price"><strong>R$ 79,90</strong></span>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'STANLEY ROSA 950ML')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>STANLEY ROSA 950ML</strong><br>
+            - Térmica até 24h<br>
+            - Capacidade: 950ml<br>
+            - Cor: Rosa metálico<br>
+            - Material: Inox<br>
+            - Tampa com vedação
+          </p>
+        </div>
+      </div>
 
       <div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczN0A3nUi3iYd4BcfdMYR25TKZmnmpblaGnS32xvxwEE59Nu2IXX64xKpFFWV1BsZXui50hf-9RbQz-6jnO1zKoM9PsUQH4JvftHgzaxRFKZHBHlqDbpL-V5NxPYz0mpSWcnZ83SSfB5k2eykVYSrHJq=w685-h913-s-no-gm?authuser=0" 
-       alt="STANLEY COPO 1200ML" onclick="zoomImagem(this.src)" />
-  <h3>8 - STANLEY COPO 1200ML</h3>
-  <p class="price">R$ 99,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'STANLEY COPO 1200ML')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>STANLEY COPO 1200ML</strong><br>
-      - Térmica até 24h<br>
-      - Capacidade: 1200ml<br>
-      - Cor: Lilás <br>
-      - Material: Inox<br>
-      - Ideal para bebidas geladas e quentes
-    </p>
-  </div>
-</div>
+        <div class="image-container esgotado">
+          <img
+            src="https://lh3.googleusercontent.com/pw/AP1GczOIcDZgNqqxlw7hd6dkuY_UAmj50JXQfNJiJrAGNz60xAnTKi2zz_pq7LX3XyU5NrSr4OrLsV0IpI6Pz8JUBX9pC230h1rLaxgm-m74UbFk5aNmDLFac6tM7rN7OzRxcqqzDf6891V_4gLUVtGFET-I=w685-h913-s-no-gm?authuser=0"
+            alt="STANLEY OFF WHITE 1200ML" onclick="zoomImagem(this.src)" />
+          <div class="sold-out-overlay">ESGOTADO</div>
+        </div>
+        <h3>6 - STANLEY OFF WHITE 1200ML</h3>
+        <p class="price">R$ 99,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'STANLEY OFF WHITE 1200ML')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>STANLEY OFF WHITE 1200ML</strong><br>
+            - Térmica até 24h<br>
+            - Capacidade: 1200ml<br>
+            - Cor: Off White<br>
+            - Material: Inox<br>
+            - Tampa com vedação
+          </p>
+        </div>
+      </div>
 
       <div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczO_kNGGUux_zgIRcPJrTLto_4HsZKTp7GxPCXUPsuBK-CGdqR4I72wP8REl1JkPxOf6MU6t8gic6JwwZO1qc_IMHN_8FGwO-sfN6uVO2EKdp4hqnCUAcKtoOMhnQHAT1VrlAb65VSIctw-nlj9aJIkF=w685-h913-s-no-gm?authuser=0" 
-       alt="STANLEY COPO 473ML" onclick="zoomImagem(this.src)" />
-  <h3>9 - STANLEY COPO 473ML</h3>
-  <p class="price">R$ 34,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'STANLEY COPO 473ML')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>STANLEY COPO 473ML</strong><br>
-      - Térmico até 17h gelado<br>
-      - Capacidade: 473ml<br>
-      - Cor: Inox escovado<br>
-      - Material: Aço inox<br>
-      - Com tampa plástica
-    </p>
-  </div>
-</div>
+        <div class="image-container esgotado">
+          <img
+            src="https://lh3.googleusercontent.com/pw/AP1GczMZxJCD_ahw1A7pm4OWsSg9N9WqC9YSCpy7Ezik-mNqT6bv_d4i3zAywKH5uOUJhf6qnwn0fmkxXgXOMjL6e8uEyX3yXCPL9Sjil0RpmaPOEyNFX_j5a_O3y4QWuSC9w08XjEqXvSCgvS3VYF5WfnhG=w685-h913-s-no-gm?authuser=0"
+            alt="STANLEY LILÁS 1200ML" onclick="zoomImagem(this.src)" />
+          <div class="sold-out-overlay">ESGOTADO</div>
+        </div>
+        <h3>7 - STANLEY LILÁS 1200ML</h3>
+        <p class="price">R$ 99,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'STANLEY LILÁS 1200ML')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>STANLEY LILÁS 1200ML</strong><br>
+            - Térmica até 24h<br>
+            - Capacidade: 1200ml<br>
+            - Cor: Lilás<br>
+            - Material: Inox<br>
+            - Tampa com vedação
+          </p>
+        </div>
+      </div>
 
       <div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczMljQI-gFdiPYwJM_sXc-sftPve0i8utvWr3rZz_9nI5dF6Rmg0URBZ2Y75_5oTkrtdsI9yfdda4A-Ve_xqaeRwkIzowIl6EtMm9DDGWMz6dcdzGAWIlaBbnJjkLQzHkWt9c3cDZvPsNTfSfUiN9Kj7=w685-h913-s-no-gm?authuser=0" 
-       alt="SUPORTE VEICULAR PEINING" onclick="zoomImagem(this.src)" />
-  <h3>51 - SUPORTE VEICULAR PEINING</h3>
-  <p class="price">R$ 39,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'SUPORTE VEICULAR PEINING')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>SUPORTE VEICULAR PEINING</strong><br>
-      - Suporte universal para smartphones<br>
-      - Fixação no painel ou para-brisa<br>
-      - Ajustável em ângulo e largura<br>
-      - Compatível com aparelhos de até 6,5"
-      - Estável e Antichoque
-    </p>
-  </div>
-</div>
+        <div class="image-container esgotado">
+          <img
+            src="https://lh3.googleusercontent.com/pw/AP1GczOu-wzOWRe2wqYImTnXRyyGIxSeL64du7IdBxhz-UBJPIHWAokN5YQCb79KaQ5Y5ZY76JjOSUvoe6BRPvCAm8rzTJDaUh18RkWE0xlCMzbssx-YZKbi4Aug-1CWMBHr8hJ3FM4M60EWekSGoEQwLcv2=w685-h913-s-no-gm?authuser=0"
+            alt="STANLEY CINZA 1200ML 2 SAÍDAS" onclick="zoomImagem(this.src)" />
+          <div class="sold-out-overlay">ESGOTADO</div>
+        </div>
+        <h3>8 - STANLEY CINZA 1200ML 2 SAÍDAS</h3>
+        <p class="price">R$ 109,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'STANLEY CINZA 1200ML 2 SAÍDAS')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>STANLEY CINZA 1200ML 2 SAÍDAS</strong><br>
+            - Térmica até 24h<br>
+            - Capacidade: 1200ml<br>
+            - Cor: Cinza<br>
+            - Material: Inox<br>
+            - Stanley (modelo com dupla funcionalidade)
+          </p>
+        </div>
+      </div>
 
       <div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczNyeNkMlZLe6a-YE0GPdq4pv8AuO0QSNyWLwONTGmIG6bWEmyWUt-HKwIa9LJL9Yd5nz3kDmI-4TNLiyOVnHRD_b3TQy16vohxcWzY5HRn2EDh4fuEIuCiQTp8_5Y529pjMzuKe-tft_D9_1fpbLDE2=w685-h913-s-no-gm?authuser=0" 
-       alt="SUPORTE VEICULAR HMASTON" onclick="zoomImagem(this.src)" />
-  <h3>52 - SUPORTE VEICULAR HMASTON</h3>
-  <p class="price1"></p>
-  <span class="price3"><s>R$ 44,90</s></span> <span class="price"><strong>R$ 39,90</strong></span>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'SUPORTE VEICULAR HMASTON')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>SUPORTE VEICULAR HMASTON</strong><br>
-      - Suporte com ventosa de alta fixação<br>
-      - Compatível com celulares de até 7"<br>
-      - Rotação de 360°<br>
-      - Base reforçada com apoio antiderrapante
-      - Estável e Antichoque
-    </p>
-  </div>
-</div>
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczOXV1uWU5z8nxpjdynKyCtYTRRj-qoLYCP6FRx6TpcZaOXZtGyeEf6dHRa5cnGrlQmaygtP_TV1I5cudL5WEeTVQSISagbkvw5nNt70PsNX7xX-Tl7b7wj-_NOQR1gfb16KKymtkXPsxOWGN0Pg-p5J=w685-h913-s-no-gm?authuser=0"
+          alt="STANLEY PRETA 1200ML 2 SAÍDAS" onclick="zoomImagem(this.src)" />
+        <h3>9 - STANLEY PRETA 1200ML 2 SAÍDAS</h3>
+        <p class="price">R$ 109,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'STANLEY PRETA 1200ML 2 SAÍDAS')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>STANLEY PRETA 1200ML 2 SAÍDAS</strong><br>
+            - Térmica até 24h<br>
+            - Capacidade: 1200ml<br>
+            - Cor: Preta<br>
+            - Material: Inox<br>
+            - Stanley (modelo com dupla funcionalidade)
+          </p>
+        </div>
+      </div>
 
       <div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczN0M83z1f5AVFckzvvmQiFxPA4IKmzO2JkeizbctAGLfa_l-ImNF3-Nl_m-122R1C8riVKSo0BFEC7OBMs434LvH12dkfyyWUIBQ10ryH7voy_PEw12EpObjZSlfgeo34ok1Lqh4egpHadQ61LmIoVl=w685-h913-s-no-gm?authuser=0" 
-       alt="CARREGADOR AUTOMOTIVO TURBO" onclick="zoomImagem(this.src)" />
-  <h3>53 - CARREGADOR AUTOMOTIVO TURBO</h3>
-  <p class="price">R$ 44,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'CARREGADOR AUTOMOTIVO TURBO')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>CARREGADOR AUTOMOTIVO TURBO</strong><br>
-      - Carregamento Turbo 60W
-      - Saída USB duplo com carregamento rápido<br>
-      - Compatível com todos os veículos<br>
-      - Proteção contra sobrecarga e curto-circuito<br>
-      - Entrada: 12-24V | Saída: 5V/3.1A total
-    </p>
-  </div>
-</div>
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczPjMrXyV3Ah7Q95Gj01mdPw0bPnBJ69qXiDpUNFpr2cdXBH6d3aXw0G0x_EUIgmiHZZNt5wGw-7pQvQ2O34KtDq63mWxvfzmWnyCZbnA0yqfhrnpSStEvOXYY12kX-VKzwqTY6VBZzcb26zFd0DyDNd=w685-h913-s-no-gm?authuser=0"
+          alt="STANLEY AZUL BEBÊ 350ML 2 SAÍDAS" onclick="zoomImagem(this.src)" />
+        <h3>10 - STANLEY AZUL BEBÊ 350ML 2 SAÍDAS</h3>
+        <p class="price">R$ 79,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'STANLEY AZUL BEBÊ 350ML 2 SAÍDAS')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>STANLEY AZUL BEBÊ 350ML 2 SAÍDAS</strong><br>
+            - Térmica até 24h<br>
+            - Capacidade: 350ml<br>
+            - Cor: Azul bebê<br>
+            - Material: Inox<br>
+            - Stanley (modelo com dupla funcionalidade)
+          </p>
+        </div>
+      </div>
 
       <div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczMmK0IH_1ha_d0sYqwIkX8am2O50S0ZRfmLOws3J0i29Ler7mMPPFIMfqO0ot1mvh3eJK52M_hTYsOwwArk7dFcZnxiSxlfcjARO2vi_ysSEaZKm4CsCiEvr_1Kzgn8a7X7_zjlCucgVLeAs7RaIvV0=w685-h913-s-no-gm?authuser=0" 
-       alt="FONTE DUAS USB + CABO APPLE" onclick="zoomImagem(this.src)" />
-  <h3>53 - FONTE DUAS USB + CABO APPLE</h3>
-  <p class="price">R$ 29,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'FONTE DUAS USB + CABO APPLE')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>FONTE DUAS USB + CABO APPLE</strong><br>
-      - Fonte bivolt com 2 portas USB<br>
-      - Acompanha cabo tipo Lightning (Apple)<br>
-      - Saída 5V/2.4A<br>
-      - Ideal para iPhones e iPads
-    </p>
-  </div>
-</div>
-
-<div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczOIYLQvx-cSDujoDDMiqsL0fqAtpVlavH3D2HGc4VDkHA4VzgeEdMefTJYFRHXxatXPhZK3PKCP9YAKKz3aGqukxzfzFlSReUfcAg_TQuK0ITDlGlYz5z80UlAHBnN6b9TdFl00SvykCWvRhAHr8MBI=w685-h913-s-no-gm?authuser=0" 
-       alt="CARREGADOR PORTÁTIL 10000MAH" 
-       onclick="zoomImagem(this.src)" />
-  <h3>54 - CARREGADOR PORTÁTIL 10000MAH</h3>
-  <p class="price1"></p>
-  <span class="price3"><s>R$ 79,90</s></span> <span class="price"><strong>R$ 69,90</strong></span>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'CARREGADOR PORTÁTIL 10000MAH')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>CARREGADOR PORTÁTIL 10000MAH</strong><br>
-      - 3 entradas para carregamento da bateria: Tipo C, Lightning e V8<br>
-      - 1 saída USB para carregar dispositivos<br>
-      - Acompanha cabo USB para recarga do power bank<br>
-      - Indicador de carga por LED<br>
-      - Compatível com Android, iPhone e outros dispositivos via USB
-    </p>
-  </div>
-</div>
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczN0A3nUi3iYd4BcfdMYR25TKZmnmpblaGnS32xvxwEE59Nu2IXX64xKpFFWV1BsZXui50hf-9RbQz-6jnO1zKoM9PsUQH4JvftHgzaxRFKZHBHlqDbpL-V5NxPYz0mpSWcnZ83SSfB5k2eykVYSrHJq=w685-h913-s-no-gm?authuser=0"
+          alt="STANLEY COPO 1200ML" onclick="zoomImagem(this.src)" />
+        <h3>8 - STANLEY COPO 1200ML</h3>
+        <p class="price">R$ 99,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'STANLEY COPO 1200ML')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>STANLEY COPO 1200ML</strong><br>
+            - Térmica até 24h<br>
+            - Capacidade: 1200ml<br>
+            - Cor: Lilás <br>
+            - Material: Inox<br>
+            - Ideal para bebidas geladas e quentes
+          </p>
+        </div>
+      </div>
 
       <div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczP1-Tmv7w47Guxwekj5DsZDqDtfgXKXgDXBCciRjcFyY7dWCNowO8xGITByVsPUAm4mFTyqk3Xd8_h2GtHXonhuL6K8_0-IFUsXrpOonIoB9OauXg0jARN4uD3UP24YmCgvuigJX_wgvkP-5rD82DGJ=w685-h913-s-no-gm?authuser=0" 
-       alt="CABO 2 METROS LIGHTNING" onclick="zoomImagem(this.src)" />
-  <h3>55 - CABO 2 METROS LIGHTNING</h3>
-  <p class="price1"></p>
-  <span class="price3"><s>R$ 34,90</s></span> <span class="price"><strong>R$ 29,90</strong></span>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'CABO 2 METROS LIGHTNING')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>CABO 2 METROS LIGHTNING</strong><br>
-      - Cabo com 2 metros de comprimento<br>
-      - Compatível com dispositivos Apple (conector Lightning)<br>
-      - Revestimento reforçado para maior durabilidade<br>
-      - Ideal para uso doméstico, carro ou escritório<br>
-      - Carregamento rápido e eficiente para seus dispositivos
-    </p>
-  </div>
-</div>
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczO_kNGGUux_zgIRcPJrTLto_4HsZKTp7GxPCXUPsuBK-CGdqR4I72wP8REl1JkPxOf6MU6t8gic6JwwZO1qc_IMHN_8FGwO-sfN6uVO2EKdp4hqnCUAcKtoOMhnQHAT1VrlAb65VSIctw-nlj9aJIkF=w685-h913-s-no-gm?authuser=0"
+          alt="STANLEY COPO 473ML" onclick="zoomImagem(this.src)" />
+        <h3>9 - STANLEY COPO 473ML</h3>
+        <p class="price">R$ 34,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'STANLEY COPO 473ML')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>STANLEY COPO 473ML</strong><br>
+            - Térmico até 17h gelado<br>
+            - Capacidade: 473ml<br>
+            - Cor: Branco<br>
+            - Material: Aço inox<br>
+            - Com tampa plástica
+          </p>
+        </div>
+      </div>
 
       <div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczMb4OgM0ix130GFXE5Vz1T9uD1z9ocejpMLE2rtceky7KbUHvj6fFlI-equ_Gmps4AnaDOCGOBB6SZpWauub6NJ8qWCpal5g8WK8kM_NKfoq3y2WDULRF6OeOc_aK1rc5XAksnpgbyuRyr3L4shdH4T=w685-h913-s-no-gm?authuser=0" 
-       alt="HUB USB 4 PORTAS USB" onclick="zoomImagem(this.src)" />
-  <h3>101 - HUB USB 4 PORTAS USB</h3>
-  <p class="price">R$ 24,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'HUB USB 4 PORTAS USB')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>HUB USB 4 PORTAS USB</strong><br>
-      - Suporta até 4 dispositivos USB simultaneamente<br>
-      - Compatível com USB 2.0 e 3.0 para alta velocidade de transferência<br>
-      - Plug and Play, sem necessidade de drivers<br>
-      - Design compacto e portátil para uso em casa ou escritório<br>
-      - Proteção contra sobrecarga e curto-circuito para maior segurança
-    </p>
-  </div>
-</div>
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczMljQI-gFdiPYwJM_sXc-sftPve0i8utvWr3rZz_9nI5dF6Rmg0URBZ2Y75_5oTkrtdsI9yfdda4A-Ve_xqaeRwkIzowIl6EtMm9DDGWMz6dcdzGAWIlaBbnJjkLQzHkWt9c3cDZvPsNTfSfUiN9Kj7=w685-h913-s-no-gm?authuser=0"
+          alt="SUPORTE VEICULAR PEINING" onclick="zoomImagem(this.src)" />
+        <h3>51 - SUPORTE VEICULAR PEINING</h3>
+        <p class="price">R$ 39,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'SUPORTE VEICULAR PEINING')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>SUPORTE VEICULAR PEINING</strong><br>
+            - Suporte universal para smartphones<br>
+            - Fixação no painel ou para-brisa<br>
+            - Ajustável em ângulo e largura<br>
+            - Compatível com aparelhos de até 6,5"
+            - Estável e Antichoque
+          </p>
+        </div>
+      </div>
 
       <div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczNBgWQ65RkFq_AOXUdUGPNHU-uz2n5jl5gY3Gh_600ezjhlBP2kyic4oQ-HR5e4nCHyTahpa8nHlkoCpXcXsTpcZX7XIUVyjF-q4Xu6DRVAW3p56VKnicY_IYuwqmP5p5N4kFkcQzufDjfd8Kb5Z15X=w685-h913-s-no-gm?authuser=0" 
-       alt="CASE SSD/HD 3.0 2.5" onclick="zoomImagem(this.src)" />
-  <h3>102 - CASE SSD/HD 3.0 2.5</h3>
-  <p class="price">R$ 44,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'CASE SSD/HD 3.0 2.5')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>CASE SSD/HD 3.0 2.5</strong><br>
-      - Compatível com SSD e HD 2.5”<br>
-      - Interface USB 3.0 para transferência rápida de dados<br>
-      - Design resistente para proteção dos seus dispositivos<br>
-      - Fácil instalação “Plug and Play”<br>
-      - Compatível com Windows, MacOS e Linux
-    </p>
-  </div>
-</div>
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczNyeNkMlZLe6a-YE0GPdq4pv8AuO0QSNyWLwONTGmIG6bWEmyWUt-HKwIa9LJL9Yd5nz3kDmI-4TNLiyOVnHRD_b3TQy16vohxcWzY5HRn2EDh4fuEIuCiQTp8_5Y529pjMzuKe-tft_D9_1fpbLDE2=w685-h913-s-no-gm?authuser=0"
+          alt="SUPORTE VEICULAR HMASTON" onclick="zoomImagem(this.src)" />
+        <h3>52 - SUPORTE VEICULAR HMASTON</h3>
+        <p class="price1"></p>
+        <span class="price3"><s>R$ 44,90</s></span> <span class="price"><strong>R$ 39,90</strong></span>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'SUPORTE VEICULAR HMASTON')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>SUPORTE VEICULAR HMASTON</strong><br>
+            - Suporte com ventosa de alta fixação<br>
+            - Compatível com celulares de até 7"<br>
+            - Rotação de 360°<br>
+            - Base reforçada com apoio antiderrapante
+            - Estável e Antichoque
+          </p>
+        </div>
+      </div>
 
       <div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczPRM9VYW4LSH4mEv05jq7p5tJ4BY4uRjmPoCAY1Tr1j_rYfN-v8wTptfLSLUyQMamrJv3X_fVkV_MVm6FPnaVoYgQgJLRZGxIWJeNG8pnPJpZarDKlxXr8U2ZErQcMCX6JsnAECMzR72g6G9gxtzvOf=w685-h913-s-no-gm?authuser=0" 
-       alt="CARREGADOR UNIVERSAL" onclick="zoomImagem(this.src)" />
-  <h3>103 - CARREGADOR UNIVERSAL</h3>
-  <p class="price">R$ 59,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'CARREGADOR UNIVERSAL')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>CARREGADOR UNIVERSAL</strong><br>
-      - Compatível com notebooks de diversas marcas<br>
-      - Voltagem de saída ajustável: 12V, 15V, 16V, 18V, 19V, 20V e 24V<br>
-      - Corrente de saída de até 5 amperes para carregamento eficiente<br>
-      - Conector do tipo plug universal para maior compatibilidade<br>
-      - Design projetado para facilitar a ventilação
-    </p>
-  </div>
-</div>
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczN0M83z1f5AVFckzvvmQiFxPA4IKmzO2JkeizbctAGLfa_l-ImNF3-Nl_m-122R1C8riVKSo0BFEC7OBMs434LvH12dkfyyWUIBQ10ryH7voy_PEw12EpObjZSlfgeo34ok1Lqh4egpHadQ61LmIoVl=w685-h913-s-no-gm?authuser=0"
+          alt="CARREGADOR AUTOMOTIVO TURBO" onclick="zoomImagem(this.src)" />
+        <h3>53 - CARREGADOR AUTOMOTIVO TURBO</h3>
+        <p class="price">R$ 44,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'CARREGADOR AUTOMOTIVO TURBO')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>CARREGADOR AUTOMOTIVO TURBO</strong><br>
+            - Carregamento Turbo 60W
+            - Saída USB duplo com carregamento rápido<br>
+            - Compatível com todos os veículos<br>
+            - Proteção contra sobrecarga e curto-circuito<br>
+            - Entrada: 12-24V | Saída: 5V/3.1A total
+          </p>
+        </div>
+      </div>
 
       <div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczN0Jtt3nhfsDBjLNgyDkCKMLCaGeiuh193HVvaBPkw3w_63Bh6FUcSMB0uLziNdbJ2mCTPPqKjKkFNTxpYjMsrTmL2nbngTtALjGbWXaAoqqP0dnX5Gl3Gol4q58Kv1mwubEh516Muusk-f_5lVhqw_=w685-h913-s-no-gm?authuser=0" 
-       alt="MOUSE SEM FIO TARGUS" onclick="zoomImagem(this.src)" />
-  <h3>104 - MOUSE SEM FIO TARGUS</h3>
-  <p class="price">R$ 29,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'MOUSE SEM FIO TARGUS')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>MOUSE SEM FIO TARGUS</strong><br>
-      - Conexão sem fio para maior liberdade de movimentos<br>
-      - Design ergonômico para uso confortável por horas<br>
-      - Compatível com Windows e Mac OS<br>
-      - Botões responsivos e roda de scroll suave<br>
-      - Alimentado por bateria com longa duração
-    </p>
-  </div>
-</div>
-
-<div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczOMW5_UKVIRPQaLyu5NLwcaVXgTcM3JaMiQx_DRQAKKbdQyYkN41s4O6BuqTKbFHI8Tdage25GB7BcD-GboJYkUBRquusjgKZToEcMYK5jeLqFSimTRmX3wXu8Du7p_AOnEsgU8cEVuWsQPCEcBYCtd=w685-h913-s-no-gm?authuser=0" 
-       alt="FONTE ATX 230W BLUECASE" onclick="zoomImagem(this.src)" />
-  <h3>105 - FONTE ATX 230W BLUECASE</h3>
-  <p class="price">R$ 99,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'FONTE ATX 230W BLUECASE')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>FONTE ATX 230W BLUECASE</strong><br>
-      - Potência nominal de 230 Watts para sistemas compactos<br>
-      - Compatível com placas-mãe ATX padrão<br>
-      - Proteções contra sobrecarga, curto-circuito e superaquecimento<br>
-      - Ventilador silencioso para melhor dissipação de calor<br>
-      - Cabo de alimentação incluso para fácil instalação
-    </p>
-  </div>
-</div>
-
-<div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczNmdm5Kob8uRTv3L06H6UdQysEWW_V1lXgB0EF4qQMyDyo7hS_1Th-hSo9fYOQw870cqwB_c0sqiNaZn99dioilNzJ7Zvop5iMcQRFOAnNvDR8IclhGqG23yMWoYQi5wG_EjY8e6gpLBmQwXJF1JyNW=w685-h913-s-no-gm?authuser=0" 
-       alt="CONTROLE JOYPAD USB PC" onclick="zoomImagem(this.src)" />
-  <h3>106 - CONTROLE JOYPAD USB PC</h3>
-  <p class="price">R$ 59,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'CONTROLE JOYPAD USB PC')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none; text-align: left;">
-    <p>
-      <strong>CONTROLE JOYPAD USB PC</strong><br>
-      - Compatível com PCs via conexão USB<br>
-      - Layout ergonômico para conforto durante jogos longos<br>
-      - Botões responsivos e direcionais precisos<br>
-      - Compatível com a maioria dos jogos para PC<br>
-      - Plug and play, sem necessidade de drivers adicionais
-    </p>
-  </div>
-</div>
-
-       <div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczPJdyWiuw_pOB-7OKPyu4mCgRpZFkazzIwIuSJ3x6VrsGKqDcQyYUmw9nrb8IsXN0nblsXtRxpUS0B_-hiiC1WtrttHVQprMYUzDYj7L2ecfrYIHxTEkr7MQUYJBvYGTvIXAw6kfeTrs-msIlXs7VO0=w685-h913-s-no-gm?authuser=0" 
-       alt="MOUSE PAD MAXPRINT" onclick="zoomImagem(this.src)" />
-  <h3>107 - MOUSE PAD MAXPRINT</h3>
-  <p class="price">R$ 14,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'MOUSE PAD MAXPRINT')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none; text-align: left;">
-      <p>
-        <strong>MOUSE PAD MAXPRINT</strong><br>
-      - Superfície antiderrapante para maior estabilidade<br>
-      - Material resistente à água e fácil de limpar<br>
-      - Tamanho compacto ideal para qualquer mesa<br>
-      - Design moderno com bordas costuradas<br>
-      - Compatível com todos os tipos de mouse
-    </p>
-  </div>
-</div>
-
-<div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczPO2wlPPT9ZM7zofz3Pg8AUGQOC6_TMNIeMrECT3pLmFC8FtQX9_07w-BdddQN2_yn22_eJCZjzY7o6HrH9v3PY2Pxexy141BLlEz46AALF7x8rKlWvcmypPUPyIGyzMi50b22lhcskJiP6zUwUK9C2=w685-h913-s-no-gm?authuser=0" 
-       alt="SUPORTE NOTEBOOK MAXPRINT" onclick="zoomImagem(this.src)" />
-  <h3>108 - SUPORTE NOTEBOOK MAXPRINT</h3>
-  <p class="price">R$ 124,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'SUPORTE NOTEBOOK MAXPRINT')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>SUPORTE NOTEBOOK MAXPRINT</strong><br>
-      - Ajustável para diferentes ângulos de visão<br>
-      - Suporta notebooks até 15,6 polegadas<br>
-      - Estrutura metálica resistente<br>
-      - Design ventilado para evitar superaquecimento<br>
-      - Fácil de montar e desmontar
-    </p>
-  </div>
-</div>
-
-<div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczMafDZ_CpWZM9Oh23z_VNaBJRBZOHODEvoOTdFYzjwzv75cmcFH1VCwoqdJCEukjOFWHLzuIuGJpi1JE-9vZKJEGDmPMnwiGxiVb1I119UU3oZGPodnpVQQG3A5u5YMGlegsvur7eESFKvE8ScvbqSi=w685-h913-s-no-gm?authuser=0" 
-       alt="CABO HDMI 3 METROS" onclick="zoomImagem(this.src)" />
-  <h3>109 - CABO HDMI 3 METROS</h3>
-  <p class="price">R$ 34,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'CABO HDMI 3 METROS')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>CABO HDMI 3 METROS</strong><br>
-      - Suporta resolução até 4K UHD<br>
-      - Conectores banhados a ouro para melhor sinal<br>
-      - Compatível com 3D e Full HD 1080p<br>
-      - Revestimento resistente e flexível<br>
-      - Comprimento ideal para conexões flexíveis
-    </p>
-  </div>
-</div>
-
-<div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczN_rVeH0uJcIW5GIc2x5eEBkXjVmjK-b0H7vAN3RsQr0M9u_KR8nBqNKMbAMdPpSLAmIPIUq5vCBSXA3uHB_hqmzSkJhghPtnkZaarZqe0uXGQ5wuwnFji7rQWYWBfOn5SmF_QtK57b7Fdb5fmMhu4S=w685-h913-s-no-gm?authuser=0" 
-       alt="FONE SEM FIO REDMI AIRDOTSPRO" onclick="zoomImagem(this.src)" />
-  <h3>151 - FONE SEM FIO REDMI AIRDOTSPRO</h3>
-  <p class="price">R$ 44,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'FONE SEM FIO REDMI AIRDOTSPRO')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>FONE SEM FIO REDMI AIRDOTSPRO</strong><br>
-      - Conexão Bluetooth estável e rápida<br>
-      - Design ergonômico para conforto prolongado<br>
-      - Som com graves profundos e agudos claros<br>
-      - Estojo portátil com carregamento rápido<br>
-      - Ideal para quem busca praticidade e qualidade
-    </p>
-  </div>
-</div>
-
-<div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczN4yLeewLpP_X6Hj-e1ni9F8VqE1ura6C0RlZ5gKjABd_vboNDde7P5dj3xLvPUisMIH6RL9zOYtY1a_phOz3vaM7wIMI-MDqHV1QTDgjxo1WhdiAeCzuIfElRxyW4XkpMRtxMl2EcTpwmQETo50o_M=w685-h913-s-no-gm?authuser=0" 
-       alt="HEADSET FORTREK BLACK HAWK" onclick="zoomImagem(this.src)" />
-  <h3>152 - HEADSET FORTREK BLACK HAWK</h3>
-  <p class="price">R$ 269,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'HEADSET FORTREK BLACK HAWK')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>HEADSET FORTREK BLACK HAWK</strong><br>
-      - Som estéreo de alta definição<br>
-      - Microfone com cancelamento de ruído<br>
-      - Almofadas macias para conforto prolongado<br>
-      - Controle de volume e mute integrados<br>
-      - Compatível com PC e consoles via USB
-    </p>
-  </div>
-</div>
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczMmK0IH_1ha_d0sYqwIkX8am2O50S0ZRfmLOws3J0i29Ler7mMPPFIMfqO0ot1mvh3eJK52M_hTYsOwwArk7dFcZnxiSxlfcjARO2vi_ysSEaZKm4CsCiEvr_1Kzgn8a7X7_zjlCucgVLeAs7RaIvV0=w685-h913-s-no-gm?authuser=0"
+          alt="FONTE DUAS USB + CABO APPLE" onclick="zoomImagem(this.src)" />
+        <h3>53 - FONTE DUAS USB + CABO APPLE</h3>
+        <p class="price">R$ 29,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'FONTE DUAS USB + CABO APPLE')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>FONTE DUAS USB + CABO APPLE</strong><br>
+            - Fonte bivolt com 2 portas USB<br>
+            - Acompanha cabo tipo Lightning (Apple)<br>
+            - Saída 5V/2.4A<br>
+            - Ideal para iPhones e iPads<br>
+            - Carregamento Rápido
+          </p>
+        </div>
+      </div>
 
       <div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczOoSJdn7KmmD93SZzYOiMLCwGwKrA6Vb40DjJJRpXjmkqwp8qyNOD35At-eTlAOPytzxDOcMOY0HdcjlC8XwkRA7DJGW_8SwXm6krphfwqtnvzUSIzAJlNKO-I9i1abXmdy-6izDDpjnnJcESO0wmIT=w685-h913-s-no-gm?authuser=0" 
-       alt="MINI CAIXA DE SOM PORTÁTIL" onclick="zoomImagem(this.src)" />
-  <h3>201 - MINI CAIXA DE SOM PORTÁTIL</h3>
-  <p class="price"><s>R$ 24,90</s> <strong>R$ 19,90</strong></p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'MINI CAIXA DE SOM PORTÁTIL')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>MINI CAIXA DE SOM PORTÁTIL</strong><br>
-      - Compacta e leve para transporte<br>
-      - Conexão via cabo P2 ou Bluetooth<br>
-      - Bateria recarregável via USB<br>
-      - Tempo de uso de até 4 horas<br>
-      - Ideal para celular, notebook ou PC
-    </p>
-  </div>
-</div>
-
-     <div class="product-card">
-  <div class="image-container esgotado">
-    <img src="https://lh3.googleusercontent.com/pw/AP1GczOy35XM_yXhz9c3r2KEq8bL6ieldWfXovLnRJQ1ziDrF8XabPersodXcia3_TRHgSZEDTl36qcHK7ydDjSPKcMlttUPEkVgAeSWyDmOVTb4vasQN6EKEJFswXzHnlH7tRfGivS_NHAaGCeTdZmulSY7=w685-h913-s-no-gm?authuser=0" 
-         alt="MINI MASSAGEADOR" onclick="zoomImagem(this.src)" />
-    <div class="sold-out-overlay">ESGOTADO</div>
-  </div>
-  <h3>251 - MINI MASSAGEADOR</h3>
-  <p class="price">R$ 14,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'MINI MASSAGEADOR')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>MINI MASSAGEADOR</strong><br>
-      - Estimula a circulação sanguínea<br>
-      - Design ergonômico em forma de tripé<br>
-      - Funciona com 3 pilhas AAA<br>
-      - Leve e portátil para uso diário<br>
-      - Ideal para costas, ombros e pernas
-    </p>
-  </div>
-</div>
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczOIYLQvx-cSDujoDDMiqsL0fqAtpVlavH3D2HGc4VDkHA4VzgeEdMefTJYFRHXxatXPhZK3PKCP9YAKKz3aGqukxzfzFlSReUfcAg_TQuK0ITDlGlYz5z80UlAHBnN6b9TdFl00SvykCWvRhAHr8MBI=w685-h913-s-no-gm?authuser=0"
+          alt="CARREGADOR PORTÁTIL 10000MAH" onclick="zoomImagem(this.src)" />
+        <h3>54 - CARREGADOR PORTÁTIL 10000MAH</h3>
+        <p class="price1"></p>
+        <span class="price3"><s>R$ 79,90</s></span> <span class="price"><strong>R$ 69,90</strong></span>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'CARREGADOR PORTÁTIL 10000MAH')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>CARREGADOR PORTÁTIL 10000MAH</strong><br>
+            - 3 entradas para carregamento da bateria: Tipo C, Lightning e V8<br>
+            - 1 saída USB para carregar dispositivos<br>
+            - Acompanha cabo USB para recarga do power bank<br>
+            - Indicador de carga por LED<br>
+            - Compatível com Android, iPhone e outros dispositivos via USB
+          </p>
+        </div>
+      </div>
 
       <div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczMUkpBFo_wy4yPcuwJMA8NP0NKKEs5IUXVx8p1ITWRxoL0XSf46GGbwiQQbI4Ae4teQl9o3HRYTx_RR82hkzZ007niKFOOoetQD_yAILNMu_96afxqGRrDZVZQScU6ZdkJ4Bz-mRWHH7h-UOs79TsoG=w685-h913-s-no-gm?authuser=0" 
-       alt="AROMATIZADOR AUTOMOTIVO" onclick="zoomImagem(this.src)" />
-  <h3>252 - AROMATIZADOR AUTOMOTIVO</h3>
-  <p class="price">R$ 9,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'AROMATIZADOR AUTOMOTIVO')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>AROMATIZADOR AUTOMOTIVO</strong><br>
-      - Perfuma o interior do carro<br>
-      - Aromas diversos (lavanda, baunilha etc.)<br>
-      - Fácil de pendurar no retrovisor<br>
-      - Duração média de 30 dias<br>
-      - Frasco em vidro com tampa de madeira
-    </p>
-  </div>
-</div>
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczP1-Tmv7w47Guxwekj5DsZDqDtfgXKXgDXBCciRjcFyY7dWCNowO8xGITByVsPUAm4mFTyqk3Xd8_h2GtHXonhuL6K8_0-IFUsXrpOonIoB9OauXg0jARN4uD3UP24YmCgvuigJX_wgvkP-5rD82DGJ=w685-h913-s-no-gm?authuser=0"
+          alt="CABO 2 METROS LIGHTNING" onclick="zoomImagem(this.src)" />
+        <h3>55 - CABO 2 METROS LIGHTNING</h3>
+        <p class="price1"></p>
+        <span class="price3"><s>R$ 34,90</s></span> <span class="price"><strong>R$ 29,90</strong></span>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'CABO 2 METROS LIGHTNING')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>CABO 2 METROS LIGHTNING</strong><br>
+            - Cabo com 2 metros de comprimento<br>
+            - Compatível com dispositivos Apple (conector Lightning)<br>
+            - Revestimento reforçado para maior durabilidade<br>
+            - Ideal para uso doméstico, carro ou escritório<br>
+            - Carregamento rápido e eficiente para seus dispositivos
+          </p>
+        </div>
+      </div>
 
       <div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczOybrHLndULJ7orwFPPfd0upmmohNoH7WSQhVLP0vm4p00OJ2r4jW1o3Z9Eu5QkXrho7PgwZetwLzJ7tGEV9eY6weFHiTLGakX_Poi7s3EWudyjRIHYzR7XPdCjWUgQ45XH8FPR14-bYON_5G7MOjSl=w685-h913-s-no-gm?authuser=0" 
-       alt="CARTÃO DE MEMÓRIA 16GB" onclick="zoomImagem(this.src)" />
-  <h3>253 - CARTÃO DE MEMÓRIA 16GB</h3>
-  <p class="price">R$ 39,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'CARTÃO DE MEMÓRIA 16GB')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>CARTÃO DE MEMÓRIA 16GB</strong><br>
-      - Capacidade de 16GB<br>
-      - Classe 10 para alta velocidade<br>
-      - Ideal para câmeras, celulares e tablets<br>
-      - Alta durabilidade e resistência<br>
-      - Compatível com adaptadores SD
-    </p>
-  </div>
-</div>
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczMb4OgM0ix130GFXE5Vz1T9uD1z9ocejpMLE2rtceky7KbUHvj6fFlI-equ_Gmps4AnaDOCGOBB6SZpWauub6NJ8qWCpal5g8WK8kM_NKfoq3y2WDULRF6OeOc_aK1rc5XAksnpgbyuRyr3L4shdH4T=w685-h913-s-no-gm?authuser=0"
+          alt="HUB USB 4 PORTAS USB" onclick="zoomImagem(this.src)" />
+        <h3>101 - HUB USB 4 PORTAS USB</h3>
+        <p class="price1"></p>
+        <span class="price3"><s>R$ 24,90</s></span> <span class="price"><strong>R$ 19,90</strong></span>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'HUB USB 4 PORTAS USB')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>HUB USB 4 PORTAS USB</strong><br>
+            - Suporta até 4 dispositivos USB simultaneamente<br>
+            - Compatível com USB 2.0 e 3.0 para alta velocidade de transferência<br>
+            - Plug and Play, sem necessidade de drivers<br>
+            - Design compacto e portátil para uso em casa ou escritório<br>
+            - Proteção contra sobrecarga e curto-circuito para maior segurança
+          </p>
+        </div>
+      </div>
 
       <div class="product-card">
-  <img src="https://lh3.googleusercontent.com/pw/AP1GczMX2Pkx_Y50vnUJFxZUiRvSxgD_M1qHQTvunhb6TkesDb0lRLIXTqgjdA02Xehu9RsX_AKM_7ajkCZWp-kt7ofVuh6OskGIoL8NDRhwXkwv86IJZp1z7upUMudbAF98tqlJuXIkUczOpRjbs0Q3HH5A=w685-h913-s-no-gm?authuser=0" 
-       alt="PEN DRIVE MASTERDRIVE 16GB" onclick="zoomImagem(this.src)" />
-  <h3>254 - PEN DRIVE MASTERDRIVE 16GB</h3>
-  <p class="price">R$ 39,90</p>
-  <div class="controls">
-    <div class="top-row">
-      <input type="number" min="1" value="1" />
-      <button onclick="adicionarAoCarrinho(this, 'PEN DRIVE MASTERDRIVE 16GB')">Adicionar</button>
-    </div>
-    <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-  </div>
-  <div class="caracteristicas" style="display: none;">
-    <p>
-      <strong>PEN DRIVE MASTERDRIVE 16GB</strong><br>
-      - Armazenamento portátil de 16GB<br>
-      - Conexão USB 2.0 compatível com 3.0<br>
-      - Compatível com Windows, Mac e Linux<br>
-      - Estrutura resistente e compacta<br>
-      - Plug & Play (sem instalação de drivers)
-    </p>
-  </div>
-</div>
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczNBgWQ65RkFq_AOXUdUGPNHU-uz2n5jl5gY3Gh_600ezjhlBP2kyic4oQ-HR5e4nCHyTahpa8nHlkoCpXcXsTpcZX7XIUVyjF-q4Xu6DRVAW3p56VKnicY_IYuwqmP5p5N4kFkcQzufDjfd8Kb5Z15X=w685-h913-s-no-gm?authuser=0"
+          alt="CASE SSD/HD 3.0 2.5" onclick="zoomImagem(this.src)" />
+        <h3>102 - CASE SSD/HD 3.0 2.5</h3>
+        <p class="price">R$ 44,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'CASE SSD/HD 3.0 2.5')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>CASE SSD/HD 3.0 2.5</strong><br>
+            - Compatível com SSD e HD 2.5”<br>
+            - Interface USB 3.0 para transferência rápida de dados<br>
+            - Design resistente para proteção dos seus dispositivos<br>
+            - Fácil instalação “Plug and Play”<br>
+            - Compatível com Windows, MacOS e Linux
+          </p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczPRM9VYW4LSH4mEv05jq7p5tJ4BY4uRjmPoCAY1Tr1j_rYfN-v8wTptfLSLUyQMamrJv3X_fVkV_MVm6FPnaVoYgQgJLRZGxIWJeNG8pnPJpZarDKlxXr8U2ZErQcMCX6JsnAECMzR72g6G9gxtzvOf=w685-h913-s-no-gm?authuser=0"
+          alt="CARREGADOR UNIVERSAL" onclick="zoomImagem(this.src)" />
+        <h3>103 - CARREGADOR UNIVERSAL</h3>
+        <p class="price">R$ 59,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'CARREGADOR UNIVERSAL')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>CARREGADOR UNIVERSAL</strong><br>
+            - Compatível com notebooks de diversas marcas<br>
+            - Voltagem de saída ajustável: 12V, 15V, 16V, 18V, 19V, 20V e 24V<br>
+            - Corrente de saída de até 5 amperes para carregamento eficiente<br>
+            - Conector do tipo plug universal para maior compatibilidade<br>
+            - Design projetado para facilitar a ventilação
+          </p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczN0Jtt3nhfsDBjLNgyDkCKMLCaGeiuh193HVvaBPkw3w_63Bh6FUcSMB0uLziNdbJ2mCTPPqKjKkFNTxpYjMsrTmL2nbngTtALjGbWXaAoqqP0dnX5Gl3Gol4q58Kv1mwubEh516Muusk-f_5lVhqw_=w685-h913-s-no-gm?authuser=0"
+          alt="MOUSE SEM FIO TARGUS" onclick="zoomImagem(this.src)" />
+        <h3>104 - MOUSE SEM FIO TARGUS</h3>
+        <p class="price">R$ 29,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'MOUSE SEM FIO TARGUS')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>MOUSE SEM FIO TARGUS</strong><br>
+            - Conexão sem fio para maior liberdade de movimentos<br>
+            - Design ergonômico para uso confortável por horas<br>
+            - Compatível com Windows e Mac OS<br>
+            - Botões responsivos e roda de scroll suave<br>
+            - Alimentado por bateria com longa duração
+          </p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczOMW5_UKVIRPQaLyu5NLwcaVXgTcM3JaMiQx_DRQAKKbdQyYkN41s4O6BuqTKbFHI8Tdage25GB7BcD-GboJYkUBRquusjgKZToEcMYK5jeLqFSimTRmX3wXu8Du7p_AOnEsgU8cEVuWsQPCEcBYCtd=w685-h913-s-no-gm?authuser=0"
+          alt="FONTE ATX 230W BLUECASE" onclick="zoomImagem(this.src)" />
+        <h3>105 - FONTE ATX 230W BLUECASE</h3>
+        <p class="price">R$ 99,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'FONTE ATX 230W BLUECASE')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>FONTE ATX 230W BLUECASE</strong><br>
+            - Potência nominal de 230 Watts para sistemas compactos<br>
+            - Compatível com placas-mãe ATX padrão<br>
+            - Proteções contra sobrecarga, curto-circuito e superaquecimento<br>
+            - Ventilador silencioso para melhor dissipação de calor<br>
+            - Cabo de alimentação incluso para fácil instalação
+          </p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczNmdm5Kob8uRTv3L06H6UdQysEWW_V1lXgB0EF4qQMyDyo7hS_1Th-hSo9fYOQw870cqwB_c0sqiNaZn99dioilNzJ7Zvop5iMcQRFOAnNvDR8IclhGqG23yMWoYQi5wG_EjY8e6gpLBmQwXJF1JyNW=w685-h913-s-no-gm?authuser=0"
+          alt="CONTROLE JOYPAD USB PC" onclick="zoomImagem(this.src)" />
+        <h3>106 - CONTROLE JOYPAD USB PC</h3>
+        <p class="price">R$ 59,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'CONTROLE JOYPAD USB PC')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none; text-align: left;">
+          <p>
+            <strong>CONTROLE JOYPAD USB PC</strong><br>
+            - Compatível com PCs via conexão USB<br>
+            - Layout ergonômico para conforto durante jogos longos<br>
+            - Botões responsivos e direcionais precisos<br>
+            - Compatível com a maioria dos jogos para PC<br>
+            - Plug and play, sem necessidade de drivers adicionais
+          </p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczPJdyWiuw_pOB-7OKPyu4mCgRpZFkazzIwIuSJ3x6VrsGKqDcQyYUmw9nrb8IsXN0nblsXtRxpUS0B_-hiiC1WtrttHVQprMYUzDYj7L2ecfrYIHxTEkr7MQUYJBvYGTvIXAw6kfeTrs-msIlXs7VO0=w685-h913-s-no-gm?authuser=0"
+          alt="MOUSE PAD MAXPRINT" onclick="zoomImagem(this.src)" />
+        <h3>107 - MOUSE PAD MAXPRINT</h3>
+        <p class="price">R$ 14,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'MOUSE PAD MAXPRINT')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none; text-align: left;">
+          <p>
+            <strong>MOUSE PAD MAXPRINT</strong><br>
+            - Superfície antiderrapante para maior estabilidade<br>
+            - Material resistente à água e fácil de limpar<br>
+            - Tamanho compacto ideal para qualquer mesa<br>
+            - Design moderno com bordas costuradas<br>
+            - Compatível com todos os tipos de mouse
+          </p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczPO2wlPPT9ZM7zofz3Pg8AUGQOC6_TMNIeMrECT3pLmFC8FtQX9_07w-BdddQN2_yn22_eJCZjzY7o6HrH9v3PY2Pxexy141BLlEz46AALF7x8rKlWvcmypPUPyIGyzMi50b22lhcskJiP6zUwUK9C2=w685-h913-s-no-gm?authuser=0"
+          alt="SUPORTE NOTEBOOK MAXPRINT" onclick="zoomImagem(this.src)" />
+        <h3>108 - SUPORTE NOTEBOOK MAXPRINT</h3>
+        <p class="price">R$ 124,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'SUPORTE NOTEBOOK MAXPRINT')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>SUPORTE NOTEBOOK MAXPRINT</strong><br>
+            - Ajustável para diferentes ângulos de visão<br>
+            - Suporta notebooks até 15,6 polegadas<br>
+            - Estrutura metálica resistente<br>
+            - Design ventilado para evitar superaquecimento<br>
+            - Fácil de montar e desmontar
+          </p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczMafDZ_CpWZM9Oh23z_VNaBJRBZOHODEvoOTdFYzjwzv75cmcFH1VCwoqdJCEukjOFWHLzuIuGJpi1JE-9vZKJEGDmPMnwiGxiVb1I119UU3oZGPodnpVQQG3A5u5YMGlegsvur7eESFKvE8ScvbqSi=w685-h913-s-no-gm?authuser=0"
+          alt="CABO HDMI 3 METROS" onclick="zoomImagem(this.src)" />
+        <h3>109 - CABO HDMI 3 METROS</h3>
+        <p class="price">R$ 34,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'CABO HDMI 3 METROS')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>CABO HDMI 3 METROS</strong><br>
+            - Suporta resolução até 4K UHD<br>
+            - Conectores banhados a ouro para melhor sinal<br>
+            - Compatível com 3D e Full HD 1080p<br>
+            - Revestimento resistente e flexível<br>
+            - Comprimento ideal para conexões flexíveis
+          </p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczN_rVeH0uJcIW5GIc2x5eEBkXjVmjK-b0H7vAN3RsQr0M9u_KR8nBqNKMbAMdPpSLAmIPIUq5vCBSXA3uHB_hqmzSkJhghPtnkZaarZqe0uXGQ5wuwnFji7rQWYWBfOn5SmF_QtK57b7Fdb5fmMhu4S=w685-h913-s-no-gm?authuser=0"
+          alt="FONE SEM FIO REDMI AIRDOTSPRO" onclick="zoomImagem(this.src)" />
+        <h3>151 - FONE SEM FIO REDMI AIRDOTSPRO</h3>
+        <p class="price">R$ 44,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'FONE SEM FIO REDMI AIRDOTSPRO')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>FONE SEM FIO REDMI AIRDOTSPRO</strong><br>
+            - Conexão Bluetooth estável e rápida<br>
+            - Design ergonômico para conforto prolongado<br>
+            - Som com graves profundos e agudos claros<br>
+            - Estojo portátil com carregamento rápido<br>
+            - Ideal para quem busca praticidade e qualidade
+          </p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczN4yLeewLpP_X6Hj-e1ni9F8VqE1ura6C0RlZ5gKjABd_vboNDde7P5dj3xLvPUisMIH6RL9zOYtY1a_phOz3vaM7wIMI-MDqHV1QTDgjxo1WhdiAeCzuIfElRxyW4XkpMRtxMl2EcTpwmQETo50o_M=w685-h913-s-no-gm?authuser=0"
+          alt="HEADSET FORTREK BLACK HAWK" onclick="zoomImagem(this.src)" />
+        <h3>152 - HEADSET FORTREK BLACK HAWK</h3>
+        <p class="price">R$ 269,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'HEADSET FORTREK BLACK HAWK')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>HEADSET FORTREK BLACK HAWK</strong><br>
+            - Som estéreo de alta definição<br>
+            - Microfone com cancelamento de ruído<br>
+            - Almofadas macias para conforto prolongado<br>
+            - Controle de volume e mute integrados<br>
+            - Compatível com PC e consoles via USB
+          </p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczOoSJdn7KmmD93SZzYOiMLCwGwKrA6Vb40DjJJRpXjmkqwp8qyNOD35At-eTlAOPytzxDOcMOY0HdcjlC8XwkRA7DJGW_8SwXm6krphfwqtnvzUSIzAJlNKO-I9i1abXmdy-6izDDpjnnJcESO0wmIT=w685-h913-s-no-gm?authuser=0"
+          alt="MINI CAIXA DE SOM PORTÁTIL" onclick="zoomImagem(this.src)" />
+        <h3>201 - MINI CAIXA DE SOM PORTÁTIL</h3>
+        <p class="price"><s>R$ 24,90</s> <strong>R$ 19,90</strong></p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'MINI CAIXA DE SOM PORTÁTIL')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>MINI CAIXA DE SOM PORTÁTIL</strong><br>
+            - Compacta e leve para transporte<br>
+            - Conexão via cabo P2 ou Bluetooth<br>
+            - Bateria recarregável via USB<br>
+            - Tempo de uso de até 4 horas<br>
+            - Ideal para celular, notebook ou PC
+          </p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="image-container esgotado">
+          <img
+            src="https://lh3.googleusercontent.com/pw/AP1GczOy35XM_yXhz9c3r2KEq8bL6ieldWfXovLnRJQ1ziDrF8XabPersodXcia3_TRHgSZEDTl36qcHK7ydDjSPKcMlttUPEkVgAeSWyDmOVTb4vasQN6EKEJFswXzHnlH7tRfGivS_NHAaGCeTdZmulSY7=w685-h913-s-no-gm?authuser=0"
+            alt="MINI MASSAGEADOR" onclick="zoomImagem(this.src)" />
+          <div class="sold-out-overlay">ESGOTADO</div>
+        </div>
+        <h3>251 - MINI MASSAGEADOR</h3>
+        <p class="price">R$ 14,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'MINI MASSAGEADOR')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>MINI MASSAGEADOR</strong><br>
+            - Estimula a circulação sanguínea<br>
+            - Design ergonômico em forma de tripé<br>
+            - Funciona com 3 pilhas AAA<br>
+            - Leve e portátil para uso diário<br>
+            - Ideal para costas, ombros e pernas
+          </p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczMUkpBFo_wy4yPcuwJMA8NP0NKKEs5IUXVx8p1ITWRxoL0XSf46GGbwiQQbI4Ae4teQl9o3HRYTx_RR82hkzZ007niKFOOoetQD_yAILNMu_96afxqGRrDZVZQScU6ZdkJ4Bz-mRWHH7h-UOs79TsoG=w685-h913-s-no-gm?authuser=0"
+          alt="AROMATIZADOR AUTOMOTIVO" onclick="zoomImagem(this.src)" />
+        <h3>252 - AROMATIZADOR AUTOMOTIVO</h3>
+        <p class="price">R$ 9,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'AROMATIZADOR AUTOMOTIVO')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>AROMATIZADOR AUTOMOTIVO</strong><br>
+            - Perfuma o interior do carro<br>
+            - Aromas diversos (lavanda, baunilha etc.)<br>
+            - Fácil de pendurar no retrovisor<br>
+            - Duração média de 30 dias<br>
+            - Frasco em vidro com tampa de madeira
+          </p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczOybrHLndULJ7orwFPPfd0upmmohNoH7WSQhVLP0vm4p00OJ2r4jW1o3Z9Eu5QkXrho7PgwZetwLzJ7tGEV9eY6weFHiTLGakX_Poi7s3EWudyjRIHYzR7XPdCjWUgQ45XH8FPR14-bYON_5G7MOjSl=w685-h913-s-no-gm?authuser=0"
+          alt="CARTÃO DE MEMÓRIA 16GB" onclick="zoomImagem(this.src)" />
+        <h3>253 - CARTÃO DE MEMÓRIA 16GB</h3>
+        <p class="price">R$ 39,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'CARTÃO DE MEMÓRIA 16GB')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>CARTÃO DE MEMÓRIA 16GB</strong><br>
+            - Capacidade de 16GB<br>
+            - Classe 10 para alta velocidade<br>
+            - Ideal para câmeras, celulares e tablets<br>
+            - Alta durabilidade e resistência<br>
+            - Compatível com adaptadores SD
+          </p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczMX2Pkx_Y50vnUJFxZUiRvSxgD_M1qHQTvunhb6TkesDb0lRLIXTqgjdA02Xehu9RsX_AKM_7ajkCZWp-kt7ofVuh6OskGIoL8NDRhwXkwv86IJZp1z7upUMudbAF98tqlJuXIkUczOpRjbs0Q3HH5A=w685-h913-s-no-gm?authuser=0"
+          alt="PEN DRIVE MASTERDRIVE 16GB" onclick="zoomImagem(this.src)" />
+        <h3>254 - PEN DRIVE MASTERDRIVE 16GB</h3>
+        <p class="price">R$ 39,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'PEN DRIVE MASTERDRIVE 16GB')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>PEN DRIVE MASTERDRIVE 16GB</strong><br>
+            - Armazenamento portátil de 16GB<br>
+            - Conexão USB 2.0 compatível com 3.0<br>
+            - Compatível com Windows, Mac e Linux<br>
+            - Estrutura resistente e compacta<br>
+            - Plug & Play (sem instalação de drivers)
+          </p>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img
+          src="https://lh3.googleusercontent.com/pw/AP1GczNW127GvenY_w3ksMWHZGkL0hfejz7kyyJxB-VXTOF58fzdKHsG7ASfIukXpDC6gceyEFz093sEf1pJ1We0yFWvRKUgTc4fhU6H8bVenNSUsZNZju9H11I05zWk9ympSJP3RKyxrTSl9OXCH_R7OeiA=w685-h913-s-no-gm?authuser=0"
+          alt="KIT ESTILETE DE PLÁSTICO" onclick="zoomImagem(this.src)" />
+        <h3>255 - KIT ESTILETE DE PLÁSTICO</h3>
+        <p class="price">R$ 19,90</p>
+        <div class="controls">
+          <div class="top-row">
+            <input type="number" min="1" value="1" />
+            <button onclick="adicionarAoCarrinho(this, 'KIT ESTILETE DE PLÁSTICO')">Adicionar</button>
+          </div>
+          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
+        </div>
+        <div class="caracteristicas" style="display: none;">
+          <p>
+            <strong>KIT ESTILETE DE PLÁSTICO</strong><br>
+            - Plástico resistente de alta durabilidade<br>
+            - Trava de segurança deslizante para fixação<br>
+            - Design leve e anatômico<br>
+            - Possibilidade de reposição da lâmina<br>
+            - Lâmina extra
+          </p>
+        </div>
+      </div>
   </main>
 
   <footer>
@@ -1680,214 +1898,230 @@
     <img id="zoomed" src="" />
   </div>
 
- <!-- Overlay -->
-<div id="cart-overlay" onclick="fecharCarrinho()"></div>
+  <!-- Overlay -->
+  <div id="cart-overlay" onclick="fecharCarrinho()"></div>
 
-<!-- Carrinho lateral -->
-<div id="cart-sidebar">
-  <div class="cart-header">
-    <h3>Resumo do Pedido</h3>
-    <button onclick="fecharCarrinho()">✖</button>
+  <!-- Carrinho lateral -->
+  <div id="cart-sidebar">
+    <div class="cart-header">
+      <h3>Resumo do Pedido</h3>
+      <button onclick="fecharCarrinho()">✖</button>
+    </div>
+    <div id="cart-items"></div>
+    <div class="cart-footer">
+      <button id="finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
+    </div>
   </div>
-  <div id="cart-items"></div>
-  <div class="cart-footer">
-    <button id="finalizar" onclick="finalizarPedido()">Finalizar Pedido</button>
-  </div>
-</div>
 
-<script>
-  const botoes = document.querySelectorAll('#filtros button');
-  const container = document.getElementById('filtros');
-  const produtos = document.querySelectorAll('.produto');
+  <script>
+    const botoes = document.querySelectorAll('#filtros button');
+    const container = document.getElementById('filtros');
+    const produtos = document.querySelectorAll('.produto');
 
-  // Mostra todos os produtos
-  function mostrarTodos() {
-  filtroAtual = 'todos';
+    // Mostra todos os produtos
+    function mostrarTodos() {
+      filtroAtual = 'todos';
 
-  // Também limpa o campo de busca
-  document.getElementById('search-input').value = '';
+      // Também limpa o campo de busca
+      document.getElementById('search-input').value = '';
 
-  document.querySelectorAll('.product-card').forEach(card => {
-    card.style.display = 'block';
-  });
-}
-
-function abrirModal(el) {
-  const card = el.closest('.product-card');
-  const texto = card.querySelector('.caracteristicas').innerHTML;
-
-  const modal = document.getElementById('modal-caracteristicas');
-  modal.querySelector('.modal-texto').innerHTML = texto;
-  modal.style.display = 'flex';
-}
-
-function fecharModal() {
-  document.getElementById('modal-caracteristicas').style.display = 'none';
-}
-
-  // Filtra por intervalo de ID
-function filtrarPorCategoria(inicio, fim) {
-  filtroAtual = `${inicio}-${fim}`;
-
-  // Limpa o campo de busca ao trocar de categoria
-  const searchInput = document.getElementById('search-input');
-  searchInput.value = '';
-
-  const cards = document.querySelectorAll('.product-card');
-
-  cards.forEach(card => {
-    const titulo = card.querySelector('h3').innerText;
-    const numero = parseInt(titulo.split(' ')[0]);
-
-    const dentroDaCategoria = numero >= inicio && numero <= fim;
-
-    card.style.display = dentroDaCategoria ? 'block' : 'none';
-  });
-}
-
-  // Filtra promoções (supondo data-promocao="true")
-  function filtrarPromocoes() {
-    produtos.forEach(produto => {
-      const emPromocao = produto.dataset.promocao === "true";
-      produto.style.display = emPromocao ? 'block' : 'none';
-    });
-  }
-
-  // Lógica ao clicar nos botões
-  botoes.forEach(botao => {
-  botao.addEventListener('click', (e) => {
-    e.stopPropagation();
-    botoes.forEach(b => b.classList.remove('ativo'));
-    botao.classList.add('ativo');
-
-    const acao = botao.dataset.acao;
-    const intervalo = botao.dataset.intervalo;
-
-    if (acao === "todos") {
-  categoriaAtiva = null;
-  mostrarTodos();
-  return;
-} else if (acao === "promocoes") {
-  categoriaAtiva = null;
-  filtrarPromocoes();
-  return;
-}
-
-    aplicarFiltros();
-  });
-});
-  
-  // Ao clicar em um botão, ativa apenas ele
-  botoes.forEach(botao => {
-    botao.addEventListener('click', (e) => {
-      e.stopPropagation(); // evita que o clique suba pro document
-      botoes.forEach(b => b.classList.remove('ativo'));
-      botao.classList.add('ativo');
-    });
-  });
-
-  // Ao clicar fora do container, remove classe "ativo" de todos
-  document.addEventListener('click', (e) => {
-    if (!container.contains(e.target)) {
-      botoes.forEach(b => b.classList.remove('ativo'));
+      document.querySelectorAll('.product-card').forEach(card => {
+        card.style.display = 'block';
+      });
     }
-  });
 
-  //JavaScript do carrinho
-  const carrinhoSidebar = document.getElementById("cart-sidebar");
-  const carrinhoOverlay = document.getElementById("cart-overlay");
+    function abrirModal(el) {
+      const card = el.closest('.product-card');
+      const texto = card.querySelector('.caracteristicas').innerHTML;
 
-// Recupera carrinho salvo no localStorage
-let carrinhoSalvo = localStorage.getItem('carrinho');
-const carrinho = carrinhoSalvo ? JSON.parse(carrinhoSalvo) : [];
+      const modal = document.getElementById('modal-caracteristicas');
+      modal.querySelector('.modal-texto').innerHTML = texto;
+      modal.style.display = 'flex';
 
-let filtroAtual = 'todos';
+      document.body.classList.add('modal-aberto'); // bloqueia rolagem da página
+    }
 
-atualizarContador();
-renderizarCarrinho();
+    function fecharModal() {
+      const modal = document.getElementById('modal-caracteristicas');
+      modal.style.display = 'none';
 
-function adicionarAoCarrinho(botao, nome) {
-  const input = botao.previousElementSibling;
-  const quantidade = parseInt(input.value) || 1;
-  const card = botao.closest('.product-card');
-  const precoText = card.querySelector('.price').textContent.trim();
-  const imagemEsgotada = card.querySelector('.image-container')?.classList.contains('esgotado');
+      document.body.classList.remove('modal-aberto'); // libera rolagem da página
+    }
 
-  // Verifica se o preço diz "ESGOTADO" ou se a imagem tem a faixa de esgotado
-  if (precoText.toUpperCase() === 'ESGOTADO' || imagemEsgotada) {
-    alert('Este produto está esgotado e não pode ser adicionado ao carrinho.');
-    return;
-  }
+    // Fechar ao clicar fora do conteúdo
+    document.addEventListener('DOMContentLoaded', () => {
+      const modalOverlay = document.getElementById('modal-caracteristicas');
 
-  const preco = parseFloat(precoText.replace('R$', '').replace(',', '.'));
+      modalOverlay.addEventListener('click', function (e) {
+        if (e.target === modalOverlay) {
+          fecharModal();
+        }
+      });
+    });
 
-  const item = carrinho.find(p => p.nome === nome);
-  if (item) {
-    item.qtd += quantidade;
-  } else {
-    carrinho.push({ nome, qtd: quantidade, preco });
-  }
-  salvarEAtualizar();
-}
+    // Filtra por intervalo de ID
+    function filtrarPorCategoria(inicio, fim) {
+      filtroAtual = `${inicio}-${fim}`;
 
-function removerItem(index) {
-  carrinho.splice(index, 1);
-  salvarEAtualizar();
-}
+      // Limpa o campo de busca ao trocar de categoria
+      const searchInput = document.getElementById('search-input');
+      searchInput.value = '';
 
-function alterarQuantidade(index, novaQtd) {
-  if (novaQtd < 1) return; // evita quantidade menor que 1
-  carrinho[index].qtd = novaQtd;
-  salvarEAtualizar();
-}
+      const cards = document.querySelectorAll('.product-card');
 
-function salvarEAtualizar() {
-  localStorage.setItem('carrinho', JSON.stringify(carrinho));
-  atualizarContador();
-  renderizarCarrinho();
-}
+      cards.forEach(card => {
+        const titulo = card.querySelector('h3').innerText;
+        const numero = parseInt(titulo.split(' ')[0]);
 
-function atualizarContador() {
-  const total = carrinho.reduce((acc, item) => acc + item.qtd, 0);
-  document.getElementById("cart-count").textContent = total;
-}
+        const dentroDaCategoria = numero >= inicio && numero <= fim;
 
-function limparCarrinho() {
-  carrinho.length = 0; // esvazia o array
-  localStorage.removeItem("carrinho"); // remove do armazenamento local
-  renderizarCarrinho();
-  atualizarContador(); // atualiza o contador para refletir a mudança
-}
+        card.style.display = dentroDaCategoria ? 'block' : 'none';
+      });
+    }
 
-function renderizarCarrinho() {
-  const container = document.getElementById("cart-items");
-  container.innerHTML = "";
+    // Filtra promoções (supondo data-promocao="true")
+    function filtrarPromocoes() {
+      produtos.forEach(produto => {
+        const emPromocao = produto.dataset.promocao === "true";
+        produto.style.display = emPromocao ? 'block' : 'none';
+      });
+    }
 
-// Botão LIMPAR
-if (carrinho.length > 0) {
-  const limparBtn = document.createElement("div");
-  limparBtn.textContent = "Limpar";
-  limparBtn.style.cursor = "pointer";
-  limparBtn.style.fontWeight = "bold";
-  limparBtn.style.marginBottom = "10px";
-  limparBtn.style.color = "red";
+    // Lógica ao clicar nos botões
+    botoes.forEach(botao => {
+      botao.addEventListener('click', (e) => {
+        e.stopPropagation();
+        botoes.forEach(b => b.classList.remove('ativo'));
+        botao.classList.add('ativo');
 
-  // estilo para alinhar no lado direito com um espaçamento "puxando para esquerda"
-  limparBtn.style.textAlign = "right";  
-  limparBtn.style.marginRight = "10px";
+        const acao = botao.dataset.acao;
+        const intervalo = botao.dataset.intervalo;
 
-  // Se o container não for flex, deixe assim:
-  limparBtn.style.display = "block";
+        if (acao === "todos") {
+          categoriaAtiva = null;
+          mostrarTodos();
+          return;
+        } else if (acao === "promocoes") {
+          categoriaAtiva = null;
+          filtrarPromocoes();
+          return;
+        }
 
-  limparBtn.onclick = limparCarrinho;
-  container.appendChild(limparBtn);
-}
+        aplicarFiltros();
+      });
+    });
 
-  carrinho.forEach((item, index) => {
-    const totalItem = (item.preco * item.qtd).toFixed(2).replace('.', ',');
-    const div = document.createElement("div");
-    div.className = "cart-item";
-    div.innerHTML = `
+    // Ao clicar em um botão, ativa apenas ele
+    botoes.forEach(botao => {
+      botao.addEventListener('click', (e) => {
+        e.stopPropagation(); // evita que o clique suba pro document
+        botoes.forEach(b => b.classList.remove('ativo'));
+        botao.classList.add('ativo');
+      });
+    });
+
+    // Ao clicar fora do container, remove classe "ativo" de todos
+    document.addEventListener('click', (e) => {
+      if (!container.contains(e.target)) {
+        botoes.forEach(b => b.classList.remove('ativo'));
+      }
+    });
+
+    //JavaScript do carrinho
+    const carrinhoSidebar = document.getElementById("cart-sidebar");
+    const carrinhoOverlay = document.getElementById("cart-overlay");
+
+    // Recupera carrinho salvo no localStorage
+    let carrinhoSalvo = localStorage.getItem('carrinho');
+    const carrinho = carrinhoSalvo ? JSON.parse(carrinhoSalvo) : [];
+
+    let filtroAtual = 'todos';
+
+    atualizarContador();
+    renderizarCarrinho();
+
+    function adicionarAoCarrinho(botao, nome) {
+      const input = botao.previousElementSibling;
+      const quantidade = parseInt(input.value) || 1;
+      const card = botao.closest('.product-card');
+      const precoText = card.querySelector('.price').textContent.trim();
+      const imagemEsgotada = card.querySelector('.image-container')?.classList.contains('esgotado');
+
+      // Verifica se o preço diz "ESGOTADO" ou se a imagem tem a faixa de esgotado
+      if (precoText.toUpperCase() === 'ESGOTADO' || imagemEsgotada) {
+        alert('Este produto está esgotado e não pode ser adicionado ao carrinho.');
+        return;
+      }
+
+      const preco = parseFloat(precoText.replace('R$', '').replace(',', '.'));
+
+      const item = carrinho.find(p => p.nome === nome);
+      if (item) {
+        item.qtd += quantidade;
+      } else {
+        carrinho.push({ nome, qtd: quantidade, preco });
+      }
+      salvarEAtualizar();
+    }
+
+    function removerItem(index) {
+      carrinho.splice(index, 1);
+      salvarEAtualizar();
+    }
+
+    function alterarQuantidade(index, novaQtd) {
+      if (novaQtd < 1) return; // evita quantidade menor que 1
+      carrinho[index].qtd = novaQtd;
+      salvarEAtualizar();
+    }
+
+    function salvarEAtualizar() {
+      localStorage.setItem('carrinho', JSON.stringify(carrinho));
+      atualizarContador();
+      renderizarCarrinho();
+    }
+
+    function atualizarContador() {
+      const total = carrinho.reduce((acc, item) => acc + item.qtd, 0);
+      document.getElementById("cart-count").textContent = total;
+    }
+
+    function limparCarrinho() {
+      carrinho.length = 0; // esvazia o array
+      localStorage.removeItem("carrinho"); // remove do armazenamento local
+      renderizarCarrinho();
+      atualizarContador(); // atualiza o contador para refletir a mudança
+    }
+
+    function renderizarCarrinho() {
+      const container = document.getElementById("cart-items");
+      container.innerHTML = "";
+
+      // Botão LIMPAR
+      if (carrinho.length > 0) {
+        const limparBtn = document.createElement("div");
+        limparBtn.textContent = "Limpar";
+        limparBtn.style.cursor = "pointer";
+        limparBtn.style.fontWeight = "bold";
+        limparBtn.style.marginBottom = "10px";
+        limparBtn.style.color = "red";
+
+        // estilo para alinhar no lado direito com um espaçamento "puxando para esquerda"
+        limparBtn.style.textAlign = "right";
+        limparBtn.style.marginRight = "10px";
+
+        // Se o container não for flex, deixe assim:
+        limparBtn.style.display = "block";
+
+        limparBtn.onclick = limparCarrinho;
+        container.appendChild(limparBtn);
+      }
+
+      carrinho.forEach((item, index) => {
+        const totalItem = (item.preco * item.qtd).toFixed(2).replace('.', ',');
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `
       <span>${item.nome} x${item.qtd} - R$ ${totalItem}</span>
       <div class="quantidade-controle">
         <i class="fas fa-plus" onclick="alterarQuantidade(${index}, ${item.qtd + 1})"></i>
@@ -1895,135 +2129,144 @@ if (carrinho.length > 0) {
       </div>
       <i class="fas fa-trash" onclick="removerItem(${index})" style="cursor:pointer; color:red; margin-left: 8px;"></i>
     `;
-    container.appendChild(div);
-  });
+        container.appendChild(div);
+      });
 
-  const totalQtd = carrinho.reduce((acc, item) => acc + item.qtd, 0);
-  const totalValor = carrinho.reduce((acc, item) => acc + (item.preco * item.qtd), 0);
+      const totalQtd = carrinho.reduce((acc, item) => acc + item.qtd, 0);
+      const totalValor = carrinho.reduce((acc, item) => acc + (item.preco * item.qtd), 0);
 
-  const totalDiv = document.createElement("div");
-  totalDiv.className = "cart-total-items";
-  totalDiv.style.marginTop = "10px";
-  totalDiv.style.fontWeight = "bold";
-  totalDiv.innerHTML = `
+      const totalDiv = document.createElement("div");
+      totalDiv.className = "cart-total-items";
+      totalDiv.style.marginTop = "10px";
+      totalDiv.style.fontWeight = "bold";
+      totalDiv.innerHTML = `
     Total de itens: ${totalQtd} <br>
     Valor total: R$ ${totalValor.toFixed(2).replace('.', ',')}
   `;
-  container.appendChild(totalDiv);
-  };
+      container.appendChild(totalDiv);
+    };
 
-  // Soma total da quantidade de itens
-  const totalQtd = carrinho.reduce((acc, item) => acc + item.qtd, 0);
-  // Soma total do valor dos itens
-  const totalValor = carrinho.reduce((acc, item) => acc + (item.preco * item.qtd), 0);
+    // Soma total da quantidade de itens
+    const totalQtd = carrinho.reduce((acc, item) => acc + item.qtd, 0);
+    // Soma total do valor dos itens
+    const totalValor = carrinho.reduce((acc, item) => acc + (item.preco * item.qtd), 0);
 
-function filtrarPorCategoria(inicio, fim) {
-  filtroAtual = `${inicio}-${fim}`;
+    function filtrarPorCategoria(inicio, fim) {
+      filtroAtual = `${inicio}-${fim}`;
 
-  // Limpa o campo de busca
-  document.getElementById('search-input').value = '';
+      // Limpa o campo de busca
+      document.getElementById('search-input').value = '';
 
-  const cards = document.querySelectorAll('.product-card');
-  cards.forEach(card => {
-    const titulo = card.querySelector('h3').innerText;
-    const numero = parseInt(titulo.split(' ')[0]);
-    card.style.display = (numero >= inicio && numero <= fim) ? 'block' : 'none';
-  });
-}
-
-function mostrarTodos() {
-  filtroAtual = 'todos';
-
-  // Limpa o campo de busca
-  document.getElementById('search-input').value = '';
-
-  document.querySelectorAll('.product-card').forEach(card => {
-    card.style.display = 'block';
-  });
-}
-
-function filtrarPromocoes() {
-  filtroAtual = 'promocoes';
-
-  // Limpa o campo de busca
-  document.getElementById('search-input').value = '';
-
-  const cards = document.querySelectorAll('.product-card');
-  cards.forEach(card => {
-    const priceOriginal = card.querySelector('.price1');
-    card.style.display = priceOriginal ? 'block' : 'none';
-  });
-}
-
-function filtrarProdutos() {
-  const termo = document.getElementById('search-input').value.toLowerCase();
-  const cards = document.querySelectorAll('.product-card');
-
-  cards.forEach(card => {
-    const titulo = card.querySelector('h3').innerText.toLowerCase();
-    const contemTermo = titulo.includes(termo);
-    let mostrar = false;
-
-    if (filtroAtual === 'todos') {
-      mostrar = contemTermo;
-    } else if (filtroAtual === 'promocoes') {
-      const temPromocao = card.querySelector('.price1') !== null;
-      mostrar = temPromocao && contemTermo;
-    } else if (filtroAtual.includes('-')) {
-      const numero = parseInt(titulo.split(' ')[0]);
-      const [inicio, fim] = filtroAtual.split('-').map(Number);
-      mostrar = numero >= inicio && numero <= fim && contemTermo;
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        const titulo = card.querySelector('h3').innerText;
+        const numero = parseInt(titulo.split(' ')[0]);
+        card.style.display = (numero >= inicio && numero <= fim) ? 'block' : 'none';
+      });
     }
 
-    card.style.display = mostrar ? 'block' : 'none';
-  });
-}
+    function mostrarTodos() {
+      filtroAtual = 'todos';
 
-function finalizarPedido() {
-  if (carrinho.length === 0) {
-    alert("Seu carrinho está vazio.");
-    return;
-  }
-  
-  let mensagem = "Olá, Prime Tecnologia! Gostaria de fazer o seguinte pedido:%0A";
-  let total = 0;
+      // Limpa o campo de busca
+      document.getElementById('search-input').value = '';
 
-  carrinho.forEach(item => {
-    const subtotal = (item.preco * item.qtd).toFixed(2).replace('.', ',');
-    mensagem += `- ${item.nome} (Qtd: ${item.qtd}) - R$ ${subtotal}%0A`;
-    total += item.preco * item.qtd;
-  });
+      document.querySelectorAll('.product-card').forEach(card => {
+        card.style.display = 'block';
+      });
+    }
 
-  mensagem += `%0ATotal: R$ ${total.toFixed(2).replace('.', ',')}`;
+    function filtrarPromocoes() {
+      filtroAtual = 'promocoes';
 
-  const numero = "5579996269748";
-  const url = `https://wa.me/${numero}?text=${mensagem}`;
-  window.open(url, "_blank");
+      // Limpa o campo de busca
+      document.getElementById('search-input').value = '';
 
-  carrinho.length = 0;
-  salvarEAtualizar();
-  fecharCarrinho();
-}
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        const priceOriginal = card.querySelector('.price1');
+        card.style.display = priceOriginal ? 'block' : 'none';
+      });
+    }
 
-function toggleCarrinho() {
-  carrinhoSidebar.classList.add("active");
-  carrinhoOverlay.classList.add("active");
-  renderizarCarrinho();
-}
+    function filtrarProdutos() {
+      const termo = document.getElementById('search-input').value.toLowerCase();
+      const cards = document.querySelectorAll('.product-card');
+      const mensagemErro = document.getElementById('mensagem-erro');
 
-function fecharCarrinho() {
-  carrinhoSidebar.classList.remove("active");
-  carrinhoOverlay.classList.remove("active");
-}
+      let algumVisivel = false;
 
-function zoomImagem(src) {
-  document.getElementById("zoomed").src = src;
-  document.getElementById("zoom-img").style.display = "flex";
-}
+      cards.forEach(card => {
+        const titulo = card.querySelector('h3').innerText.toLowerCase();
+        const contemTermo = titulo.includes(termo);
+        let mostrar = false;
 
-function fecharZoom() {
-  document.getElementById("zoom-img").style.display = "none";
-}
-</script>
+        if (filtroAtual === 'todos') {
+          mostrar = contemTermo;
+        } else if (filtroAtual === 'promocoes') {
+          const temPromocao = card.querySelector('.price1') !== null;
+          mostrar = temPromocao && contemTermo;
+        } else if (filtroAtual.includes('-')) {
+          const numero = parseInt(titulo.split(' ')[0]);
+          const [inicio, fim] = filtroAtual.split('-').map(Number);
+          mostrar = numero >= inicio && numero <= fim && contemTermo;
+        }
+
+        card.style.display = mostrar ? 'block' : 'none';
+
+        if (mostrar) algumVisivel = true;
+      });
+
+      // Exibe ou oculta a mensagem de erro
+      mensagemErro.style.display = algumVisivel ? 'none' : 'block';
+    }
+
+    function finalizarPedido() {
+      if (carrinho.length === 0) {
+        alert("Seu carrinho está vazio.");
+        return;
+      }
+
+      let mensagem = "Olá, Prime Tecnologia! Gostaria de fazer o seguinte pedido:%0A";
+      let total = 0;
+
+      carrinho.forEach(item => {
+        const subtotal = (item.preco * item.qtd).toFixed(2).replace('.', ',');
+        mensagem += `- ${item.nome} (Qtd: ${item.qtd}) - R$ ${subtotal}%0A`;
+        total += item.preco * item.qtd;
+      });
+
+      mensagem += `%0ATotal: R$ ${total.toFixed(2).replace('.', ',')}`;
+
+      const numero = "5579996269748";
+      const url = `https://wa.me/${numero}?text=${mensagem}`;
+      window.open(url, "_blank");
+
+      carrinho.length = 0;
+      salvarEAtualizar();
+      fecharCarrinho();
+    }
+
+    function toggleCarrinho() {
+      carrinhoSidebar.classList.add("active");
+      carrinhoOverlay.classList.add("active");
+      renderizarCarrinho();
+    }
+
+    function fecharCarrinho() {
+      carrinhoSidebar.classList.remove("active");
+      carrinhoOverlay.classList.remove("active");
+    }
+
+    function zoomImagem(src) {
+      document.getElementById("zoomed").src = src;
+      document.getElementById("zoom-img").style.display = "flex";
+    }
+
+    function fecharZoom() {
+      document.getElementById("zoom-img").style.display = "none";
+    }
+  </script>
 </body>
+
 </html>
