@@ -900,6 +900,29 @@
     padding: 0 6px !important;
   }
 }
+
+/* Botão para subir para o topo */
+#scrollTopBtn {
+  display: none; /* Oculto por padrão */
+  position: fixed;
+  bottom: 30px;
+  right: 20px;
+  z-index: 999;
+  font-size: 22px;
+  border: none;
+  outline: none;
+  background-color: #f2cd00;
+  color: #111;
+  cursor: pointer;
+  padding: 10px 14px;
+  border-radius: 50%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background 0.3s ease;
+}
+
+#scrollTopBtn:hover {
+  background-color: #e0bc00;
+}
   </style>
 </head>
 
@@ -1042,6 +1065,8 @@
     line-height: 1;
   ">&times;</button>
 </div>
+
+<button id="scrollTopBtn" title="Voltar ao topo">↑</button>
 
   <div id="mensagem-erro" class="mensagem-erro">Nenhum produto encontrado.</div>
 
@@ -2010,6 +2035,36 @@
         card.style.display = 'block';
       });
     }
+
+   // Botão para subir para o topo 
+  const scrollBtn = document.getElementById("scrollTopBtn");
+  let hideTimer;
+  let lastScrollY = window.scrollY;
+
+  window.addEventListener("scroll", () => {
+    const currentScroll = window.scrollY;
+
+    // Se rolou para cima, esconder imediatamente
+    if (currentScroll < lastScrollY) {
+      scrollBtn.style.display = "none";
+      clearTimeout(hideTimer);
+    }
+    // Se rolou para baixo e passou de 100px
+    else if (currentScroll > 100) {
+      scrollBtn.style.display = "block";
+
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(() => {
+        scrollBtn.style.display = "none";
+      }, 3000);
+    }
+
+    lastScrollY = currentScroll;
+  });
+
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
     function abrirModal(el) {
       const card = el.closest('.product-card');
