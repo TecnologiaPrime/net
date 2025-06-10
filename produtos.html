@@ -870,6 +870,36 @@
       border: none;
       box-shadow: none;
     }
+    
+@media (max-width: 500px) {
+  #alerta-carrinho {
+    max-width: 350px !important;
+    width: 95vw !important;
+    padding: 10px 16px !important;
+    font-size: 0.85rem !important;
+    border-radius: 5px !important;
+  }
+
+  #alerta-carrinho span#mensagem-alerta {
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+
+  /* Botão "Ver carrinho" - reduzido */
+  #alerta-carrinho button:first-of-type {
+    min-width: 80px !important;       /* menor largura */
+    padding: 6px 12px !important;     /* menos padding */
+    font-size: 0.59rem !important;
+    border-radius: 4px !important;
+  }
+
+  /* Botão fechar (X) */
+  #alerta-carrinho button:last-of-type {
+    font-size: 18px !important;
+    padding: 0 6px !important;
+  }
+}
   </style>
 </head>
 
@@ -962,6 +992,57 @@
     </div>
   </header>
 
+<div id="alerta-carrinho" style="
+  display: none;
+  position: fixed;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  background: linear-gradient(90deg, #4CAF50 0%, #388E3C 100%);
+  color: #fff;
+  padding: 16px 28px;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 600;
+  z-index: 1100;
+  max-width: 480px;
+  width: calc(100% - 40px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+">
+  <span id="mensagem-alerta" style="flex-grow: 1;"></span>
+  <button onclick="verCarrinho()" style="
+    background: #fff;
+    color: #388E3C;
+    border: none;
+    padding: 10px 28px;
+    min-width: 140px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 700;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  " onmouseover="this.style.backgroundColor='#e8f5e9'; this.style.color='#2e7d32';" onmouseout="this.style.backgroundColor='#fff'; this.style.color='#388E3C';">
+    Ver carrinho
+  </button>
+  <button onclick="fecharAlerta()" aria-label="Fechar alerta" style="
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 0 8px;
+    user-select: none;
+    line-height: 1;
+  ">&times;</button>
+</div>
+
   <div id="mensagem-erro" class="mensagem-erro">Nenhum produto encontrado.</div>
 
   <!-- Modal de Características -->
@@ -1005,11 +1086,11 @@
         <div class="caracteristicas" style="display: none;">
           <p>
             <strong>STANLEY ROSA BEBÊ 950ML</strong><br>
-            - Térmica até 24h<br>
-            - Capacidade: 950ml<br>
-            - Cor: Rosa bebê<br>
-            - Material: Inox<br>
-            - Tampa com vedação
+            - Mantém bebidas quentes ou frias por até 24h<br>
+            - Capacidade ideal de 950ml para o dia a dia<br>
+            - Design moderno na cor rosa bebê<br>
+            - Produzida em aço inoxidável resistente<br>
+            - Tampa com vedação segura, à prova de vazamentos
           </p>
         </div>
       </div>
@@ -1017,24 +1098,24 @@
       <div class="product-card">
         <img
           src="https://lh3.googleusercontent.com/pw/AP1GczN81p-TPufTfQgxFbREAcDZRghvXO-NbCDlq6x1pFdyWlusNKC4obfaImW1O0hYKCHH40M0GAe5jKmzWc7spLcmFEC3kEIYg7lvMGogB1lP2occpj0IFFYaSzwvBTaJSvP25Yjz2clUFowPSvAGaPYE=w685-h913-s-no-gm?authuser=0"
-          alt="STANLEY ROXO 950ML" onclick="zoomImagem(this.src)" />
-        <h3>2 - STANLEY ROXO 950ML</h3>
+          alt="STANLEY ROXA 950ML" onclick="zoomImagem(this.src)" />
+        <h3>2 - STANLEY ROXA 950ML</h3>
         <p class="price">R$ 89,90</p>
         <div class="controls">
           <div class="top-row">
             <input type="number" min="1" value="1" />
-            <button onclick="adicionarAoCarrinho(this, 'STANLEY ROXO 950ML')">Adicionar</button>
+            <button onclick="adicionarAoCarrinho(this, 'STANLEY ROXA 950ML')">Adicionar</button>
           </div>
           <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
         </div>
         <div class="caracteristicas" style="display: none;">
           <p>
-            <strong>STANLEY ROXO 950ML</strong><br>
-            - Térmica até 24h<br>
-            - Capacidade: 950ml<br>
-            - Cor: Roxo<br>
-            - Material: Inox<br>
-            - Tampa com vedação
+            <strong>STANLEY ROXA 950ML</strong><br>
+            - Mantém bebidas quentes ou frias por até 24h<br>
+            - Capacidade ideal de 950ml para o dia a dia<br>
+            - Design moderno na cor roxa<br>
+            - Produzida em aço inoxidável resistente<br>
+            - Tampa com vedação segura, à prova de vazamentos
           </p>
         </div>
       </div>
@@ -1055,11 +1136,11 @@
         <div class="caracteristicas" style="display: none;">
           <p>
             <strong>STANLEY AZUL BEBÊ 800ML</strong><br>
-            - Térmica até 24h<br>
-            - Capacidade: 800ml<br>
-            - Cor: Azul bebê<br>
-            - Material: Inox<br>
-            - Tampa com vedação
+            - Mantém bebidas quentes ou frias por até 24h<br>
+            - Capacidade ideal de 800ml para o dia a dia<br>
+            - Design moderno na cor azul bebê<br>
+            - Produzida em aço inoxidável resistente<br>
+            - Tampa com vedação segura, à prova de vazamentos
           </p>
         </div>
       </div>
@@ -1087,11 +1168,11 @@
         <div class="caracteristicas" style="display: none;">
           <p>
             <strong>STANLEY VERDE BEBÊ 950ML</strong><br>
-            - Térmica até 24h<br>
-            - Capacidade: 950ml<br>
-            - Cor: Verde Bebê<br>
-            - Material: Inox<br>
-            - Tampa com vedação
+            - Mantém bebidas quentes ou frias por até 24h<br>
+            - Capacidade ideal de 950ml para o dia a dia<br>
+            - Design moderno na cor verde bebê<br>
+            - Produzida em aço inoxidável resistente<br>
+            - Tampa com vedação segura, à prova de vazamentos
           </p>
         </div>
       </div>
@@ -1113,11 +1194,11 @@
         <div class="caracteristicas" style="display: none;">
           <p>
             <strong>STANLEY ROSA 950ML</strong><br>
-            - Térmica até 24h<br>
-            - Capacidade: 950ml<br>
-            - Cor: Rosa metálico<br>
-            - Material: Inox<br>
-            - Tampa com vedação
+            - Mantém bebidas quentes ou frias por até 24h<br>
+            - Capacidade ideal de 950ml para o dia a dia<br>
+            - Design moderno na cor rosa<br>
+            - Produzida em aço inoxidável resistente<br>
+            - Tampa com vedação segura, à prova de vazamentos
           </p>
         </div>
       </div>
@@ -1141,11 +1222,11 @@
         <div class="caracteristicas" style="display: none;">
           <p>
             <strong>STANLEY OFF WHITE 1200ML</strong><br>
-            - Térmica até 24h<br>
-            - Capacidade: 1200ml<br>
-            - Cor: Off White<br>
-            - Material: Inox<br>
-            - Tampa com vedação
+            - Mantém bebidas quentes ou frias por até 24h<br>
+            - Capacidade ideal de 1200ml para o dia a dia<br>
+            - Design moderno na cor off white<br>
+            - Produzida em aço inoxidável resistente<br>
+            - Tampa com vedação segura, à prova de vazamentos
           </p>
         </div>
       </div>
@@ -1169,11 +1250,11 @@
         <div class="caracteristicas" style="display: none;">
           <p>
             <strong>STANLEY LILÁS 1200ML</strong><br>
-            - Térmica até 24h<br>
-            - Capacidade: 1200ml<br>
-            - Cor: Lilás<br>
-            - Material: Inox<br>
-            - Tampa com vedação
+            - Mantém bebidas quentes ou frias por até 24h<br>
+            - Capacidade ideal de 1200ml para o dia a dia<br>
+            - Design moderno na cor lilás<br>
+            - Produzida em aço inoxidável resistente<br>
+            - Tampa com vedação segura, à prova de vazamentos
           </p>
         </div>
       </div>
@@ -1197,10 +1278,10 @@
         <div class="caracteristicas" style="display: none;">
           <p>
             <strong>STANLEY CINZA 1200ML 2 SAÍDAS</strong><br>
-            - Térmica até 24h<br>
-            - Capacidade: 1200ml<br>
-            - Cor: Cinza<br>
-            - Material: Inox<br>
+            - Mantém bebidas quentes ou frias por até 24h<br>
+            - Capacidade ideal de 1200ml para o dia a dia<br>
+            - Design moderno na cor cinza<br>
+            - Produzida em aço inoxidável resistente<br>
             - Stanley (modelo com dupla funcionalidade)
           </p>
         </div>
@@ -1222,10 +1303,10 @@
         <div class="caracteristicas" style="display: none;">
           <p>
             <strong>STANLEY PRETA 1200ML 2 SAÍDAS</strong><br>
-            - Térmica até 24h<br>
-            - Capacidade: 1200ml<br>
-            - Cor: Preta<br>
-            - Material: Inox<br>
+            - Mantém bebidas quentes ou frias por até 24h<br>
+            - Capacidade ideal de 1200ml para o dia a dia<br>
+            - Design moderno na cor preta<br>
+            - Produzida em aço inoxidável resistente<br>
             - Stanley (modelo com dupla funcionalidade)
           </p>
         </div>
@@ -1247,10 +1328,10 @@
         <div class="caracteristicas" style="display: none;">
           <p>
             <strong>STANLEY AZUL BEBÊ 350ML 2 SAÍDAS</strong><br>
-            - Térmica até 24h<br>
-            - Capacidade: 350ml<br>
-            - Cor: Azul bebê<br>
-            - Material: Inox<br>
+            - Mantém bebidas quentes ou frias por até 24h<br>
+            - Capacidade ideal de 350ml para o dia a dia<br>
+            - Design moderno na cor azul bebê<br>
+            - Produzida em aço inoxidável resistente<br>
             - Stanley (modelo com dupla funcionalidade)
           </p>
         </div>
@@ -1259,24 +1340,24 @@
       <div class="product-card">
         <img
           src="https://lh3.googleusercontent.com/pw/AP1GczN0A3nUi3iYd4BcfdMYR25TKZmnmpblaGnS32xvxwEE59Nu2IXX64xKpFFWV1BsZXui50hf-9RbQz-6jnO1zKoM9PsUQH4JvftHgzaxRFKZHBHlqDbpL-V5NxPYz0mpSWcnZ83SSfB5k2eykVYSrHJq=w685-h913-s-no-gm?authuser=0"
-          alt="STANLEY COPO 1200ML" onclick="zoomImagem(this.src)" />
-        <h3>11 - STANLEY COPO 1200ML</h3>
+          alt="STANLEY COPO LILÁS 1200ML" onclick="zoomImagem(this.src)" />
+        <h3>11 - STANLEY COPO LILÁS 1200ML</h3>
         <p class="price">R$ 99,90</p>
         <div class="controls">
           <div class="top-row">
             <input type="number" min="1" value="1" />
-            <button onclick="adicionarAoCarrinho(this, 'STANLEY COPO 1200ML')">Adicionar</button>
+            <button onclick="adicionarAoCarrinho(this, 'STANLEY COPO LILÁS 1200ML')">Adicionar</button>
           </div>
           <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
         </div>
         <div class="caracteristicas" style="display: none;">
           <p>
-            <strong>STANLEY COPO 1200ML</strong><br>
-            - Térmica até 24h<br>
-            - Capacidade: 1200ml<br>
-            - Cor: Lilás <br>
-            - Material: Inox<br>
-            - Ideal para bebidas geladas e quentes
+            <strong>STANLEY COPO LILÁS 1200ML</strong><br>
+            - Mantém bebidas quentes ou frias por até 24h<br>
+            - Capacidade ideal de 1200ml para o dia a dia<br>
+            - Design moderno na cor lilás<br>
+            - Produzida em aço inoxidável resistente<br>
+            - Com canudo
           </p>
         </div>
       </div>
@@ -1284,23 +1365,23 @@
       <div class="product-card">
         <img
           src="https://lh3.googleusercontent.com/pw/AP1GczO_kNGGUux_zgIRcPJrTLto_4HsZKTp7GxPCXUPsuBK-CGdqR4I72wP8REl1JkPxOf6MU6t8gic6JwwZO1qc_IMHN_8FGwO-sfN6uVO2EKdp4hqnCUAcKtoOMhnQHAT1VrlAb65VSIctw-nlj9aJIkF=w685-h913-s-no-gm?authuser=0"
-          alt="STANLEY COPO 473ML" onclick="zoomImagem(this.src)" />
-        <h3>12 - STANLEY COPO 473ML</h3>
+          alt="STANLEY COPO BRANCO 473ML" onclick="zoomImagem(this.src)" />
+        <h3>12 - STANLEY COPO BRANCO 473ML</h3>
         <p class="price">R$ 34,90</p>
         <div class="controls">
           <div class="top-row">
             <input type="number" min="1" value="1" />
-            <button onclick="adicionarAoCarrinho(this, 'STANLEY COPO 473ML')">Adicionar</button>
+            <button onclick="adicionarAoCarrinho(this, 'STANLEY COPO BRANCO 473ML')">Adicionar</button>
           </div>
           <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
         </div>
         <div class="caracteristicas" style="display: none;">
           <p>
-            <strong>STANLEY COPO 473ML</strong><br>
-            - Térmico até 17h gelado<br>
-            - Capacidade: 473ml<br>
-            - Cor: Branco<br>
-            - Material: Aço inox<br>
+            <strong>STANLEY COPO BRANCO 473ML</strong><br>
+            - Mantém bebidas quentes ou frias por até 17h<br>
+            - Capacidade ideal de 473ml para o dia a dia<br>
+            - Design moderno na cor branca<br>
+            - Produzida em aço inoxidável resistente<br>
             - Com tampa plástica
           </p>
         </div>
@@ -1351,7 +1432,7 @@
             - Suporte com ventosa de alta fixação<br>
             - Compatível com celulares de até 7"<br>
             - Rotação de 360°<br>
-            - Base reforçada com apoio antiderrapante
+            - Base reforçada com apoio antiderrapante<br>
             - Estável e Antichoque
           </p>
         </div>
@@ -2040,29 +2121,76 @@
     atualizarContador();
     renderizarCarrinho();
 
-    function adicionarAoCarrinho(botao, nome) {
-      const input = botao.previousElementSibling;
-      const quantidade = parseInt(input.value) || 1;
-      const card = botao.closest('.product-card');
-      const precoText = card.querySelector('.price').textContent.trim();
-      const imagemEsgotada = card.querySelector('.image-container')?.classList.contains('esgotado');
+function adicionarAoCarrinho(botao, nome) {
+  const input = botao.previousElementSibling;
+  const quantidade = parseInt(input.value) || 1;
+  const card = botao.closest('.product-card');
+  const precoText = card.querySelector('.price').textContent.trim();
+  const imagemEsgotada = card.querySelector('.image-container')?.classList.contains('esgotado');
 
-      // Verifica se o preço diz "ESGOTADO" ou se a imagem tem a faixa de esgotado
-      if (precoText.toUpperCase() === 'ESGOTADO' || imagemEsgotada) {
-        alert('Este produto está esgotado e não pode ser adicionado ao carrinho.');
-        return;
-      }
+  if (precoText.toUpperCase() === 'ESGOTADO' || imagemEsgotada) {
+    alert('Este produto está esgotado e não pode ser adicionado ao carrinho.');
+    return;
+  }
 
-      const preco = parseFloat(precoText.replace('R$', '').replace(',', '.'));
+  const preco = parseFloat(precoText.replace('R$', '').replace(',', '.'));
 
-      const item = carrinho.find(p => p.nome === nome);
-      if (item) {
-        item.qtd += quantidade;
-      } else {
-        carrinho.push({ nome, qtd: quantidade, preco });
-      }
-      salvarEAtualizar();
-    }
+  const item = carrinho.find(p => p.nome === nome);
+  if (item) {
+    item.qtd += quantidade;
+  } else {
+    carrinho.push({ nome, qtd: quantidade, preco });
+  }
+
+  salvarEAtualizar();
+  mostrarAlertaCarrinho(nome);
+}
+
+let timeoutAlerta;
+
+function mostrarAlertaCarrinho(nomeProduto) {
+  const alerta = document.getElementById('alerta-carrinho');
+  const mensagem = document.getElementById('mensagem-alerta');
+
+  mensagem.textContent = `"${nomeProduto}" foi adicionado ao carrinho.`;
+  alerta.style.display = 'flex';
+
+  // Força execução da transição
+  setTimeout(() => {
+    alerta.style.transform = 'translateX(-50%) translateY(0)';
+    alerta.style.opacity = '1';
+  }, 10);
+
+  // Limpa timeout antigo se existir
+  if (timeoutAlerta) clearTimeout(timeoutAlerta);
+
+  // Esconde após 4 segundos
+  timeoutAlerta = setTimeout(() => {
+    fecharAlerta();
+  }, 4000);
+}
+
+function fecharAlerta() {
+  const alerta = document.getElementById('alerta-carrinho');
+  alerta.style.opacity = 0;
+  alerta.style.transform = 'translateX(-50%) translateY(-100%)';
+  
+  // Limpa o timeout para evitar que ele tente esconder de novo depois
+  if (alerta.timeoutId) {
+    clearTimeout(alerta.timeoutId);
+    alerta.timeoutId = null;
+  }
+
+  // Após a animação (350ms), esconde display para evitar clique
+  setTimeout(() => {
+    alerta.style.display = 'none';
+  }, 350);
+}
+
+function verCarrinho() {
+  fecharAlerta();  // fecha o alerta imediatamente
+  toggleCarrinho(); // abre o carrinho
+}
 
     function removerItem(index) {
       carrinho.splice(index, 1);
