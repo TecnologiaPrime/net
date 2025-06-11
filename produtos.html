@@ -1007,7 +1007,7 @@
     <h1>Arraiá</h1>
     <div class="header-right">
       <input type="text" id="search-input" placeholder="Buscar produto..." oninput="filtrarProdutos()" />
-      <div class="cart-icon" onclick="toggleCarrinho()">
+      <div class="cart-icon" onclick="toggleCarrinho(); fecharAlerta();">
         <i class="fas fa-shopping-cart"></i>
         <span class="cart-count" id="cart-count">0</span>
       </div>
