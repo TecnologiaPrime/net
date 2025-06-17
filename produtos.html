@@ -946,6 +946,129 @@
     margin-left: 5px;
   }
 }
+
+#modal-senha {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 18px 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  z-index: 9999;
+  width: 85%;
+  max-width: 320px;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+#campo-senha {
+  width: 100%;
+  margin: 14px 0;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border: 1.5px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease;
+}
+
+#campo-senha:focus {
+  border-color: #0066cc;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 102, 204, 0.5);
+}
+
+#fundo-senha {
+  display: none;
+  position: fixed;
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 9998;
+}
+
+/* Botões com toque maior para mobile */
+#confirmar-senha, #cancelar-senha {
+  padding: 8px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  border: none;
+  user-select: none;
+  transition: background-color 0.3s ease;
+  min-width: 100px;
+}
+
+#confirmar-senha {
+  background-color: #28a745;
+  color: white;
+  margin-right: 10px;
+}
+
+#confirmar-senha:hover, #confirmar-senha:focus {
+  background-color: #28a745;
+  outline: none;
+}
+
+#cancelar-senha {
+  background-color: #ddd;
+  color: #333;
+  margin-left: 10px;
+}
+
+#cancelar-senha:hover, #cancelar-senha:focus {
+  background-color: #bbb;
+  outline: none;
+}
+
+/* Container para os botões centralizados */
+.modal-buttons {
+  display: flex;
+  justify-content: center;  /* centraliza os botões */
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Responsividade para telas pequenas */
+@media (max-width: 400px) {
+  #modal-senha {
+    width: 95%;
+    max-width: 320px;     /* aumentei de 260px para 320px */
+    padding: 12px 10px;
+  }
+
+  @media (max-width: 400px) {
+  #modal-senha h3 {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+}
+
+  #campo-senha {
+    font-size: 0.85rem;
+    padding: 6px 8px;
+    margin: 10px 0;
+  }
+
+  #confirmar-senha, #cancelar-senha {
+    font-size: 0.85rem;
+    padding: 6px 10px;
+    min-width: auto;
+    flex: 1 1 100%;
+    margin: 4px 0 0 0 !important;
+  }
+
+  .modal-buttons {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
   </style>
 </head>
 
@@ -1104,6 +1227,16 @@
   </div>
 
   <!--EDITAR1-->
+<div id="modal-senha">
+  <h3>Digite a senha de administrador</h3>
+  <input type="password" id="campo-senha" autocomplete="off" />
+  <div class="modal-buttons">
+    <button id="confirmar-senha">Confirmar</button>
+    <button id="cancelar-senha">Cancelar</button>
+  </div>
+</div>
+<div id="fundo-senha"></div>
+
 <!-- Modal de Edição -->
 <div id="modal-editar" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
   background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 9999; width: 90%; max-width: 400px;">
@@ -1140,18 +1273,31 @@
 
   let usuarioAdmin = false;
 
-  const botaoUsuario = document.getElementById('souUsuario');
-  botaoUsuario.addEventListener('click', () => {
-    const senha = prompt("Digite a senha de administrador:");
-    if (senha === "1995") {
-      usuarioAdmin = true;
-      alert("Modo administrador ativado.");
-      mostrarBotoesEditar();
-      carregarNomesDoFirebase();
-    } else {
-      alert("Senha incorreta!");
-    }
-  });
+const botaoUsuario = document.getElementById('souUsuario');
+botaoUsuario.addEventListener('click', () => {
+  document.getElementById('modal-senha').style.display = 'block';
+  document.getElementById('fundo-senha').style.display = 'block';
+  document.getElementById('campo-senha').value = '';
+});
+
+document.getElementById('cancelar-senha').onclick = () => {
+  document.getElementById('modal-senha').style.display = 'none';
+  document.getElementById('fundo-senha').style.display = 'none';
+};
+
+document.getElementById('confirmar-senha').onclick = () => {
+  const senhaDigitada = document.getElementById('campo-senha').value;
+  if (senhaDigitada === "1995") {
+    usuarioAdmin = true;
+    alert("Modo administrador ativado.");
+    document.getElementById('modal-senha').style.display = 'none';
+    document.getElementById('fundo-senha').style.display = 'none';
+    mostrarBotoesEditar();
+    carregarNomesDoFirebase();
+  } else {
+    alert("Senha incorreta!");
+  }
+};
 
   function mostrarBotoesEditar() {
     const produtos = document.querySelectorAll('.product-card');
@@ -1166,11 +1312,17 @@
 
       btnEditar.onclick = () => abrirEditor(produto);
 
+      btnEditar.onclick = (event) => {
+  event.stopPropagation();  // <-- impede a propagação do clique
+  abrirEditor(produto);
+};
+
+
       produto.appendChild(btnEditar);
     });
   }
 
-let produtoAtual = null;
+  let produtoAtual = null;
 
   function abrirEditor(produto) {
     produtoAtual = produto;
@@ -1209,7 +1361,7 @@ let produtoAtual = null;
       }).then(() => {
         produtoAtual.querySelector('h3').innerText = novoNome;
         produtoAtual.querySelector('.price').innerText = `R$ ${parseFloat(novoPreco).toFixed(2).replace('.', ',')}`;
-        produtoAtual.querySelector('img').src = novaImg;
+        produtoAtual.querySelector('img').src = novaImg + '?t=' + Date.now(); // Evita cache
         alert("Produto atualizado!");
         document.getElementById('modal-editar').style.display = 'none';
         document.getElementById('fundo-modal').style.display = 'none';
@@ -1228,11 +1380,15 @@ let produtoAtual = null;
       get(ref(db, 'produtos/' + idProduto)).then(snapshot => {
         if (snapshot.exists()) {
           const dados = snapshot.val();
+
           if (dados.nome) {
             produto.querySelector('h3').innerText = dados.nome;
           }
           if (dados.preco) {
             produto.querySelector('.price').innerText = `R$ ${parseFloat(dados.preco).toFixed(2).replace('.', ',')}`;
+          }
+          if (dados.img) {
+            produto.querySelector('img').src = dados.img + '?t=' + Date.now(); // Força reload da imagem
           }
         }
       }).catch(console.error);
@@ -1243,7 +1399,6 @@ let produtoAtual = null;
     carregarNomesDoFirebase();
   });
 </script>
-
 
   <div id="filtros">
     <button onclick="mostrarTodos()">Todos</button>
