@@ -37,7 +37,7 @@
       width: 100%;
       background-color: #f2cd00;
       color: #111;
-      padding: 20px 30px;
+      padding: 20px 20px 20px 15px; /* top, right, bottom, left */
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -158,7 +158,7 @@
     .controls input[type="number"]::-webkit-inner-spin-button,
     .controls input[type="number"]::-webkit-outer-spin-button {
       -webkit-appearance: auto;
-      margin: 0;
+      margin: 10;
     }
 
     .controls button {
@@ -365,11 +365,10 @@
       border: none;
       outline: none;
       font-size: 0.9em;
-      width: 130px;
-      max-width: 200%;
+      width: 100px;
       box-sizing: border-box;
       transition: width 0.3s ease;
-      margin-left: 1px;
+      margin-left: 15px;
       /* Reduz o espaço entre o título e o input */
     }
 
@@ -919,9 +918,32 @@
   background-color: #e0bc00;
 }
 
-.sold-out-overlay {
-  .sold-out-overlay {
-  display: none; /* sem o !important aqui */
+/*editar*/
+#souUsuario {
+  background-color: #28a745; /* tom mais claro e suave de azul bebê */
+  color: #ffffff;
+  border: 1px solid #4d4f4f;
+  padding: 4px 10px;
+  font-size: 0.80rem;
+  cursor: pointer;
+  border-radius: 4px;
+  height: auto;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+  margin-left: 5px;
+}
+
+#souUsuario:hover {
+  background-color: #4d4f4f;
+  transform: scale(1.03);
+}
+
+@media (max-width: 600px) {
+  #souUsuario {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+    border-radius: 3px;
+    margin-left: 5px;
   }
 }
   </style>
@@ -1007,13 +1029,15 @@
   <header>
     <h1>Arraiá</h1>
     <div class="header-right">
-      <input type="text" id="search-input" placeholder="Buscar produto..." oninput="filtrarProdutos()" />
-      <div class="cart-icon" onclick="toggleCarrinho(); fecharAlerta();">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="cart-count" id="cart-count">0</span>
-      </div>
-      <a href="index.html" class="close-btn" title="Voltar">&times;</a>
-    </div>
+    <input type="text" id="search-input" placeholder="Buscar produto..." oninput="filtrarProdutos()" />
+    <button id="souUsuario">Editar?</button>
+    <div class="cart-icon" onclick="toggleCarrinho(); fecharAlerta();">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="cart-count" id="cart-count">0</span>
+  </div>
+  <a href="index.html" class="close-btn" title="Voltar">&times;</a>
+</div>
+
   </header>
 
 <div id="alerta-carrinho" style="
@@ -1080,8 +1104,6 @@
   </div>
 
   <!--EDITAR-->
-<button id="souUsuario">Sou Usuário</button>
-
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
   import { getDatabase, ref, get, update } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
@@ -1102,124 +1124,123 @@
 
   let usuarioAdmin = false;
 
-  document.getElementById('souUsuario').addEventListener('click', () => {
+  const botaoUsuario = document.getElementById('souUsuario');
+  botaoUsuario.addEventListener('click', () => {
     const senha = prompt("Digite a senha de administrador:");
-    if (senha === "1995") {
+    if (senha === "1234") {
       usuarioAdmin = true;
       alert("Modo administrador ativado.");
       mostrarBotoesEditar();
-      carregarDadosDoFirebase();
+      carregarNomesDoFirebase();
     } else {
       alert("Senha incorreta!");
     }
   });
 
   function mostrarBotoesEditar() {
-    document.querySelectorAll('.product-card').forEach(produto => {
+    const produtos = document.querySelectorAll('.product-card');
+
+    produtos.forEach(produto => {
       if (produto.querySelector('.btn-editar')) return;
 
       const btnEditar = document.createElement('button');
       btnEditar.innerText = "Editar";
       btnEditar.classList.add('btn-editar');
       btnEditar.style.marginTop = '5px';
+
       btnEditar.onclick = () => abrirEditor(produto);
+
       produto.appendChild(btnEditar);
     });
   }
 
-  function abrirEditor(produto) {
-    if (produto.querySelector('.editor-inline')) return;
+function abrirEditor(produto) {
+  if (produto.querySelector('.editor-inline')) return;
 
-    const nomeAtual = produto.querySelector('h3').innerText;
-    const precoAtual = produto.querySelector('.price').textContent.replace('R$', '').trim();
-    const esgotadoAtual = produto.querySelector('.image-container').classList.contains('esgotado');
+  const nomeAtual = produto.querySelector('h3').innerText;
+  const precoAtual = produto.querySelector('.price').textContent.replace('R$', '').trim();
+  const imagemAtual = produto.querySelector('img').src;
 
-    const editorDiv = document.createElement('div');
-    editorDiv.classList.add('editor-inline');
-    editorDiv.style.marginTop = '8px';
+  const editorDiv = document.createElement('div');
+  editorDiv.classList.add('editor-inline');
+  editorDiv.style.marginTop = '8px';
 
-    const inputNome = document.createElement('input');
-    inputNome.type = 'text';
-    inputNome.value = nomeAtual;
-    inputNome.placeholder = "Nome";
-    inputNome.style.width = '90%';
-    inputNome.style.display = 'block';
-    inputNome.style.marginBottom = '5px';
+  const inputNome = document.createElement('input');
+  inputNome.type = 'text';
+  inputNome.value = nomeAtual;
+  inputNome.placeholder = "Novo nome";
+  inputNome.style.width = '90%';
+  inputNome.style.display = 'block';
+  inputNome.style.marginBottom = '5px';
 
-    const inputPreco = document.createElement('input');
-    inputPreco.type = 'text';
-    inputPreco.value = precoAtual;
-    inputPreco.placeholder = "Preço";
-    inputPreco.style.width = '90%';
-    inputPreco.style.display = 'block';
-    inputPreco.style.marginBottom = '5px';
+  const inputPreco = document.createElement('input');
+  inputPreco.type = 'text';
+  inputPreco.value = precoAtual;
+  inputPreco.placeholder = "Novo preço";
+  inputPreco.style.width = '90%';
+  inputPreco.style.display = 'block';
+  inputPreco.style.marginBottom = '5px';
 
-    const selectEsgotado = document.createElement('select');
-    selectEsgotado.style.width = '90%';
-    selectEsgotado.style.display = 'block';
-    selectEsgotado.style.marginBottom = '5px';
-    const optNao = new Option("Disponível", "nao");
-    const optSim = new Option("Esgotado", "sim");
-    selectEsgotado.append(optNao, optSim);
-    selectEsgotado.value = esgotadoAtual ? "sim" : "nao";
+  const inputImg = document.createElement('input');
+  inputImg.type = 'text';
+  inputImg.value = imagemAtual;
+  inputImg.placeholder = "Link da imagem";
+  inputImg.style.width = '90%';
+  inputImg.style.display = 'block';
+  inputImg.style.marginBottom = '5px';
 
-    const btnSalvar = document.createElement('button');
-    btnSalvar.innerText = 'Salvar';
+  const btnSalvar = document.createElement('button');
+  btnSalvar.innerText = 'Salvar';
 
-    const btnCancelar = document.createElement('button');
-    btnCancelar.innerText = 'Cancelar';
-    btnCancelar.style.marginLeft = '5px';
+  const btnCancelar = document.createElement('button');
+  btnCancelar.innerText = 'Cancelar';
+  btnCancelar.style.marginLeft = '5px';
 
-    editorDiv.appendChild(inputNome);
-    editorDiv.appendChild(inputPreco);
-    editorDiv.appendChild(selectEsgotado);
-    editorDiv.appendChild(btnSalvar);
-    editorDiv.appendChild(btnCancelar);
-    produto.appendChild(editorDiv);
+  editorDiv.appendChild(inputNome);
+  editorDiv.appendChild(inputPreco);
+  editorDiv.appendChild(inputImg);
+  editorDiv.appendChild(btnSalvar);
+  editorDiv.appendChild(btnCancelar);
 
-    btnCancelar.onclick = () => editorDiv.remove();
+  produto.appendChild(editorDiv);
 
-    btnSalvar.onclick = () => {
-      const novoNome = inputNome.value.trim();
-      const novoPreco = inputPreco.value.trim().replace(',', '.');
-      const novoEsgotado = selectEsgotado.value === "sim";
+  btnCancelar.onclick = () => {
+    editorDiv.remove();
+  };
 
-      if (novoNome === '' || isNaN(parseFloat(novoPreco))) {
-        alert('Preencha nome e preço corretamente.');
-        return;
-      }
+  btnSalvar.onclick = () => {
+    const novoNome = inputNome.value.trim();
+    const novoPreco = inputPreco.value.trim().replace(',', '.');
+    const novaImg = inputImg.value.trim();
 
-      const idProduto = produto.getAttribute('data-id');
-      update(ref(db, 'produtos/' + idProduto), {
-        nome: novoNome,
-        preco: novoPreco,
-        esgotado: novoEsgotado
-      }).then(() => {
-        produto.querySelector('h3').innerText = novoNome;
-        produto.querySelector('.price').innerText = `R$ ${parseFloat(novoPreco).toFixed(2).replace('.', ',')}`;
+    if (novoNome === '' || isNaN(parseFloat(novoPreco)) || novaImg === '') {
+      alert('Preencha todos os campos corretamente.');
+      return;
+    }
 
-        const imagemContainer = produto.querySelector('.image-container');
-        const overlay = produto.querySelector('.sold-out-overlay');
+    const idProduto = produto.getAttribute('data-id');
 
-        if (novoEsgotado) {
-          imagemContainer.classList.add('esgotado');
-          overlay.style.display = 'block';
-        } else {
-          imagemContainer.classList.remove('esgotado');
-          overlay.style.display = 'none';
-        }
+    update(ref(db, 'produtos/' + idProduto), {
+      nome: novoNome,
+      preco: novoPreco,
+      img: novaImg
+    }).then(() => {
+      produto.querySelector('h3').innerText = novoNome;
+      produto.querySelector('.price').innerText = `R$ ${parseFloat(novoPreco).toFixed(2).replace('.', ',')}`;
+      produto.querySelector('img').src = novaImg;
+      alert("Dados atualizados!");
+      editorDiv.remove();
+    }).catch(error => {
+      console.error('Erro ao salvar:', error);
+      alert('Erro ao salvar, tente novamente.');
+    });
+  };
+}
 
-        alert("Produto atualizado!");
-        editorDiv.remove();
-      }).catch(error => {
-        console.error('Erro ao salvar:', error);
-        alert('Erro ao salvar, tente novamente.');
-      });
-    };
-  }
+  function carregarNomesDoFirebase() {
+    const produtos = document.querySelectorAll('.product-card');
 
-  function carregarDadosDoFirebase() {
-    document.querySelectorAll('.product-card').forEach(produto => {
+    produtos.forEach(produto => {
       const idProduto = produto.getAttribute('data-id');
       get(ref(db, 'produtos/' + idProduto)).then(snapshot => {
         if (snapshot.exists()) {
@@ -1230,24 +1251,14 @@
           if (dados.preco) {
             produto.querySelector('.price').innerText = `R$ ${parseFloat(dados.preco).toFixed(2).replace('.', ',')}`;
           }
-          if (dados.esgotado !== undefined) {
-            const imagemContainer = produto.querySelector('.image-container');
-            const overlay = produto.querySelector('.sold-out-overlay');
-
-            if (dados.esgotado) {
-  imagemContainer.classList.add('esgotado');
-  overlay.style.display = 'block';
-} else {
-  imagemContainer.classList.remove('esgotado');
-  overlay.style.display = 'none';
-}
-          }
         }
       }).catch(console.error);
     });
   }
 
-  window.addEventListener('load', carregarDadosDoFirebase);
+  window.addEventListener('load', () => {
+    carregarNomesDoFirebase();
+  });
 </script>
 
 
