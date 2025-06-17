@@ -365,7 +365,7 @@
       border: none;
       outline: none;
       font-size: 0.9em;
-      width: 100px;
+      width: 130px;
       box-sizing: border-box;
       transition: width 0.3s ease;
       margin-left: 15px;
@@ -1103,6 +1103,22 @@
     </div>
   </div>
 
+  <!--EDITAR1-->
+<!-- Modal de Edição -->
+<div id="modal-editar" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 9999; width: 90%; max-width: 400px;">
+  <h3 style="margin-top: 0;">Editar Produto</h3>
+  <input id="modal-nome" type="text" placeholder="Novo nome" style="width: 100%; margin-bottom: 10px;">
+  <input id="modal-preco" type="text" placeholder="Novo preço" style="width: 100%; margin-bottom: 10px;">
+  <input id="modal-img" type="text" placeholder="Link da imagem" style="width: 100%; margin-bottom: 10px;">
+  <div style="text-align: right;">
+    <button id="btn-salvar-modal" style="margin-right: 10px;">Salvar</button>
+    <button id="btn-cancelar-modal">Cancelar</button>
+  </div>
+</div>
+<div id="fundo-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+  background:rgba(0,0,0,0.5); z-index:9998;"></div>
+
   <!--EDITAR-->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
@@ -1154,88 +1170,55 @@
     });
   }
 
-function abrirEditor(produto) {
-  if (produto.querySelector('.editor-inline')) return;
+let produtoAtual = null;
 
-  const nomeAtual = produto.querySelector('h3').innerText;
-  const precoAtual = produto.querySelector('.price').textContent.replace('R$', '').trim();
-  const imagemAtual = produto.querySelector('img').src;
+  function abrirEditor(produto) {
+    produtoAtual = produto;
+    const nomeAtual = produto.querySelector('h3').innerText;
+    const precoAtual = produto.querySelector('.price').textContent.replace('R$', '').trim();
+    const imagemAtual = produto.querySelector('img').src;
 
-  const editorDiv = document.createElement('div');
-  editorDiv.classList.add('editor-inline');
-  editorDiv.style.marginTop = '8px';
+    document.getElementById('modal-nome').value = nomeAtual;
+    document.getElementById('modal-preco').value = precoAtual;
+    document.getElementById('modal-img').value = imagemAtual;
 
-  const inputNome = document.createElement('input');
-  inputNome.type = 'text';
-  inputNome.value = nomeAtual;
-  inputNome.placeholder = "Novo nome";
-  inputNome.style.width = '90%';
-  inputNome.style.display = 'block';
-  inputNome.style.marginBottom = '5px';
+    document.getElementById('modal-editar').style.display = 'block';
+    document.getElementById('fundo-modal').style.display = 'block';
 
-  const inputPreco = document.createElement('input');
-  inputPreco.type = 'text';
-  inputPreco.value = precoAtual;
-  inputPreco.placeholder = "Novo preço";
-  inputPreco.style.width = '90%';
-  inputPreco.style.display = 'block';
-  inputPreco.style.marginBottom = '5px';
+    document.getElementById('btn-cancelar-modal').onclick = () => {
+      document.getElementById('modal-editar').style.display = 'none';
+      document.getElementById('fundo-modal').style.display = 'none';
+    };
 
-  const inputImg = document.createElement('input');
-  inputImg.type = 'text';
-  inputImg.value = imagemAtual;
-  inputImg.placeholder = "Link da imagem";
-  inputImg.style.width = '90%';
-  inputImg.style.display = 'block';
-  inputImg.style.marginBottom = '5px';
+    document.getElementById('btn-salvar-modal').onclick = () => {
+      const novoNome = document.getElementById('modal-nome').value.trim();
+      const novoPreco = document.getElementById('modal-preco').value.trim().replace(',', '.');
+      const novaImg = document.getElementById('modal-img').value.trim();
 
-  const btnSalvar = document.createElement('button');
-  btnSalvar.innerText = 'Salvar';
+      if (!novoNome || isNaN(parseFloat(novoPreco)) || !novaImg) {
+        alert("Preencha todos os campos corretamente.");
+        return;
+      }
 
-  const btnCancelar = document.createElement('button');
-  btnCancelar.innerText = 'Cancelar';
-  btnCancelar.style.marginLeft = '5px';
+      const idProduto = produtoAtual.getAttribute('data-id');
 
-  editorDiv.appendChild(inputNome);
-  editorDiv.appendChild(inputPreco);
-  editorDiv.appendChild(inputImg);
-  editorDiv.appendChild(btnSalvar);
-  editorDiv.appendChild(btnCancelar);
-
-  produto.appendChild(editorDiv);
-
-  btnCancelar.onclick = () => {
-    editorDiv.remove();
-  };
-
-  btnSalvar.onclick = () => {
-    const novoNome = inputNome.value.trim();
-    const novoPreco = inputPreco.value.trim().replace(',', '.');
-    const novaImg = inputImg.value.trim();
-
-    if (novoNome === '' || isNaN(parseFloat(novoPreco)) || novaImg === '') {
-      alert('Preencha todos os campos corretamente.');
-      return;
-    }
-
-    const idProduto = produto.getAttribute('data-id');
-
-    update(ref(db, 'produtos/' + idProduto), {
-      nome: novoNome,
-      preco: novoPreco,
-      img: novaImg
-    }).then(() => {
-      produto.querySelector('h3').innerText = novoNome;
-      produto.querySelector('.price').innerText = `R$ ${parseFloat(novoPreco).toFixed(2).replace('.', ',')}`;
-      produto.querySelector('img').src = novaImg;
-      alert("Dados atualizados!");
-      editorDiv.remove();
-    }).catch(error => {
-      console.error('Erro ao salvar:', error);
-      alert('Erro ao salvar, tente novamente.');
-    });
-  };
-}
+      update(ref(db, 'produtos/' + idProduto), {
+        nome: novoNome,
+        preco: novoPreco,
+        img: novaImg
+      }).then(() => {
+        produtoAtual.querySelector('h3').innerText = novoNome;
+        produtoAtual.querySelector('.price').innerText = `R$ ${parseFloat(novoPreco).toFixed(2).replace('.', ',')}`;
+        produtoAtual.querySelector('img').src = novaImg;
+        alert("Produto atualizado!");
+        document.getElementById('modal-editar').style.display = 'none';
+        document.getElementById('fundo-modal').style.display = 'none';
+      }).catch(error => {
+        console.error('Erro ao salvar:', error);
+        alert("Erro ao salvar, tente novamente.");
+      });
+    };
+  }
 
   function carregarNomesDoFirebase() {
     const produtos = document.querySelectorAll('.product-card');
