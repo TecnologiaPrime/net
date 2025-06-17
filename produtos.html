@@ -1074,81 +1074,132 @@
   </div>
 
   <!--EDITAR-->
-  <button id="souUsuario">Sou Usuário</button>
-
-<div id="editor" style="display: none; margin: 10px 0;">
-  <input type="text" id="descricaoInput" placeholder="Editar nome do produto" />
-  <button onclick="salvarDescricao()">Salvar</button>
-</div>
+<button id="souUsuario">Sou Usuário TESTE</button>
 
 <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
-  import { getDatabase, ref, get, set, child } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+import { getDatabase, ref, get, update } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyDcAndaV6npHQHASf4Tc0fHdrP4Fpt8GXk",
-    authDomain: "editar-teste.firebaseapp.com",
-    projectId: "editar-teste",
-    storageBucket: "editar-teste.firebasestorage.app",
-    messagingSenderId: "689487933994",
-    appId: "1:689487933994:web:40c831a1bb7dcdfaa84953",
-    measurementId: "G-FJW8YLFZ1H",
-    databaseURL: "https://editar-teste-default-rtdb.firebaseio.com"
-  };
+const firebaseConfig = {
+  apiKey: "AIzaSyDcAndaV6npHQHASf4Tc0fHdrP4Fpt8GXk",
+  authDomain: "editar-teste.firebaseapp.com",
+  projectId: "editar-teste",
+  storageBucket: "editar-teste.firebasestorage.app",
+  messagingSenderId: "689487933994",
+  appId: "1:689487933994:web:40c831a1bb7dcdfaa84953",
+  measurementId: "G-FJW8YLFZ1H",
+  databaseURL: "https://editar-teste-default-rtdb.firebaseio.com"
+};
 
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const db = getDatabase(app);
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
-  // Carrega o nome salvo no Firebase ao abrir a página
-const dbRef = ref(db);
-get(child(dbRef, 'EDITAR/DESCRICAO')).then((snapshot) => {
-  if (snapshot.exists()) {
-    const nomeSalvo = snapshot.val();
-    const tituloProduto = document.querySelector('.product-card h3');
-    if (tituloProduto) {
-      tituloProduto.innerText = "1 - " + nomeSalvo;
-    }
+let usuarioAdmin = false;
+
+const botaoUsuario = document.getElementById('souUsuario');
+
+botaoUsuario.addEventListener('click', () => {
+  const senha = prompt("Digite a senha de administrador:");
+  if (senha === "1234") {
+    usuarioAdmin = true;
+    alert("Modo administrador ativado.");
+    mostrarBotoesEditar();
+    carregarNomesDoFirebase(); // carrega nomes do Firebase e atualiza na tela
+  } else {
+    alert("Senha incorreta!");
   }
 });
 
-  const botaoUsuario = document.getElementById('souUsuario');
-  const inputDescricao = document.getElementById('descricaoInput');
+function mostrarBotoesEditar() {
+  if (!usuarioAdmin) return;
 
-  botaoUsuario.addEventListener('click', () => {
-    const senha = prompt("Digite a senha de administrador:");
+  const produtos = document.querySelectorAll('.product-card');
 
-    if (senha === "1234") {
-      document.getElementById('editor').style.display = 'block';
+  produtos.forEach(produto => {
+    if (produto.querySelector('.btn-editar')) return;
 
-      const dbRef = ref(db);
-      get(child(dbRef, 'EDITAR/DESCRICAO')).then((snapshot) => {
-        if (snapshot.exists()) {
-          inputDescricao.value = snapshot.val();
-        }
-      });
-    } else {
-      alert("Senha incorreta!");
-    }
+    const btnEditar = document.createElement('button');
+    btnEditar.innerText = "Editar";
+    btnEditar.classList.add('btn-editar');
+    btnEditar.style.marginTop = '5px';
+
+    btnEditar.onclick = () => abrirEditor(produto);
+
+    produto.appendChild(btnEditar);
   });
+}
 
-  window.salvarDescricao = function () {
-    const novoNome = inputDescricao.value;
+function abrirEditor(produto) {
+  if (produto.querySelector('.editor-inline')) return; // já aberto
 
-    set(ref(db, 'EDITAR'), {
-      DESCRICAO: novoNome
-    }).then(() => {
-      alert("Nome atualizado com sucesso!");
+  const nomeAtual = produto.querySelector('h3').innerText;
 
-      const tituloProduto = document.querySelector('.product-card h3');
-      if (tituloProduto) {
-        tituloProduto.innerText = "1 - " + novoNome;
-      }
-    }).catch((error) => {
-      console.error("Erro ao salvar:", error);
-    });
+  const editorDiv = document.createElement('div');
+  editorDiv.classList.add('editor-inline');
+  editorDiv.style.marginTop = '8px';
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.value = nomeAtual;
+  input.style.width = '80%';
+
+  const btnSalvar = document.createElement('button');
+  btnSalvar.innerText = 'Salvar';
+
+  const btnCancelar = document.createElement('button');
+  btnCancelar.innerText = 'Cancelar';
+  btnCancelar.style.marginLeft = '5px';
+
+  editorDiv.appendChild(input);
+  editorDiv.appendChild(btnSalvar);
+  editorDiv.appendChild(btnCancelar);
+
+  produto.appendChild(editorDiv);
+
+  btnCancelar.onclick = () => {
+    editorDiv.remove();
   };
+
+  btnSalvar.onclick = () => {
+    const novoNome = input.value.trim();
+    if (novoNome === '') {
+      alert('O nome não pode ficar vazio.');
+      return;
+    }
+
+    produto.querySelector('h3').innerText = novoNome;
+
+    // Salvar no Firebase, usando data-id do produto
+    const idProduto = produto.getAttribute('data-id');
+    salvarNomeFirebase(idProduto, novoNome);
+
+    editorDiv.remove();
+  };
+}
+
+function salvarNomeFirebase(id, novoNome) {
+  update(ref(db, 'produtos/' + id), {
+    nome: novoNome
+  }).then(() => {
+    alert('Nome atualizado no Firebase!');
+  }).catch(error => {
+    console.error('Erro ao salvar no Firebase:', error);
+    alert('Erro ao salvar, tente novamente.');
+  });
+}
+
+function carregarNomesDoFirebase() {
+  const produtos = document.querySelectorAll('.product-card');
+
+  produtos.forEach(produto => {
+    const idProduto = produto.getAttribute('data-id');
+    get(ref(db, 'produtos/' + idProduto + '/nome')).then(snapshot => {
+      if (snapshot.exists()) {
+        produto.querySelector('h3').innerText = snapshot.val();
+      }
+    }).catch(console.error);
+  });
+}
 </script>
 
   <div id="filtros">
@@ -1164,7 +1215,7 @@ get(child(dbRef, 'EDITAR/DESCRICAO')).then((snapshot) => {
 
   <main>
     <div class="product-grid">
-      <div class="product-card">
+      <div class="product-card" data-id="1">
         <div class="image-container esgotado">
           <img
             src="https://lh3.googleusercontent.com/pw/AP1GczO6EkC8Q7g1vo2ssyPFCayf5up0f36p2VbJb5aWWjjuNbn1m0dXgz2WjyJ1W_Nbgdcch7d2QwXIiE_ASU-AcTeMkQdxxYX5WDxIvvw5bi2gjVI1xL81GFfbdcnTKNpx71_6jpLTHGz2c8O99MZvLOTd=w685-h913-s-no-gm?authuser=0"
@@ -1192,7 +1243,7 @@ get(child(dbRef, 'EDITAR/DESCRICAO')).then((snapshot) => {
         </div>
       </div>
 
-      <div class="product-card">
+      <div class="product-card" data-id="2">
         <img
           src="https://lh3.googleusercontent.com/pw/AP1GczN81p-TPufTfQgxFbREAcDZRghvXO-NbCDlq6x1pFdyWlusNKC4obfaImW1O0hYKCHH40M0GAe5jKmzWc7spLcmFEC3kEIYg7lvMGogB1lP2occpj0IFFYaSzwvBTaJSvP25Yjz2clUFowPSvAGaPYE=w685-h913-s-no-gm?authuser=0"
           alt="STANLEY ROXA 950ML" onclick="zoomImagem(this.src)" />
@@ -2235,6 +2286,9 @@ get(child(dbRef, 'EDITAR/DESCRICAO')).then((snapshot) => {
         card.style.display = 'block';
       });
     }
+
+    //EDITAR
+
 
    // Botão para subir para o topo 
   const scrollBtn = document.getElementById("scrollTopBtn");
