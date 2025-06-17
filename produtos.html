@@ -918,6 +918,12 @@
 #scrollTopBtn:hover {
   background-color: #e0bc00;
 }
+
+.sold-out-overlay {
+  .sold-out-overlay {
+  display: none; /* sem o !important aqui */
+  }
+}
   </style>
 </head>
 
@@ -1074,137 +1080,176 @@
   </div>
 
   <!--EDITAR-->
-<button id="souUsuario">Sou Usuário TESTE</button>
+<button id="souUsuario">Sou Usuário</button>
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
-import { getDatabase, ref, get, update } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+  import { getDatabase, ref, get, update } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyDcAndaV6npHQHASf4Tc0fHdrP4Fpt8GXk",
-  authDomain: "editar-teste.firebaseapp.com",
-  projectId: "editar-teste",
-  storageBucket: "editar-teste.firebasestorage.app",
-  messagingSenderId: "689487933994",
-  appId: "1:689487933994:web:40c831a1bb7dcdfaa84953",
-  measurementId: "G-FJW8YLFZ1H",
-  databaseURL: "https://editar-teste-default-rtdb.firebaseio.com"
-};
-
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-
-let usuarioAdmin = false;
-
-const botaoUsuario = document.getElementById('souUsuario');
-
-botaoUsuario.addEventListener('click', () => {
-  const senha = prompt("Digite a senha de administrador:");
-  if (senha === "1234") {
-    usuarioAdmin = true;
-    alert("Modo administrador ativado.");
-    mostrarBotoesEditar();
-    carregarNomesDoFirebase(); // carrega nomes do Firebase e atualiza na tela
-  } else {
-    alert("Senha incorreta!");
-  }
-});
-
-function mostrarBotoesEditar() {
-  if (!usuarioAdmin) return;
-
-  const produtos = document.querySelectorAll('.product-card');
-
-  produtos.forEach(produto => {
-    if (produto.querySelector('.btn-editar')) return;
-
-    const btnEditar = document.createElement('button');
-    btnEditar.innerText = "Editar";
-    btnEditar.classList.add('btn-editar');
-    btnEditar.style.marginTop = '5px';
-
-    btnEditar.onclick = () => abrirEditor(produto);
-
-    produto.appendChild(btnEditar);
-  });
-}
-
-function abrirEditor(produto) {
-  if (produto.querySelector('.editor-inline')) return; // já aberto
-
-  const nomeAtual = produto.querySelector('h3').innerText;
-
-  const editorDiv = document.createElement('div');
-  editorDiv.classList.add('editor-inline');
-  editorDiv.style.marginTop = '8px';
-
-  const input = document.createElement('input');
-  input.type = 'text';
-  input.value = nomeAtual;
-  input.style.width = '80%';
-
-  const btnSalvar = document.createElement('button');
-  btnSalvar.innerText = 'Salvar';
-
-  const btnCancelar = document.createElement('button');
-  btnCancelar.innerText = 'Cancelar';
-  btnCancelar.style.marginLeft = '5px';
-
-  editorDiv.appendChild(input);
-  editorDiv.appendChild(btnSalvar);
-  editorDiv.appendChild(btnCancelar);
-
-  produto.appendChild(editorDiv);
-
-  btnCancelar.onclick = () => {
-    editorDiv.remove();
+  const firebaseConfig = {
+    apiKey: "AIzaSyDcAndaV6npHQHASf4Tc0fHdrP4Fpt8GXk",
+    authDomain: "editar-teste.firebaseapp.com",
+    projectId: "editar-teste",
+    storageBucket: "editar-teste.firebasestorage.app",
+    messagingSenderId: "689487933994",
+    appId: "1:689487933994:web:40c831a1bb7dcdfaa84953",
+    measurementId: "G-FJW8YLFZ1H",
+    databaseURL: "https://editar-teste-default-rtdb.firebaseio.com"
   };
 
-  btnSalvar.onclick = () => {
-    const novoNome = input.value.trim();
-    if (novoNome === '') {
-      alert('O nome não pode ficar vazio.');
-      return;
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+
+  let usuarioAdmin = false;
+
+  document.getElementById('souUsuario').addEventListener('click', () => {
+    const senha = prompt("Digite a senha de administrador:");
+    if (senha === "1995") {
+      usuarioAdmin = true;
+      alert("Modo administrador ativado.");
+      mostrarBotoesEditar();
+      carregarDadosDoFirebase();
+    } else {
+      alert("Senha incorreta!");
     }
-
-    produto.querySelector('h3').innerText = novoNome;
-
-    // Salvar no Firebase, usando data-id do produto
-    const idProduto = produto.getAttribute('data-id');
-    salvarNomeFirebase(idProduto, novoNome);
-
-    editorDiv.remove();
-  };
-}
-
-function salvarNomeFirebase(id, novoNome) {
-  update(ref(db, 'produtos/' + id), {
-    nome: novoNome
-  }).then(() => {
-    alert('Nome atualizado no Firebase!');
-  }).catch(error => {
-    console.error('Erro ao salvar no Firebase:', error);
-    alert('Erro ao salvar, tente novamente.');
   });
-}
 
-window.addEventListener('load', () => {
-  carregarNomesDoFirebase();
-});
+  function mostrarBotoesEditar() {
+    document.querySelectorAll('.product-card').forEach(produto => {
+      if (produto.querySelector('.btn-editar')) return;
 
-function carregarNomesDoFirebase() {
-  const produtos = document.querySelectorAll('.product-card');
+      const btnEditar = document.createElement('button');
+      btnEditar.innerText = "Editar";
+      btnEditar.classList.add('btn-editar');
+      btnEditar.style.marginTop = '5px';
+      btnEditar.onclick = () => abrirEditor(produto);
+      produto.appendChild(btnEditar);
+    });
+  }
 
-  produtos.forEach(produto => {
-    const idProduto = produto.getAttribute('data-id');
-    get(ref(db, 'produtos/' + idProduto + '/nome')).then(snapshot => {
-      if (snapshot.exists()) {
-        produto.querySelector('h3').innerText = snapshot.val();
+  function abrirEditor(produto) {
+    if (produto.querySelector('.editor-inline')) return;
+
+    const nomeAtual = produto.querySelector('h3').innerText;
+    const precoAtual = produto.querySelector('.price').textContent.replace('R$', '').trim();
+    const esgotadoAtual = produto.querySelector('.image-container').classList.contains('esgotado');
+
+    const editorDiv = document.createElement('div');
+    editorDiv.classList.add('editor-inline');
+    editorDiv.style.marginTop = '8px';
+
+    const inputNome = document.createElement('input');
+    inputNome.type = 'text';
+    inputNome.value = nomeAtual;
+    inputNome.placeholder = "Nome";
+    inputNome.style.width = '90%';
+    inputNome.style.display = 'block';
+    inputNome.style.marginBottom = '5px';
+
+    const inputPreco = document.createElement('input');
+    inputPreco.type = 'text';
+    inputPreco.value = precoAtual;
+    inputPreco.placeholder = "Preço";
+    inputPreco.style.width = '90%';
+    inputPreco.style.display = 'block';
+    inputPreco.style.marginBottom = '5px';
+
+    const selectEsgotado = document.createElement('select');
+    selectEsgotado.style.width = '90%';
+    selectEsgotado.style.display = 'block';
+    selectEsgotado.style.marginBottom = '5px';
+    const optNao = new Option("Disponível", "nao");
+    const optSim = new Option("Esgotado", "sim");
+    selectEsgotado.append(optNao, optSim);
+    selectEsgotado.value = esgotadoAtual ? "sim" : "nao";
+
+    const btnSalvar = document.createElement('button');
+    btnSalvar.innerText = 'Salvar';
+
+    const btnCancelar = document.createElement('button');
+    btnCancelar.innerText = 'Cancelar';
+    btnCancelar.style.marginLeft = '5px';
+
+    editorDiv.appendChild(inputNome);
+    editorDiv.appendChild(inputPreco);
+    editorDiv.appendChild(selectEsgotado);
+    editorDiv.appendChild(btnSalvar);
+    editorDiv.appendChild(btnCancelar);
+    produto.appendChild(editorDiv);
+
+    btnCancelar.onclick = () => editorDiv.remove();
+
+    btnSalvar.onclick = () => {
+      const novoNome = inputNome.value.trim();
+      const novoPreco = inputPreco.value.trim().replace(',', '.');
+      const novoEsgotado = selectEsgotado.value === "sim";
+
+      if (novoNome === '' || isNaN(parseFloat(novoPreco))) {
+        alert('Preencha nome e preço corretamente.');
+        return;
       }
-    }).catch(console.error);
-  });
+
+      const idProduto = produto.getAttribute('data-id');
+      update(ref(db, 'produtos/' + idProduto), {
+        nome: novoNome,
+        preco: novoPreco,
+        esgotado: novoEsgotado
+      }).then(() => {
+        produto.querySelector('h3').innerText = novoNome;
+        produto.querySelector('.price').innerText = `R$ ${parseFloat(novoPreco).toFixed(2).replace('.', ',')}`;
+
+        const imagemContainer = produto.querySelector('.image-container');
+        const overlay = produto.querySelector('.sold-out-overlay');
+
+        if (novoEsgotado) {
+          imagemContainer.classList.add('esgotado');
+          overlay.style.display = 'block';
+        } else {
+          imagemContainer.classList.remove('esgotado');
+          overlay.style.display = 'none';
+        }
+
+        alert("Produto atualizado!");
+        editorDiv.remove();
+      }).catch(error => {
+        console.error('Erro ao salvar:', error);
+        alert('Erro ao salvar, tente novamente.');
+      });
+    };
+  }
+
+  function carregarDadosDoFirebase() {
+    document.querySelectorAll('.product-card').forEach(produto => {
+      const idProduto = produto.getAttribute('data-id');
+      get(ref(db, 'produtos/' + idProduto)).then(snapshot => {
+        if (snapshot.exists()) {
+          const dados = snapshot.val();
+          if (dados.nome) {
+            produto.querySelector('h3').innerText = dados.nome;
+          }
+          if (dados.preco) {
+            produto.querySelector('.price').innerText = `R$ ${parseFloat(dados.preco).toFixed(2).replace('.', ',')}`;
+          }
+          if (dados.esgotado !== undefined) {
+            const imagemContainer = produto.querySelector('.image-container');
+            const overlay = produto.querySelector('.sold-out-overlay');
+
+            if (dados.esgotado) {
+  imagemContainer.classList.add('esgotado');
+  overlay.style.display = 'block';
+} else {
+  imagemContainer.classList.remove('esgotado');
+  overlay.style.display = 'none';
 }
+          }
+        }
+      }).catch(console.error);
+    });
+  }
+
+  window.addEventListener('load', carregarDadosDoFirebase);
 </script>
+
 
   <div id="filtros">
     <button onclick="mostrarTodos()">Todos</button>
@@ -1226,12 +1271,12 @@ function carregarNomesDoFirebase() {
             alt="STANLEY ROSA BEBÊ 950ML" onclick="zoomImagem(this.src)" />
           <div class="sold-out-overlay">ESGOTADO</div>
         </div>
-        <h3>1 - STANLEY ROSA BEBÊ 950ML</h3>
+        <h3>1 - CARREGANDO...</h3>
         <p class="price">R$ 89,90</p>
         <div class="controls">
           <div class="top-row">
             <input type="number" min="1" value="1" />
-            <button onclick="adicionarAoCarrinho(this, 'STANLEY ROSA BEBÊ 950ML')">Adicionar</button>
+            <button onclick="adicionarAoCarrinho(this)">Adicionar</button>
           </div>
           <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
         </div>
@@ -1251,12 +1296,12 @@ function carregarNomesDoFirebase() {
         <img
           src="https://lh3.googleusercontent.com/pw/AP1GczN81p-TPufTfQgxFbREAcDZRghvXO-NbCDlq6x1pFdyWlusNKC4obfaImW1O0hYKCHH40M0GAe5jKmzWc7spLcmFEC3kEIYg7lvMGogB1lP2occpj0IFFYaSzwvBTaJSvP25Yjz2clUFowPSvAGaPYE=w685-h913-s-no-gm?authuser=0"
           alt="STANLEY ROXA 950ML" onclick="zoomImagem(this.src)" />
-        <h3>2 - STANLEY ROXA 950ML</h3>
+        <h3>2 - CARREGANDO...</h3>
         <p class="price">R$ 89,90</p>
         <div class="controls">
           <div class="top-row">
             <input type="number" min="1" value="1" />
-            <button onclick="adicionarAoCarrinho(this, 'STANLEY ROXA 950ML')">Adicionar</button>
+            <button onclick="adicionarAoCarrinho(this)">Adicionar</button>
           </div>
           <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
         </div>
@@ -1332,17 +1377,17 @@ function carregarNomesDoFirebase() {
         </div>
       </div>
 
-      <div class="product-card">
+      <div class="product-card" data-id="5">
         <img
           src="https://lh3.googleusercontent.com/pw/AP1GczOhIZs6gHr33ajh_OHe4E6wQybOXx0l6HocGFkBMTzcrFSu3cFfMX7KKzl0_qOjtczLvcAb-9zFp-TqBM9Aoj9npIc9-GDosy-8qholJirD1qpJ09xiXrYUMEyBO6HKjFAO0qniCRF2l_ITHWsofBsE=w685-h913-s-no-gm?authuser=0"
           alt="STANLEY ROSA 950ML" onclick="zoomImagem(this.src)" />
-        <h3>5 - STANLEY ROSA 950ML</h3>
+        <h3>5 - CAREGANDO...</h3>
         <p class="price1"></p>
         <span class="price3"><s>R$ 89,90</s></span> <span class="price"><strong>R$ 79,90</strong></span>
         <div class="controls">
           <div class="top-row">
             <input type="number" min="1" value="1" />
-            <button onclick="adicionarAoCarrinho(this, 'STANLEY ROSA 950ML')">Adicionar</button>
+            <button onclick="adicionarAoCarrinho(this)">Adicionar</button>
           </div>
           <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
         </div>
@@ -2434,11 +2479,13 @@ function carregarNomesDoFirebase() {
     atualizarContador();
     renderizarCarrinho();
 
-function adicionarAoCarrinho(botao, nome) {
+function adicionarAoCarrinho(botao) {
   const input = botao.previousElementSibling;
   const quantidade = parseInt(input.value) || 1;
   const card = botao.closest('.product-card');
   const precoText = card.querySelector('.price').textContent.trim();
+  const nome = card.querySelector('h3').innerText.trim(); // ← nome dinâmico atualizado
+
   const imagemEsgotada = card.querySelector('.image-container')?.classList.contains('esgotado');
 
   if (precoText.toUpperCase() === 'ESGOTADO' || imagemEsgotada) {
