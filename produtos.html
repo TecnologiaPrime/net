@@ -1188,6 +1188,10 @@ function salvarNomeFirebase(id, novoNome) {
   });
 }
 
+window.addEventListener('load', () => {
+  carregarNomesDoFirebase();
+});
+
 function carregarNomesDoFirebase() {
   const produtos = document.querySelectorAll('.product-card');
 
