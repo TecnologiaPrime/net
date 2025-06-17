@@ -1065,8 +1065,6 @@
 
   <div id="mensagem-erro" class="mensagem-erro">Nenhum produto encontrado.</div>
 
-<button onclick="fazerLogin()">Entrar como Admin</button>
-
   <!-- Modal de Características -->
   <div id="modal-caracteristicas" class="modal-caracteristicas" style="display: none;">
     <div class="modal-conteudo">
@@ -1075,6 +1073,83 @@
     </div>
   </div>
 
+  <!--EDITAR-->
+  <button id="souUsuario">Sou Usuário</button>
+
+<div id="editor" style="display: none; margin: 10px 0;">
+  <input type="text" id="descricaoInput" placeholder="Editar nome do produto" />
+  <button onclick="salvarDescricao()">Salvar</button>
+</div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-analytics.js";
+  import { getDatabase, ref, get, set, child } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyDcAndaV6npHQHASf4Tc0fHdrP4Fpt8GXk",
+    authDomain: "editar-teste.firebaseapp.com",
+    projectId: "editar-teste",
+    storageBucket: "editar-teste.firebasestorage.app",
+    messagingSenderId: "689487933994",
+    appId: "1:689487933994:web:40c831a1bb7dcdfaa84953",
+    measurementId: "G-FJW8YLFZ1H",
+    databaseURL: "https://editar-teste-default-rtdb.firebaseio.com"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const db = getDatabase(app);
+
+  // Carrega o nome salvo no Firebase ao abrir a página
+const dbRef = ref(db);
+get(child(dbRef, 'EDITAR/DESCRICAO')).then((snapshot) => {
+  if (snapshot.exists()) {
+    const nomeSalvo = snapshot.val();
+    const tituloProduto = document.querySelector('.product-card h3');
+    if (tituloProduto) {
+      tituloProduto.innerText = "1 - " + nomeSalvo;
+    }
+  }
+});
+
+  const botaoUsuario = document.getElementById('souUsuario');
+  const inputDescricao = document.getElementById('descricaoInput');
+
+  botaoUsuario.addEventListener('click', () => {
+    const senha = prompt("Digite a senha de administrador:");
+
+    if (senha === "1234") {
+      document.getElementById('editor').style.display = 'block';
+
+      const dbRef = ref(db);
+      get(child(dbRef, 'EDITAR/DESCRICAO')).then((snapshot) => {
+        if (snapshot.exists()) {
+          inputDescricao.value = snapshot.val();
+        }
+      });
+    } else {
+      alert("Senha incorreta!");
+    }
+  });
+
+  window.salvarDescricao = function () {
+    const novoNome = inputDescricao.value;
+
+    set(ref(db, 'EDITAR'), {
+      DESCRICAO: novoNome
+    }).then(() => {
+      alert("Nome atualizado com sucesso!");
+
+      const tituloProduto = document.querySelector('.product-card h3');
+      if (tituloProduto) {
+        tituloProduto.innerText = "1 - " + novoNome;
+      }
+    }).catch((error) => {
+      console.error("Erro ao salvar:", error);
+    });
+  };
+</script>
 
   <div id="filtros">
     <button onclick="mostrarTodos()">Todos</button>
@@ -2123,150 +2198,6 @@
   <footer>
     <p>&copy; 2025 Prime Sistemas. Todos os direitos reservados.</p>
   </footer>
-
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
-  import { getFirestore, collection, getDocs, doc, updateDoc } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
-
-  // Configuração do Firebase
-  const firebaseConfig = {
-    apiKey: "AIzaSyCZVVQ6757qbiY_aIZDHOxx8oY_MR0rSdo",
-    authDomain: "editar-ece74.firebaseapp.com",
-    projectId: "editar-ece74",
-    storageBucket: "editar-ece74.appspot.com",
-    messagingSenderId: "36428570043",
-    appId: "1:36428570043:web:daa01015a079faa0e8b89e",
-    measurementId: "G-CHQK07NEKV"
-  };
-
-  const app = initializeApp(firebaseConfig);
-  const db = getFirestore(app);
-  let usuarioAdmin = false;
-
-  // Carregar produtos do Firestore
-  async function carregarProdutos() {
-    const querySnapshot = await getDocs(collection(db, "produtos"));
-    const container = document.querySelector(".product-grid");
-    container.innerHTML = "";
-
-    querySnapshot.forEach((docSnap) => {
-      const data = docSnap.data();
-      const id = docSnap.id;
-
-      const card = document.createElement("div");
-      card.className = "product-card";
-      card.setAttribute("data-id", id);
-
-      const esgotado = data.esgotado ? "esgotado" : "";
-      const overlay = data.esgotado ? `<div class="sold-out-overlay">ESGOTADO</div>` : "";
-
-      card.innerHTML = `
-        <div class="image-container ${esgotado}">
-          <img src="${data.img}" onclick="zoomImagem('${data.img}')" />
-          ${overlay}
-        </div>
-        <h3>${data.nome}</h3>
-        <p class="price">R$ ${parseFloat(data.preco).toFixed(2).replace('.', ',')}</p>
-        <div class="controls">
-          <div class="top-row">
-            <input type="number" min="1" value="1" />
-            <button onclick="adicionarAoCarrinho(this, '${data.nome}')">Adicionar</button>
-          </div>
-          <a href="#" class="caracteristica-link" onclick="abrirModal(this); return false;">Características</a>
-        </div>
-      `;
-
-      // Se estiver em modo admin, adiciona botão de editar
-      if (usuarioAdmin) adicionarBotaoEditar(card);
-      container.appendChild(card);
-    });
-  }
-
-  // Botão para login de admin
-  window.fazerLogin = () => {
-    const senha = prompt("Digite a senha do administrador:");
-    if (senha === "1234") {
-      usuarioAdmin = true;
-      alert("Modo administrador ativado.");
-
-      // Atualiza os cards já carregados para adicionar o botão de editar
-      const cards = document.querySelectorAll(".product-card");
-      cards.forEach(card => {
-        if (!card.querySelector(".btn-editar")) {
-          adicionarBotaoEditar(card);
-        }
-      });
-    } else {
-      alert("Senha incorreta.");
-    }
-  };
-
-  // Adiciona botão de edição ao card
-  function adicionarBotaoEditar(card) {
-    const btn = document.createElement("button");
-    btn.textContent = "Editar";
-    btn.className = "btn-editar";
-    btn.style.marginTop = "10px";
-    btn.onclick = () => abrirFormularioEdicao(card);
-    card.appendChild(btn);
-  }
-
-  // Abrir formulário de edição
-  function abrirFormularioEdicao(card) {
-    if (card.querySelector(".form-edicao")) return;
-
-    const nomeEl = card.querySelector("h3");
-    const precoEl = card.querySelector(".price");
-    const imgEl = card.querySelector("img");
-    const containerImg = card.querySelector(".image-container");
-
-    const form = document.createElement("div");
-    form.className = "form-edicao";
-    form.innerHTML = `
-      <label>Nome:<br><input type="text" class="input-nome" value="${nomeEl.textContent}"></label><br>
-      <label>Preço:<br><input type="number" step="0.01" class="input-preco" value="${precoEl.textContent.replace('R$ ', '').replace(',','.')}"></label><br>
-      <label>Imagem:<br><input type="text" class="input-img" value="${imgEl.src}"></label><br>
-      <label>Esgotado:<br>
-        <select class="input-esgotado">
-          <option value="nao" ${!containerImg.classList.contains("esgotado") ? "selected" : ""}>Não</option>
-          <option value="sim" ${containerImg.classList.contains("esgotado") ? "selected" : ""}>Sim</option>
-        </select>
-      </label><br>
-      <button class="btn-salvar">Salvar</button>
-      <button class="btn-cancelar">Cancelar</button>
-    `;
-    card.appendChild(form);
-
-    // Cancelar
-    form.querySelector(".btn-cancelar").onclick = () => form.remove();
-
-    // Salvar
-    form.querySelector(".btn-salvar").onclick = async () => {
-      const novoNome = form.querySelector(".input-nome").value.trim();
-      const novoPreco = parseFloat(form.querySelector(".input-preco").value);
-      const novaImg = form.querySelector(".input-img").value.trim();
-      const esgotado = form.querySelector(".input-esgotado").value === "sim";
-      const id = card.getAttribute("data-id");
-
-      try {
-        await updateDoc(doc(db, "produtos", id), {
-          nome: novoNome,
-          preco: novoPreco,
-          img: novaImg,
-          esgotado: esgotado
-        });
-        alert("Produto atualizado com sucesso!");
-        carregarProdutos(); // recarrega os produtos atualizados
-      } catch (error) {
-        console.error("Erro ao atualizar:", error);
-        alert("Erro ao salvar.");
-      }
-    };
-  }
-
-  // Carregar produtos ao abrir a página
-  carregarProdutos();
-</script>
 
   <!-- Zoom da imagem -->
   <div id="zoom-img" onclick="fecharZoom()">
