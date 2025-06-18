@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
   <title>E-Commerce - Prime Acessórios & Informática</title>
-  <link rel="icon" href="https://lh3.googleusercontent.com/pw/AP1GczPD4-fdD2mqGMoDUDMrLftC1pDNEOs2C0X9hkOTMiWfVnfX26Abbm6QbJsXjjNFUSjBVl9WRy1zsJPFODh51LIOuRjeDGeSy0Gp1Dp0RJs-CDNYzww3_edh4Iok2MMrYFRDFX4BXIiYNkiRI1sXMOCR=w458-h283-s-no-gm?authuser=0" type="image/png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
   <style>
@@ -365,7 +363,7 @@
       border: none;
       outline: none;
       font-size: 0.9em;
-      width: 130px;
+      width: 100px;
       box-sizing: border-box;
       transition: width 0.3s ease;
       margin-left: 15px;
@@ -848,22 +846,24 @@
       touch-action: none;
       /* para impedir rolagem no celular */
     }
+    
+.mensagem-erro {
+  display: none; /* inicia escondido */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: transparent;
+  color: #ff4d4d;
+  padding: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+  font-family: 'Poppins', sans-serif;
+  z-index: 500; /* ainda abaixo do carrinho e alerta */
+  box-shadow: none;
+  text-align: center;
+}
 
-    .mensagem-erro {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #888;
-      font-size: 20px;
-      text-align: center;
-      z-index: 9999;
-      background: none;
-      padding: 0;
-      border: none;
-      box-shadow: none;
-    }
     
 @media (max-width: 500px) {
   #alerta-carrinho {
@@ -1071,83 +1071,82 @@
 }
   </style>
 </head>
-
 <body>
 
-  <div class="cordao-bandeirinhas" id="bandeirinhas">
+<div class="cordao-bandeirinhas" id="bandeirinhas">
+  <div class="bandeirinha vermelho"></div>
+  <div class="bandeirinha verde"></div>
+  <div class="bandeirinha roxo"></div>
+  <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-    <div class="bandeirinha verde"></div>
-    <div class="bandeirinha roxo"></div>
-    <div class="bandeirinha azul"></div>
+  <div class="bandeirinha verde"></div>
+  <div class="bandeirinha roxo"></div>
+  <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-    <div class="bandeirinha verde"></div>
-    <div class="bandeirinha roxo"></div>
-    <div class="bandeirinha azul"></div>
+  <div class="bandeirinha verde"></div>
+  <div class="bandeirinha roxo"></div>
+  <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-    <div class="bandeirinha verde"></div>
-    <div class="bandeirinha roxo"></div>
-    <div class="bandeirinha azul"></div>
+  <div class="bandeirinha verde"></div>
+  <div class="bandeirinha roxo"></div>
+  <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-    <div class="bandeirinha verde"></div>
-    <div class="bandeirinha roxo"></div>
-    <div class="bandeirinha azul"></div>
+  <div class="bandeirinha verde"></div>
+  <div class="bandeirinha roxo"></div>
+  <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-    <div class="bandeirinha verde"></div>
-    <div class="bandeirinha roxo"></div>
-    <div class="bandeirinha azul"></div>
+  <div class="bandeirinha verde"></div>
+  <div class="bandeirinha roxo"></div>
+  <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-    <div class="bandeirinha verde"></div>
-    <div class="bandeirinha roxo"></div>
-    <div class="bandeirinha azul"></div>
+  <div class="bandeirinha verde"></div>
+  <div class="bandeirinha roxo"></div>
+  <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-    <div class="bandeirinha verde"></div>
-    <div class="bandeirinha roxo"></div>
-    <div class="bandeirinha azul"></div>
+  <div class="bandeirinha verde"></div>
+  <div class="bandeirinha roxo"></div>
+  <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-    <div class="bandeirinha verde"></div>
-    <div class="bandeirinha roxo"></div>
-    <div class="bandeirinha azul"></div>
+  <div class="bandeirinha verde"></div>
+  <div class="bandeirinha roxo"></div>
+  <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-    <div class="bandeirinha verde"></div>
-    <div class="bandeirinha roxo"></div>
-    <div class="bandeirinha azul"></div>
+  <div class="bandeirinha verde"></div>
+  <div class="bandeirinha roxo"></div>
+  <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-    <div class="bandeirinha verde"></div>
-    <div class="bandeirinha roxo"></div>
-    <div class="bandeirinha azul"></div>
+  <div class="bandeirinha verde"></div>
+  <div class="bandeirinha roxo"></div>
+  <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-    <div class="bandeirinha verde"></div>
-    <div class="bandeirinha roxo"></div>
-    <div class="bandeirinha azul"></div>
+  <div class="bandeirinha verde"></div>
+  <div class="bandeirinha roxo"></div>
+  <div class="bandeirinha azul"></div>
+  <div class="bandeirinha vermelho"></div>
+  <div class="bandeirinha verde"></div>
+  <div class="bandeirinha roxo"></div>
+  <div class="bandeirinha azul"></div>
     <div class="bandeirinha vermelho"></div>
-    <div class="bandeirinha verde"></div>
-    <div class="bandeirinha roxo"></div>
-    <div class="bandeirinha azul"></div>
-    <div class="bandeirinha vermelho"></div>
-    <div class="bandeirinha verde"></div>
-    <div class="bandeirinha roxo"></div>
-    <div class="bandeirinha azul"></div>
-    <div class="bandeirinha vermelho"></div>
-    <div class="bandeirinha verde"></div>
-    <div class="bandeirinha roxo"></div>
-    <div class="bandeirinha azul"></div>
-    <div class="bandeirinha vermelho"></div>
-    <div class="bandeirinha verde"></div>
-    <div class="bandeirinha roxo"></div>
-    <div class="bandeirinha azul"></div>
-    <div class="bandeirinha vermelho"></div>
-    <div class="bandeirinha verde"></div>
-    <div class="bandeirinha roxo"></div>
-    <div class="bandeirinha azul"></div>
-    <div class="bandeirinha vermelho"></div>
-    <div class="bandeirinha verde"></div>
-    <div class="bandeirinha roxo"></div>
-    <div class="bandeirinha azul"></div>
-    <div class="bandeirinha vermelho"></div>
-    <div class="bandeirinha verde"></div>
-    <div class="bandeirinha roxo"></div>
-    <div class="bandeirinha azul"></div>
-  </div>
+  <div class="bandeirinha verde"></div>
+  <div class="bandeirinha roxo"></div>
+  <div class="bandeirinha azul"></div>
+      <div class="bandeirinha vermelho"></div>
+  <div class="bandeirinha verde"></div>
+  <div class="bandeirinha roxo"></div>
+  <div class="bandeirinha azul"></div>
+      <div class="bandeirinha vermelho"></div>
+  <div class="bandeirinha verde"></div>
+  <div class="bandeirinha roxo"></div>
+  <div class="bandeirinha azul"></div>
+      <div class="bandeirinha vermelho"></div>
+  <div class="bandeirinha verde"></div>
+  <div class="bandeirinha roxo"></div>
+  <div class="bandeirinha azul"></div>
+      <div class="bandeirinha vermelho"></div>
+  <div class="bandeirinha verde"></div>
+  <div class="bandeirinha roxo"></div>
+  <div class="bandeirinha azul"></div>
+</div>
 
   <header>
     <h1>Arraiá</h1>
@@ -1159,14 +1158,13 @@
     <span class="cart-count" id="cart-count">0</span>
   </div>
   <a href="index.html" class="close-btn" title="Voltar">&times;</a>
-</div>
-
+  </div>
   </header>
 
-<div id="alerta-carrinho" style="
+  <div id="alerta-carrinho" style="
   display: none;
   position: fixed;
-  top: 70px;
+  top: 60px;
   left: 50%;
   transform: translateX(-50%) translateY(-100%);
   background: linear-gradient(90deg, #4CAF50 0%, #388E3C 100%);
@@ -1176,7 +1174,7 @@
   box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-weight: 600;
-  z-index: 1100;
+  z-index: 950; /* abaixo do header com z-index 1000+ */
   max-width: 480px;
   width: calc(100% - 40px);
   display: flex;
@@ -1185,8 +1183,10 @@
   gap: 12px;
   opacity: 0;
   transition: transform 0.35s ease, opacity 0.35s ease;
+  pointer-events: none;
 ">
-  <span id="mensagem-alerta" style="flex-grow: 1;"></span>
+  <span id="mensagem-alerta" style="flex-grow: 1; pointer-events: auto;"></span>
+
   <button onclick="verCarrinho()" style="
     background: #fff;
     color: #388E3C;
@@ -1198,9 +1198,13 @@
     font-weight: 700;
     box-shadow: 0 3px 8px rgba(0,0,0,0.15);
     transition: background-color 0.3s ease, color 0.3s ease;
-  " onmouseover="this.style.backgroundColor='#e8f5e9'; this.style.color='#2e7d32';" onmouseout="this.style.backgroundColor='#fff'; this.style.color='#388E3C';">
+    pointer-events: auto;
+  "
+    onmouseover="this.style.backgroundColor='#e8f5e9'; this.style.color='#2e7d32';"
+    onmouseout="this.style.backgroundColor='#fff'; this.style.color='#388E3C';">
     Ver carrinho
   </button>
+
   <button onclick="fecharAlerta()" aria-label="Fechar alerta" style="
     background: transparent;
     border: none;
@@ -1211,22 +1215,23 @@
     padding: 0 8px;
     user-select: none;
     line-height: 1;
+    pointer-events: auto;
   ">&times;</button>
 </div>
 
-<button id="scrollTopBtn" title="Voltar ao topo">↑</button>
+<div id="mensagem-erro" class="mensagem-erro">Nenhum produto encontrado.</div>
 
-  <div id="mensagem-erro" class="mensagem-erro">Nenhum produto encontrado.</div>
+  <button id="scrollTopBtn" title="Voltar ao topo">↑</button>
 
-  <!-- Modal de Características -->
-  <div id="modal-caracteristicas" class="modal-caracteristicas" style="display: none;">
-    <div class="modal-conteudo">
-      <button class="fechar-modal" onclick="fecharModal()">×</button>
-      <div class="modal-texto"></div>
-    </div>
+<!-- Modal de Características -->
+<div id="modal-caracteristicas" class="modal-caracteristicas" style="display: none;">
+  <div class="modal-conteudo">
+    <button class="fechar-modal" onclick="fecharModal()">×</button>
+    <div class="modal-texto"></div>
   </div>
+</div>
 
-  <!--EDITAR1-->
+<!--EDITAR1-->
 <div id="modal-senha">
   <h3>Digite a senha de administrador</h3>
   <input type="password" id="campo-senha" autocomplete="off" />
@@ -1371,8 +1376,7 @@ document.getElementById('confirmar-senha').onclick = () => {
       });
     };
   }
-
-  function carregarNomesDoFirebase() {
+function carregarNomesDoFirebase() {
     const produtos = document.querySelectorAll('.product-card');
 
     produtos.forEach(produto => {
@@ -2699,6 +2703,9 @@ function fecharAlerta() {
 function verCarrinho() {
   fecharAlerta();  // fecha o alerta imediatamente
   toggleCarrinho(); // abre o carrinho
+   // Esconde a mensagem de erro, se estiver visível
+  const erro = document.getElementById('mensagem-erro');
+  if (erro) erro.style.display = 'none';
 }
 
     function removerItem(index) {
