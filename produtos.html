@@ -1205,14 +1205,13 @@
 </div>
 <div id="fundo-senha"></div>
 
-
 <!-- Modal de Edição -->
 <div id="modal-editar" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
   background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 9999; width: 90%; max-width: 400px;">
   <h3 style="margin-top: 0;">Editar Produto</h3>
   <input id="modal-nome" type="text" placeholder="Novo nome" style="width: 100%; margin-bottom: 10px;">
   <input id="modal-preco" type="text" placeholder="Novo preço" style="width: 100%; margin-bottom: 10px;">
-  <input id="modal-img" type="text" placeholder="Link da imagem" style="width: 100%; margin-bottom: 10px;">
+  <input id="modal-img" type="file" accept="image/*" style="width: 100%; margin-bottom: 10px;">
   <div style="text-align: right;">
     <button id="btn-salvar-modal" style="margin-right: 10px;">Salvar</button>
     <button id="btn-cancelar-modal">Cancelar</button>
@@ -1221,16 +1220,17 @@
 <div id="fundo-modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
   background:rgba(0,0,0,0.5); z-index:9998;"></div>
 
-  <!--EDITAR-->
+<!--EDITAR-->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-app.js";
   import { getDatabase, ref, get, update } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-database.js";
+  import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-storage.js";
 
   const firebaseConfig = {
     apiKey: "AIzaSyDcAndaV6npHQHASf4Tc0fHdrP4Fpt8GXk",
     authDomain: "editar-teste.firebaseapp.com",
     projectId: "editar-teste",
-    storageBucket: "editar-teste.firebasestorage.app",
+    storageBucket: "editar-teste.appspot.com",
     messagingSenderId: "689487933994",
     appId: "1:689487933994:web:40c831a1bb7dcdfaa84953",
     measurementId: "G-FJW8YLFZ1H",
@@ -1239,35 +1239,36 @@
 
   const app = initializeApp(firebaseConfig);
   const db = getDatabase(app);
+  const storage = getStorage(app);
 
   let usuarioAdmin = false;
 
-const botaoUsuario = document.getElementById('souUsuario');
-botaoUsuario.addEventListener('click', () => {
-  document.getElementById('modal-senha').style.display = 'block';
-  document.getElementById('fundo-senha').style.display = 'block';
-  document.getElementById('campo-senha').value = '';
-  document.getElementById('campo-senha').focus();
-});
+  const botaoUsuario = document.getElementById('souUsuario');
+  botaoUsuario.addEventListener('click', () => {
+    document.getElementById('modal-senha').style.display = 'block';
+    document.getElementById('fundo-senha').style.display = 'block';
+    document.getElementById('campo-senha').value = '';
+    document.getElementById('campo-senha').focus();
+  });
 
-document.getElementById('cancelar-senha').onclick = () => {
-  document.getElementById('modal-senha').style.display = 'none';
-  document.getElementById('fundo-senha').style.display = 'none';
-};
-
-document.getElementById('confirmar-senha').onclick = () => {
-  const senhaDigitada = document.getElementById('campo-senha').value;
-  if (senhaDigitada === "1995") {
-    usuarioAdmin = true;
-    alert("Modo administrador ativado.");
+  document.getElementById('cancelar-senha').onclick = () => {
     document.getElementById('modal-senha').style.display = 'none';
     document.getElementById('fundo-senha').style.display = 'none';
-    mostrarBotoesEditar();
-    carregarNomesDoFirebase();
-  } else {
-    alert("Senha incorreta!");
-  }
-};
+  };
+
+  document.getElementById('confirmar-senha').onclick = () => {
+    const senhaDigitada = document.getElementById('campo-senha').value;
+    if (senhaDigitada === "1995") {
+      usuarioAdmin = true;
+      alert("Modo administrador ativado.");
+      document.getElementById('modal-senha').style.display = 'none';
+      document.getElementById('fundo-senha').style.display = 'none';
+      mostrarBotoesEditar();
+      carregarNomesDoFirebase();
+    } else {
+      alert("Senha incorreta!");
+    }
+  };
 
   function mostrarBotoesEditar() {
     const produtos = document.querySelectorAll('.product-card');
@@ -1280,13 +1281,10 @@ document.getElementById('confirmar-senha').onclick = () => {
       btnEditar.classList.add('btn-editar');
       btnEditar.style.marginTop = '5px';
 
-      btnEditar.onclick = () => abrirEditor(produto);
-
       btnEditar.onclick = (event) => {
-  event.stopPropagation();  // <-- impede a propagação do clique
-  abrirEditor(produto);
-};
-
+        event.stopPropagation();
+        abrirEditor(produto);
+      };
 
       produto.appendChild(btnEditar);
     });
@@ -1298,11 +1296,10 @@ document.getElementById('confirmar-senha').onclick = () => {
     produtoAtual = produto;
     const nomeAtual = produto.querySelector('h3').innerText;
     const precoAtual = produto.querySelector('.price').textContent.replace('R$', '').trim();
-    const imagemAtual = produto.querySelector('img').src;
 
     document.getElementById('modal-nome').value = nomeAtual;
     document.getElementById('modal-preco').value = precoAtual;
-    document.getElementById('modal-img').value = imagemAtual;
+    document.getElementById('modal-img').value = ''; // limpa input
 
     document.getElementById('modal-editar').style.display = 'block';
     document.getElementById('fundo-modal').style.display = 'block';
@@ -1312,26 +1309,42 @@ document.getElementById('confirmar-senha').onclick = () => {
       document.getElementById('fundo-modal').style.display = 'none';
     };
 
-    document.getElementById('btn-salvar-modal').onclick = () => {
+    document.getElementById('btn-salvar-modal').onclick = async () => {
       const novoNome = document.getElementById('modal-nome').value.trim();
       const novoPreco = document.getElementById('modal-preco').value.trim().replace(',', '.');
-      const novaImg = document.getElementById('modal-img').value.trim();
+      const imagemInput = document.getElementById('modal-img');
+      const novaImagem = imagemInput.files[0];
+      const idProduto = produtoAtual.getAttribute('data-id');
 
-      if (!novoNome || isNaN(parseFloat(novoPreco)) || !novaImg) {
-        alert("Preencha todos os campos corretamente.");
+      if (!novoNome || isNaN(parseFloat(novoPreco))) {
+        alert("Preencha nome e preço corretamente.");
         return;
       }
 
-      const idProduto = produtoAtual.getAttribute('data-id');
+      let urlImagemFinal = produtoAtual.querySelector('img').src;
+
+      if (novaImagem) {
+        const caminhoStorage = `imagens/${idProduto}-${Date.now()}.jpg`;
+        const imgRef = storageRef(storage, caminhoStorage);
+
+        try {
+          await uploadBytes(imgRef, novaImagem);
+          urlImagemFinal = await getDownloadURL(imgRef);
+        } catch (erro) {
+          console.error('Erro ao enviar imagem:', erro);
+          alert("Erro ao enviar imagem.");
+          return;
+        }
+      }
 
       update(ref(db, 'produtos/' + idProduto), {
         nome: novoNome,
         preco: novoPreco,
-        img: novaImg
+        img: urlImagemFinal
       }).then(() => {
         produtoAtual.querySelector('h3').innerText = novoNome;
         produtoAtual.querySelector('.price').innerText = `R$ ${parseFloat(novoPreco).toFixed(2).replace('.', ',')}`;
-        produtoAtual.querySelector('img').src = novaImg + '?t=' + Date.now(); // Evita cache
+        produtoAtual.querySelector('img').src = urlImagemFinal + '?t=' + Date.now();
         alert("Produto atualizado!");
         document.getElementById('modal-editar').style.display = 'none';
         document.getElementById('fundo-modal').style.display = 'none';
@@ -1341,7 +1354,8 @@ document.getElementById('confirmar-senha').onclick = () => {
       });
     };
   }
-function carregarNomesDoFirebase() {
+
+  function carregarNomesDoFirebase() {
     const produtos = document.querySelectorAll('.product-card');
 
     produtos.forEach(produto => {
@@ -1357,7 +1371,7 @@ function carregarNomesDoFirebase() {
             produto.querySelector('.price').innerText = `R$ ${parseFloat(dados.preco).toFixed(2).replace('.', ',')}`;
           }
           if (dados.img) {
-            produto.querySelector('img').src = dados.img + '?t=' + Date.now(); // Força reload da imagem
+            produto.querySelector('img').src = dados.img + '?t=' + Date.now();
           }
         }
       }).catch(console.error);
@@ -1368,34 +1382,33 @@ function carregarNomesDoFirebase() {
     carregarNomesDoFirebase();
   });
 
-  // Teclas no modal: Enter para salvar, Esc para fechar
-document.addEventListener('keydown', (event) => {
-  const modalEditar = document.getElementById('modal-editar');
-  const fundoModal = document.getElementById('fundo-modal');
+  document.addEventListener('keydown', (event) => {
+    const modalEditar = document.getElementById('modal-editar');
+    const fundoModal = document.getElementById('fundo-modal');
 
-  if (modalEditar.style.display === 'block') {
-    if (event.key === 'Enter') {
-      document.getElementById('btn-salvar-modal').click();
-    } else if (event.key === 'Escape') {
-      modalEditar.style.display = 'none';
-      fundoModal.style.display = 'none';
+    if (modalEditar.style.display === 'block') {
+      if (event.key === 'Enter') {
+        document.getElementById('btn-salvar-modal').click();
+      } else if (event.key === 'Escape') {
+        modalEditar.style.display = 'none';
+        fundoModal.style.display = 'none';
+      }
     }
-  }
 
-  const modalSenha = document.getElementById('modal-senha');
-  const fundoSenha = document.getElementById('fundo-senha');
+    const modalSenha = document.getElementById('modal-senha');
+    const fundoSenha = document.getElementById('fundo-senha');
 
-  if (modalSenha.style.display === 'block') {
-    if (event.key === 'Enter') {
-      document.getElementById('confirmar-senha').click();
-    } else if (event.key === 'Escape') {
-      modalSenha.style.display = 'none';
-      fundoSenha.style.display = 'none';
+    if (modalSenha.style.display === 'block') {
+      if (event.key === 'Enter') {
+        document.getElementById('confirmar-senha').click();
+      } else if (event.key === 'Escape') {
+        modalSenha.style.display = 'none';
+        fundoSenha.style.display = 'none';
+      }
     }
-  }
-});
-
+  });
 </script>
+
 
   <div id="filtros">
     <button onclick="mostrarTodos()">Todos</button>
