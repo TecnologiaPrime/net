@@ -374,14 +374,13 @@
   font-size: 0.9em;
   box-sizing: border-box;
   transition: width 0.3s ease;
-  margin-left: 0;  /* tira margem para mobile */
-  width: 100%;
-  max-width: 100%; /* garantir que não ultrapasse container */
+  margin-left: 0;
+  max-width: 100%;
 }
 
 @media (min-width: 768px) {
   #search-input {
-    margin-left: 12px; /* volta a margem */
+    margin-left: 12px;
     width: 1160px;
     max-width: none;
   }
@@ -389,8 +388,9 @@
 
 @media (max-width: 767px) {
   #search-input {
-    max-width: 140px; /* tamanho desejado */
-    margin-left: 20px; /* margem para direita */
+    width: 150px; /* definir largura fixa para mobile */
+    max-width: none; /* remove limite */
+    margin-left: 10px;
   }
 }
 
