@@ -86,9 +86,9 @@
       color: #000;
     }
 
-    @media (max-width: 600px) {
+@media (max-width: 600px) {
   header h1 {
-    margin-left: 0;
+    margin-left: -2px; /* ou -8px para mais */
   }
 }
 
@@ -375,7 +375,8 @@
       width: 100px;
       box-sizing: border-box;
       transition: width 0.3s ease;
-      margin-left: 10px;
+      margin-left: 12px;
+      width: 100%;
     }
 
     #cart-overlay {
