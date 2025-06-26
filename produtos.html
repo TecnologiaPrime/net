@@ -366,18 +366,33 @@
       }
     }
 
-    #search-input {
-      padding: 8px 12px;
-      border-radius: 10px;
-      border: none;
-      outline: none;
-      font-size: 0.9em;
-      width: 100px;
-      box-sizing: border-box;
-      transition: width 0.3s ease;
-      margin-left: 12px;
-      width: 100%;
-    }
+#search-input {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  font-size: 0.9em;
+  box-sizing: border-box;
+  transition: width 0.3s ease;
+  margin-left: 0;  /* tira margem para mobile */
+  width: 100%;
+  max-width: 100%; /* garantir que não ultrapasse container */
+}
+
+@media (min-width: 768px) {
+  #search-input {
+    margin-left: 12px; /* volta a margem */
+    width: 1160px;
+    max-width: none;
+  }
+}
+
+@media (max-width: 767px) {
+  #search-input {
+    max-width: 140px; /* tamanho desejado */
+    margin-left: 20px; /* margem para direita */
+  }
+}
 
     #cart-overlay {
       position: fixed;
@@ -630,13 +645,6 @@
       color: #111;
       /* mantém o ícone escuro */
       transform: scale(1.1);
-    }
-
-    @media (min-width: 768px) {
-      #search-input {
-        width: 1160px;
-        /* ou qualquer valor maior que 130px */
-      }
     }
 
     .toggle-btn {
