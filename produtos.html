@@ -790,7 +790,7 @@
   /* Botão "Ver carrinho" - reduzido */
   #alerta-carrinho button:first-of-type {
     min-width: 80px !important;       /* menor largura */
-    padding: 6px 12px !important;     /* menos padding */
+    padding: 0px 12px !important;     /* menos padding */
     font-size: 0.59rem !important;
     border-radius: 4px !important;
   }
@@ -997,22 +997,20 @@
 <div id="alerta-carrinho" style="
   display: none;
   position: fixed;
-  top: 80px;
+  top: 80px; /* Agora mais abaixo do cabeçalho */
   left: 50%;
   transform: translateX(-50%);
   background-color: #4CAF50;
   color: white;
-  padding: 10px 20px; /* aumento do preenchimento */
-  border-radius: 6px;
+  padding: 10px 60px;
+  border-radius: 4px;
   font-family: sans-serif;
-  font-size: 20px; /* tamanho da fonte maior */
+  font-size: 15px;
   z-index: 900;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* sombra mais intensa */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
-  max-width: 90%;
-  text-align: center;
 ">
   <span id="mensagem-alerta"></span>
 </div>
@@ -2486,36 +2484,42 @@ function adicionarAoCarrinho(botao) {
 
 let timeoutAlerta;
 
- function mostrarAlertaCarrinho(msg) {
-    const alerta = document.getElementById("alerta-carrinho");
-    const texto = document.getElementById("mensagem-alerta");
+function mostrarAlertaCarrinho(msg) {
+  const alerta = document.getElementById("alerta-carrinho");
+  const texto = document.getElementById("mensagem-alerta");
 
-    texto.textContent = msg;
-    alerta.style.display = "block";
+  texto.textContent = msg;
+  alerta.style.display = "block";
 
-    setTimeout(() => {
-      alerta.style.opacity = "1";
-    }, 10);
+  // Garante que vai aparecer com opacidade
+  setTimeout(() => {
+    alerta.style.opacity = "1";
+  }, 10);
 
-    // Some após 3 segundos
-    setTimeout(() => {
-      alerta.style.opacity = "0";
-      setTimeout(() => alerta.style.display = "none", 300);
-    }, 3000);
+  // Limpa qualquer timeout anterior
+  if (timeoutAlerta) {
+    clearTimeout(timeoutAlerta);
   }
+
+  // Inicia novo timeout de esconder
+  timeoutAlerta = setTimeout(() => {
+    alerta.style.opacity = "0";
+    setTimeout(() => {
+      alerta.style.display = "none";
+    }, 300);
+  }, 3000);
+}
 
 function fecharAlerta() {
   const alerta = document.getElementById('alerta-carrinho');
   alerta.style.opacity = 0;
   alerta.style.transform = 'translateX(-50%) translateY(-100%)';
-  
-  // Limpa o timeout para evitar que ele tente esconder de novo depois
-  if (alerta.timeoutId) {
-    clearTimeout(alerta.timeoutId);
-    alerta.timeoutId = null;
+
+  if (timeoutAlerta) {
+    clearTimeout(timeoutAlerta);
+    timeoutAlerta = null;
   }
 
-  // Após a animação (350ms), esconde display para evitar clique
   setTimeout(() => {
     alerta.style.display = 'none';
   }, 350);
