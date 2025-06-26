@@ -934,13 +934,19 @@
   outline: none;
 }
 
-/* Container para os botões centralizados */
 .modal-buttons {
   display: flex;
-  justify-content: center;  /* centraliza os botões */
-  gap: 16px;
+  justify-content: center;
+  gap: 8px; /* espaçamento padrão no mobile */
   flex-wrap: wrap;
 }
+
+@media (min-width: 768px) {
+  .modal-buttons {
+    gap: 0px; /* quase colados no desktop */
+  }
+}
+
 
 /* Responsividade para telas pequenas */
 @media (max-width: 400px) {
@@ -970,11 +976,6 @@
     flex: 1 1 100%;
     margin: 4px 0 0 0 !important;
   }
-
-  .modal-buttons {
-    flex-direction: column;
-    gap: 8px;
-  }
 }
   </style>
 </head>
@@ -996,20 +997,22 @@
 <div id="alerta-carrinho" style="
   display: none;
   position: fixed;
-  top: 80px; /* Agora mais abaixo do cabeçalho */
+  top: 80px;
   left: 50%;
   transform: translateX(-50%);
   background-color: #4CAF50;
   color: white;
-  padding: 12px 20px;
-  border-radius: 4px;
+  padding: 10px 20px; /* aumento do preenchimento */
+  border-radius: 6px;
   font-family: sans-serif;
-  font-size: 15px;
+  font-size: 20px; /* tamanho da fonte maior */
   z-index: 900;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3); /* sombra mais intensa */
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
+  max-width: 90%;
+  text-align: center;
 ">
   <span id="mensagem-alerta"></span>
 </div>
