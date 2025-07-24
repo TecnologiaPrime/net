@@ -5,7 +5,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="https://lh3.googleusercontent.com/pw/AP1GczPD4-fdD2mqGMoDUDMrLftC1pDNEOs2C0X9hkOTMiWfVnfX26Abbm6QbJsXjjNFUSjBVl9WRy1zsJPFODh51LIOuRjeDGeSy0Gp1Dp0RJs-CDNYzww3_edh4Iok2MMrYFRDFX4BXIiYNkiRI1sXMOCR=w458-h283-s-no-gm?authuser=0" type="image/png" />
-  <title>Prime Acessórios & Informática</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
@@ -359,7 +358,7 @@ background: #e2bc00;
   width: 300px;
   height: 100%;
   background: var(--cor-branco);
-  box-shadow: -2px 0 10px rgba(0,0,0,0.15);
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.15);
   padding: 20px;
   transition: right 0.4s ease;
   z-index: 1001;
@@ -373,6 +372,118 @@ background: #e2bc00;
 .carrinho h3 {
   margin-top: 0;
   color: #000000;
+}
+
+/* Itens do carrinho compactos */
+#itensCarrinho {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#itensCarrinho li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 9px;
+  padding: 6px 6px;
+  font-size: 0.85em;
+
+}
+
+#itensCarrinho li:hover {
+  background-color: #fff9db;
+}
+
+#itensCarrinho li .nome-produto {
+  flex: 1 1 120px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--cor-texto);
+}
+
+#itensCarrinho li .preco-produto {
+  flex-shrink: 0;
+  min-width: 55px;
+  text-align: right;
+  font-weight: 600;
+  color: #555;
+}
+
+#itensCarrinho li .botoes-qtd {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+  padding: 2px 6px;
+  background: #f9f9f9;
+  border-radius: 6px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#itensCarrinho li .botoes-qtd button {
+  background-color: var(--cor-principal);
+  border: none;
+  color: var(--cor-texto);
+  font-weight: 700;
+  font-size: 1em;
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+#itensCarrinho li .botoes-qtd button:hover {
+  background-color: #d4b300;
+}
+
+#itensCarrinho li .botoes-qtd .quantidade {
+  min-width: 22px;
+  text-align: center;
+  font-weight: 700;
+  color: var(--cor-texto);
+  user-select: none;
+}
+
+#itensCarrinho li img {
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  border-radius: 6px;
+  flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+}
+
+/* Botão "X" remover simples, sem formato de botão */
+#itensCarrinho li button.remover {
+  background: transparent;
+  border: none;
+  color: #d33;
+  font-weight: 200;
+  font-size: 0.8em;
+  cursor: pointer;
+  padding: 0;
+  margin: 0 8px 0 0; /* ajusta margem para não colar nos textos */
+  line-height: 1;
+  user-select: none;
+  width: auto;
+  height: auto;
+  box-shadow: none;
+  outline: none;
+  display: inline; /* para evitar blocos */
+  min-width: 0;
+  min-height: 0;
+  text-align: center;
+}
+
+#itensCarrinho li button.remover:hover {
+  color: red;
+  text-decoration: underline;
 }
 
 .overlay-carrinho {
@@ -734,17 +845,23 @@ footer {
     gap: 12px; /* espaço entre os botões */
   }
 
- .btn-carrinho {
+.btn-carrinho {
   padding: 8px 16px;
-  font-size: 0.7em;
+  font-size: 0.8em;
   border-radius: 8px;
-  flex: 1;
-  max-width: 160px;
-  min-width: 100px;
-  text-align: center;      /* centraliza texto horizontalmente */
-  display: flex;           /* para centralizar verticalmente */
-  align-items: center;     /* centraliza verticalmente */
-  justify-content: center; /* centraliza horizontalmente */
+  display: inline-flex;          /* crescimento baseado no conteúdo */
+  align-items: center;
+  justify-content: center;
+  background: #e2bc00;
+  color: var(--cor-texto);
+  font-weight: bold;
+  box-shadow: 0 2px 6px var(--cor-sombra);
+  border: none;
+  cursor: pointer;
+  max-width: 100%;              /* nunca ultrapassa o container */
+  white-space: nowrap;          /* evita quebrar o texto */
+  transition: all 0.3s ease;
+  gap: 6px;                     /* separa o ícone do número */
 }
 
 .btn-add {
@@ -758,7 +875,7 @@ footer {
   
   .btn-add1 {
   padding: 8px 16px;
-  font-size: 0.7em;
+  font-size: 0.8em;
   border-radius: 8px;
   flex: 1;
   max-width: 160px;
@@ -771,7 +888,7 @@ footer {
 
   .btn-admin {
   padding: 8px 16px;
-  font-size: 0.7em;
+  font-size: 0.8em;
   border-radius: 8px;
   flex: 1;
   max-width: 160px;
@@ -1141,6 +1258,17 @@ btnAdd.onclick = () => {
       const spanNome = document.createElement('span');
       spanNome.innerText = `${nomeProduto} (x${quantidade})`;
 
+      const btnRemover = document.createElement('button');
+btnRemover.innerText = '❌';
+btnRemover.title = 'Remover item';
+btnRemover.style.marginLeft = '5px';
+btnRemover.onclick = () => {
+  li.remove();
+  salvarCarrinho();
+  atualizarContadorCarrinho();
+  atualizarTotalCarrinho();
+};
+
       const btnMais = document.createElement('button');
       btnMais.innerText = '+';
       btnMais.style.margin = '0 5px';
@@ -1168,6 +1296,7 @@ btnAdd.onclick = () => {
         }
       };
 
+      li.appendChild(btnRemover);
       li.appendChild(spanNome);
       li.appendChild(btnMais);
       li.appendChild(btnMenos);
@@ -1493,6 +1622,17 @@ function carregarCarrinhoSalvo() {
       const spanNome = document.createElement('span');
       const nomeProduto = item.nome;
 
+      const btnRemover = document.createElement('button');
+btnRemover.innerText = '❌';
+btnRemover.title = 'Remover item';
+btnRemover.style.marginLeft = '5px';
+btnRemover.onclick = () => {
+  li.remove();
+  salvarCarrinho();
+  atualizarContadorCarrinho();
+  atualizarTotalCarrinho();
+};
+
       const btnMais = document.createElement('button');
       btnMais.innerText = '+';
       btnMais.style.margin = '0 5px';
@@ -1530,6 +1670,7 @@ function carregarCarrinhoSalvo() {
 
       atualizarTexto(item.qtd);
 
+      li.appendChild(btnRemover);
       li.appendChild(spanNome);
       li.appendChild(btnMais);
       li.appendChild(btnMenos);
