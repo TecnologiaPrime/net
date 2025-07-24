@@ -974,23 +974,28 @@ footer {
   }
 }
 
+/*PREÇOS*/
 @media (max-width: 767px) {
-  .product-card .price {
-    font-size: 1.2em !important;
-    display: inline-block;
-    vertical-align: middle;
-    margin-right: 6px;
-    color: #292828;
-  }
+.product-card .price {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* espaço entre preço promoção e normal */
+  font-size: clamp(0.9rem, 2vw, 1.2rem); /* responsivo e limitado */
+  color: #292828;
+  margin-right: 6px;
+}
 
-  .product-card .promocao {
-    display: inline-block;
-    vertical-align: middle;
-    font-size: 1em !important;
-    font-weight: bold;
-    color: #eb2922; /* vermelho para promoção */
-    text-decoration: none; /* garantir sem tachado */
-  }
+.product-card .promocao {
+  font-weight: bold;
+  color: #eb2922; /* vermelho promoção */
+  text-decoration: none; /* sem tachado */
+  font-size: 1em; /* herda do pai */
+}
+
+.product-card .price del {
+  color: #888; /* cor do preço riscado */
+  font-size: 0.9em; /* um pouco menor */
+}
 }
 
 /*botão finalizar venda*/
@@ -1026,7 +1031,6 @@ footer {
     font-size: 1em;
   }
 }
-
 </style>
 </head>
 <body>
@@ -1621,10 +1625,16 @@ function carregarCarrinhoSalvo() {
       const spanNome = document.createElement('span');
       const nomeProduto = item.nome;
 
-      const btnRemover = document.createElement('button');
-btnRemover.innerText = '❌';
+           const btnRemover = document.createElement('button');
+btnRemover.innerText = '×'; // símbolo mais discreto que '❌'
 btnRemover.title = 'Remover item';
-btnRemover.style.marginLeft = '5px';
+btnRemover.style.fontSize = '25px'; // menor
+btnRemover.style.color = '#b22';
+btnRemover.style.margin = '0 4px 0 0';
+btnRemover.style.background = 'transparent';
+btnRemover.style.border = 'none';
+btnRemover.style.cursor = 'pointer';
+btnRemover.style.lineHeight = '1';
 btnRemover.onclick = () => {
   li.remove();
   salvarCarrinho();
